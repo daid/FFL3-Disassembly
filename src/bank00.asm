@@ -4614,7 +4614,7 @@ call_00_1f7b:
     ld   [DE], A                                       ;; 00:1f7c $12
     inc  DE                                            ;; 00:1f7d $13
 
-jp_00_1f7e:
+call_00_1f7e:
     ld   A, [HL+]                                      ;; 00:1f7e $2a
     ld   [DE], A                                       ;; 00:1f7f $12
     inc  DE                                            ;; 00:1f80 $13

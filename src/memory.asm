@@ -476,7 +476,10 @@ wC97B:
     ds 6                                               ;; c97b
 
 wC981:
-    ds 22                                              ;; c981
+    ds 4                                               ;; c981
+
+wC985:
+    ds 18                                              ;; c985
 
 wC997:
     ds 4                                               ;; c997
@@ -1568,7 +1571,10 @@ wD203:
     ds 125                                             ;; d203
 
 wD280:
-    ds 384                                             ;; d280
+    ds 128                                             ;; d280
+
+wD300:
+    ds 256                                             ;; d300
 
 wD400:
     ds 640                                             ;; d400
@@ -1712,19 +1718,37 @@ wDE0B:
     ds 1                                               ;; de0b
 
 wDE0C:
-    ds 3                                               ;; de0c
+    ds 1                                               ;; de0c
+
+wDE0D:
+    ds 1                                               ;; de0d
+
+wDE0E:
+    ds 1                                               ;; de0e
 
 wDE0F:
     ds 1                                               ;; de0f
 
 wDE10:
-    ds 3                                               ;; de10
+    ds 1                                               ;; de10
+
+wDE11:
+    ds 1                                               ;; de11
+
+wDE12:
+    ds 1                                               ;; de12
 
 wDE13:
     ds 4                                               ;; de13
 
 wDE17:
-    ds 41                                              ;; de17
+    ds 2                                               ;; de17
+
+wDE19:
+    ds 2                                               ;; de19
+
+wDE1B:
+    ds 37                                              ;; de1b
 
 wDE40:
     ds 1                                               ;; de40
@@ -1733,25 +1757,46 @@ wDE41:
     ds 4                                               ;; de41
 
 wDE45:
-    ds 11                                              ;; de45
+    ds 3                                               ;; de45
+
+wDE48:
+    ds 1                                               ;; de48
+
+wDE49:
+    ds 7                                               ;; de49
 
 wDE50:
     ds 2                                               ;; de50
 
 wDE52:
-    ds 6                                               ;; de52
+    ds 5                                               ;; de52
+
+wDE57:
+    ds 1                                               ;; de57
 
 wDE58:
-    ds 8                                               ;; de58
+    ds 7                                               ;; de58
+
+wDE5F:
+    ds 1                                               ;; de5f
 
 wDE60:
-    ds 30                                              ;; de60
+    ds 16                                              ;; de60
+
+wDE70:
+    ds 14                                              ;; de70
 
 wDE7E:
     ds 2                                               ;; de7e
 
 wDE80:
-    ds 62                                              ;; de80
+    ds 16                                              ;; de80
+
+wDE90:
+    ds 16                                              ;; de90
+
+wDEA0:
+    ds 30                                              ;; dea0
 
 wDEBE:
     ds 1                                               ;; debe
@@ -1772,7 +1817,10 @@ wDEFF:
     ds 1                                               ;; deff
 
 wDF00:
-    ds 256                                             ;; df00
+    ds 8                                               ;; df00
+
+wDF08:
+    ds 248                                             ;; df08
 
 SECTION "hram", HRAM[$ff80]
 

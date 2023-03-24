@@ -17,9 +17,10 @@ jp_0c_4008:
     cp   A, $1f                                        ;; 0c:400b $fe $1f
     ret  Z                                             ;; 0c:400d $c8
     ld_long_store hFF9F, A                             ;; 0c:400e $ea $9f $ff
-    ld   HL, .data_0c_4320                             ;; 0c:4011 $21 $20 $43
+    ld   HL, jumptable_0c_4320                         ;; 0c:4011 $21 $20 $43
     jp   doJumptableHL                                 ;; 0c:4014 $c3 $3b $37
-.jp_0c_4017:
+
+jp_0c_4017:
     ld   A, [wCC03]                                    ;; 0c:4017 $fa $03 $cc
     cp   A, $03                                        ;; 0c:401a $fe $03
     jr   C, .jr_0c_4026                                ;; 0c:401c $38 $08
@@ -52,11 +53,12 @@ jp_0c_4008:
     ld   [HL+], A                                      ;; 0c:403f $22
     pop  DE                                            ;; 0c:4040 $d1
     jr   jp_0c_4008                                    ;; 0c:4041 $18 $c5
-.data_0c_4043:
+
+call_0c_4043:
     inc  DE                                            ;; 0c:4043 $13
     ld   A, [wCC04]                                    ;; 0c:4044 $fa $04 $cc
     or   A, A                                          ;; 0c:4047 $b7
-    jr   Z, .jp_0c_4017                                ;; 0c:4048 $28 $cd
+    jr   Z, jp_0c_4017                                 ;; 0c:4048 $28 $cd
     push DE                                            ;; 0c:404a $d5
     ld   DE, wCC0C                                     ;; 0c:404b $11 $0c $cc
     ld   HL, wCC05                                     ;; 0c:404e $21 $05 $cc
@@ -91,10 +93,11 @@ jp_0c_4008:
     ld   A, $06                                        ;; 0c:4083 $3e $06
 .jr_0c_4085:
     ld   B, $07                                        ;; 0c:4085 $06 $07
-    ld   HL, .data_0c_437c                             ;; 0c:4087 $21 $7c $43
+    ld   HL, jumptable_0c_437c                         ;; 0c:4087 $21 $7c $43
     call doJumptableHL                                 ;; 0c:408a $cd $3b $37
-    jr   .jr_0c_4104                                   ;; 0c:408d $18 $75
-.data_0c_408f:
+    jr   jr_0c_4104                                    ;; 0c:408d $18 $75
+
+call_0c_408f:
     ld   A, [DE]                                       ;; 0c:408f $1a
     ld   B, A                                          ;; 0c:4090 $47
     swap A                                             ;; 0c:4091 $cb $37
@@ -121,13 +124,15 @@ jp_0c_4008:
     dec  C                                             ;; 0c:40af $0d
     jr   NZ, .jr_0c_40aa                               ;; 0c:40b0 $20 $f8
     jr   .jr_0c_40a7                                   ;; 0c:40b2 $18 $f3
-.data_0c_40b4:
+
+call_0c_40b4:
     call call_0c_4433                                  ;; 0c:40b4 $cd $33 $44
     ld   A, [HL+]                                      ;; 0c:40b7 $2a
     ld   H, [HL]                                       ;; 0c:40b8 $66
     ld   L, A                                          ;; 0c:40b9 $6f
-    jr   .jr_0c_40f1                                   ;; 0c:40ba $18 $35
-.data_0c_40bc:
+    jr   jr_0c_40f1                                    ;; 0c:40ba $18 $35
+
+call_0c_40bc:
     ld   HL, .data_0c_40ce                             ;; 0c:40bc $21 $ce $40
     ld   A, [DE]                                       ;; 0c:40bf $1a
     swap A                                             ;; 0c:40c0 $cb $37
@@ -139,7 +144,7 @@ jp_0c_4008:
     ld   H, [HL]                                       ;; 0c:40c9 $66
     ld   L, A                                          ;; 0c:40ca $6f
     inc  DE                                            ;; 0c:40cb $13
-    jr   .jr_0c_40f1                                   ;; 0c:40cc $18 $23
+    jr   jr_0c_40f1                                    ;; 0c:40cc $18 $23
 .data_0c_40ce:
     dw   data_0c_5f4a                                  ;; 0c:40ce pP
     dw   data_0c_782a                                  ;; 0c:40d0 pP
@@ -149,13 +154,15 @@ jp_0c_4008:
     dw   data_0c_46b0                                  ;; 0c:40d8 pP
     dw   data_0c_4711                                  ;; 0c:40da pP
     dw   data_0c_47bb                                  ;; 0c:40dc pP
-.data_0c_40de:
+
+data_0c_40de:
     dw   data_0c_5f4a                                  ;; 0c:40de pP
     dw   data_0c_7331                                  ;; 0c:40e0 pP
     db   $1a, $7e                                      ;; 0c:40e2 ??
     dw   data_0c_76ca                                  ;; 0c:40e4 pP
     db   $e0, $6c, $2d, $73                            ;; 0c:40e6 ????
-.data_0c_40ea:
+
+call_0c_40ea:
     inc  DE                                            ;; 0c:40ea $13
     ld   A, [DE]                                       ;; 0c:40eb $1a
     inc  DE                                            ;; 0c:40ec $13
@@ -163,7 +170,8 @@ jp_0c_4008:
     ld   A, [DE]                                       ;; 0c:40ee $1a
     inc  DE                                            ;; 0c:40ef $13
     ld   H, A                                          ;; 0c:40f0 $67
-.jr_0c_40f1:
+
+jr_0c_40f1:
     push HL                                            ;; 0c:40f1 $e5
     ld   HL, wCC0F                                     ;; 0c:40f2 $21 $0f $cc
     ld   A, [HL+]                                      ;; 0c:40f5 $2a
@@ -179,9 +187,11 @@ jp_0c_4008:
     ld   [HL+], A                                      ;; 0c:4101 $22
     ld   [HL], C                                       ;; 0c:4102 $71
     pop  DE                                            ;; 0c:4103 $d1
-.jr_0c_4104:
+
+jr_0c_4104:
     jp   jp_0c_4008                                    ;; 0c:4104 $c3 $08 $40
-.data_0c_4107:
+
+call_0c_4107:
     ld   HL, wCC0F                                     ;; 0c:4107 $21 $0f $cc
     ld   A, [HL+]                                      ;; 0c:410a $2a
     ld   H, [HL]                                       ;; 0c:410b $66
@@ -195,29 +205,34 @@ jp_0c_4008:
     ld   HL, wCC0F                                     ;; 0c:4113 $21 $0f $cc
     ld   [HL+], A                                      ;; 0c:4116 $22
     ld   [HL], B                                       ;; 0c:4117 $70
-    jr   .jr_0c_4104                                   ;; 0c:4118 $18 $ea
-.data_0c_411a:
+    jr   jr_0c_4104                                    ;; 0c:4118 $18 $ea
+
+call_0c_411a:
     inc  DE                                            ;; 0c:411a $13
     ld   L, E                                          ;; 0c:411b $6b
     ld   H, D                                          ;; 0c:411c $62
-    jr   .jr_0c_4130                                   ;; 0c:411d $18 $11
-.data_0c_411f:
-    ld   HL, .data_0c_40de                             ;; 0c:411f $21 $de $40
+    jr   jr_0c_4130                                    ;; 0c:411d $18 $11
+
+call_0c_411f:
+    ld   HL, data_0c_40de                              ;; 0c:411f $21 $de $40
     ld   A, [DE]                                       ;; 0c:4122 $1a
     swap A                                             ;; 0c:4123 $cb $37
     srl  A                                             ;; 0c:4125 $cb $3f
     and  A, $07                                        ;; 0c:4127 $e6 $07
     add  A, A                                          ;; 0c:4129 $87
     rst  add_hl_a                                      ;; 0c:412a $c7
-    jr   .jr_0c_4130                                   ;; 0c:412b $18 $03
-.data_0c_412d:
+    jr   jr_0c_4130                                    ;; 0c:412b $18 $03
+
+call_0c_412d:
     call call_0c_4433                                  ;; 0c:412d $cd $33 $44
-.jr_0c_4130:
+
+jr_0c_4130:
     ld   A, [HL+]                                      ;; 0c:4130 $2a
     ld   D, [HL]                                       ;; 0c:4131 $56
     ld   E, A                                          ;; 0c:4132 $5f
-    jr   .jr_0c_4104                                   ;; 0c:4133 $18 $cf
-.data_0c_4135:
+    jr   jr_0c_4104                                    ;; 0c:4133 $18 $cf
+
+call_0c_4135:
     inc  DE                                            ;; 0c:4135 $13
     ld   L, E                                          ;; 0c:4136 $6b
     ld   H, D                                          ;; 0c:4137 $62
@@ -232,9 +247,15 @@ jp_0c_4008:
     ret                                                ;; 0c:4142 $c9
 .data_0c_4143:
     pop  DE                                            ;; 0c:4143 $d1
-    jr   .jr_0c_4104                                   ;; 0c:4144 $18 $be
-    db   $13, $1a, $13, $18, $b9                       ;; 0c:4146 ?????
-.data_0c_414b:
+    jr   jr_0c_4104                                    ;; 0c:4144 $18 $be
+
+call_0c_4146:
+    inc  DE                                            ;; 0c:4146 $13
+    ld   A, [DE]                                       ;; 0c:4147 $1a
+    inc  DE                                            ;; 0c:4148 $13
+    jr   jr_0c_4104                                    ;; 0c:4149 $18 $b9
+
+call_0c_414b:
     ld   A, [DE]                                       ;; 0c:414b $1a
     swap A                                             ;; 0c:414c $cb $37
     srl  A                                             ;; 0c:414e $cb $3f
@@ -266,7 +287,7 @@ jp_0c_4008:
     ld   [HL], $00                                     ;; 0c:4171 $36 $00
     ld_long_load A, hFF9F                              ;; 0c:4173 $fa $9f $ff
     cp   A, $0b                                        ;; 0c:4176 $fe $0b
-    jr   NZ, .jp_0c_4186                               ;; 0c:4178 $20 $0c
+    jr   NZ, jp_0c_4186                                ;; 0c:4178 $20 $0c
     ld   A, [DE]                                       ;; 0c:417a $1a
     inc  DE                                            ;; 0c:417b $13
     ld   HL, wCC05                                     ;; 0c:417c $21 $05 $cc
@@ -274,29 +295,33 @@ jp_0c_4008:
     xor  A, A                                          ;; 0c:4180 $af
     ld   [HL+], A                                      ;; 0c:4181 $22
     ld   [HL], A                                       ;; 0c:4182 $77
-    jp   .jp_0c_4017                                   ;; 0c:4183 $c3 $17 $40
-.jp_0c_4186:
+    jp   jp_0c_4017                                    ;; 0c:4183 $c3 $17 $40
+
+jp_0c_4186:
     ld   A, [DE]                                       ;; 0c:4186 $1a
     and  A, $1f                                        ;; 0c:4187 $e6 $1f
-    ld   HL, .data_0c_433c                             ;; 0c:4189 $21 $3c $43
+    ld   HL, jumptable_0c_433c                         ;; 0c:4189 $21 $3c $43
     jp   doJumptableHL                                 ;; 0c:418c $c3 $3b $37
-.data_0c_418f:
+
+call_0c_418f:
     call call_0c_43c0                                  ;; 0c:418f $cd $c0 $43
     push DE                                            ;; 0c:4192 $d5
     ld   DE, wCC05                                     ;; 0c:4193 $11 $05 $cc
     ld   HL, wCC08                                     ;; 0c:4196 $21 $08 $cc
     call call_00_1cdd                                  ;; 0c:4199 $cd $dd $1c
     pop  DE                                            ;; 0c:419c $d1
-    jr   .jp_0c_4186                                   ;; 0c:419d $18 $e7
-.data_0c_419f:
+    jr   jp_0c_4186                                    ;; 0c:419d $18 $e7
+
+call_0c_419f:
     call call_0c_43c0                                  ;; 0c:419f $cd $c0 $43
     push DE                                            ;; 0c:41a2 $d5
     ld   DE, wCC05                                     ;; 0c:41a3 $11 $05 $cc
     ld   HL, wCC08                                     ;; 0c:41a6 $21 $08 $cc
     call call_00_1cf5                                  ;; 0c:41a9 $cd $f5 $1c
     pop  DE                                            ;; 0c:41ac $d1
-    jr   .jp_0c_4186                                   ;; 0c:41ad $18 $d7
-.data_0c_41af:
+    jr   jp_0c_4186                                    ;; 0c:41ad $18 $d7
+
+call_0c_41af:
     call call_0c_43c0                                  ;; 0c:41af $cd $c0 $43
     push DE                                            ;; 0c:41b2 $d5
     ld   DE, wCC05                                     ;; 0c:41b3 $11 $05 $cc
@@ -310,13 +335,15 @@ jp_0c_4008:
     ld   [HL], A                                       ;; 0c:41c4 $77
 .jr_0c_41c5:
     pop  DE                                            ;; 0c:41c5 $d1
-    jr   .jp_0c_4186                                   ;; 0c:41c6 $18 $be
-.data_0c_41c8:
+    jr   jp_0c_4186                                    ;; 0c:41c6 $18 $be
+
+call_0c_41c8:
     call call_0c_43c0                                  ;; 0c:41c8 $cd $c0 $43
     call call_0c_443a                                  ;; 0c:41cb $cd $3a $44
     call call_0c_4446                                  ;; 0c:41ce $cd $46 $44
-    jr   .jp_0c_4186                                   ;; 0c:41d1 $18 $b3
-.data_0c_41d3:
+    jr   jp_0c_4186                                    ;; 0c:41d1 $18 $b3
+
+call_0c_41d3:
     call call_0c_43c0                                  ;; 0c:41d3 $cd $c0 $43
     call call_0c_443a                                  ;; 0c:41d6 $cd $3a $44
     or   A, [HL]                                       ;; 0c:41d9 $b6
@@ -327,11 +354,17 @@ jp_0c_4008:
     ld   A, B                                          ;; 0c:41de $78
     or   A, [HL]                                       ;; 0c:41df $b6
     ld   [HL], A                                       ;; 0c:41e0 $77
-    jr   .jp_0c_4186                                   ;; 0c:41e1 $18 $a3
-    db   $cd, $c0, $43, $cd, $3a, $44, $cd, $46        ;; 0c:41e3 ????????
-    db   $44, $21, $07, $cc, $cd, $3d, $44, $18        ;; 0c:41eb ????????
-    db   $16                                           ;; 0c:41f3 ?
-.data_0c_41f4:
+    jr   jp_0c_4186                                    ;; 0c:41e1 $18 $a3
+
+call_0c_41e3:
+    call call_0c_43c0                                  ;; 0c:41e3 $cd $c0 $43
+    call call_0c_443a                                  ;; 0c:41e6 $cd $3a $44
+    call call_0c_4446                                  ;; 0c:41e9 $cd $46 $44
+    ld   HL, wCC07                                     ;; 0c:41ec $21 $07 $cc
+    call call_0c_443d                                  ;; 0c:41ef $cd $3d $44
+    jr   jr_0c_420a                                    ;; 0c:41f2 $18 $16
+
+call_0c_41f4:
     call call_0c_43c0                                  ;; 0c:41f4 $cd $c0 $43
     call call_0c_443a                                  ;; 0c:41f7 $cd $3a $44
     xor  A, [HL]                                       ;; 0c:41fa $ae
@@ -342,15 +375,29 @@ jp_0c_4008:
     ld   A, B                                          ;; 0c:41ff $78
     xor  A, [HL]                                       ;; 0c:4200 $ae
     ld   [HL], A                                       ;; 0c:4201 $77
-    jr   .jp_0c_4186                                   ;; 0c:4202 $18 $82
-    db   $cd, $c0, $43, $cd, $3a, $44, $2f, $22        ;; 0c:4204 ????????
-    db   $79, $2f, $22, $78, $2f, $22, $18, $73        ;; 0c:420c ????????
-.data_0c_4214:
+    jr   jp_0c_4186                                    ;; 0c:4202 $18 $82
+
+call_0c_4204:
+    call call_0c_43c0                                  ;; 0c:4204 $cd $c0 $43
+    call call_0c_443a                                  ;; 0c:4207 $cd $3a $44
+
+jr_0c_420a:
+    cpl                                                ;; 0c:420a $2f
+    ld   [HL+], A                                      ;; 0c:420b $22
+    ld   A, C                                          ;; 0c:420c $79
+    cpl                                                ;; 0c:420d $2f
+    ld   [HL+], A                                      ;; 0c:420e $22
+    ld   A, B                                          ;; 0c:420f $78
+    cpl                                                ;; 0c:4210 $2f
+    ld   [HL+], A                                      ;; 0c:4211 $22
+    jr   jr_0c_4287                                    ;; 0c:4212 $18 $73
+
+call_0c_4214:
     call call_0c_43c0                                  ;; 0c:4214 $cd $c0 $43
     ld   A, [wCC08]                                    ;; 0c:4217 $fa $08 $cc
 .jr_0c_421a:
     sub  A, $01                                        ;; 0c:421a $d6 $01
-    jr   C, .jr_0c_4287                                ;; 0c:421c $38 $69
+    jr   C, jr_0c_4287                                 ;; 0c:421c $38 $69
     ld   HL, wCC07                                     ;; 0c:421e $21 $07 $cc
     srl  [HL]                                          ;; 0c:4221 $cb $3e
     dec  HL                                            ;; 0c:4223 $2b
@@ -358,12 +405,13 @@ jp_0c_4008:
     dec  HL                                            ;; 0c:4226 $2b
     rr   [HL]                                          ;; 0c:4227 $cb $1e
     jr   .jr_0c_421a                                   ;; 0c:4229 $18 $ef
-.data_0c_422b:
+
+call_0c_422b:
     call call_0c_43c0                                  ;; 0c:422b $cd $c0 $43
     ld   A, [wCC08]                                    ;; 0c:422e $fa $08 $cc
 .jr_0c_4231:
     sub  A, $01                                        ;; 0c:4231 $d6 $01
-    jr   C, .jr_0c_4287                                ;; 0c:4233 $38 $52
+    jr   C, jr_0c_4287                                 ;; 0c:4233 $38 $52
     ld   HL, wCC05                                     ;; 0c:4235 $21 $05 $cc
     sla  [HL]                                          ;; 0c:4238 $cb $26
     inc  HL                                            ;; 0c:423a $23
@@ -371,7 +419,8 @@ jp_0c_4008:
     inc  HL                                            ;; 0c:423d $23
     rl   [HL]                                          ;; 0c:423e $cb $16
     jr   .jr_0c_4231                                   ;; 0c:4240 $18 $ef
-.data_0c_4242:
+
+call_0c_4242:
     call call_0c_43c0                                  ;; 0c:4242 $cd $c0 $43
     ld   HL, wCC07                                     ;; 0c:4245 $21 $07 $cc
     ld   A, [HL]                                       ;; 0c:4248 $7e
@@ -394,7 +443,7 @@ jp_0c_4008:
     call call_00_1c7e                                  ;; 0c:4265 $cd $7e $1c
     ld   A, [wCC0B]                                    ;; 0c:4268 $fa $0b $cc
     and  A, $80                                        ;; 0c:426b $e6 $80
-    jr   Z, .jr_0c_427e                                ;; 0c:426d $28 $0f
+    jr   Z, jr_0c_427e                                 ;; 0c:426d $28 $0f
     ld   H, $00                                        ;; 0c:426f $26 $00
     ld   E, A                                          ;; 0c:4271 $5f
     cpl                                                ;; 0c:4272 $2f
@@ -408,7 +457,8 @@ jp_0c_4008:
     cpl                                                ;; 0c:427b $2f
     adc  A, H                                          ;; 0c:427c $8c
     ld   L, A                                          ;; 0c:427d $6f
-.jr_0c_427e:
+
+jr_0c_427e:
     ld   A, L                                          ;; 0c:427e $7d
     ld   HL, wCC07                                     ;; 0c:427f $21 $07 $cc
     ld   [HL-], A                                      ;; 0c:4282 $32
@@ -416,9 +466,11 @@ jp_0c_4008:
     ld   [HL-], A                                      ;; 0c:4284 $32
     ld   [HL], E                                       ;; 0c:4285 $73
     pop  DE                                            ;; 0c:4286 $d1
-.jr_0c_4287:
-    jp   .jp_0c_4186                                   ;; 0c:4287 $c3 $86 $41
-.data_0c_428a:
+
+jr_0c_4287:
+    jp   jp_0c_4186                                    ;; 0c:4287 $c3 $86 $41
+
+call_0c_428a:
     call call_0c_43c0                                  ;; 0c:428a $cd $c0 $43
     ld   HL, wCC07                                     ;; 0c:428d $21 $07 $cc
     ld   A, [HL]                                       ;; 0c:4290 $7e
@@ -444,7 +496,7 @@ jp_0c_4008:
     ld   L, $00                                        ;; 0c:42b2 $2e $00
     ld   A, [wCC0B]                                    ;; 0c:42b4 $fa $0b $cc
     and  A, $80                                        ;; 0c:42b7 $e6 $80
-    jr   Z, .jr_0c_427e                                ;; 0c:42b9 $28 $c3
+    jr   Z, jr_0c_427e                                 ;; 0c:42b9 $28 $c3
     dec  L                                             ;; 0c:42bb $2d
     ld   A, E                                          ;; 0c:42bc $7b
     cpl                                                ;; 0c:42bd $2f
@@ -454,13 +506,16 @@ jp_0c_4008:
     cpl                                                ;; 0c:42c2 $2f
     adc  A, $00                                        ;; 0c:42c3 $ce $00
     ld   D, A                                          ;; 0c:42c5 $57
-    jr   .jr_0c_427e                                   ;; 0c:42c6 $18 $b6
-.data_0c_42c8:
+    jr   jr_0c_427e                                    ;; 0c:42c6 $18 $b6
+
+call_0c_42c8:
     ld   A, $01                                        ;; 0c:42c8 $3e $01
     ld   [wCC04], A                                    ;; 0c:42ca $ea $04 $cc
-.jr_0c_42cd:
+
+call_0c_42cd:
     call call_0c_43c0                                  ;; 0c:42cd $cd $c0 $43
-.jr_0c_42d0:
+
+jr_0c_42d0:
     ld   HL, wCC05                                     ;; 0c:42d0 $21 $05 $cc
     ld   BC, wCC08                                     ;; 0c:42d3 $01 $08 $cc
     ld   A, [BC]                                       ;; 0c:42d6 $0a
@@ -471,16 +526,19 @@ jp_0c_4008:
     ld   [HL+], A                                      ;; 0c:42db $22
     ld   A, [BC]                                       ;; 0c:42dc $0a
     ld   [HL], A                                       ;; 0c:42dd $77
-.jr_0c_42de:
-    jp   .jp_0c_4186                                   ;; 0c:42de $c3 $86 $41
-.data_0c_42e1:
+
+jr_0c_42de:
+    jp   jp_0c_4186                                    ;; 0c:42de $c3 $86 $41
+
+call_0c_42e1:
     ld   HL, wCC04                                     ;; 0c:42e1 $21 $04 $cc
     ld   A, [HL]                                       ;; 0c:42e4 $7e
     and  A, A                                          ;; 0c:42e5 $a7
-    jr   Z, .jr_0c_42cd                                ;; 0c:42e6 $28 $e5
+    jr   Z, call_0c_42cd                               ;; 0c:42e6 $28 $e5
     call call_0c_444f                                  ;; 0c:42e8 $cd $4f $44
-    jr   .jr_0c_42cd                                   ;; 0c:42eb $18 $e0
-.data_0c_42ed:
+    jr   call_0c_42cd                                  ;; 0c:42eb $18 $e0
+
+call_0c_42ed:
     call call_0c_4433                                  ;; 0c:42ed $cd $33 $44
     push DE                                            ;; 0c:42f0 $d5
     ld   A, [HL]                                       ;; 0c:42f1 $7e
@@ -494,8 +552,9 @@ jp_0c_4008:
     xor  A, A                                          ;; 0c:42ff $af
     ld   [HL+], A                                      ;; 0c:4300 $22
     ld   [HL], A                                       ;; 0c:4301 $77
-    jr   .jr_0c_42de                                   ;; 0c:4302 $18 $da
-.data_0c_4304:
+    jr   jr_0c_42de                                    ;; 0c:4302 $18 $da
+
+call_0c_4304:
     ld   HL, wCC04                                     ;; 0c:4304 $21 $04 $cc
     ld   A, [HL]                                       ;; 0c:4307 $7e
     and  A, A                                          ;; 0c:4308 $a7
@@ -513,89 +572,115 @@ jp_0c_4008:
     inc  DE                                            ;; 0c:4319 $13
     ld   H, A                                          ;; 0c:431a $67
     call call_0c_43d6                                  ;; 0c:431b $cd $d6 $43
-    jr   .jr_0c_42d0                                   ;; 0c:431e $18 $b0
-.data_0c_4320:
-    dw   .data_0c_414b                                 ;; 0c:4320 pP
-    dw   .data_0c_42c8                                 ;; 0c:4322 pP
-    dw   .data_0c_411a                                 ;; 0c:4324 pP
-    dw   .data_0c_4135                                 ;; 0c:4326 pP
-    db   $46, $41                                      ;; 0c:4328 ??
-    dw   .data_0c_40ea                                 ;; 0c:432a pP
-    dw   .data_0c_4107                                 ;; 0c:432c pP
-    dw   .data_0c_408f                                 ;; 0c:432e pP
-    db   $8f, $40                                      ;; 0c:4330 ??
-    dw   .data_0c_40b4                                 ;; 0c:4332 pP
-    dw   .data_0c_412d                                 ;; 0c:4334 pP
-    dw   .data_0c_414b                                 ;; 0c:4336 pP
-    dw   .data_0c_40bc                                 ;; 0c:4338 pP
-    dw   .data_0c_411f                                 ;; 0c:433a pP
-.data_0c_433c:
-    db   $cd, $42                                      ;; 0c:433c ??
-    dw   .data_0c_4242                                 ;; 0c:433e pP
-    dw   .data_0c_428a                                 ;; 0c:4340 pP
-    dw   .data_0c_418f                                 ;; 0c:4342 pP
-    dw   .data_0c_419f                                 ;; 0c:4344 pP
-    dw   .data_0c_41c8                                 ;; 0c:4346 pP
-    dw   .data_0c_41d3                                 ;; 0c:4348 pP
-    db   $e3, $41                                      ;; 0c:434a ??
-    dw   .data_0c_41f4                                 ;; 0c:434c pP
-    db   $04, $42                                      ;; 0c:434e ??
-    dw   .data_0c_4214                                 ;; 0c:4350 pP
-    dw   .data_0c_422b                                 ;; 0c:4352 pP
-    dw   .data_0c_42e1                                 ;; 0c:4354 pP
-    dw   .data_0c_42e1                                 ;; 0c:4356 pP
-    dw   .data_0c_42e1                                 ;; 0c:4358 pP
-    dw   .data_0c_42e1                                 ;; 0c:435a pP
-    dw   .data_0c_42e1                                 ;; 0c:435c pP
-    dw   .data_0c_41af                                 ;; 0c:435e pP
-    dw   .data_0c_42ed                                 ;; 0c:4360 pP
-    dw   .data_0c_4304                                 ;; 0c:4362 pP
-    db   $cd, $42, $cd, $42, $cd, $42, $cd, $42        ;; 0c:4364 ????????
-    db   $cd, $42, $cd, $42, $cd, $42, $cd, $42        ;; 0c:436c ????????
-    db   $cd, $42, $cd, $42, $cd, $42                  ;; 0c:4374 ??????
-    dw   .data_0c_4043                                 ;; 0c:437a pP
-.data_0c_437c:
-    dw   .data_0c_4398                                 ;; 0c:437c pP
-    db   $a5, $43                                      ;; 0c:437e ??
-    dw   .data_0c_43bc                                 ;; 0c:4380 pP
-    db   $bc, $43, $bd, $43                            ;; 0c:4382 ????
-    dw   .data_0c_43bc                                 ;; 0c:4386 pP
-    dw   .jr_0c_43be                                   ;; 0c:4388 pP
-    dw   .data_0c_43bd                                 ;; 0c:438a pP
-    db   $bd, $43, $bd, $43, $bd, $43, $be, $43        ;; 0c:438c ????????
-    db   $be, $43                                      ;; 0c:4394 ??
-    dw   .jr_0c_43be                                   ;; 0c:4396 pP
-.data_0c_4398:
+    jr   jr_0c_42d0                                    ;; 0c:431e $18 $b0
+
+;@jumptable amount=14
+jumptable_0c_4320:
+    dw   call_0c_414b                                  ;; 0c:4320 pP $00
+    dw   call_0c_42c8                                  ;; 0c:4322 pP $01
+    dw   call_0c_411a                                  ;; 0c:4324 pP $02
+    dw   call_0c_4135                                  ;; 0c:4326 pP $03
+    dw   call_0c_4146                                  ;; 0c:4328 ?? $04
+    dw   call_0c_40ea                                  ;; 0c:432a pP $05
+    dw   call_0c_4107                                  ;; 0c:432c pP $06
+    dw   call_0c_408f                                  ;; 0c:432e pP $07
+    dw   call_0c_408f                                  ;; 0c:4330 ?? $08
+    dw   call_0c_40b4                                  ;; 0c:4332 pP $09
+    dw   call_0c_412d                                  ;; 0c:4334 pP $0a
+    dw   call_0c_414b                                  ;; 0c:4336 pP $0b
+    dw   call_0c_40bc                                  ;; 0c:4338 pP $0c
+    dw   call_0c_411f                                  ;; 0c:433a pP $0d
+
+;@jumptable amount=32
+jumptable_0c_433c:
+    dw   call_0c_42cd                                  ;; 0c:433c ?? $00
+    dw   call_0c_4242                                  ;; 0c:433e pP $01
+    dw   call_0c_428a                                  ;; 0c:4340 pP $02
+    dw   call_0c_418f                                  ;; 0c:4342 pP $03
+    dw   call_0c_419f                                  ;; 0c:4344 pP $04
+    dw   call_0c_41c8                                  ;; 0c:4346 pP $05
+    dw   call_0c_41d3                                  ;; 0c:4348 pP $06
+    dw   call_0c_41e3                                  ;; 0c:434a ?? $07
+    dw   call_0c_41f4                                  ;; 0c:434c pP $08
+    dw   call_0c_4204                                  ;; 0c:434e ?? $09
+    dw   call_0c_4214                                  ;; 0c:4350 pP $0a
+    dw   call_0c_422b                                  ;; 0c:4352 pP $0b
+    dw   call_0c_42e1                                  ;; 0c:4354 pP $0c
+    dw   call_0c_42e1                                  ;; 0c:4356 pP $0d
+    dw   call_0c_42e1                                  ;; 0c:4358 pP $0e
+    dw   call_0c_42e1                                  ;; 0c:435a pP $0f
+    dw   call_0c_42e1                                  ;; 0c:435c pP $10
+    dw   call_0c_41af                                  ;; 0c:435e pP $11
+    dw   call_0c_42ed                                  ;; 0c:4360 pP $12
+    dw   call_0c_4304                                  ;; 0c:4362 pP $13
+    dw   call_0c_42cd                                  ;; 0c:4364 ?? $14
+    dw   call_0c_42cd                                  ;; 0c:4366 ?? $15
+    dw   call_0c_42cd                                  ;; 0c:4368 ?? $16
+    dw   call_0c_42cd                                  ;; 0c:436a ?? $17
+    dw   call_0c_42cd                                  ;; 0c:436c ?? $18
+    dw   call_0c_42cd                                  ;; 0c:436e ?? $19
+    dw   call_0c_42cd                                  ;; 0c:4370 ?? $1a
+    dw   call_0c_42cd                                  ;; 0c:4372 ?? $1b
+    dw   call_0c_42cd                                  ;; 0c:4374 ?? $1c
+    dw   call_0c_42cd                                  ;; 0c:4376 ?? $1d
+    dw   call_0c_42cd                                  ;; 0c:4378 ?? $1e
+    dw   call_0c_4043                                  ;; 0c:437a pP $1f
+
+;@jumptable amount=14
+jumptable_0c_437c:
+    dw   call_0c_4398                                  ;; 0c:437c pP $00
+    dw   call_0c_43a5                                  ;; 0c:437e ?? $01
+    dw   call_0c_43bc                                  ;; 0c:4380 pP $02
+    dw   call_0c_43bc                                  ;; 0c:4382 ?? $03
+    dw   call_0c_43bd                                  ;; 0c:4384 ?? $04
+    dw   call_0c_43bc                                  ;; 0c:4386 pP $05
+    dw   call_0c_43be                                  ;; 0c:4388 pP $06
+    dw   call_0c_43bd                                  ;; 0c:438a pP $07
+    dw   call_0c_43bd                                  ;; 0c:438c ?? $08
+    dw   call_0c_43bd                                  ;; 0c:438e ?? $09
+    dw   call_0c_43bd                                  ;; 0c:4390 ?? $0a
+    dw   call_0c_43be                                  ;; 0c:4392 ?? $0b
+    dw   call_0c_43be                                  ;; 0c:4394 ?? $0c
+    dw   call_0c_43be                                  ;; 0c:4396 pP $0d
+
+call_0c_4398:
     ld   A, [DE]                                       ;; 0c:4398 $1a
     swap A                                             ;; 0c:4399 $cb $37
     srl  A                                             ;; 0c:439b $cb $3f
     and  A, B                                          ;; 0c:439d $a0
     cp   A, $05                                        ;; 0c:439e $fe $05
-    jr   C, .jr_0c_43a3                                ;; 0c:43a0 $38 $01
-.jr_0c_43a2:
+    jr   C, jr_0c_43a3                                 ;; 0c:43a0 $38 $01
+
+jr_0c_43a2:
     inc  DE                                            ;; 0c:43a2 $13
-.jr_0c_43a3:
+
+jr_0c_43a3:
     inc  DE                                            ;; 0c:43a3 $13
     inc  DE                                            ;; 0c:43a4 $13
+
+call_0c_43a5:
     ld   A, [DE]                                       ;; 0c:43a5 $1a
     ld   C, A                                          ;; 0c:43a6 $4f
     and  A, $1f                                        ;; 0c:43a7 $e6 $1f
     cp   A, $1f                                        ;; 0c:43a9 $fe $1f
-    jr   Z, .jr_0c_43be                                ;; 0c:43ab $28 $11
+    jr   Z, call_0c_43be                               ;; 0c:43ab $28 $11
     cp   A, $13                                        ;; 0c:43ad $fe $13
-    jr   Z, .jr_0c_43a2                                ;; 0c:43af $28 $f1
+    jr   Z, jr_0c_43a2                                 ;; 0c:43af $28 $f1
     ld   A, C                                          ;; 0c:43b1 $79
     swap A                                             ;; 0c:43b2 $cb $37
     srl  A                                             ;; 0c:43b4 $cb $3f
     and  A, B                                          ;; 0c:43b6 $a0
     cp   A, B                                          ;; 0c:43b7 $b8
-    jr   NZ, .jr_0c_43a3                               ;; 0c:43b8 $20 $e9
-    jr   .jr_0c_43a2                                   ;; 0c:43ba $18 $e6
-.data_0c_43bc:
+    jr   NZ, jr_0c_43a3                                ;; 0c:43b8 $20 $e9
+    jr   jr_0c_43a2                                    ;; 0c:43ba $18 $e6
+
+call_0c_43bc:
     inc  DE                                            ;; 0c:43bc $13
-.data_0c_43bd:
+
+call_0c_43bd:
     inc  DE                                            ;; 0c:43bd $13
-.jr_0c_43be:
+
+call_0c_43be:
     inc  DE                                            ;; 0c:43be $13
     ret                                                ;; 0c:43bf $c9
 
@@ -715,6 +800,8 @@ call_0c_4434:
 
 call_0c_443a:
     ld   HL, wCC0A                                     ;; 0c:443a $21 $0a $cc
+
+call_0c_443d:
     ld   A, [HL-]                                      ;; 0c:443d $3a
     ld   B, A                                          ;; 0c:443e $47
     ld   A, [HL-]                                      ;; 0c:443f $3a
@@ -780,7 +867,7 @@ data_0c_44ac:
     ld   H, [HL]                                       ;; 0c:44b0 $66
     ld   L, A                                          ;; 0c:44b1 $6f
     ld   DE, wD83E                                     ;; 0c:44b2 $11 $3e $d8
-    jp   jp_00_1f7e                                    ;; 0c:44b5 $c3 $7e $1f
+    jp   call_00_1f7e                                  ;; 0c:44b5 $c3 $7e $1f
 
 data_0c_44b8:
     db   $0b, $e7, $59, $ec, $20, $a5, $8c, $c2        ;; 0c:44b8 ........
