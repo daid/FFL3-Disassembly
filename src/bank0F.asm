@@ -606,14 +606,14 @@ musicOpCodeTableChannel2:
     dw   call_0f_454e                                  ;; 0f:4432 ?? $05
     dw   call_0f_459b                                  ;; 0f:4434 pP $06
     dw   call_0f_4565                                  ;; 0f:4436 pP $07
-    dw   call_0f_4616                                  ;; 0f:4438 ?? $08
+    dw   musicOpCodeHalt                               ;; 0f:4438 ?? $08
     dw   call_0f_4517                                  ;; 0f:443a pP $09
     dw   call_0f_44eb                                  ;; 0f:443c pP $0a
     dw   call_0f_452f                                  ;; 0f:443e pP $0b
     dw   call_0f_4613                                  ;; 0f:4440 ?? $0c
-    dw   call_0f_4616                                  ;; 0f:4442 ?? $0d
+    dw   musicOpCodeHalt                               ;; 0f:4442 ?? $0d
     dw   call_0f_458f                                  ;; 0f:4444 pP $0e
-    dw   call_0f_4616                                  ;; 0f:4446 ?? $0f
+    dw   musicOpCodeHalt                               ;; 0f:4446 ?? $0f
 
 ;@jumptable amount=16
 musicOpCodeTableChannel1:
@@ -624,15 +624,15 @@ musicOpCodeTableChannel1:
     dw   musicOpCode_Ch1_4_SetVibratoEnvelope          ;; 0f:4450 ?? $04
     dw   call_0f_4556                                  ;; 0f:4452 ?? $05
     dw   call_0f_45b5                                  ;; 0f:4454 pP $06
-    dw   call_0f_4616                                  ;; 0f:4456 ?? $07
-    dw   call_0f_4616                                  ;; 0f:4458 ?? $08
+    dw   musicOpCodeHalt                               ;; 0f:4456 ?? $07
+    dw   musicOpCodeHalt                               ;; 0f:4458 ?? $08
     dw   call_0f_451c                                  ;; 0f:445a pP $09
     dw   call_0f_44f1                                  ;; 0f:445c pP $0a
     dw   call_0f_4534                                  ;; 0f:445e pP $0b
-    dw   call_0f_4616                                  ;; 0f:4460 ?? $0c
-    dw   call_0f_4616                                  ;; 0f:4462 ?? $0d
+    dw   musicOpCodeHalt                               ;; 0f:4460 ?? $0c
+    dw   musicOpCodeHalt                               ;; 0f:4462 ?? $0d
     dw   call_0f_45ac                                  ;; 0f:4464 pP $0e
-    dw   call_0f_4616                                  ;; 0f:4466 ?? $0f
+    dw   musicOpCodeHalt                               ;; 0f:4466 ?? $0f
 
 ;@jumptable amount=16
 musicOpCodeTableChannel3:
@@ -641,17 +641,17 @@ musicOpCodeTableChannel3:
     dw   call_0f_450d                                  ;; 0f:446c pP $02
     dw   call_0f_44df                                  ;; 0f:446e pP $03
     dw   musicOpCode_Ch3_4_SetVibratoEnvelope          ;; 0f:4470 ?? $04
-    dw   call_0f_4616                                  ;; 0f:4472 ?? $05
+    dw   musicOpCodeHalt                               ;; 0f:4472 ?? $05
     dw   call_0f_45d8                                  ;; 0f:4474 pP $06
-    dw   call_0f_4616                                  ;; 0f:4476 ?? $07
+    dw   musicOpCodeHalt                               ;; 0f:4476 ?? $07
     dw   call_0f_456b                                  ;; 0f:4478 ?? $08
     dw   call_0f_4521                                  ;; 0f:447a pP $09
     dw   call_0f_44f7                                  ;; 0f:447c pP $0a
     dw   call_0f_4539                                  ;; 0f:447e pP $0b
-    dw   call_0f_4616                                  ;; 0f:4480 ?? $0c
-    dw   call_0f_4616                                  ;; 0f:4482 ?? $0d
+    dw   musicOpCodeHalt                               ;; 0f:4480 ?? $0c
+    dw   musicOpCodeHalt                               ;; 0f:4482 ?? $0d
     dw   call_0f_45cf                                  ;; 0f:4484 pP $0e
-    dw   call_0f_4616                                  ;; 0f:4486 ?? $0f
+    dw   musicOpCodeHalt                               ;; 0f:4486 ?? $0f
 
 ;@jumptable amount=16
 musicOpCodeTableChannel4:
@@ -659,18 +659,18 @@ musicOpCodeTableChannel4:
     dw   call_0f_4548                                  ;; 0f:448a pP $01
     dw   call_0f_4512                                  ;; 0f:448c pP $02
     dw   call_0f_44e5                                  ;; 0f:448e pP $03
-    dw   call_0f_4616                                  ;; 0f:4490 ?? $04
-    dw   call_0f_4616                                  ;; 0f:4492 ?? $05
+    dw   musicOpCodeHalt                               ;; 0f:4490 ?? $04
+    dw   musicOpCodeHalt                               ;; 0f:4492 ?? $05
     dw   call_0f_45e9                                  ;; 0f:4494 pP $06
-    dw   call_0f_4616                                  ;; 0f:4496 ?? $07
-    dw   call_0f_4616                                  ;; 0f:4498 ?? $08
+    dw   musicOpCodeHalt                               ;; 0f:4496 ?? $07
+    dw   musicOpCodeHalt                               ;; 0f:4498 ?? $08
     dw   call_0f_4526                                  ;; 0f:449a pP $09
     dw   call_0f_44fd                                  ;; 0f:449c pP $0a
     dw   call_0f_453e                                  ;; 0f:449e ?? $0b
-    dw   call_0f_4616                                  ;; 0f:44a0 ?? $0c
-    dw   call_0f_4616                                  ;; 0f:44a2 ?? $0d
-    dw   call_0f_4616                                  ;; 0f:44a4 ?? $0e
-    dw   call_0f_4616                                  ;; 0f:44a6 ?? $0f
+    dw   musicOpCodeHalt                               ;; 0f:44a0 ?? $0c
+    dw   musicOpCodeHalt                               ;; 0f:44a2 ?? $0d
+    dw   musicOpCodeHalt                               ;; 0f:44a4 ?? $0e
+    dw   musicOpCodeHalt                               ;; 0f:44a6 ?? $0f
 
 musicOpCode_Ch3_0_SetVolume:
     ld   A, [DE]                                       ;; 0f:44a8 $1a
@@ -977,8 +977,8 @@ call_0f_4613:
     inc  DE                                            ;; 0f:4614 $13
     ret                                                ;; 0f:4615 $c9
 
-call_0f_4616:
-    jr   call_0f_4616                                  ;; 0f:4616 $18 $fe
+musicOpCodeHalt:
+    jr   musicOpCodeHalt                               ;; 0f:4616 $18 $fe
     db   $c9                                           ;; 0f:4618 ?
 
 data_0f_4619:
