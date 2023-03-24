@@ -18,12 +18,12 @@ call_0f_4006:
     ld   A, [wCB4C]                                    ;; 0f:400e $fa $4c $cb
     or   A, C                                          ;; 0f:4011 $b1
     jr   NZ, .jr_0f_401c                               ;; 0f:4012 $20 $08
-    ld   HL, hFFBA                                     ;; 0f:4014 $21 $ba $ff
+    ld   HL, hCurrentMusic                             ;; 0f:4014 $21 $ba $ff
     ld   A, [HL+]                                      ;; 0f:4017 $2a
     cp   A, [HL]                                       ;; 0f:4018 $be
     call NZ, call_0f_402d                              ;; 0f:4019 $c4 $2d $40
 .jr_0f_401c:
-    ldh  A, [hFFBC]                                    ;; 0f:401c $f0 $bc
+    ldh  A, [hSFX]                                     ;; 0f:401c $f0 $bc
     or   A, A                                          ;; 0f:401e $b7
     call NZ, call_0f_4759                              ;; 0f:401f $c4 $59 $47
     call call_0f_41ce                                  ;; 0f:4022 $cd $ce $41
@@ -56,7 +56,7 @@ call_0f_402d:
     xor  A, A                                          ;; 0f:4054 $af
     ld   [wCB1C], A                                    ;; 0f:4055 $ea $1c $cb
     ld   [wCB01], A                                    ;; 0f:4058 $ea $01 $cb
-    ld   HL, hFFBA                                     ;; 0f:405b $21 $ba $ff
+    ld   HL, hCurrentMusic                             ;; 0f:405b $21 $ba $ff
     ld   C, $10                                        ;; 0f:405e $0e $10
 .jr_0f_4060:
     ld   [HL+], A                                      ;; 0f:4060 $22
@@ -244,19 +244,19 @@ call_0f_41ce:
     call call_0f_41f9                                  ;; 0f:41d6 $cd $f9 $41
     call call_0f_41f9                                  ;; 0f:41d9 $cd $f9 $41
 .jr_0f_41dc:
-    ldh  A, [hFFBD]                                    ;; 0f:41dc $f0 $bd
+    ldh  A, [hVibratoVolumeChannelSelection]           ;; 0f:41dc $f0 $bd
     inc  A                                             ;; 0f:41de $3c
     cp   A, $03                                        ;; 0f:41df $fe $03
     jr   NZ, .jr_0f_41e4                               ;; 0f:41e1 $20 $01
     xor  A, A                                          ;; 0f:41e3 $af
 .jr_0f_41e4:
-    ldh  [hFFBD], A                                    ;; 0f:41e4 $e0 $bd
+    ldh  [hVibratoVolumeChannelSelection], A           ;; 0f:41e4 $e0 $bd
     or   A, A                                          ;; 0f:41e6 $b7
     call Z, call_0f_4625                               ;; 0f:41e7 $cc $25 $46
-    ldh  A, [hFFBD]                                    ;; 0f:41ea $f0 $bd
+    ldh  A, [hVibratoVolumeChannelSelection]           ;; 0f:41ea $f0 $bd
     cp   A, $01                                        ;; 0f:41ec $fe $01
     call Z, call_0f_467d                               ;; 0f:41ee $cc $7d $46
-    ldh  A, [hFFBD]                                    ;; 0f:41f1 $f0 $bd
+    ldh  A, [hVibratoVolumeChannelSelection]           ;; 0f:41f1 $f0 $bd
     cp   A, $02                                        ;; 0f:41f3 $fe $02
     call Z, call_0f_46db                               ;; 0f:41f5 $cc $db $46
     ret                                                ;; 0f:41f8 $c9
@@ -268,7 +268,7 @@ call_0f_41f9:
     jr   Z, jr_0f_4260                                 ;; 0f:41fe $28 $60
     dec  [HL]                                          ;; 0f:4200 $35
     ld   A, [HL]                                       ;; 0f:4201 $7e
-    ldh  [hFFBE], A                                    ;; 0f:4202 $e0 $be
+    ldh  [hMusicNoteDurationChannel2Copy], A           ;; 0f:4202 $e0 $be
     jr   NZ, jr_0f_4260                                ;; 0f:4204 $20 $5a
     ld   HL, wCB09                                     ;; 0f:4206 $21 $09 $cb
     ld   A, [HL+]                                      ;; 0f:4209 $2a
@@ -333,7 +333,7 @@ jr_0f_4260:
     jr   Z, jr_0f_42d3                                 ;; 0f:4265 $28 $6c
     dec  [HL]                                          ;; 0f:4267 $35
     ld   A, [HL]                                       ;; 0f:4268 $7e
-    ldh  [hFFBF], A                                    ;; 0f:4269 $e0 $bf
+    ldh  [hMusicNoteDurationChannel1Copy], A           ;; 0f:4269 $e0 $bf
     jr   NZ, jr_0f_42d3                                ;; 0f:426b $20 $66
     ld   HL, wCB21                                     ;; 0f:426d $21 $21 $cb
     ld   A, [HL+]                                      ;; 0f:4270 $2a
@@ -405,7 +405,7 @@ jr_0f_42d3:
     jr   Z, jr_0f_4334                                 ;; 0f:42d8 $28 $5a
     dec  [HL]                                          ;; 0f:42da $35
     ld   A, [HL]                                       ;; 0f:42db $7e
-    ldh  [hFFC0], A                                    ;; 0f:42dc $e0 $c0
+    ldh  [hMusicNoteDurationChannel3Copy], A           ;; 0f:42dc $e0 $c0
     jr   NZ, jr_0f_4334                                ;; 0f:42de $20 $54
     ld   HL, wCB39                                     ;; 0f:42e0 $21 $39 $cb
     ld   A, [HL+]                                      ;; 0f:42e3 $2a
@@ -466,7 +466,7 @@ jr_0f_4334:
     ret  Z                                             ;; 0f:4339 $c8
     dec  [HL]                                          ;; 0f:433a $35
     ld   A, [HL]                                       ;; 0f:433b $7e
-    ldh  [hFFC1], A                                    ;; 0f:433c $e0 $c1
+    ldh  [hMusicNoteDurationChannel4Copy], A           ;; 0f:433c $e0 $c1
     ret  NZ                                            ;; 0f:433e $c0
     ld   HL, wCB51                                     ;; 0f:433f $21 $51 $cb
     ld   A, [HL+]                                      ;; 0f:4342 $2a
@@ -896,10 +896,10 @@ call_0f_456b:
     ld   A, [DE]                                       ;; 0f:456b $1a
     inc  DE                                            ;; 0f:456c $13
     ld   C, A                                          ;; 0f:456d $4f
-    ldh  [hFFC2], A                                    ;; 0f:456e $e0 $c2
+    ldh  [hWaveTablePointer], A                        ;; 0f:456e $e0 $c2
     ld   A, [DE]                                       ;; 0f:4570 $1a
     inc  DE                                            ;; 0f:4571 $13
-    ldh  [hFFC3], A                                    ;; 0f:4572 $e0 $c3
+    ldh  [hWaveTablePointer.high], A                   ;; 0f:4572 $e0 $c3
     ld   H, A                                          ;; 0f:4574 $67
     ld   L, C                                          ;; 0f:4575 $69
     xor  A, A                                          ;; 0f:4576 $af
@@ -1028,7 +1028,7 @@ call_0f_4625:
     ld   A, [HL+]                                      ;; 0f:4628 $2a
     or   A, A                                          ;; 0f:4629 $b7
     ret  NZ                                            ;; 0f:462a $c0
-    ldh  A, [hFFBE]                                    ;; 0f:462b $f0 $be
+    ldh  A, [hMusicNoteDurationChannel2Copy]           ;; 0f:462b $f0 $be
     or   A, A                                          ;; 0f:462d $b7
     ret  Z                                             ;; 0f:462e $c8
     inc  L                                             ;; 0f:462f $2c
@@ -1087,7 +1087,7 @@ call_0f_467d:
     ld   A, [HL+]                                      ;; 0f:4680 $2a
     or   A, [HL]                                       ;; 0f:4681 $b6
     ret  NZ                                            ;; 0f:4682 $c0
-    ldh  A, [hFFBF]                                    ;; 0f:4683 $f0 $bf
+    ldh  A, [hMusicNoteDurationChannel1Copy]           ;; 0f:4683 $f0 $bf
     or   A, A                                          ;; 0f:4685 $b7
     ret  Z                                             ;; 0f:4686 $c8
     inc  L                                             ;; 0f:4687 $2c
@@ -1150,7 +1150,7 @@ call_0f_46db:
     ld   A, [HL+]                                      ;; 0f:46de $2a
     or   A, A                                          ;; 0f:46df $b7
     jr   NZ, .jr_0f_4718                               ;; 0f:46e0 $20 $36
-    ldh  A, [hFFC0]                                    ;; 0f:46e2 $f0 $c0
+    ldh  A, [hMusicNoteDurationChannel3Copy]           ;; 0f:46e2 $f0 $c0
     or   A, A                                          ;; 0f:46e4 $b7
     jr   Z, .jr_0f_4718                                ;; 0f:46e5 $28 $31
     inc  L                                             ;; 0f:46e7 $2c
@@ -1189,7 +1189,7 @@ call_0f_46db:
     ld   A, [HL+]                                      ;; 0f:471b $2a
     or   A, [HL]                                       ;; 0f:471c $b6
     ret  NZ                                            ;; 0f:471d $c0
-    ldh  A, [hFFC1]                                    ;; 0f:471e $f0 $c1
+    ldh  A, [hMusicNoteDurationChannel4Copy]           ;; 0f:471e $f0 $c1
     or   A, A                                          ;; 0f:4720 $b7
     ret  Z                                             ;; 0f:4721 $c8
     inc  L                                             ;; 0f:4722 $2c
@@ -1270,7 +1270,7 @@ call_0f_4759:
     ld   [wCB4C], A                                    ;; 0f:4787 $ea $4c $cb
 .jr_0f_478a:
     xor  A, A                                          ;; 0f:478a $af
-    ldh  [hFFBC], A                                    ;; 0f:478b $e0 $bc
+    ldh  [hSFX], A                                     ;; 0f:478b $e0 $bc
     ret                                                ;; 0f:478d $c9
 
 call_0f_478e:
@@ -1300,9 +1300,9 @@ call_0f_478e:
     ld   C, A                                          ;; 0f:47b1 $4f
     ld   A, [HL+]                                      ;; 0f:47b2 $2a
     ld   B, A                                          ;; 0f:47b3 $47
-    ldh  A, [hFFC4]                                    ;; 0f:47b4 $f0 $c4
+    ldh  A, [hSoundEffectLoopCounterChannel1]          ;; 0f:47b4 $f0 $c4
     dec  A                                             ;; 0f:47b6 $3d
-    ldh  [hFFC4], A                                    ;; 0f:47b7 $e0 $c4
+    ldh  [hSoundEffectLoopCounterChannel1], A          ;; 0f:47b7 $e0 $c4
     jr   Z, .jr_0f_47a2                                ;; 0f:47b9 $28 $e7
     ld   L, C                                          ;; 0f:47bb $69
     ld   H, B                                          ;; 0f:47bc $60
@@ -1311,7 +1311,7 @@ call_0f_478e:
     cp   A, $f0                                        ;; 0f:47bf $fe $f0
     jr   C, .jr_0f_47c9                                ;; 0f:47c1 $38 $06
     and  A, $0f                                        ;; 0f:47c3 $e6 $0f
-    ldh  [hFFC4], A                                    ;; 0f:47c5 $e0 $c4
+    ldh  [hSoundEffectLoopCounterChannel1], A          ;; 0f:47c5 $e0 $c4
     jr   .jr_0f_47a2                                   ;; 0f:47c7 $18 $d9
 .jr_0f_47c9:
     ld   C, $10                                        ;; 0f:47c9 $0e $10
@@ -1356,9 +1356,9 @@ call_0f_478e:
     ld   C, A                                          ;; 0f:47ff $4f
     ld   A, [HL+]                                      ;; 0f:4800 $2a
     ld   B, A                                          ;; 0f:4801 $47
-    ldh  A, [hFFC5]                                    ;; 0f:4802 $f0 $c5
+    ldh  A, [hSoundEffectLoopCounterChannel4]          ;; 0f:4802 $f0 $c5
     dec  A                                             ;; 0f:4804 $3d
-    ldh  [hFFC5], A                                    ;; 0f:4805 $e0 $c5
+    ldh  [hSoundEffectLoopCounterChannel4], A          ;; 0f:4805 $e0 $c5
     jr   Z, .jr_0f_47f2                                ;; 0f:4807 $28 $e9
     ld   L, C                                          ;; 0f:4809 $69
     ld   H, B                                          ;; 0f:480a $60
@@ -1367,7 +1367,7 @@ call_0f_478e:
     cp   A, $f0                                        ;; 0f:480d $fe $f0
     jr   C, .jr_0f_4817                                ;; 0f:480f $38 $06
     and  A, $0f                                        ;; 0f:4811 $e6 $0f
-    ldh  [hFFC5], A                                    ;; 0f:4813 $e0 $c5
+    ldh  [hSoundEffectLoopCounterChannel4], A          ;; 0f:4813 $e0 $c5
     jr   .jr_0f_47f2                                   ;; 0f:4815 $18 $db
 .jr_0f_4817:
     ld   A, [HL+]                                      ;; 0f:4817 $2a

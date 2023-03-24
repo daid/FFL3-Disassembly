@@ -1899,37 +1899,36 @@ hFFA3:
 hFFA4:
     ds 22                                              ;; ffa4
 
-hFFBA:
+hCurrentMusic:
     ds 2                                               ;; ffba
 
-hFFBC:
+hSFX:
     ds 1                                               ;; ffbc
 
-hFFBD:
+hVibratoVolumeChannelSelection:
     ds 1                                               ;; ffbd
 
-hFFBE:
+hMusicNoteDurationChannel2Copy:
     ds 1                                               ;; ffbe
 
-hFFBF:
+hMusicNoteDurationChannel1Copy:
     ds 1                                               ;; ffbf
 
-hFFC0:
+hMusicNoteDurationChannel3Copy:
     ds 1                                               ;; ffc0
 
-hFFC1:
+hMusicNoteDurationChannel4Copy:
     ds 1                                               ;; ffc1
 
-hFFC2:
+hWaveTablePointer:
     ds 1                                               ;; ffc2
-
-hFFC3:
+.high:
     ds 1                                               ;; ffc3
 
-hFFC4:
+hSoundEffectLoopCounterChannel1:
     ds 1                                               ;; ffc4
 
-hFFC5:
+hSoundEffectLoopCounterChannel4:
     ds 2                                               ;; ffc5
 
 hFFC7:

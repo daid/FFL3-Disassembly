@@ -10,7 +10,7 @@ SECTION "bank0b", ROMX[$4000], BANK[$0b]
     swap A                                             ;; 0b:4003 $cb $37
     and  A, $03                                        ;; 0b:4005 $e6 $03
     inc  A                                             ;; 0b:4007 $3c
-    ldh  [hFFBA], A                                    ;; 0b:4008 $e0 $ba
+    ldh  [hCurrentMusic], A                            ;; 0b:4008 $e0 $ba
     call call_0b_405a                                  ;; 0b:400a $cd $5a $40
     call call_0b_4444                                  ;; 0b:400d $cd $44 $44
     rst  rst_00_0018                                   ;; 0b:4010 $df
@@ -1832,7 +1832,7 @@ data_0b_5bd8:
     jr   .jr_0b_5bf3                                   ;; 0b:5c04 $18 $ed
 .jr_0b_5c06:
     xor  A, A                                          ;; 0b:5c06 $af
-    ldh  [hFFBC], A                                    ;; 0b:5c07 $e0 $bc
+    ldh  [hSFX], A                                     ;; 0b:5c07 $e0 $bc
     ld   HL, wD061                                     ;; 0b:5c09 $21 $61 $d0
     set  7, [HL]                                       ;; 0b:5c0c $cb $fe
     jr   .jr_0b_5c2b                                   ;; 0b:5c0e $18 $1b
@@ -3416,7 +3416,7 @@ call_0b_6661:
     ld   DE, wC540                                     ;; 0b:668e $11 $40 $c5
     add  HL, DE                                        ;; 0b:6691 $19
     push HL                                            ;; 0b:6692 $e5
-    ld   DE, hFFC0                                     ;; 0b:6693 $11 $c0 $ff
+    ld   DE, hMusicNoteDurationChannel3Copy            ;; 0b:6693 $11 $c0 $ff
     add  HL, DE                                        ;; 0b:6696 $19
     ld   A, [HL]                                       ;; 0b:6697 $7e
     pop  HL                                            ;; 0b:6698 $e1
@@ -4481,7 +4481,7 @@ call_0b_6c2d:
 .jr_0b_6d97:
     ld   A, $35                                        ;; 0b:6d97 $3e $35
 .jr_0b_6d99:
-    ldh  [hFFBC], A                                    ;; 0b:6d99 $e0 $bc
+    ldh  [hSFX], A                                     ;; 0b:6d99 $e0 $bc
     ldh  A, [rLCDC]                                    ;; 0b:6d9b $f0 $40
     bit  5, A                                          ;; 0b:6d9d $cb $6f
     push AF                                            ;; 0b:6d9f $f5

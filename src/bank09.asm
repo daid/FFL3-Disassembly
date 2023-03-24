@@ -138,7 +138,7 @@ call_09_40ad:
     ld   A, $ff                                        ;; 09:40c1 $3e $ff
     ld   [wCA16], A                                    ;; 09:40c3 $ea $16 $ca
     call call_09_427e                                  ;; 09:40c6 $cd $7e $42
-    ldh  A, [hFFBA]                                    ;; 09:40c9 $f0 $ba
+    ldh  A, [hCurrentMusic]                            ;; 09:40c9 $f0 $ba
     ld   [wC7CC], A                                    ;; 09:40cb $ea $cc $c7
     rst  rst_00_0018                                   ;; 09:40ce $df
     db   $b9                                           ;; 09:40cf .
@@ -1705,7 +1705,7 @@ call_09_4bb3:
 
 jr_09_4bba:
     ld   A, $19                                        ;; 09:4bba $3e $19
-    ldh  [hFFBC], A                                    ;; 09:4bbc $e0 $bc
+    ldh  [hSFX], A                                     ;; 09:4bbc $e0 $bc
     call call_09_4bb3                                  ;; 09:4bbe $cd $b3 $4b
     rst  rst_00_0018                                   ;; 09:4bc1 $df
     db   $08                                           ;; 09:4bc2 ?
