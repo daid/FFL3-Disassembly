@@ -3787,7 +3787,7 @@ call_00_1a95:
     and  A, A                                          ;; 00:1ab1 $a7
     jr   Z, jr_00_1acf                                 ;; 00:1ab2 $28 $1b
     ld   A, $04                                        ;; 00:1ab4 $3e $04
-    ld   HL, $79e0    ;@bank 11                                 ;; 00:1ab6 $21 $e0 $79
+    ld   HL, data_0b_79e0 ;@bank 11                    ;; 00:1ab6 $21 $e0 $79
     call call_00_3741                                  ;; 00:1ab9 $cd $41 $37
     call call_0b_7926 ;@bank 11                        ;; 00:1abc $cd $26 $79
     rst  popActiveBankSafe                             ;; 00:1abf $ef
