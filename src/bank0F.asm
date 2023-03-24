@@ -268,7 +268,7 @@ data_0f_420c:
     ld   HL, wCB08                                     ;; 0f:423b $21 $08 $cb
     call musicGetNoteFrequencyPointer                  ;; 0f:423e $cd $16 $44
     push HL                                            ;; 0f:4241 $e5
-    ld   HL, wCB14                                     ;; 0f:4242 $21 $14 $cb
+    ld   HL, wMusicVolumeEnvelopeChannel2              ;; 0f:4242 $21 $14 $cb
     ld   A, [HL+]                                      ;; 0f:4245 $2a
     ld   H, [HL]                                       ;; 0f:4246 $66
     ld   L, A                                          ;; 0f:4247 $6f
@@ -338,7 +338,7 @@ data_0f_4273:
     ld   HL, wCB20                                     ;; 0f:42aa $21 $20 $cb
     call musicGetNoteFrequencyPointer                  ;; 0f:42ad $cd $16 $44
     push HL                                            ;; 0f:42b0 $e5
-    ld   HL, wCB2C                                     ;; 0f:42b1 $21 $2c $cb
+    ld   HL, wMusicVolumeEnvelopeChannel1              ;; 0f:42b1 $21 $2c $cb
     ld   A, [HL+]                                      ;; 0f:42b4 $2a
     ld   H, [HL]                                       ;; 0f:42b5 $66
     ld   L, A                                          ;; 0f:42b6 $6f
@@ -473,7 +473,7 @@ data_0f_4345:
     ld   HL, data_0f_4619                              ;; 0f:437b $21 $19 $46
     add  HL, DE                                        ;; 0f:437e $19
     ld   C, [HL]                                       ;; 0f:437f $4e
-    ld   HL, wCB5C                                     ;; 0f:4380 $21 $5c $cb
+    ld   HL, wMusicVolumeEnvelopeChannel4              ;; 0f:4380 $21 $5c $cb
     ld   A, [HL+]                                      ;; 0f:4383 $2a
     ld   H, [HL]                                       ;; 0f:4384 $66
     ld   L, A                                          ;; 0f:4385 $6f
@@ -598,11 +598,11 @@ musicOctaveRelativeOffsets:
 
 ;@jumptable amount=16
 musicOpCodeTableChannel2:
-    dw   call_0f_44b0                                  ;; 0f:4428 pP $00
+    dw   musicOpCode_Ch2_0_SetVolumeEnvelope           ;; 0f:4428 pP $00
     dw   call_0f_4548                                  ;; 0f:442a pP $01
     dw   call_0f_4503                                  ;; 0f:442c pP $02
     dw   call_0f_44d3                                  ;; 0f:442e pP $03
-    dw   call_0f_44bf                                  ;; 0f:4430 ?? $04
+    dw   musicOpCode_Ch2_4_SetVibratoEnvelope          ;; 0f:4430 ?? $04
     dw   call_0f_454e                                  ;; 0f:4432 ?? $05
     dw   call_0f_459b                                  ;; 0f:4434 pP $06
     dw   call_0f_4565                                  ;; 0f:4436 pP $07
@@ -617,11 +617,11 @@ musicOpCodeTableChannel2:
 
 ;@jumptable amount=16
 musicOpCodeTableChannel1:
-    dw   call_0f_44b5                                  ;; 0f:4448 pP $00
+    dw   musicOpCode_Ch1_0_SetVolumeEnvelope           ;; 0f:4448 pP $00
     dw   call_0f_4548                                  ;; 0f:444a pP $01
     dw   call_0f_4508                                  ;; 0f:444c pP $02
     dw   call_0f_44d9                                  ;; 0f:444e pP $03
-    dw   call_0f_44c4                                  ;; 0f:4450 ?? $04
+    dw   musicOpCode_Ch1_4_SetVibratoEnvelope          ;; 0f:4450 ?? $04
     dw   call_0f_4556                                  ;; 0f:4452 ?? $05
     dw   call_0f_45b5                                  ;; 0f:4454 pP $06
     dw   call_0f_4616                                  ;; 0f:4456 ?? $07
@@ -636,11 +636,11 @@ musicOpCodeTableChannel1:
 
 ;@jumptable amount=16
 musicOpCodeTableChannel3:
-    dw   call_0f_44a8                                  ;; 0f:4468 ?? $00
+    dw   musicOpCode_Ch3_0_SetVolume                   ;; 0f:4468 ?? $00
     dw   call_0f_4548                                  ;; 0f:446a pP $01
     dw   call_0f_450d                                  ;; 0f:446c pP $02
     dw   call_0f_44df                                  ;; 0f:446e pP $03
-    dw   call_0f_44c9                                  ;; 0f:4470 ?? $04
+    dw   musicOpCode_Ch3_4_SetVibratoEnvelope          ;; 0f:4470 ?? $04
     dw   call_0f_4616                                  ;; 0f:4472 ?? $05
     dw   call_0f_45d8                                  ;; 0f:4474 pP $06
     dw   call_0f_4616                                  ;; 0f:4476 ?? $07
@@ -655,7 +655,7 @@ musicOpCodeTableChannel3:
 
 ;@jumptable amount=16
 musicOpCodeTableChannel4:
-    dw   call_0f_44ba                                  ;; 0f:4488 pP $00
+    dw   musicOpCode_Ch4_0_SetVolumeEnvelope           ;; 0f:4488 pP $00
     dw   call_0f_4548                                  ;; 0f:448a pP $01
     dw   call_0f_4512                                  ;; 0f:448c pP $02
     dw   call_0f_44e5                                  ;; 0f:448e pP $03
@@ -672,37 +672,37 @@ musicOpCodeTableChannel4:
     dw   call_0f_4616                                  ;; 0f:44a4 ?? $0e
     dw   call_0f_4616                                  ;; 0f:44a6 ?? $0f
 
-call_0f_44a8:
+musicOpCode_Ch3_0_SetVolume:
     ld   A, [DE]                                       ;; 0f:44a8 $1a
     inc  DE                                            ;; 0f:44a9 $13
     ld   [wCB3B], A                                    ;; 0f:44aa $ea $3b $cb
     ldh  [rNR32], A                                    ;; 0f:44ad $e0 $1c
     ret                                                ;; 0f:44af $c9
 
-call_0f_44b0:
-    ld   HL, wCB14                                     ;; 0f:44b0 $21 $14 $cb
-    jr   jr_0f_44cc                                    ;; 0f:44b3 $18 $17
+musicOpCode_Ch2_0_SetVolumeEnvelope:
+    ld   HL, wMusicVolumeEnvelopeChannel2              ;; 0f:44b0 $21 $14 $cb
+    jr   musicOpCode_SetEnvelope_Common                ;; 0f:44b3 $18 $17
 
-call_0f_44b5:
-    ld   HL, wCB2C                                     ;; 0f:44b5 $21 $2c $cb
-    jr   jr_0f_44cc                                    ;; 0f:44b8 $18 $12
+musicOpCode_Ch1_0_SetVolumeEnvelope:
+    ld   HL, wMusicVolumeEnvelopeChannel1              ;; 0f:44b5 $21 $2c $cb
+    jr   musicOpCode_SetEnvelope_Common                ;; 0f:44b8 $18 $12
 
-call_0f_44ba:
-    ld   HL, wCB5C                                     ;; 0f:44ba $21 $5c $cb
-    jr   jr_0f_44cc                                    ;; 0f:44bd $18 $0d
+musicOpCode_Ch4_0_SetVolumeEnvelope:
+    ld   HL, wMusicVolumeEnvelopeChannel4              ;; 0f:44ba $21 $5c $cb
+    jr   musicOpCode_SetEnvelope_Common                ;; 0f:44bd $18 $0d
 
-call_0f_44bf:
-    ld   HL, wCB0F                                     ;; 0f:44bf $21 $0f $cb
-    jr   jr_0f_44cc                                    ;; 0f:44c2 $18 $08
+musicOpCode_Ch2_4_SetVibratoEnvelope:
+    ld   HL, wMusicVibratoEnvelopeChannel2             ;; 0f:44bf $21 $0f $cb
+    jr   musicOpCode_SetEnvelope_Common                ;; 0f:44c2 $18 $08
 
-call_0f_44c4:
-    ld   HL, wCB27                                     ;; 0f:44c4 $21 $27 $cb
-    jr   jr_0f_44cc                                    ;; 0f:44c7 $18 $03
+musicOpCode_Ch1_4_SetVibratoEnvelope:
+    ld   HL, wMusicVibratoEnvelopeChannel1             ;; 0f:44c4 $21 $27 $cb
+    jr   musicOpCode_SetEnvelope_Common                ;; 0f:44c7 $18 $03
 
-call_0f_44c9:
-    ld   HL, wCB3F                                     ;; 0f:44c9 $21 $3f $cb
+musicOpCode_Ch3_4_SetVibratoEnvelope:
+    ld   HL, wMusicVibratoEnvelopeChannel3             ;; 0f:44c9 $21 $3f $cb
 
-jr_0f_44cc:
+musicOpCode_SetEnvelope_Common:
     ld   A, [DE]                                       ;; 0f:44cc $1a
     inc  DE                                            ;; 0f:44cd $13
     ld   [HL+], A                                      ;; 0f:44ce $22
@@ -884,8 +884,8 @@ call_0f_456b:
 
 call_0f_458f:
     call call_0f_4565                                  ;; 0f:458f $cd $65 $45
-    call call_0f_44bf                                  ;; 0f:4592 $cd $bf $44
-    call call_0f_44b0                                  ;; 0f:4595 $cd $b0 $44
+    call musicOpCode_Ch2_4_SetVibratoEnvelope          ;; 0f:4592 $cd $bf $44
+    call musicOpCode_Ch2_0_SetVolumeEnvelope           ;; 0f:4595 $cd $b0 $44
     call call_0f_454e                                  ;; 0f:4598 $cd $4e $45
 
 call_0f_459b:
@@ -902,8 +902,8 @@ call_0f_459b:
     ret                                                ;; 0f:45ab $c9
 
 call_0f_45ac:
-    call call_0f_44c4                                  ;; 0f:45ac $cd $c4 $44
-    call call_0f_44b5                                  ;; 0f:45af $cd $b5 $44
+    call musicOpCode_Ch1_4_SetVibratoEnvelope          ;; 0f:45ac $cd $c4 $44
+    call musicOpCode_Ch1_0_SetVolumeEnvelope           ;; 0f:45af $cd $b5 $44
     call call_0f_4556                                  ;; 0f:45b2 $cd $56 $45
 
 call_0f_45b5:
@@ -925,8 +925,8 @@ call_0f_45b5:
     ret                                                ;; 0f:45ce $c9
 
 call_0f_45cf:
-    call call_0f_44c9                                  ;; 0f:45cf $cd $c9 $44
-    call call_0f_44a8                                  ;; 0f:45d2 $cd $a8 $44
+    call musicOpCode_Ch3_4_SetVibratoEnvelope          ;; 0f:45cf $cd $c9 $44
+    call musicOpCode_Ch3_0_SetVolume                   ;; 0f:45d2 $cd $a8 $44
     call call_0f_456b                                  ;; 0f:45d5 $cd $6b $45
 
 call_0f_45d8:

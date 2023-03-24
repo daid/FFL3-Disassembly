@@ -757,7 +757,7 @@ wCB0D:
 wCB0E:
     ds 1                                               ;; cb0e
 
-wCB0F:
+wMusicVibratoEnvelopeChannel2:
     ds 2                                               ;; cb0f
 
 wCB11:
@@ -766,7 +766,7 @@ wCB11:
 wCB13:
     ds 1                                               ;; cb13
 
-wCB14:
+wMusicVolumeEnvelopeChannel2:
     ds 2                                               ;; cb14
 
 wCB16:
@@ -807,7 +807,7 @@ wCB25:
 wCB26:
     ds 1                                               ;; cb26
 
-wCB27:
+wMusicVibratoEnvelopeChannel1:
     ds 2                                               ;; cb27
 
 wCB29:
@@ -816,7 +816,7 @@ wCB29:
 wCB2B:
     ds 1                                               ;; cb2b
 
-wCB2C:
+wMusicVolumeEnvelopeChannel1:
     ds 2                                               ;; cb2c
 
 wCB2E:
@@ -857,7 +857,7 @@ wCB3C:
 wCB3E:
     ds 1                                               ;; cb3e
 
-wCB3F:
+wMusicVibratoEnvelopeChannel3:
     ds 2                                               ;; cb3f
 
 wCB41:
@@ -889,7 +889,7 @@ wCB54:
 wCB5B:
     ds 1                                               ;; cb5b
 
-wCB5C:
+wMusicVolumeEnvelopeChannel4:
     ds 2                                               ;; cb5c
 
 wCB5E:
