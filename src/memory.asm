@@ -848,7 +848,7 @@ wMusicInstructionPointerChannel3:
 .high:
     ds 1                                               ;; cb3a
 
-wCB3B:
+wMusicVolumeChannel3:
     ds 1                                               ;; cb3b
 
 wCB3C:
