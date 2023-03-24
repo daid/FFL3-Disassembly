@@ -634,64 +634,81 @@ call_0f_4416:
 data_0f_4420:
     db   $18, $30, $48, $60, $e8, $d0, $b8, $a0        ;; 0f:4420 ????????
 
+;@jumptable amount=16
 data_0f_4428:
-    dw   call_0f_44b0                                  ;; 0f:4428 pP
-    dw   jr_0f_4548                                    ;; 0f:442a pP
-    dw   data_0f_4503                                  ;; 0f:442c pP
-    dw   data_0f_44d3                                  ;; 0f:442e pP
-    db   $bf, $44, $4e, $45                            ;; 0f:4430 ????
-    dw   data_0f_459b                                  ;; 0f:4434 pP
-    dw   call_0f_4565                                  ;; 0f:4436 pP
-    db   $16, $46                                      ;; 0f:4438 ??
-    dw   data_0f_4517                                  ;; 0f:443a pP
-    dw   data_0f_44eb                                  ;; 0f:443c pP
-    dw   data_0f_452f                                  ;; 0f:443e pP
-    db   $13, $46, $16, $46                            ;; 0f:4440 ????
-    dw   data_0f_458f                                  ;; 0f:4444 pP
-    db   $16, $46                                      ;; 0f:4446 ??
+    dw   call_0f_44b0                                  ;; 0f:4428 pP $00
+    dw   call_0f_4548                                  ;; 0f:442a pP $01
+    dw   call_0f_4503                                  ;; 0f:442c pP $02
+    dw   call_0f_44d3                                  ;; 0f:442e pP $03
+    dw   call_0f_44bf                                  ;; 0f:4430 ?? $04
+    dw   call_0f_454e                                  ;; 0f:4432 ?? $05
+    dw   call_0f_459b                                  ;; 0f:4434 pP $06
+    dw   call_0f_4565                                  ;; 0f:4436 pP $07
+    dw   call_0f_4616                                  ;; 0f:4438 ?? $08
+    dw   call_0f_4517                                  ;; 0f:443a pP $09
+    dw   call_0f_44eb                                  ;; 0f:443c pP $0a
+    dw   call_0f_452f                                  ;; 0f:443e pP $0b
+    dw   call_0f_4613                                  ;; 0f:4440 ?? $0c
+    dw   call_0f_4616                                  ;; 0f:4442 ?? $0d
+    dw   call_0f_458f                                  ;; 0f:4444 pP $0e
+    dw   call_0f_4616                                  ;; 0f:4446 ?? $0f
 
+;@jumptable amount=16
 data_0f_4448:
-    dw   call_0f_44b5                                  ;; 0f:4448 pP
-    dw   jr_0f_4548                                    ;; 0f:444a pP
-    dw   data_0f_4508                                  ;; 0f:444c pP
-    dw   data_0f_44d9                                  ;; 0f:444e pP
-    db   $c4, $44, $56, $45                            ;; 0f:4450 ????
-    dw   data_0f_45b5                                  ;; 0f:4454 pP
-    db   $16, $46, $16, $46                            ;; 0f:4456 ????
-    dw   data_0f_451c                                  ;; 0f:445a pP
-    dw   data_0f_44f1                                  ;; 0f:445c pP
-    dw   data_0f_4534                                  ;; 0f:445e pP
-    db   $16, $46, $16, $46                            ;; 0f:4460 ????
-    dw   data_0f_45ac                                  ;; 0f:4464 pP
-    db   $16, $46                                      ;; 0f:4466 ??
+    dw   call_0f_44b5                                  ;; 0f:4448 pP $00
+    dw   call_0f_4548                                  ;; 0f:444a pP $01
+    dw   call_0f_4508                                  ;; 0f:444c pP $02
+    dw   call_0f_44d9                                  ;; 0f:444e pP $03
+    dw   call_0f_44c4                                  ;; 0f:4450 ?? $04
+    dw   call_0f_4556                                  ;; 0f:4452 ?? $05
+    dw   call_0f_45b5                                  ;; 0f:4454 pP $06
+    dw   call_0f_4616                                  ;; 0f:4456 ?? $07
+    dw   call_0f_4616                                  ;; 0f:4458 ?? $08
+    dw   call_0f_451c                                  ;; 0f:445a pP $09
+    dw   call_0f_44f1                                  ;; 0f:445c pP $0a
+    dw   call_0f_4534                                  ;; 0f:445e pP $0b
+    dw   call_0f_4616                                  ;; 0f:4460 ?? $0c
+    dw   call_0f_4616                                  ;; 0f:4462 ?? $0d
+    dw   call_0f_45ac                                  ;; 0f:4464 pP $0e
+    dw   call_0f_4616                                  ;; 0f:4466 ?? $0f
 
+;@jumptable amount=16
 data_0f_4468:
-    db   $a8, $44                                      ;; 0f:4468 ??
-    dw   jr_0f_4548                                    ;; 0f:446a pP
-    dw   data_0f_450d                                  ;; 0f:446c pP
-    dw   data_0f_44df                                  ;; 0f:446e pP
-    db   $c9, $44, $16, $46                            ;; 0f:4470 ????
-    dw   data_0f_45d8                                  ;; 0f:4474 pP
-    db   $16, $46, $6b, $45                            ;; 0f:4476 ????
-    dw   data_0f_4521                                  ;; 0f:447a pP
-    dw   data_0f_44f7                                  ;; 0f:447c pP
-    dw   data_0f_4539                                  ;; 0f:447e pP
-    db   $16, $46, $16, $46                            ;; 0f:4480 ????
-    dw   data_0f_45cf                                  ;; 0f:4484 pP
-    db   $16, $46                                      ;; 0f:4486 ??
+    dw   call_0f_44a8                                  ;; 0f:4468 ?? $00
+    dw   call_0f_4548                                  ;; 0f:446a pP $01
+    dw   call_0f_450d                                  ;; 0f:446c pP $02
+    dw   call_0f_44df                                  ;; 0f:446e pP $03
+    dw   call_0f_44c9                                  ;; 0f:4470 ?? $04
+    dw   call_0f_4616                                  ;; 0f:4472 ?? $05
+    dw   call_0f_45d8                                  ;; 0f:4474 pP $06
+    dw   call_0f_4616                                  ;; 0f:4476 ?? $07
+    dw   call_0f_456b                                  ;; 0f:4478 ?? $08
+    dw   call_0f_4521                                  ;; 0f:447a pP $09
+    dw   call_0f_44f7                                  ;; 0f:447c pP $0a
+    dw   call_0f_4539                                  ;; 0f:447e pP $0b
+    dw   call_0f_4616                                  ;; 0f:4480 ?? $0c
+    dw   call_0f_4616                                  ;; 0f:4482 ?? $0d
+    dw   call_0f_45cf                                  ;; 0f:4484 pP $0e
+    dw   call_0f_4616                                  ;; 0f:4486 ?? $0f
 
+;@jumptable amount=16
 data_0f_4488:
-    dw   data_0f_44ba                                  ;; 0f:4488 pP
-    dw   jr_0f_4548                                    ;; 0f:448a pP
-    dw   data_0f_4512                                  ;; 0f:448c pP
-    dw   data_0f_44e5                                  ;; 0f:448e pP
-    db   $16, $46, $16, $46                            ;; 0f:4490 ????
-    dw   data_0f_45e9                                  ;; 0f:4494 pP
-    db   $16, $46, $16, $46                            ;; 0f:4496 ????
-    dw   data_0f_4526                                  ;; 0f:449a pP
-    dw   data_0f_44fd                                  ;; 0f:449c pP
-    db   $3e, $45, $16, $46, $16, $46, $16, $46        ;; 0f:449e ????????
-    db   $16, $46                                      ;; 0f:44a6 ??
+    dw   call_0f_44ba                                  ;; 0f:4488 pP $00
+    dw   call_0f_4548                                  ;; 0f:448a pP $01
+    dw   call_0f_4512                                  ;; 0f:448c pP $02
+    dw   call_0f_44e5                                  ;; 0f:448e pP $03
+    dw   call_0f_4616                                  ;; 0f:4490 ?? $04
+    dw   call_0f_4616                                  ;; 0f:4492 ?? $05
+    dw   call_0f_45e9                                  ;; 0f:4494 pP $06
+    dw   call_0f_4616                                  ;; 0f:4496 ?? $07
+    dw   call_0f_4616                                  ;; 0f:4498 ?? $08
+    dw   call_0f_4526                                  ;; 0f:449a pP $09
+    dw   call_0f_44fd                                  ;; 0f:449c pP $0a
+    dw   call_0f_453e                                  ;; 0f:449e ?? $0b
+    dw   call_0f_4616                                  ;; 0f:44a0 ?? $0c
+    dw   call_0f_4616                                  ;; 0f:44a2 ?? $0d
+    dw   call_0f_4616                                  ;; 0f:44a4 ?? $0e
+    dw   call_0f_4616                                  ;; 0f:44a6 ?? $0f
 
 call_0f_44a8:
     ld   A, [DE]                                       ;; 0f:44a8 $1a
@@ -708,7 +725,7 @@ call_0f_44b5:
     ld   HL, wCB2C                                     ;; 0f:44b5 $21 $2c $cb
     jr   jr_0f_44cc                                    ;; 0f:44b8 $18 $12
 
-data_0f_44ba:
+call_0f_44ba:
     ld   HL, wCB5C                                     ;; 0f:44ba $21 $5c $cb
     jr   jr_0f_44cc                                    ;; 0f:44bd $18 $0d
 
@@ -732,106 +749,109 @@ jr_0f_44cc:
     ld   [HL], A                                       ;; 0f:44d1 $77
     ret                                                ;; 0f:44d2 $c9
 
-data_0f_44d3:
+call_0f_44d3:
     ld   A, [DE]                                       ;; 0f:44d3 $1a
     inc  DE                                            ;; 0f:44d4 $13
     ld   [wCB02], A                                    ;; 0f:44d5 $ea $02 $cb
     ret                                                ;; 0f:44d8 $c9
 
-data_0f_44d9:
+call_0f_44d9:
     ld   A, [DE]                                       ;; 0f:44d9 $1a
     inc  DE                                            ;; 0f:44da $13
     ld   [wCB1A], A                                    ;; 0f:44db $ea $1a $cb
     ret                                                ;; 0f:44de $c9
 
-data_0f_44df:
+call_0f_44df:
     ld   A, [DE]                                       ;; 0f:44df $1a
     inc  DE                                            ;; 0f:44e0 $13
     ld   [wCB32], A                                    ;; 0f:44e1 $ea $32 $cb
     ret                                                ;; 0f:44e4 $c9
 
-data_0f_44e5:
+call_0f_44e5:
     ld   A, [DE]                                       ;; 0f:44e5 $1a
     inc  DE                                            ;; 0f:44e6 $13
     ld   [wCB4A], A                                    ;; 0f:44e7 $ea $4a $cb
     ret                                                ;; 0f:44ea $c9
 
-data_0f_44eb:
+call_0f_44eb:
     ld   A, [DE]                                       ;; 0f:44eb $1a
     inc  DE                                            ;; 0f:44ec $13
     ld   [wCB03], A                                    ;; 0f:44ed $ea $03 $cb
     ret                                                ;; 0f:44f0 $c9
 
-data_0f_44f1:
+call_0f_44f1:
     ld   A, [DE]                                       ;; 0f:44f1 $1a
     inc  DE                                            ;; 0f:44f2 $13
     ld   [wCB1B], A                                    ;; 0f:44f3 $ea $1b $cb
     ret                                                ;; 0f:44f6 $c9
 
-data_0f_44f7:
+call_0f_44f7:
     ld   A, [DE]                                       ;; 0f:44f7 $1a
     inc  DE                                            ;; 0f:44f8 $13
     ld   [wCB33], A                                    ;; 0f:44f9 $ea $33 $cb
     ret                                                ;; 0f:44fc $c9
 
-data_0f_44fd:
+call_0f_44fd:
     ld   A, [DE]                                       ;; 0f:44fd $1a
     inc  DE                                            ;; 0f:44fe $13
     ld   [wCB4B], A                                    ;; 0f:44ff $ea $4b $cb
     ret                                                ;; 0f:4502 $c9
 
-data_0f_4503:
+call_0f_4503:
     ld   HL, wCB02                                     ;; 0f:4503 $21 $02 $cb
     jr   jr_0f_4529                                    ;; 0f:4506 $18 $21
 
-data_0f_4508:
+call_0f_4508:
     ld   HL, wCB1A                                     ;; 0f:4508 $21 $1a $cb
     jr   jr_0f_4529                                    ;; 0f:450b $18 $1c
 
-data_0f_450d:
+call_0f_450d:
     ld   HL, wCB32                                     ;; 0f:450d $21 $32 $cb
     jr   jr_0f_4529                                    ;; 0f:4510 $18 $17
 
-data_0f_4512:
+call_0f_4512:
     ld   HL, wCB4A                                     ;; 0f:4512 $21 $4a $cb
     jr   jr_0f_4529                                    ;; 0f:4515 $18 $12
 
-data_0f_4517:
+call_0f_4517:
     ld   HL, wCB03                                     ;; 0f:4517 $21 $03 $cb
     jr   jr_0f_4529                                    ;; 0f:451a $18 $0d
 
-data_0f_451c:
+call_0f_451c:
     ld   HL, wCB1B                                     ;; 0f:451c $21 $1b $cb
     jr   jr_0f_4529                                    ;; 0f:451f $18 $08
 
-data_0f_4521:
+call_0f_4521:
     ld   HL, wCB33                                     ;; 0f:4521 $21 $33 $cb
     jr   jr_0f_4529                                    ;; 0f:4524 $18 $03
 
-data_0f_4526:
+call_0f_4526:
     ld   HL, wCB4B                                     ;; 0f:4526 $21 $4b $cb
 
 jr_0f_4529:
     dec  [HL]                                          ;; 0f:4529 $35
-    jr   NZ, jr_0f_4548                                ;; 0f:452a $20 $1c
+    jr   NZ, call_0f_4548                              ;; 0f:452a $20 $1c
 
 jr_0f_452c:
     inc  DE                                            ;; 0f:452c $13
     inc  DE                                            ;; 0f:452d $13
     ret                                                ;; 0f:452e $c9
 
-data_0f_452f:
+call_0f_452f:
     ld   HL, wCB02                                     ;; 0f:452f $21 $02 $cb
     jr   jr_0f_4543                                    ;; 0f:4532 $18 $0f
 
-data_0f_4534:
+call_0f_4534:
     ld   HL, wCB1A                                     ;; 0f:4534 $21 $1a $cb
     jr   jr_0f_4543                                    ;; 0f:4537 $18 $0a
 
-data_0f_4539:
+call_0f_4539:
     ld   HL, wCB32                                     ;; 0f:4539 $21 $32 $cb
     jr   jr_0f_4543                                    ;; 0f:453c $18 $05
-    db   $21, $4a, $cb, $18, $00                       ;; 0f:453e ?????
+
+call_0f_453e:
+    ld   HL, wCB4A                                     ;; 0f:453e $21 $4a $cb
+    jr   jr_0f_4543                                    ;; 0f:4541 $18 $00
 
 jr_0f_4543:
     ld   A, [DE]                                       ;; 0f:4543 $1a
@@ -839,7 +859,7 @@ jr_0f_4543:
     cp   A, [HL]                                       ;; 0f:4545 $be
     jr   NZ, jr_0f_452c                                ;; 0f:4546 $20 $e4
 
-jr_0f_4548:
+call_0f_4548:
     ld   L, E                                          ;; 0f:4548 $6b
     ld   H, D                                          ;; 0f:4549 $62
     ld   A, [HL+]                                      ;; 0f:454a $2a
@@ -900,13 +920,13 @@ call_0f_456b:
     ldh  [rNR34], A                                    ;; 0f:458c $e0 $1e
     ret                                                ;; 0f:458e $c9
 
-data_0f_458f:
+call_0f_458f:
     call call_0f_4565                                  ;; 0f:458f $cd $65 $45
     call call_0f_44bf                                  ;; 0f:4592 $cd $bf $44
     call call_0f_44b0                                  ;; 0f:4595 $cd $b0 $44
     call call_0f_454e                                  ;; 0f:4598 $cd $4e $45
 
-data_0f_459b:
+call_0f_459b:
     ld   A, [DE]                                       ;; 0f:459b $1a
     inc  DE                                            ;; 0f:459c $13
     ld   C, A                                          ;; 0f:459d $4f
@@ -919,12 +939,12 @@ data_0f_459b:
     ldh  [rNR51], A                                    ;; 0f:45a9 $e0 $25
     ret                                                ;; 0f:45ab $c9
 
-data_0f_45ac:
+call_0f_45ac:
     call call_0f_44c4                                  ;; 0f:45ac $cd $c4 $44
     call call_0f_44b5                                  ;; 0f:45af $cd $b5 $44
     call call_0f_4556                                  ;; 0f:45b2 $cd $56 $45
 
-data_0f_45b5:
+call_0f_45b5:
     ld   A, [DE]                                       ;; 0f:45b5 $1a
     inc  DE                                            ;; 0f:45b6 $13
     ld   C, A                                          ;; 0f:45b7 $4f
@@ -942,12 +962,12 @@ data_0f_45b5:
     ldh  [rNR51], A                                    ;; 0f:45cc $e0 $25
     ret                                                ;; 0f:45ce $c9
 
-data_0f_45cf:
+call_0f_45cf:
     call call_0f_44c9                                  ;; 0f:45cf $cd $c9 $44
     call call_0f_44a8                                  ;; 0f:45d2 $cd $a8 $44
     call call_0f_456b                                  ;; 0f:45d5 $cd $6b $45
 
-data_0f_45d8:
+call_0f_45d8:
     ld   A, [DE]                                       ;; 0f:45d8 $1a
     inc  DE                                            ;; 0f:45d9 $13
     ld   C, A                                          ;; 0f:45da $4f
@@ -960,7 +980,7 @@ data_0f_45d8:
     ldh  [rNR51], A                                    ;; 0f:45e6 $e0 $25
     ret                                                ;; 0f:45e8 $c9
 
-data_0f_45e9:
+call_0f_45e9:
     ld   A, [DE]                                       ;; 0f:45e9 $1a
     inc  DE                                            ;; 0f:45ea $13
     ld   C, A                                          ;; 0f:45eb $4f
@@ -988,8 +1008,16 @@ data_0f_460b:
     db   $00, $04, $40, $44                            ;; 0f:460b ????
 
 data_0f_460f:
-    db   $00, $08, $80, $88, $1a, $13, $c9, $18        ;; 0f:460f ?...????
-    db   $fe, $c9                                      ;; 0f:4617 ??
+    db   $00, $08, $80, $88                            ;; 0f:460f ?...
+
+call_0f_4613:
+    ld   A, [DE]                                       ;; 0f:4613 $1a
+    inc  DE                                            ;; 0f:4614 $13
+    ret                                                ;; 0f:4615 $c9
+
+call_0f_4616:
+    jr   call_0f_4616                                  ;; 0f:4616 $18 $fe
+    db   $c9                                           ;; 0f:4618 ?
 
 data_0f_4619:
     db   $64, $59, $54, $2f, $44, $34, $2e, $24        ;; 0f:4619 ?????.?.
