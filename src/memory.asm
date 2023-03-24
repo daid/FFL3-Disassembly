@@ -191,10 +191,16 @@ wC50D:
     ds 1                                               ;; c50d
 
 wC50E:
-    ds 2                                               ;; c50e
+    ds 1                                               ;; c50e
+
+wC50F:
+    ds 1                                               ;; c50f
 
 wC510:
-    ds 5                                               ;; c510
+    ds 4                                               ;; c510
+
+wC514:
+    ds 1                                               ;; c514
 
 wC515:
     ds 3                                               ;; c515
@@ -461,7 +467,10 @@ wC8B4:
     ds 1                                               ;; c8b4
 
 wC8B5:
-    ds 6                                               ;; c8b5
+    ds 1                                               ;; c8b5
+
+wC8B6:
+    ds 5                                               ;; c8b6
 
 wC8BB:
     ds 1                                               ;; c8bb
@@ -1406,7 +1415,10 @@ wCDE3:
     ds 1                                               ;; cde3
 
 wCDE4:
-    ds 2                                               ;; cde4
+    ds 1                                               ;; cde4
+
+wCDE5:
+    ds 1                                               ;; cde5
 
 wCDE6:
     ds 1                                               ;; cde6
@@ -1667,7 +1679,16 @@ wD86A:
     ds 9                                               ;; d86a
 
 wD873:
-    ds 1037                                            ;; d873
+    ds 11                                              ;; d873
+
+wD87E:
+    ds 1                                               ;; d87e
+
+wD87F:
+    ds 2                                               ;; d87f
+
+wD881:
+    ds 1023                                            ;; d881
 
 wDC80:
     ds 1                                               ;; dc80

@@ -268,11 +268,13 @@ jr_0b_41e4:
 
 jr_0b_41f3:
     rst  rst_00_0018                                   ;; 0b:41f3 $df
-    db   $f6, $c9                                      ;; 0b:41f4 ??
+    db   $f6                                           ;; 0b:41f4 ?
+    ret                                                ;; 0b:41f5 $c9
 
 jr_0b_41f6:
     rst  rst_00_0018                                   ;; 0b:41f6 $df
-    db   $f7, $c9                                      ;; 0b:41f7 ??
+    db   $f7                                           ;; 0b:41f7 ?
+    ret                                                ;; 0b:41f8 $c9
 
 jr_0b_41f9:
     rst  rst_00_0018                                   ;; 0b:41f9 $df
@@ -286,11 +288,13 @@ jr_0b_41fc:
 
 jr_0b_41ff:
     rst  rst_00_0018                                   ;; 0b:41ff $df
-    db   $e6, $c9                                      ;; 0b:4200 ??
+    db   $e6                                           ;; 0b:4200 ?
+    ret                                                ;; 0b:4201 $c9
 
 jr_0b_4202:
     rst  rst_00_0018                                   ;; 0b:4202 $df
-    db   $e7, $c9                                      ;; 0b:4203 ??
+    db   $e7                                           ;; 0b:4203 ?
+    ret                                                ;; 0b:4204 $c9
 
 call_0b_4205:
     xor  A, A                                          ;; 0b:4205 $af
@@ -1824,7 +1828,8 @@ data_0b_5bd8:
     jr   Z, .jr_0b_5c06                                ;; 0b:5bfe $28 $06
     ld   A, $03                                        ;; 0b:5c00 $3e $03
     rst  rst_00_0018                                   ;; 0b:5c02 $df
-    db   $79, $18, $ed                                 ;; 0b:5c03 ???
+    db   $79                                           ;; 0b:5c03 ?
+    jr   .jr_0b_5bf3                                   ;; 0b:5c04 $18 $ed
 .jr_0b_5c06:
     xor  A, A                                          ;; 0b:5c06 $af
     ldh  [hFFBC], A                                    ;; 0b:5c07 $e0 $bc
@@ -1834,7 +1839,7 @@ data_0b_5bd8:
 .jr_0b_5c10:
     xor  A, A                                          ;; 0b:5c10 $af
     ld   [wCD36], A                                    ;; 0b:5c11 $ea $36 $cd
-.jr_0b_5c14:
+.jp_0b_5c14:
     call call_0b_5c5a                                  ;; 0b:5c14 $cd $5a $5c
     call call_0b_5de1                                  ;; 0b:5c17 $cd $e1 $5d
     jr   Z, .jr_0b_5c3a                                ;; 0b:5c1a $28 $1e
@@ -1842,11 +1847,11 @@ data_0b_5bd8:
     inc  [HL]                                          ;; 0b:5c1f $34
     ld   A, [HL]                                       ;; 0b:5c20 $7e
     cp   A, $04                                        ;; 0b:5c21 $fe $04
-    jr   C, .jr_0b_5c14                                ;; 0b:5c23 $38 $ef
+    jr   C, .jp_0b_5c14                                ;; 0b:5c23 $38 $ef
     jr   NZ, .jr_0b_5c2b                               ;; 0b:5c25 $20 $04
     rst  rst_00_0018                                   ;; 0b:5c27 $df
     db   $3c                                           ;; 0b:5c28 .
-    jr   NZ, .jr_0b_5c14                               ;; 0b:5c29 $20 $e9
+    jr   NZ, .jp_0b_5c14                               ;; 0b:5c29 $20 $e9
 .jr_0b_5c2b:
     call call_0b_5e7b                                  ;; 0b:5c2b $cd $7b $5e
     call call_00_20cf                                  ;; 0b:5c2e $cd $cf $20
@@ -1862,9 +1867,16 @@ data_0b_5bd8:
     dec  A                                             ;; 0b:5c40 $3d
     ld   [wCD36], A                                    ;; 0b:5c41 $ea $36 $cd
     rst  rst_00_0018                                   ;; 0b:5c44 $df
-    db   $2f, $20, $f2, $cd, $ef, $29, $b7, $ca        ;; 0b:5c45 ????????
-    db   $14, $5c, $fe, $03, $38, $e7, $fe, $07        ;; 0b:5c4d ????????
-    db   $30, $e3, $c3, $14, $5c                       ;; 0b:5c55 ?????
+    db   $2f                                           ;; 0b:5c45 ?
+    jr   NZ, .jr_0b_5c3a                               ;; 0b:5c46 $20 $f2
+    call call_00_29ef                                  ;; 0b:5c48 $cd $ef $29
+    or   A, A                                          ;; 0b:5c4b $b7
+    jp   Z, .jp_0b_5c14                                ;; 0b:5c4c $ca $14 $5c
+    cp   A, $03                                        ;; 0b:5c4f $fe $03
+    jr   C, .jr_0b_5c3a                                ;; 0b:5c51 $38 $e7
+    cp   A, $07                                        ;; 0b:5c53 $fe $07
+    jr   NC, .jr_0b_5c3a                               ;; 0b:5c55 $30 $e3
+    jp   .jp_0b_5c14                                   ;; 0b:5c57 $c3 $14 $5c
 
 call_0b_5c5a:
     call call_00_29ef                                  ;; 0b:5c5a $cd $ef $29
@@ -1913,9 +1925,21 @@ call_0b_5c5a:
     set  0, [HL]                                       ;; 0b:5ca7 $cb $c6
     ld   A, $02                                        ;; 0b:5ca9 $3e $02
     rst  rst_00_0018                                   ;; 0b:5cab $df
-    db   $79, $28, $18, $fe, $04, $28, $cc, $b7        ;; 0b:5cac ????????
-    db   $28, $08, $3e, $08, $df, $79, $28, $e5        ;; 0b:5cb4 ????????
-    db   $18, $04, $3e, $09, $df, $79                  ;; 0b:5cbc ??????
+    db   $79                                           ;; 0b:5cac ?
+    jr   Z, call_0b_5cc7                               ;; 0b:5cad $28 $18
+    cp   A, $04                                        ;; 0b:5caf $fe $04
+    jr   Z, .jr_0b_5c7f                                ;; 0b:5cb1 $28 $cc
+    or   A, A                                          ;; 0b:5cb3 $b7
+    jr   Z, .jr_0b_5cbe                                ;; 0b:5cb4 $28 $08
+    ld   A, $08                                        ;; 0b:5cb6 $3e $08
+    rst  rst_00_0018                                   ;; 0b:5cb8 $df
+    db   $79                                           ;; 0b:5cb9 ?
+    jr   Z, .jr_0b_5ca1                                ;; 0b:5cba $28 $e5
+    jr   .jr_0b_5cc2                                   ;; 0b:5cbc $18 $04
+.jr_0b_5cbe:
+    ld   A, $09                                        ;; 0b:5cbe $3e $09
+    rst  rst_00_0018                                   ;; 0b:5cc0 $df
+    db   $79                                           ;; 0b:5cc1 ?
 .jr_0b_5cc2:
     ld   A, $01                                        ;; 0b:5cc2 $3e $01
     jp   call_0b_65e8                                  ;; 0b:5cc4 $c3 $e8 $65
@@ -1942,7 +1966,10 @@ jp_0b_5cdf:
     cp   A, $c2                                        ;; 0b:5ce8 $fe $c2
     jr   Z, .jr_0b_5cf2                                ;; 0b:5cea $28 $06
     rst  rst_00_0018                                   ;; 0b:5cec $df
-    db   $6b, $df, $6f, $18, $0d                       ;; 0b:5ced ?????
+    db   $6b                                           ;; 0b:5ced ?
+    rst  rst_00_0018                                   ;; 0b:5cee $df
+    db   $6f                                           ;; 0b:5cef ?
+    jr   .jr_0b_5cff                                   ;; 0b:5cf0 $18 $0d
 .jr_0b_5cf2:
     ld   A, $78                                        ;; 0b:5cf2 $3e $78
     call call_00_3a6d                                  ;; 0b:5cf4 $cd $6d $3a
@@ -1951,6 +1978,7 @@ jp_0b_5cdf:
     call call_00_39f3                                  ;; 0b:5cfa $cd $f3 $39
     rst  rst_00_0018                                   ;; 0b:5cfd $df
     db   $ba                                           ;; 0b:5cfe .
+.jr_0b_5cff:
     ld   HL, wC501                                     ;; 0b:5cff $21 $01 $c5
     ld   B, $05                                        ;; 0b:5d02 $06 $05
 .jr_0b_5d04:
@@ -2097,7 +2125,7 @@ call_0b_5de7:
     ld   A, $01                                        ;; 0b:5de7 $3e $01
     ld   [wCD1C], A                                    ;; 0b:5de9 $ea $1c $cd
     ld   DE, wC8B0                                     ;; 0b:5dec $11 $b0 $c8
-    ld   HL, .data_0b_5e35                             ;; 0b:5def $21 $35 $5e
+    ld   HL, data_0b_5e35                              ;; 0b:5def $21 $35 $5e
     call call_00_1f66                                  ;; 0b:5df2 $cd $66 $1f
     rst  rst_00_0018                                   ;; 0b:5df5 $df
     db   $49                                           ;; 0b:5df6 .
@@ -2110,14 +2138,42 @@ call_0b_5de7:
     ld   [wCD1C], A                                    ;; 0b:5e02 $ea $1c $cd
     rst  rst_00_0018                                   ;; 0b:5e05 $df
     db   $05                                           ;; 0b:5e06 .
-    dw   jp_00_1e79                                    ;; 0b:5e07 pP
-    db   $83, $1e, $83, $1e, $83, $1e, $83, $1e        ;; 0b:5e09 ????????
-    db   $83, $1e, $17, $5e, $26, $5e, $21, $80        ;; 0b:5e11 ????????
-    db   $c0, $7e, $fe, $60, $28, $04, $d6, $10        ;; 0b:5e19 ????????
-    db   $77, $c9, $36, $80, $c9, $21, $80, $c0        ;; 0b:5e21 ????????
-    db   $7e, $fe, $80, $28, $04, $c6, $10, $18        ;; 0b:5e29 ????????
-    db   $ef, $36, $60, $c9                            ;; 0b:5e31 ????
-.data_0b_5e35:
+    dw   call_00_1e79                                  ;; 0b:5e07 pP $00
+    dw   call_00_1e83                                  ;; 0b:5e09 ?? $01
+    dw   call_00_1e83                                  ;; 0b:5e0b ?? $02
+    dw   call_00_1e83                                  ;; 0b:5e0d ?? $03
+    dw   call_00_1e83                                  ;; 0b:5e0f ?? $04
+    dw   call_00_1e83                                  ;; 0b:5e11 ?? $05
+    dw   call_0b_5e17                                  ;; 0b:5e13 ?? $06
+    dw   call_0b_5e26                                  ;; 0b:5e15 ?? $07
+
+call_0b_5e17:
+    ld   HL, wC080                                     ;; 0b:5e17 $21 $80 $c0
+    ld   A, [HL]                                       ;; 0b:5e1a $7e
+    cp   A, $60                                        ;; 0b:5e1b $fe $60
+    jr   Z, jr_0b_5e23                                 ;; 0b:5e1d $28 $04
+    sub  A, $10                                        ;; 0b:5e1f $d6 $10
+
+jr_0b_5e21:
+    ld   [HL], A                                       ;; 0b:5e21 $77
+    ret                                                ;; 0b:5e22 $c9
+
+jr_0b_5e23:
+    ld   [HL], $80                                     ;; 0b:5e23 $36 $80
+    ret                                                ;; 0b:5e25 $c9
+
+call_0b_5e26:
+    ld   HL, wC080                                     ;; 0b:5e26 $21 $80 $c0
+    ld   A, [HL]                                       ;; 0b:5e29 $7e
+    cp   A, $80                                        ;; 0b:5e2a $fe $80
+    jr   Z, .jr_0b_5e32                                ;; 0b:5e2c $28 $04
+    add  A, $10                                        ;; 0b:5e2e $c6 $10
+    jr   jr_0b_5e21                                    ;; 0b:5e30 $18 $ef
+.jr_0b_5e32:
+    ld   [HL], $60                                     ;; 0b:5e32 $36 $60
+    ret                                                ;; 0b:5e34 $c9
+
+data_0b_5e35:
     db   $01, $01, $08, $08, $87, $73, $00, $0b        ;; 0b:5e35 ........
     db   $01, $08, $08, $8e, $73, $00, $00, $00        ;; 0b:5e3d ........
 
@@ -2188,7 +2244,8 @@ call_0b_5ea8:
     cp   A, $30                                        ;; 0b:5eb5 $fe $30
     ret  NZ                                            ;; 0b:5eb7 $c0
     rst  rst_00_0018                                   ;; 0b:5eb8 $df
-    db   $0f, $c9                                      ;; 0b:5eb9 ??
+    db   $0f                                           ;; 0b:5eb9 ?
+    ret                                                ;; 0b:5eba $c9
 
 jr_0b_5ebb:
     inc  HL                                            ;; 0b:5ebb $23
@@ -2269,14 +2326,20 @@ call_0b_5f2f:
     ld   A, $01                                        ;; 0b:5f38 $3e $01
     ld   [wCE1C], A                                    ;; 0b:5f3a $ea $1c $ce
     ld   [wCD35], A                                    ;; 0b:5f3d $ea $35 $cd
+.jr_0b_5f40:
     call call_0b_6718                                  ;; 0b:5f40 $cd $18 $67
     ld   A, [wCE1C]                                    ;; 0b:5f43 $fa $1c $ce
     cp   A, $ff                                        ;; 0b:5f46 $fe $ff
     jr   Z, .jr_0b_5f59                                ;; 0b:5f48 $28 $0f
     ld   [wCD36], A                                    ;; 0b:5f4a $ea $36 $cd
     rst  rst_00_0018                                   ;; 0b:5f4d $df
-    db   $2f, $7e, $ee, $80, $77, $af, $cd, $e8        ;; 0b:5f4e ????????
-    db   $65, $18, $e7                                 ;; 0b:5f56 ???
+    db   $2f                                           ;; 0b:5f4e ?
+    ld   A, [HL]                                       ;; 0b:5f4f $7e
+    xor  A, $80                                        ;; 0b:5f50 $ee $80
+    ld   [HL], A                                       ;; 0b:5f52 $77
+    xor  A, A                                          ;; 0b:5f53 $af
+    call call_0b_65e8                                  ;; 0b:5f54 $cd $e8 $65
+    jr   .jr_0b_5f40                                   ;; 0b:5f57 $18 $e7
 .jr_0b_5f59:
     xor  A, A                                          ;; 0b:5f59 $af
     ld   [wCD35], A                                    ;; 0b:5f5a $ea $35 $cd
@@ -2441,15 +2504,30 @@ call_0b_607a:
     call call_0b_6120                                  ;; 0b:6080 $cd $20 $61
     rst  rst_00_0018                                   ;; 0b:6083 $df
     db   $05                                           ;; 0b:6084 .
-    dw   .data_0b_60ad                                 ;; 0b:6085 pP
-    dw   .data_0b_60cf                                 ;; 0b:6087 pP
-    db   $83, $1e, $95, $60, $e5, $60, $d3, $60        ;; 0b:6089 ????????
-    dw   .data_0b_60f0                                 ;; 0b:6091 pP
-    dw   .data_0b_6109                                 ;; 0b:6093 pP
-    db   $fa, $e9, $cd, $fe, $01, $28, $05, $fe        ;; 0b:6095 ????????
-    db   $02, $c2, $83, $1e, $cd, $d9, $5c, $af        ;; 0b:609d ????????
-    db   $77, $ea, $d3, $cd, $3e, $04, $18, $1c        ;; 0b:60a5 ????????
-.data_0b_60ad:
+    dw   call_0b_60ad                                  ;; 0b:6085 pP $00
+    dw   call_0b_60cf                                  ;; 0b:6087 pP $01
+    dw   call_00_1e83                                  ;; 0b:6089 ?? $02
+    dw   call_0b_6095                                  ;; 0b:608b ?? $03
+    dw   call_0b_60e5                                  ;; 0b:608d ?? $04
+    dw   call_0b_60d3                                  ;; 0b:608f ?? $05
+    dw   call_0b_60f0                                  ;; 0b:6091 pP $06
+    dw   call_0b_6109                                  ;; 0b:6093 pP $07
+
+call_0b_6095:
+    ld   A, [wCDE9]                                    ;; 0b:6095 $fa $e9 $cd
+    cp   A, $01                                        ;; 0b:6098 $fe $01
+    jr   Z, .jr_0b_60a1                                ;; 0b:609a $28 $05
+    cp   A, $02                                        ;; 0b:609c $fe $02
+    jp   NZ, call_00_1e83                              ;; 0b:609e $c2 $83 $1e
+.jr_0b_60a1:
+    call call_0b_5cd9                                  ;; 0b:60a1 $cd $d9 $5c
+    xor  A, A                                          ;; 0b:60a4 $af
+    ld   [HL], A                                       ;; 0b:60a5 $77
+    ld   [wCDD3], A                                    ;; 0b:60a6 $ea $d3 $cd
+    ld   A, $04                                        ;; 0b:60a9 $3e $04
+    jr   jr_0b_60c9                                    ;; 0b:60ab $18 $1c
+
+call_0b_60ad:
     ld   A, [wCDD7]                                    ;; 0b:60ad $fa $d7 $cd
     or   A, A                                          ;; 0b:60b0 $b7
     jp   Z, call_00_1e83                               ;; 0b:60b1 $ca $83 $1e
@@ -2458,23 +2536,41 @@ call_0b_607a:
     jr   NZ, .jr_0b_60c6                               ;; 0b:60b9 $20 $0b
     ld   A, [wCDD3]                                    ;; 0b:60bb $fa $d3 $cd
     or   A, A                                          ;; 0b:60be $b7
-    jr   NZ, .jr_0b_60c9                               ;; 0b:60bf $20 $08
+    jr   NZ, jr_0b_60c9                                ;; 0b:60bf $20 $08
     rst  rst_00_0018                                   ;; 0b:60c1 $df
     db   $48                                           ;; 0b:60c2 .
     jp   NZ, call_00_1e83                              ;; 0b:60c3 $c2 $83 $1e
 .jr_0b_60c6:
     ld   A, [wCDD3]                                    ;; 0b:60c6 $fa $d3 $cd
-.jr_0b_60c9:
+
+jr_0b_60c9:
     ld   [wCDD8], A                                    ;; 0b:60c9 $ea $d8 $cd
-    jp   jp_00_1e79                                    ;; 0b:60cc $c3 $79 $1e
-.data_0b_60cf:
+    jp   call_00_1e79                                  ;; 0b:60cc $c3 $79 $1e
+
+call_0b_60cf:
     ld   A, $ff                                        ;; 0b:60cf $3e $ff
-    jr   .jr_0b_60c9                                   ;; 0b:60d1 $18 $f6
-    db   $fa, $d7, $cd, $d6, $01, $30, $02, $3e        ;; 0b:60d3 ????????
-    db   $02, $ea, $d7, $cd, $cd, $20, $61, $c3        ;; 0b:60db ????????
-    db   $83, $63, $fa, $d7, $cd, $3c, $fe, $03        ;; 0b:60e3 ????????
-    db   $20, $ef, $af, $18, $ec                       ;; 0b:60eb ?????
-.data_0b_60f0:
+    jr   jr_0b_60c9                                    ;; 0b:60d1 $18 $f6
+
+call_0b_60d3:
+    ld   A, [wCDD7]                                    ;; 0b:60d3 $fa $d7 $cd
+    sub  A, $01                                        ;; 0b:60d6 $d6 $01
+    jr   NC, jr_0b_60dc                                ;; 0b:60d8 $30 $02
+    ld   A, $02                                        ;; 0b:60da $3e $02
+
+jr_0b_60dc:
+    ld   [wCDD7], A                                    ;; 0b:60dc $ea $d7 $cd
+    call call_0b_6120                                  ;; 0b:60df $cd $20 $61
+    jp   call_0b_6383                                  ;; 0b:60e2 $c3 $83 $63
+
+call_0b_60e5:
+    ld   A, [wCDD7]                                    ;; 0b:60e5 $fa $d7 $cd
+    inc  A                                             ;; 0b:60e8 $3c
+    cp   A, $03                                        ;; 0b:60e9 $fe $03
+    jr   NZ, jr_0b_60dc                                ;; 0b:60eb $20 $ef
+    xor  A, A                                          ;; 0b:60ed $af
+    jr   jr_0b_60dc                                    ;; 0b:60ee $18 $ec
+
+call_0b_60f0:
     ld   A, [wCDD7]                                    ;; 0b:60f0 $fa $d7 $cd
     or   A, A                                          ;; 0b:60f3 $b7
     jp   Z, call_00_1e83                               ;; 0b:60f4 $ca $83 $1e
@@ -2482,13 +2578,15 @@ call_0b_607a:
     or   A, A                                          ;; 0b:60fa $b7
     jr   Z, .jr_0b_6100                                ;; 0b:60fb $28 $03
     dec  A                                             ;; 0b:60fd $3d
-    jr   .jr_0b_6103                                   ;; 0b:60fe $18 $03
+    jr   jr_0b_6103                                    ;; 0b:60fe $18 $03
 .jr_0b_6100:
     ld   A, [wCDD1]                                    ;; 0b:6100 $fa $d1 $cd
-.jr_0b_6103:
+
+jr_0b_6103:
     ld   [wCDD3], A                                    ;; 0b:6103 $ea $d3 $cd
     jp   call_0b_6705                                  ;; 0b:6106 $c3 $05 $67
-.data_0b_6109:
+
+call_0b_6109:
     ld   A, [wCDD7]                                    ;; 0b:6109 $fa $d7 $cd
     or   A, A                                          ;; 0b:610c $b7
     jp   Z, call_00_1e83                               ;; 0b:610d $ca $83 $1e
@@ -2498,10 +2596,10 @@ call_0b_607a:
     cp   A, B                                          ;; 0b:6117 $b8
     jr   Z, .jr_0b_611d                                ;; 0b:6118 $28 $03
     inc  A                                             ;; 0b:611a $3c
-    jr   .jr_0b_6103                                   ;; 0b:611b $18 $e6
+    jr   jr_0b_6103                                    ;; 0b:611b $18 $e6
 .jr_0b_611d:
     xor  A, A                                          ;; 0b:611d $af
-    jr   .jr_0b_6103                                   ;; 0b:611e $18 $e3
+    jr   jr_0b_6103                                    ;; 0b:611e $18 $e3
 
 call_0b_6120:
     ld   A, [wCDD7]                                    ;; 0b:6120 $fa $d7 $cd
@@ -2526,14 +2624,19 @@ call_0b_6136:
     call call_0b_6296                                  ;; 0b:613c $cd $96 $62
     rst  rst_00_0018                                   ;; 0b:613f $df
     db   $05                                           ;; 0b:6140 .
-    dw   .data_0b_6154                                 ;; 0b:6141 pP
-    dw   .data_0b_61b9                                 ;; 0b:6143 pP
-    db   $83, $1e, $83, $1e, $e4, $61, $d2, $61        ;; 0b:6145 ????????
-    db   $f4, $61                                      ;; 0b:614d ??
-    dw   .data_0b_622b                                 ;; 0b:614f pP
-.jr_0b_6151:
-    jp   jp_00_1e79                                    ;; 0b:6151 $c3 $79 $1e
-.data_0b_6154:
+    dw   call_0b_6154                                  ;; 0b:6141 pP $00
+    dw   call_0b_61b9                                  ;; 0b:6143 pP $01
+    dw   call_00_1e83                                  ;; 0b:6145 ?? $02
+    dw   call_00_1e83                                  ;; 0b:6147 ?? $03
+    dw   call_0b_61e4                                  ;; 0b:6149 ?? $04
+    dw   call_0b_61d2                                  ;; 0b:614b ?? $05
+    dw   call_0b_61f4                                  ;; 0b:614d ?? $06
+    dw   call_0b_622b                                  ;; 0b:614f pP $07
+
+jr_0b_6151:
+    jp   call_00_1e79                                  ;; 0b:6151 $c3 $79 $1e
+
+call_0b_6154:
     ld   A, [wCDE9]                                    ;; 0b:6154 $fa $e9 $cd
     cp   A, $06                                        ;; 0b:6157 $fe $06
     jr   NZ, .jr_0b_6198                               ;; 0b:6159 $20 $3d
@@ -2558,28 +2661,31 @@ call_0b_6136:
     ld   B, A                                          ;; 0b:6187 $47
     ld   A, [wCDD3]                                    ;; 0b:6188 $fa $d3 $cd
     cp   A, B                                          ;; 0b:618b $b8
-    jr   NZ, .jr_0b_61a8                               ;; 0b:618c $20 $1a
+    jr   NZ, jr_0b_61a8                                ;; 0b:618c $20 $1a
     ld   A, [wCDD6]                                    ;; 0b:618e $fa $d6 $cd
     ld   B, A                                          ;; 0b:6191 $47
     ld   A, [wCDD4]                                    ;; 0b:6192 $fa $d4 $cd
     cp   A, B                                          ;; 0b:6195 $b8
-    jr   NZ, .jr_0b_61a8                               ;; 0b:6196 $20 $10
+    jr   NZ, jr_0b_61a8                                ;; 0b:6196 $20 $10
 .jr_0b_6198:
     ld   A, [wCDD3]                                    ;; 0b:6198 $fa $d3 $cd
     cp   A, $ff                                        ;; 0b:619b $fe $ff
     jp   Z, call_00_1e83                               ;; 0b:619d $ca $83 $1e
     call call_0b_636d                                  ;; 0b:61a0 $cd $6d $63
-.jr_0b_61a3:
+
+jr_0b_61a3:
     ld   [wCDD8], A                                    ;; 0b:61a3 $ea $d8 $cd
-    jr   .jr_0b_6151                                   ;; 0b:61a6 $18 $a9
-.jr_0b_61a8:
+    jr   jr_0b_6151                                    ;; 0b:61a6 $18 $a9
+
+jr_0b_61a8:
     call call_0b_6305                                  ;; 0b:61a8 $cd $05 $63
     call NZ, call_00_1e83                              ;; 0b:61ab $c4 $83 $1e
     ld   A, [wCDD3]                                    ;; 0b:61ae $fa $d3 $cd
     cp   A, $ff                                        ;; 0b:61b1 $fe $ff
-    jp   NZ, .jp_0b_6273                               ;; 0b:61b3 $c2 $73 $62
+    jp   NZ, jp_0b_6273                                ;; 0b:61b3 $c2 $73 $62
     jp   call_0b_62e4                                  ;; 0b:61b6 $c3 $e4 $62
-.data_0b_61b9:
+
+call_0b_61b9:
     ld   A, [wCDE9]                                    ;; 0b:61b9 $fa $e9 $cd
     cp   A, $06                                        ;; 0b:61bc $fe $06
     jr   NZ, .jr_0b_61c6                               ;; 0b:61be $20 $06
@@ -2588,25 +2694,69 @@ call_0b_6136:
     jr   NZ, .jr_0b_61ca                               ;; 0b:61c4 $20 $04
 .jr_0b_61c6:
     ld   A, $ff                                        ;; 0b:61c6 $3e $ff
-    jr   .jr_0b_61a3                                   ;; 0b:61c8 $18 $d9
+    jr   jr_0b_61a3                                    ;; 0b:61c8 $18 $d9
 .jr_0b_61ca:
     xor  A, A                                          ;; 0b:61ca $af
     ld   [wCDD9], A                                    ;; 0b:61cb $ea $d9 $cd
     ld   [wC084], A                                    ;; 0b:61ce $ea $84 $c0
     ret                                                ;; 0b:61d1 $c9
-    db   $fa, $d4, $cd, $b7, $28, $07, $3d, $ea        ;; 0b:61d2 ????????
-    db   $d4, $cd, $c3, $96, $62, $fa, $d2, $cd        ;; 0b:61da ????????
-    db   $18, $f5, $fa, $d2, $cd, $47, $fa, $d4        ;; 0b:61e2 ????????
-    db   $cd, $b8, $28, $03, $3c, $18, $e8, $af        ;; 0b:61ea ????????
-    db   $18, $e5, $fa, $d3, $cd, $b7, $28, $0c        ;; 0b:61f2 ????????
-    db   $fe, $ff, $ca, $83, $1e, $3d, $ea, $d3        ;; 0b:61fa ????????
-    db   $cd, $c3, $05, $67, $fa, $19, $cd, $b7        ;; 0b:6202 ????????
-    db   $28, $1a, $e6, $01, $20, $13, $fa, $e9        ;; 0b:620a ????????
-    db   $cd, $fe, $06, $c2, $83, $1e, $3e, $01        ;; 0b:6212 ????????
-    db   $ea, $d2, $cd, $cd, $96, $62, $c3, $c0        ;; 0b:621a ????????
-    db   $62, $c3, $81, $64, $fa, $d1, $cd, $18        ;; 0b:6222 ????????
-    db   $d5                                           ;; 0b:622a ?
-.data_0b_622b:
+
+call_0b_61d2:
+    ld   A, [wCDD4]                                    ;; 0b:61d2 $fa $d4 $cd
+    or   A, A                                          ;; 0b:61d5 $b7
+    jr   Z, jr_0b_61df                                 ;; 0b:61d6 $28 $07
+    dec  A                                             ;; 0b:61d8 $3d
+
+jr_0b_61d9:
+    ld   [wCDD4], A                                    ;; 0b:61d9 $ea $d4 $cd
+    jp   call_0b_6296                                  ;; 0b:61dc $c3 $96 $62
+
+jr_0b_61df:
+    ld   A, [wCDD2]                                    ;; 0b:61df $fa $d2 $cd
+    jr   jr_0b_61d9                                    ;; 0b:61e2 $18 $f5
+
+call_0b_61e4:
+    ld   A, [wCDD2]                                    ;; 0b:61e4 $fa $d2 $cd
+    ld   B, A                                          ;; 0b:61e7 $47
+    ld   A, [wCDD4]                                    ;; 0b:61e8 $fa $d4 $cd
+    cp   A, B                                          ;; 0b:61eb $b8
+    jr   Z, .jr_0b_61f1                                ;; 0b:61ec $28 $03
+    inc  A                                             ;; 0b:61ee $3c
+    jr   jr_0b_61d9                                    ;; 0b:61ef $18 $e8
+.jr_0b_61f1:
+    xor  A, A                                          ;; 0b:61f1 $af
+    jr   jr_0b_61d9                                    ;; 0b:61f2 $18 $e5
+
+call_0b_61f4:
+    ld   A, [wCDD3]                                    ;; 0b:61f4 $fa $d3 $cd
+    or   A, A                                          ;; 0b:61f7 $b7
+    jr   Z, .jr_0b_6206                                ;; 0b:61f8 $28 $0c
+    cp   A, $ff                                        ;; 0b:61fa $fe $ff
+    jp   Z, call_00_1e83                               ;; 0b:61fc $ca $83 $1e
+    dec  A                                             ;; 0b:61ff $3d
+.jr_0b_6200:
+    ld   [wCDD3], A                                    ;; 0b:6200 $ea $d3 $cd
+    jp   call_0b_6705                                  ;; 0b:6203 $c3 $05 $67
+.jr_0b_6206:
+    ld   A, [wCD19]                                    ;; 0b:6206 $fa $19 $cd
+    or   A, A                                          ;; 0b:6209 $b7
+    jr   Z, .jr_0b_6226                                ;; 0b:620a $28 $1a
+    and  A, $01                                        ;; 0b:620c $e6 $01
+    jr   NZ, .jr_0b_6223                               ;; 0b:620e $20 $13
+    ld   A, [wCDE9]                                    ;; 0b:6210 $fa $e9 $cd
+    cp   A, $06                                        ;; 0b:6213 $fe $06
+    jp   NZ, call_00_1e83                              ;; 0b:6215 $c2 $83 $1e
+    ld   A, $01                                        ;; 0b:6218 $3e $01
+    ld   [wCDD2], A                                    ;; 0b:621a $ea $d2 $cd
+    call call_0b_6296                                  ;; 0b:621d $cd $96 $62
+    jp   jp_0b_62c0                                    ;; 0b:6220 $c3 $c0 $62
+.jr_0b_6223:
+    jp   jp_0b_6481                                    ;; 0b:6223 $c3 $81 $64
+.jr_0b_6226:
+    ld   A, [wCDD1]                                    ;; 0b:6226 $fa $d1 $cd
+    jr   .jr_0b_6200                                   ;; 0b:6229 $18 $d5
+
+call_0b_622b:
     ld   A, [wCDD3]                                    ;; 0b:622b $fa $d3 $cd
     cp   A, $ff                                        ;; 0b:622e $fe $ff
     jr   Z, .jr_0b_624b                                ;; 0b:6230 $28 $19
@@ -2630,20 +2780,21 @@ call_0b_6136:
     call call_0b_6296                                  ;; 0b:6252 $cd $96 $62
     ld   A, [wCDD9]                                    ;; 0b:6255 $fa $d9 $cd
     or   A, A                                          ;; 0b:6258 $b7
-    jr   Z, .jp_0b_6273                                ;; 0b:6259 $28 $18
+    jr   Z, jp_0b_6273                                 ;; 0b:6259 $28 $18
     ld   A, [wCDD5]                                    ;; 0b:625b $fa $d5 $cd
     cp   A, $ff                                        ;; 0b:625e $fe $ff
     jr   Z, .jr_0b_626f                                ;; 0b:6260 $28 $0d
     cp   A, $04                                        ;; 0b:6262 $fe $04
-    jr   NC, .jp_0b_6273                               ;; 0b:6264 $30 $0d
+    jr   NC, jp_0b_6273                                ;; 0b:6264 $30 $0d
     swap A                                             ;; 0b:6266 $cb $37
     add  A, $64                                        ;; 0b:6268 $c6 $64
     ld   [wC084], A                                    ;; 0b:626a $ea $84 $c0
-    jr   .jp_0b_6273                                   ;; 0b:626d $18 $04
+    jr   jp_0b_6273                                    ;; 0b:626d $18 $04
 .jr_0b_626f:
     xor  A, A                                          ;; 0b:626f $af
     ld   [wC084], A                                    ;; 0b:6270 $ea $84 $c0
-.jp_0b_6273:
+
+jp_0b_6273:
     ld   HL, data_0b_6445                              ;; 0b:6273 $21 $45 $64
     ld   DE, wC8B0                                     ;; 0b:6276 $11 $b0 $c8
     call call_00_1f7b                                  ;; 0b:6279 $cd $7b $1f
@@ -2709,8 +2860,13 @@ jp_0b_62c0:
 
 call_0b_62e4:
     rst  rst_00_0018                                   ;; 0b:62e4 $df
-    db   $3d, $cd, $d2, $66, $21, $f5, $62, $11        ;; 0b:62e5 ????????
-    db   $b0, $c8, $cd, $66, $1f, $c3, $49, $1e        ;; 0b:62ed ????????
+    db   $3d                                           ;; 0b:62e5 ?
+    call call_0b_66d2                                  ;; 0b:62e6 $cd $d2 $66
+    ld   HL, .data_0b_62f5                             ;; 0b:62e9 $21 $f5 $62
+    ld   DE, wC8B0                                     ;; 0b:62ec $11 $b0 $c8
+    call call_00_1f66                                  ;; 0b:62ef $cd $66 $1f
+    jp   call_00_1e49                                  ;; 0b:62f2 $c3 $49 $1e
+.data_0b_62f5:
     db   $01, $01, $12, $02, $83, $74, $00, $01        ;; 0b:62f5 ????????
     db   $05, $12, $04, $33, $70, $00, $00, $00        ;; 0b:62fd ????????
 
@@ -2924,13 +3080,35 @@ jp_0b_644e:
     ld   HL, wCDE8                                     ;; 0b:647c $21 $e8 $cd
     inc  [HL]                                          ;; 0b:647f $34
     ret                                                ;; 0b:6480 $c9
-    db   $fa, $e9, $cd, $fe, $06, $20, $20, $fa        ;; 0b:6481 ????????
-    db   $d9, $cd, $b7, $28, $1a, $21, $d5, $cd        ;; 0b:6489 ????????
-    db   $34, $7e, $fe, $04, $28, $0d, $fe, $04        ;; 0b:6491 ????????
-    db   $30, $0d, $cb, $37, $c6, $64, $ea, $84        ;; 0b:6499 ????????
-    db   $c0, $18, $04, $af, $ea, $84, $c0, $3e        ;; 0b:64a1 ????????
-    db   $01, $06, $06, $cd, $e0, $34, $21, $e8        ;; 0b:64a9 ????????
-    db   $cd, $35, $c9                                 ;; 0b:64b1 ???
+
+jp_0b_6481:
+    ld   A, [wCDE9]                                    ;; 0b:6481 $fa $e9 $cd
+    cp   A, $06                                        ;; 0b:6484 $fe $06
+    jr   NZ, .jr_0b_64a8                               ;; 0b:6486 $20 $20
+    ld   A, [wCDD9]                                    ;; 0b:6488 $fa $d9 $cd
+    or   A, A                                          ;; 0b:648b $b7
+    jr   Z, .jr_0b_64a8                                ;; 0b:648c $28 $1a
+    ld   HL, wCDD5                                     ;; 0b:648e $21 $d5 $cd
+    inc  [HL]                                          ;; 0b:6491 $34
+    ld   A, [HL]                                       ;; 0b:6492 $7e
+    cp   A, $04                                        ;; 0b:6493 $fe $04
+    jr   Z, .jr_0b_64a4                                ;; 0b:6495 $28 $0d
+    cp   A, $04                                        ;; 0b:6497 $fe $04
+    jr   NC, .jr_0b_64a8                               ;; 0b:6499 $30 $0d
+    swap A                                             ;; 0b:649b $cb $37
+    add  A, $64                                        ;; 0b:649d $c6 $64
+    ld   [wC084], A                                    ;; 0b:649f $ea $84 $c0
+    jr   .jr_0b_64a8                                   ;; 0b:64a2 $18 $04
+.jr_0b_64a4:
+    xor  A, A                                          ;; 0b:64a4 $af
+    ld   [wC084], A                                    ;; 0b:64a5 $ea $84 $c0
+.jr_0b_64a8:
+    ld   A, $01                                        ;; 0b:64a8 $3e $01
+    ld   B, $06                                        ;; 0b:64aa $06 $06
+    call call_00_34e0                                  ;; 0b:64ac $cd $e0 $34
+    ld   HL, wCDE8                                     ;; 0b:64af $21 $e8 $cd
+    dec  [HL]                                          ;; 0b:64b2 $35
+    ret                                                ;; 0b:64b3 $c9
 
 call_0b_64b4:
     call call_00_1fc4                                  ;; 0b:64b4 $cd $c4 $1f
@@ -3155,7 +3333,8 @@ call_0b_65e8:
     ld   D, H                                          ;; 0b:6611 $54
     ld   HL, data_0b_74a7                              ;; 0b:6612 $21 $a7 $74
     rst  rst_00_0018                                   ;; 0b:6615 $df
-    db   $92, $c9                                      ;; 0b:6616 ??
+    db   $92                                           ;; 0b:6616 ?
+    ret                                                ;; 0b:6617 $c9
 .jr_0b_6618:
     call call_0b_65de                                  ;; 0b:6618 $cd $de $65
     ld   [HL], $00                                     ;; 0b:661b $36 $00
@@ -3215,9 +3394,19 @@ call_0b_6661:
     push HL                                            ;; 0b:666a $e5
     ld   DE, data_0b_6888                              ;; 0b:666b $11 $88 $68
     rst  rst_00_0018                                   ;; 0b:666e $df
-    db   $3b, $e1, $11, $01, $04, $01, $12, $02        ;; 0b:666f ????????
-    db   $3e, $24, $df, $90, $df, $2e, $af, $ea        ;; 0b:6677 ????????
-    db   $45, $cd, $f1, $c9                            ;; 0b:667f ????
+    db   $3b                                           ;; 0b:666f ?
+    pop  HL                                            ;; 0b:6670 $e1
+    ld   DE, $401                                      ;; 0b:6671 $11 $01 $04
+    ld   BC, $212                                      ;; 0b:6674 $01 $12 $02
+    ld   A, $24                                        ;; 0b:6677 $3e $24
+    rst  rst_00_0018                                   ;; 0b:6679 $df
+    db   $90                                           ;; 0b:667a ?
+    rst  rst_00_0018                                   ;; 0b:667b $df
+    db   $2e                                           ;; 0b:667c ?
+    xor  A, A                                          ;; 0b:667d $af
+    ld   [wCD45], A                                    ;; 0b:667e $ea $45 $cd
+    pop  AF                                            ;; 0b:6681 $f1
+    ret                                                ;; 0b:6682 $c9
     ld   A, [wCD36]                                    ;; 0b:6683 $fa $36 $cd
     push AF                                            ;; 0b:6686 $f5
     xor  A, A                                          ;; 0b:6687 $af
@@ -3242,7 +3431,8 @@ call_0b_6661:
     ld   A, $01                                        ;; 0b:66a8 $3e $01
     ld   [wCE25], A                                    ;; 0b:66aa $ea $25 $ce
     rst  rst_00_0018                                   ;; 0b:66ad $df
-    db   $a8, $c1                                      ;; 0b:66ae ??
+    db   $a8                                           ;; 0b:66ae ?
+    pop  BC                                            ;; 0b:66af $c1
 .jr_0b_66b0:
     ld   HL, wCD36                                     ;; 0b:66b0 $21 $36 $cd
     inc  [HL]                                          ;; 0b:66b3 $34
@@ -3361,19 +3551,31 @@ call_0b_6718:
     call call_0b_695c                                  ;; 0b:6767 $cd $5c $69
     rst  rst_00_0018                                   ;; 0b:676a $df
     db   $05                                           ;; 0b:676b .
-    dw   .jr_0b_679f                                   ;; 0b:676c pP
-    dw   .data_0b_67b8                                 ;; 0b:676e pP
-    db   $83, $1e, $83, $1e                            ;; 0b:6770 ????
-    dw   .data_0b_677c                                 ;; 0b:6774 pP
-    db   $80, $67, $84, $67                            ;; 0b:6776 ????
-    dw   .data_0b_6787                                 ;; 0b:677a pP
-.data_0b_677c:
+    dw   call_0b_679f                                  ;; 0b:676c pP $00
+    dw   call_0b_67b8                                  ;; 0b:676e pP $01
+    dw   call_00_1e83                                  ;; 0b:6770 ?? $02
+    dw   call_00_1e83                                  ;; 0b:6772 ?? $03
+    dw   call_0b_677c                                  ;; 0b:6774 pP $04
+    dw   call_0b_6780                                  ;; 0b:6776 ?? $05
+    dw   call_0b_6784                                  ;; 0b:6778 ?? $06
+    dw   call_0b_6787                                  ;; 0b:677a pP $07
+
+call_0b_677c:
     ld   A, $03                                        ;; 0b:677c $3e $03
-    jr   .jr_0b_6789                                   ;; 0b:677e $18 $09
-    db   $3e, $02, $18, $05, $af, $18, $02             ;; 0b:6780 ???????
-.data_0b_6787:
+    jr   jr_0b_6789                                    ;; 0b:677e $18 $09
+
+call_0b_6780:
+    ld   A, $02                                        ;; 0b:6780 $3e $02
+    jr   jr_0b_6789                                    ;; 0b:6782 $18 $05
+
+call_0b_6784:
+    xor  A, A                                          ;; 0b:6784 $af
+    jr   jr_0b_6789                                    ;; 0b:6785 $18 $02
+
+call_0b_6787:
     ld   A, $01                                        ;; 0b:6787 $3e $01
-.jr_0b_6789:
+
+jr_0b_6789:
     call call_0b_698d                                  ;; 0b:6789 $cd $8d $69
     call call_0b_6868                                  ;; 0b:678c $cd $68 $68
     ld   HL, wCE24                                     ;; 0b:678f $21 $24 $ce
@@ -3384,7 +3586,8 @@ call_0b_6718:
     call call_0b_67bf                                  ;; 0b:6796 $cd $bf $67
     call call_00_1e49                                  ;; 0b:6799 $cd $49 $1e
     jp   call_0b_695c                                  ;; 0b:679c $c3 $5c $69
-.jr_0b_679f:
+
+call_0b_679f:
     pop  HL                                            ;; 0b:679f $e1
     pop  HL                                            ;; 0b:67a0 $e1
     xor  A, A                                          ;; 0b:67a1 $af
@@ -3398,10 +3601,11 @@ call_0b_6718:
     ld   A, H                                          ;; 0b:67b1 $7c
     ld   [wCD36], A                                    ;; 0b:67b2 $ea $36 $cd
     jp   call_00_358b                                  ;; 0b:67b5 $c3 $8b $35
-.data_0b_67b8:
+
+call_0b_67b8:
     ld   A, $ff                                        ;; 0b:67b8 $3e $ff
     ld   [wCE1C], A                                    ;; 0b:67ba $ea $1c $ce
-    jr   .jr_0b_679f                                   ;; 0b:67bd $18 $e0
+    jr   call_0b_679f                                  ;; 0b:67bd $18 $e0
 
 call_0b_67bf:
     call call_0b_5e45                                  ;; 0b:67bf $cd $45 $5e
@@ -3772,7 +3976,10 @@ call_0b_698d:
     cp   A, $04                                        ;; 0b:69da $fe $04
     jr   C, .jr_0b_69e7                                ;; 0b:69dc $38 $09
     rst  rst_00_0018                                   ;; 0b:69de $df
-    db   $3c, $28, $09, $cd, $fa, $6a, $3e, $04        ;; 0b:69df ????????
+    db   $3c                                           ;; 0b:69df ?
+    jr   Z, .jr_0b_69eb                                ;; 0b:69e0 $28 $09
+    call call_0b_6afa                                  ;; 0b:69e2 $cd $fa $6a
+    ld   A, $04                                        ;; 0b:69e5 $3e $04
 .jr_0b_69e7:
     ld   [wCE1C], A                                    ;; 0b:69e7 $ea $1c $ce
     ret                                                ;; 0b:69ea $c9
@@ -4287,7 +4494,7 @@ call_0b_6c2d:
     rst  rst_00_0018                                   ;; 0b:6dac $df
     db   $90                                           ;; 0b:6dad .
     pop  AF                                            ;; 0b:6dae $f1
-    jp   Z, jp_00_35d2                                 ;; 0b:6daf $ca $d2 $35
+    jp   Z, call_00_35d2                               ;; 0b:6daf $ca $d2 $35
     ret                                                ;; 0b:6db2 $c9
     db   $e5, $d5, $c5, $11, $02, $01, $fa, $37        ;; 0b:6db3 ????????
     db   $cd, $b7, $20, $02, $16, $08, $df, $69        ;; 0b:6dbb ????????
