@@ -721,10 +721,11 @@ wCA6E:
 wCA6F:
     ds 145                                             ;; ca6f
 
-wCB00:
+; START OF AUDIO ENGINE WRAM
+wMusicTempoTimeCounter:
     ds 1                                               ;; cb00
 
-wCB01:
+wMusicTempo:
     ds 1                                               ;; cb01
 
 wCB02:
@@ -742,10 +743,9 @@ wCB06:
 wCB08:
     ds 1                                               ;; cb08
 
-wCB09:
+wMusicInstructionPointerChannel2:
     ds 1                                               ;; cb09
-
-wCB0A:
+.high:
     ds 2                                               ;; cb0a
 
 wCB0C:
@@ -781,7 +781,7 @@ wCB1A:
 wCB1B:
     ds 1                                               ;; cb1b
 
-wCB1C:
+wSoundEffectDurationChannel1:
     ds 1                                               ;; cb1c
 
 wCB1D:
@@ -793,10 +793,9 @@ wCB1E:
 wCB20:
     ds 1                                               ;; cb20
 
-wCB21:
+wMusicInstructionPointerChannel1:
     ds 1                                               ;; cb21
-
-wCB22:
+.high:
     ds 2                                               ;; cb22
 
 wCB24:
@@ -826,7 +825,7 @@ wCB2E:
 wCB30:
     ds 1                                               ;; cb30
 
-wCB31:
+wMusicStereoPanChannel1:
     ds 1                                               ;; cb31
 
 wCB32:
@@ -844,10 +843,9 @@ wCB36:
 wCB38:
     ds 1                                               ;; cb38
 
-wCB39:
+wMusicInstructionPointerChannel3:
     ds 1                                               ;; cb39
-
-wCB3A:
+.high:
     ds 1                                               ;; cb3a
 
 wCB3B:
@@ -871,7 +869,7 @@ wCB4A:
 wCB4B:
     ds 1                                               ;; cb4b
 
-wCB4C:
+wSoundEffectDurationChannel4:
     ds 1                                               ;; cb4c
 
 wCB4D:
@@ -880,10 +878,9 @@ wCB4D:
 wCB4E:
     ds 3                                               ;; cb4e
 
-wCB51:
+wMusicInstructionPointerChannel4:
     ds 1                                               ;; cb51
-
-wCB52:
+.high:
     ds 2                                               ;; cb52
 
 wCB54:

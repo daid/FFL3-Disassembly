@@ -25,9 +25,9 @@ runSoundEngineReal:
     push BC                                            ;; 0f:4007 $c5
     push DE                                            ;; 0f:4008 $d5
     push HL                                            ;; 0f:4009 $e5
-    ld   A, [wCB1C]                                    ;; 0f:400a $fa $1c $cb
+    ld   A, [wSoundEffectDurationChannel1]             ;; 0f:400a $fa $1c $cb
     ld   C, A                                          ;; 0f:400d $4f
-    ld   A, [wCB4C]                                    ;; 0f:400e $fa $4c $cb
+    ld   A, [wSoundEffectDurationChannel4]             ;; 0f:400e $fa $4c $cb
     or   A, C                                          ;; 0f:4011 $b1
     jr   NZ, .startSoundEffect                         ;; 0f:4012 $20 $08
     ld   HL, hCurrentMusic                             ;; 0f:4014 $21 $ba $ff
@@ -68,8 +68,8 @@ initSoundEngineReal:
     ld   [wCB35], A                                    ;; 0f:404e $ea $35 $cb
     ld   [wCB4D], A                                    ;; 0f:4051 $ea $4d $cb
     xor  A, A                                          ;; 0f:4054 $af
-    ld   [wCB1C], A                                    ;; 0f:4055 $ea $1c $cb
-    ld   [wCB01], A                                    ;; 0f:4058 $ea $01 $cb
+    ld   [wSoundEffectDurationChannel1], A             ;; 0f:4055 $ea $1c $cb
+    ld   [wMusicTempo], A                              ;; 0f:4058 $ea $01 $cb
     ld   HL, hCurrentMusic                             ;; 0f:405b $21 $ba $ff
     ld   C, $10                                        ;; 0f:405e $0e $10
 .loop:
@@ -90,22 +90,22 @@ musicSongPlay:
     ld   D, $00                                        ;; 0f:4070 $16 $00
     add  HL, DE                                        ;; 0f:4072 $19
     ld   A, [HL+]                                      ;; 0f:4073 $2a
-    ld   [wCB09], A                                    ;; 0f:4074 $ea $09 $cb
+    ld   [wMusicInstructionPointerChannel2], A         ;; 0f:4074 $ea $09 $cb
     ld   A, [HL+]                                      ;; 0f:4077 $2a
-    ld   [wCB0A], A                                    ;; 0f:4078 $ea $0a $cb
+    ld   [wMusicInstructionPointerChannel2.high], A    ;; 0f:4078 $ea $0a $cb
     ld   A, [HL+]                                      ;; 0f:407b $2a
-    ld   [wCB21], A                                    ;; 0f:407c $ea $21 $cb
+    ld   [wMusicInstructionPointerChannel1], A         ;; 0f:407c $ea $21 $cb
     ld   A, [HL+]                                      ;; 0f:407f $2a
-    ld   [wCB22], A                                    ;; 0f:4080 $ea $22 $cb
+    ld   [wMusicInstructionPointerChannel1.high], A    ;; 0f:4080 $ea $22 $cb
     ld   A, [HL+]                                      ;; 0f:4083 $2a
-    ld   [wCB39], A                                    ;; 0f:4084 $ea $39 $cb
+    ld   [wMusicInstructionPointerChannel3], A         ;; 0f:4084 $ea $39 $cb
     ld   A, [HL+]                                      ;; 0f:4087 $2a
-    ld   [wCB3A], A                                    ;; 0f:4088 $ea $3a $cb
+    ld   [wMusicInstructionPointerChannel3.high], A    ;; 0f:4088 $ea $3a $cb
     ld   A, [HL+]                                      ;; 0f:408b $2a
-    ld   [wCB51], A                                    ;; 0f:408c $ea $51 $cb
+    ld   [wMusicInstructionPointerChannel4], A         ;; 0f:408c $ea $51 $cb
     ld   A, [HL]                                       ;; 0f:408f $7e
-    ld   [wCB52], A                                    ;; 0f:4090 $ea $52 $cb
-    ld   HL, wCB00                                     ;; 0f:4093 $21 $00 $cb
+    ld   [wMusicInstructionPointerChannel4.high], A    ;; 0f:4090 $ea $52 $cb
+    ld   HL, wMusicTempoTimeCounter                    ;; 0f:4093 $21 $00 $cb
     ld   A, $ff                                        ;; 0f:4096 $3e $ff
     ld   [HL+], A                                      ;; 0f:4098 $22
     ld   A, $3c                                        ;; 0f:4099 $3e $3c
@@ -159,7 +159,7 @@ soundEffectRestoreChannel1:
     ldh  [rNR13], A                                    ;; 0f:40eb $e0 $13
     ld   A, $87                                        ;; 0f:40ed $3e $87
     ldh  [rNR14], A                                    ;; 0f:40ef $e0 $14
-    ld   A, [wCB31]                                    ;; 0f:40f1 $fa $31 $cb
+    ld   A, [wMusicStereoPanChannel1]                  ;; 0f:40f1 $fa $31 $cb
     ld   E, A                                          ;; 0f:40f4 $5f
     ldh  A, [rNR51]                                    ;; 0f:40f5 $f0 $25
     and  A, $ee                                        ;; 0f:40f7 $e6 $ee
@@ -198,7 +198,7 @@ musicNoteDurations:
     db   $10, $0c, $09, $08, $06, $04, $03, $02        ;; 0f:41c6 ?..?....
 
 musicPlayStep:
-    ld   HL, wCB01                                     ;; 0f:41ce $21 $01 $cb
+    ld   HL, wMusicTempo                               ;; 0f:41ce $21 $01 $cb
     ld   A, [HL-]                                      ;; 0f:41d1 $3a
     add  A, [HL]                                       ;; 0f:41d2 $86
     ld   [HL], A                                       ;; 0f:41d3 $77
@@ -232,7 +232,7 @@ musicTempoPlayNotes:
     ld   A, [HL]                                       ;; 0f:4201 $7e
     ldh  [hMusicNoteDurationChannel2Copy], A           ;; 0f:4202 $e0 $be
     jr   NZ, musicTempoPlayNotes_Channel1              ;; 0f:4204 $20 $5a
-    ld   HL, wCB09                                     ;; 0f:4206 $21 $09 $cb
+    ld   HL, wMusicInstructionPointerChannel2          ;; 0f:4206 $21 $09 $cb
     ld   A, [HL+]                                      ;; 0f:4209 $2a
     ld   D, [HL]                                       ;; 0f:420a $56
     ld   E, A                                          ;; 0f:420b $5f
@@ -252,7 +252,7 @@ data_0f_420c:
     ldh  [rNR24], A                                    ;; 0f:4220 $e0 $19
     jr   musicTempoPlayNotes_Channel1                  ;; 0f:4222 $18 $3c
 .jr_0f_4224:
-    ld   HL, wCB09                                     ;; 0f:4224 $21 $09 $cb
+    ld   HL, wMusicInstructionPointerChannel2          ;; 0f:4224 $21 $09 $cb
     ld   [HL], E                                       ;; 0f:4227 $73
     inc  L                                             ;; 0f:4228 $2c
     ld   [HL], D                                       ;; 0f:4229 $72
@@ -297,7 +297,7 @@ musicTempoPlayNotes_Channel1:
     ld   A, [HL]                                       ;; 0f:4268 $7e
     ldh  [hMusicNoteDurationChannel1Copy], A           ;; 0f:4269 $e0 $bf
     jr   NZ, musicTempoPlayNotes_Channel3              ;; 0f:426b $20 $66
-    ld   HL, wCB21                                     ;; 0f:426d $21 $21 $cb
+    ld   HL, wMusicInstructionPointerChannel1          ;; 0f:426d $21 $21 $cb
     ld   A, [HL+]                                      ;; 0f:4270 $2a
     ld   D, [HL]                                       ;; 0f:4271 $56
     ld   E, A                                          ;; 0f:4272 $5f
@@ -317,7 +317,7 @@ data_0f_4273:
     ldh  [rNR14], A                                    ;; 0f:4287 $e0 $14
     jr   musicTempoPlayNotes_Channel3                  ;; 0f:4289 $18 $48
 .jr_0f_428b:
-    ld   HL, wCB21                                     ;; 0f:428b $21 $21 $cb
+    ld   HL, wMusicInstructionPointerChannel1          ;; 0f:428b $21 $21 $cb
     ld   [HL], E                                       ;; 0f:428e $73
     inc  L                                             ;; 0f:428f $2c
     ld   [HL], D                                       ;; 0f:4290 $72
@@ -328,7 +328,7 @@ data_0f_4273:
     and  A, $0f                                        ;; 0f:4299 $e6 $0f
     ld   [HL], A                                       ;; 0f:429b $77
     ld   C, A                                          ;; 0f:429c $4f
-    ld   A, [wCB1C]                                    ;; 0f:429d $fa $1c $cb
+    ld   A, [wSoundEffectDurationChannel1]             ;; 0f:429d $fa $1c $cb
     or   A, A                                          ;; 0f:42a0 $b7
     jr   NZ, musicTempoPlayNotes_Channel3              ;; 0f:42a1 $20 $30
     ld   A, C                                          ;; 0f:42a3 $79
@@ -369,7 +369,7 @@ musicTempoPlayNotes_Channel3:
     ld   A, [HL]                                       ;; 0f:42db $7e
     ldh  [hMusicNoteDurationChannel3Copy], A           ;; 0f:42dc $e0 $c0
     jr   NZ, musicTempoPlayNotes_Channel4              ;; 0f:42de $20 $54
-    ld   HL, wCB39                                     ;; 0f:42e0 $21 $39 $cb
+    ld   HL, wMusicInstructionPointerChannel3          ;; 0f:42e0 $21 $39 $cb
     ld   A, [HL+]                                      ;; 0f:42e3 $2a
     ld   D, [HL]                                       ;; 0f:42e4 $56
     ld   E, A                                          ;; 0f:42e5 $5f
@@ -387,7 +387,7 @@ data_0f_42e6:
     ldh  [rNR34], A                                    ;; 0f:42f8 $e0 $1e
     jr   musicTempoPlayNotes_Channel4                  ;; 0f:42fa $18 $38
 .jr_0f_42fc:
-    ld   HL, wCB39                                     ;; 0f:42fc $21 $39 $cb
+    ld   HL, wMusicInstructionPointerChannel3          ;; 0f:42fc $21 $39 $cb
     ld   [HL], E                                       ;; 0f:42ff $73
     inc  L                                             ;; 0f:4300 $2c
     ld   [HL], D                                       ;; 0f:4301 $72
@@ -430,7 +430,7 @@ musicTempoPlayNotes_Channel4:
     ld   A, [HL]                                       ;; 0f:433b $7e
     ldh  [hMusicNoteDurationChannel4Copy], A           ;; 0f:433c $e0 $c1
     ret  NZ                                            ;; 0f:433e $c0
-    ld   HL, wCB51                                     ;; 0f:433f $21 $51 $cb
+    ld   HL, wMusicInstructionPointerChannel4          ;; 0f:433f $21 $51 $cb
     ld   A, [HL+]                                      ;; 0f:4342 $2a
     ld   D, [HL]                                       ;; 0f:4343 $56
     ld   E, A                                          ;; 0f:4344 $5f
@@ -451,7 +451,7 @@ data_0f_4345:
     ldh  [rNR44], A                                    ;; 0f:4359 $e0 $23
     ret                                                ;; 0f:435b $c9
 .jr_0f_435c:
-    ld   HL, wCB51                                     ;; 0f:435c $21 $51 $cb
+    ld   HL, wMusicInstructionPointerChannel4          ;; 0f:435c $21 $51 $cb
     ld   [HL], E                                       ;; 0f:435f $73
     inc  L                                             ;; 0f:4360 $2c
     ld   [HL], D                                       ;; 0f:4361 $72
@@ -462,7 +462,7 @@ data_0f_4345:
     and  A, $0f                                        ;; 0f:436a $e6 $0f
     ld   [HL], A                                       ;; 0f:436c $77
     ld   E, A                                          ;; 0f:436d $5f
-    ld   A, [wCB4C]                                    ;; 0f:436e $fa $4c $cb
+    ld   A, [wSoundEffectDurationChannel4]             ;; 0f:436e $fa $4c $cb
     or   A, A                                          ;; 0f:4371 $b7
     ret  NZ                                            ;; 0f:4372 $c0
     ld   A, E                                          ;; 0f:4373 $7b
@@ -841,7 +841,7 @@ call_0f_4556:
     inc  DE                                            ;; 0f:4557 $13
     ld   [wCB30], A                                    ;; 0f:4558 $ea $30 $cb
     ld   B, A                                          ;; 0f:455b $47
-    ld   A, [wCB1C]                                    ;; 0f:455c $fa $1c $cb
+    ld   A, [wSoundEffectDurationChannel1]             ;; 0f:455c $fa $1c $cb
     or   A, A                                          ;; 0f:455f $b7
     ret  NZ                                            ;; 0f:4560 $c0
     ld   A, B                                          ;; 0f:4561 $78
@@ -851,7 +851,7 @@ call_0f_4556:
 call_0f_4565:
     ld   A, [DE]                                       ;; 0f:4565 $1a
     inc  DE                                            ;; 0f:4566 $13
-    ld   [wCB01], A                                    ;; 0f:4567 $ea $01 $cb
+    ld   [wMusicTempo], A                              ;; 0f:4567 $ea $01 $cb
     ret                                                ;; 0f:456a $c9
 
 call_0f_456b:
@@ -893,7 +893,7 @@ call_0f_459b:
     inc  DE                                            ;; 0f:459c $13
     ld   C, A                                          ;; 0f:459d $4f
     ld   B, $00                                        ;; 0f:459e $06 $00
-    ld   HL, data_0f_4603                              ;; 0f:45a0 $21 $03 $46
+    ld   HL, channel2StereoPanValues                   ;; 0f:45a0 $21 $03 $46
     add  HL, BC                                        ;; 0f:45a3 $09
     ldh  A, [rNR51]                                    ;; 0f:45a4 $f0 $25
     and  A, $dd                                        ;; 0f:45a6 $e6 $dd
@@ -911,11 +911,11 @@ call_0f_45b5:
     inc  DE                                            ;; 0f:45b6 $13
     ld   C, A                                          ;; 0f:45b7 $4f
     ld   B, $00                                        ;; 0f:45b8 $06 $00
-    ld   HL, data_0f_4607                              ;; 0f:45ba $21 $07 $46
+    ld   HL, channel1StereoPanValues                   ;; 0f:45ba $21 $07 $46
     add  HL, BC                                        ;; 0f:45bd $09
     ld   A, [HL]                                       ;; 0f:45be $7e
-    ld   [wCB31], A                                    ;; 0f:45bf $ea $31 $cb
-    ld   A, [wCB1C]                                    ;; 0f:45c2 $fa $1c $cb
+    ld   [wMusicStereoPanChannel1], A                  ;; 0f:45bf $ea $31 $cb
+    ld   A, [wSoundEffectDurationChannel1]             ;; 0f:45c2 $fa $1c $cb
     or   A, A                                          ;; 0f:45c5 $b7
     ret  NZ                                            ;; 0f:45c6 $c0
     ldh  A, [rNR51]                                    ;; 0f:45c7 $f0 $25
@@ -934,7 +934,7 @@ call_0f_45d8:
     inc  DE                                            ;; 0f:45d9 $13
     ld   C, A                                          ;; 0f:45da $4f
     ld   B, $00                                        ;; 0f:45db $06 $00
-    ld   HL, data_0f_460b                              ;; 0f:45dd $21 $0b $46
+    ld   HL, channel3StereoPanValues                   ;; 0f:45dd $21 $0b $46
     add  HL, BC                                        ;; 0f:45e0 $09
     ldh  A, [rNR51]                                    ;; 0f:45e1 $f0 $25
     and  A, $bb                                        ;; 0f:45e3 $e6 $bb
@@ -947,11 +947,11 @@ call_0f_45e9:
     inc  DE                                            ;; 0f:45ea $13
     ld   C, A                                          ;; 0f:45eb $4f
     ld   B, $00                                        ;; 0f:45ec $06 $00
-    ld   HL, data_0f_460f                              ;; 0f:45ee $21 $0f $46
+    ld   HL, channel4StereoPanValues                   ;; 0f:45ee $21 $0f $46
     add  HL, BC                                        ;; 0f:45f1 $09
     ld   A, [HL]                                       ;; 0f:45f2 $7e
     ld   [wCB61], A                                    ;; 0f:45f3 $ea $61 $cb
-    ld   A, [wCB4C]                                    ;; 0f:45f6 $fa $4c $cb
+    ld   A, [wSoundEffectDurationChannel4]             ;; 0f:45f6 $fa $4c $cb
     or   A, A                                          ;; 0f:45f9 $b7
     ret  NZ                                            ;; 0f:45fa $c0
     ldh  A, [rNR51]                                    ;; 0f:45fb $f0 $25
@@ -960,16 +960,16 @@ call_0f_45e9:
     ldh  [rNR51], A                                    ;; 0f:4600 $e0 $25
     ret                                                ;; 0f:4602 $c9
 
-data_0f_4603:
+channel2StereoPanValues:
     db   $00, $02, $20, $22                            ;; 0f:4603 ????
 
-data_0f_4607:
+channel1StereoPanValues:
     db   $00, $01, $10, $11                            ;; 0f:4607 ?...
 
-data_0f_460b:
+channel3StereoPanValues:
     db   $00, $04, $40, $44                            ;; 0f:460b ????
 
-data_0f_460f:
+channel4StereoPanValues:
     db   $00, $08, $80, $88                            ;; 0f:460f ?...
 
 call_0f_4613:
@@ -1045,7 +1045,7 @@ musicVibratoAndVolumeChannel2:
     ret                                                ;; 0f:467c $c9
 
 musicVibratoAndVolumeChannel1:
-    ld   HL, wCB1C                                     ;; 0f:467d $21 $1c $cb
+    ld   HL, wSoundEffectDurationChannel1              ;; 0f:467d $21 $1c $cb
     ld   A, [HL+]                                      ;; 0f:4680 $2a
     or   A, [HL]                                       ;; 0f:4681 $b6
     ret  NZ                                            ;; 0f:4682 $c0
@@ -1147,7 +1147,7 @@ musicVibratoAndVolumeChannel3:
     and  A, $07                                        ;; 0f:4714 $e6 $07
     ldh  [rNR34], A                                    ;; 0f:4716 $e0 $1e
 .jr_0f_4718:
-    ld   HL, wCB4C                                     ;; 0f:4718 $21 $4c $cb
+    ld   HL, wSoundEffectDurationChannel4              ;; 0f:4718 $21 $4c $cb
     ld   A, [HL+]                                      ;; 0f:471b $2a
     or   A, [HL]                                       ;; 0f:471c $b6
     ret  NZ                                            ;; 0f:471d $c0
@@ -1215,7 +1215,7 @@ soundEffectPlay:
     ld   A, C                                          ;; 0f:476e $79
     ld   [DE], A                                       ;; 0f:476f $12
     ld   A, $01                                        ;; 0f:4770 $3e $01
-    ld   [wCB1C], A                                    ;; 0f:4772 $ea $1c $cb
+    ld   [wSoundEffectDurationChannel1], A             ;; 0f:4772 $ea $1c $cb
 .jr_0f_4775:
     pop  DE                                            ;; 0f:4775 $d1
     ld   HL, data_0f_6774                              ;; 0f:4776 $21 $74 $67
@@ -1229,14 +1229,14 @@ soundEffectPlay:
     ld   [HL+], A                                      ;; 0f:4783 $22
     ld   [HL], C                                       ;; 0f:4784 $71
     ld   A, $01                                        ;; 0f:4785 $3e $01
-    ld   [wCB4C], A                                    ;; 0f:4787 $ea $4c $cb
+    ld   [wSoundEffectDurationChannel4], A             ;; 0f:4787 $ea $4c $cb
 .jr_0f_478a:
     xor  A, A                                          ;; 0f:478a $af
     ldh  [hSFX], A                                     ;; 0f:478b $e0 $bc
     ret                                                ;; 0f:478d $c9
 
 soundEffectPlayStep:
-    ld   DE, wCB1C                                     ;; 0f:478e $11 $1c $cb
+    ld   DE, wSoundEffectDurationChannel1              ;; 0f:478e $11 $1c $cb
     ld   A, [DE]                                       ;; 0f:4791 $1a
     or   A, A                                          ;; 0f:4792 $b7
     jr   Z, .channel4                                  ;; 0f:4793 $28 $4b
@@ -1293,7 +1293,7 @@ soundEffectPlayStep:
     ld   [HL+], A                                      ;; 0f:47de $22
     ld   [HL], C                                       ;; 0f:47df $71
 .channel4:
-    ld   DE, wCB4C                                     ;; 0f:47e0 $11 $4c $cb
+    ld   DE, wSoundEffectDurationChannel4              ;; 0f:47e0 $11 $4c $cb
     ld   A, [DE]                                       ;; 0f:47e3 $1a
     or   A, A                                          ;; 0f:47e4 $b7
     ret  Z                                             ;; 0f:47e5 $c8
