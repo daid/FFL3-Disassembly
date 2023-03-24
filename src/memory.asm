@@ -314,7 +314,10 @@ wC6F7:
     ds 1                                               ;; c6f7
 
 wC6F8:
-    ds 3                                               ;; c6f8
+    ds 2                                               ;; c6f8
+
+wC6FA:
+    ds 1                                               ;; c6fa
 
 wC6FB:
     ds 4                                               ;; c6fb
@@ -653,7 +656,10 @@ wCA2F:
     ds 1                                               ;; ca2f
 
 wCA30:
-    ds 33                                              ;; ca30
+    ds 32                                              ;; ca30
+
+wCA50:
+    ds 1                                               ;; ca50
 
 wCA51:
     ds 1                                               ;; ca51

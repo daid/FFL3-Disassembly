@@ -1208,16 +1208,16 @@ call_00_07bb:
 call_00_0861:
     ld   A, [wC6E3]                                    ;; 00:0861 $fa $e3 $c6
     call doJumptable                                   ;; 00:0864 $cd $3a $37
-;@jumptable amount=9
+;@jumptable amount=9 bank=1
     dw   call_00_0879                                  ;; 00:0867 ?? $00
-    dw   $4311                                         ;; 00:0869 ?? $01
-    dw   $4272                                         ;; 00:086b ?? $02
-    dw   $4250                                         ;; 00:086d ?? $03
-    dw   $4250                                         ;; 00:086f ?? $04
-    dw   $4250                                         ;; 00:0871 ?? $05
-    dw   $4250                                         ;; 00:0873 ?? $06
-    dw   $4250                                         ;; 00:0875 ?? $07
-    dw   $4250                                         ;; 00:0877 ?? $08
+    dw   call_01_4311                                  ;; 00:0869 ?? $01
+    dw   call_01_4272                                  ;; 00:086b ?? $02
+    dw   call_01_4250                                  ;; 00:086d ?? $03
+    dw   call_01_4250                                  ;; 00:086f ?? $04
+    dw   call_01_4250                                  ;; 00:0871 ?? $05
+    dw   call_01_4250                                  ;; 00:0873 ?? $06
+    dw   call_01_4250                                  ;; 00:0875 ?? $07
+    dw   call_01_4250                                  ;; 00:0877 ?? $08
 
 call_00_0879:
     ret                                                ;; 00:0879 $c9
@@ -3154,7 +3154,7 @@ jr_00_16a9:
 call_00_16b9:
     ld   A, [wCA28]                                    ;; 00:16b9 $fa $28 $ca
     call doJumptable                                   ;; 00:16bc $cd $3a $37
-;@jumptable amount=16
+;@jumptable amount=18
     dw   call_00_173f                                  ;; 00:16bf pP $00
     dw   call_00_1745                                  ;; 00:16c1 ?? $01
     dw   call_00_174c                                  ;; 00:16c3 ?? $02
@@ -3171,10 +3171,24 @@ call_00_16b9:
     dw   call_00_1709                                  ;; 00:16d9 ?? $0d
     dw   call_00_16f9                                  ;; 00:16db ?? $0e
     dw   call_00_1701                                  ;; 00:16dd ?? $0f
-    db   $eb, $16, $e3, $16, $3e, $01, $e7, $cd        ;; 00:16df ????????
-    db   $0d, $61, $ef, $c9, $3e, $1b, $ea, $f3        ;; 00:16e7 ????????
-    db   $c6, $21, $0d, $c5, $3e, $02, $22, $36        ;; 00:16ef ????????
-    db   $e0, $c9                                      ;; 00:16f7 ??
+    dw   call_00_16eb                                  ;; 00:16df ?? $10
+    dw   call_00_16e3                                  ;; 00:16e1 ?? $11
+
+call_00_16e3:
+    ld   A, $01                                        ;; 00:16e3 $3e $01
+    rst  pushActiveBankSafe                            ;; 00:16e5 $e7
+    call call_01_610d ;@bank 1                         ;; 00:16e6 $cd $0d $61
+    rst  popActiveBankSafe                             ;; 00:16e9 $ef
+    ret                                                ;; 00:16ea $c9
+
+call_00_16eb:
+    ld   A, $1b                                        ;; 00:16eb $3e $1b
+    ld   [wC6F3], A                                    ;; 00:16ed $ea $f3 $c6
+    ld   HL, wC50D                                     ;; 00:16f0 $21 $0d $c5
+    ld   A, $02                                        ;; 00:16f3 $3e $02
+    ld   [HL+], A                                      ;; 00:16f5 $22
+    ld   [HL], $e0                                     ;; 00:16f6 $36 $e0
+    ret                                                ;; 00:16f8 $c9
 
 call_00_16f9:
     ld   A, $01                                        ;; 00:16f9 $3e $01
@@ -3554,7 +3568,7 @@ call_00_1950:
     call call_00_01d7                                  ;; 00:1957 $cd $d7 $01
     ld   A, $01                                        ;; 00:195a $3e $01
     rst  pushActiveBankSafe                            ;; 00:195c $e7
-    call $53ff                                         ;; 00:195d $cd $ff $53
+    call call_01_53ff ;@bank 1                         ;; 00:195d $cd $ff $53
     rst  popActiveBankSafe                             ;; 00:1960 $ef
     call call_00_18f5                                  ;; 00:1961 $cd $f5 $18
     pop  BC                                            ;; 00:1964 $c1
@@ -3619,15 +3633,15 @@ call_00_19ae:
 call_00_19b8:
     ld   A, $01                                        ;; 00:19b8 $3e $01
     rst  pushActiveBankSafe                            ;; 00:19ba $e7
-    call $7972                                         ;; 00:19bb $cd $72 $79
+    call call_01_7972 ;@bank 1                         ;; 00:19bb $cd $72 $79
     ld   HL, $19ce                                     ;; 00:19be $21 $ce $19
     push HL                                            ;; 00:19c1 $e5
     ld   A, [wCA57]                                    ;; 00:19c2 $fa $57 $ca
     call doJumptable                                   ;; 00:19c5 $cd $3a $37
-;@jumptable amount=3
+;@jumptable amount=3 bank=1
     dw   call_00_19cf                                  ;; 00:19c8 ?? $00
-    dw   $63e6                                         ;; 00:19ca ?? $01
-    dw   $642e                                         ;; 00:19cc ?? $02
+    dw   call_01_63e6                                  ;; 00:19ca ?? $01
+    dw   call_01_642e                                  ;; 00:19cc ?? $02
     db   $ef                                           ;; 00:19ce ?
 
 call_00_19cf:
@@ -3665,7 +3679,7 @@ call_00_1a02:
     rst  pushActiveBankSafe                            ;; 00:1a04 $e7
     ld   A, [wCA28]                                    ;; 00:1a05 $fa $28 $ca
     dec  A                                             ;; 00:1a08 $3d
-    ld   HL, $762a                                     ;; 00:1a09 $21 $2a $76
+    ld   HL, $762a ;@bank 3                            ;; 00:1a09 $21 $2a $76
     rst  add_hl_a                                      ;; 00:1a0c $c7
     ld   A, [HL]                                       ;; 00:1a0d $7e
     ld   [wCE94], A                                    ;; 00:1a0e $ea $94 $ce
@@ -3773,9 +3787,9 @@ call_00_1a95:
     and  A, A                                          ;; 00:1ab1 $a7
     jr   Z, jr_00_1acf                                 ;; 00:1ab2 $28 $1b
     ld   A, $04                                        ;; 00:1ab4 $3e $04
-    ld   HL, $79e0                                     ;; 00:1ab6 $21 $e0 $79
+    ld   HL, $79e0    ;@bank 11                                 ;; 00:1ab6 $21 $e0 $79
     call call_00_3741                                  ;; 00:1ab9 $cd $41 $37
-    call $7926                                         ;; 00:1abc $cd $26 $79
+    call call_0b_7926 ;@bank 11                        ;; 00:1abc $cd $26 $79
     rst  popActiveBankSafe                             ;; 00:1abf $ef
     call call_00_1ac3                                  ;; 00:1ac0 $cd $c3 $1a
 
