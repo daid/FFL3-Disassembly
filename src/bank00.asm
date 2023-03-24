@@ -4684,7 +4684,7 @@ data_00_1f27:
 call_00_1f3a:
     ld   A, $0f                                        ;; 00:1f3a $3e $0f
     call pushActiveBank                                ;; 00:1f3c $cd $e1 $38
-    call call_0f_4006                                  ;; 00:1f3f $cd $06 $40
+    call runSoundEngineReal                            ;; 00:1f3f $cd $06 $40
     jp   popActiveBank                                 ;; 00:1f42 $c3 $fc $38
 
 call_00_1f45:
@@ -8495,7 +8495,7 @@ call_00_361f:
     ldh  [rLYC], A                                     ;; 00:361f $e0 $45
     ld   A, $0f                                        ;; 00:3621 $3e $0f
     rst  pushActiveBankSafe                            ;; 00:3623 $e7
-    call call_0f_4006                                  ;; 00:3624 $cd $06 $40
+    call runSoundEngineReal                            ;; 00:3624 $cd $06 $40
     rst  popActiveBankSafe                             ;; 00:3627 $ef
     call call_00_3575                                  ;; 00:3628 $cd $75 $35
     ld   HL, wCDC6                                     ;; 00:362b $21 $c6 $cd
@@ -9170,7 +9170,7 @@ call_00_3a60:
     ld   A, $0f                                        ;; 00:3a61 $3e $0f
     rst  pushActiveBankSafe                            ;; 00:3a63 $e7
     di                                                 ;; 00:3a64 $f3
-    call call_0f_4006                                  ;; 00:3a65 $cd $06 $40
+    call runSoundEngineReal                            ;; 00:3a65 $cd $06 $40
     rst  popActiveBankSafe                             ;; 00:3a68 $ef
     pop  AF                                            ;; 00:3a69 $f1
     ret                                                ;; 00:3a6a $c9
