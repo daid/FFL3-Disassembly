@@ -728,10 +728,10 @@ wMusicTempoTimeCounter:
 wMusicTempo:
     ds 1                                               ;; cb01
 
-wCB02:
+wMusicLoopCounter1Channel2:
     ds 1                                               ;; cb02
 
-wCB03:
+wMusicLoopCounter2Channel2:
     ds 2                                               ;; cb03
 
 wCB05:
@@ -775,10 +775,10 @@ wCB16:
 wCB18:
     ds 2                                               ;; cb18
 
-wCB1A:
+wMusicLoopCounter1Channel1:
     ds 1                                               ;; cb1a
 
-wCB1B:
+wMusicLoopCounter2Channel1:
     ds 1                                               ;; cb1b
 
 wSoundEffectDurationChannel1:
@@ -828,10 +828,10 @@ wCB30:
 wMusicStereoPanChannel1:
     ds 1                                               ;; cb31
 
-wCB32:
+wMusicLoopCounter1Channel3:
     ds 1                                               ;; cb32
 
-wCB33:
+wMusicLoopCounter2Channel3:
     ds 2                                               ;; cb33
 
 wCB35:
@@ -863,10 +863,10 @@ wMusicVibratoEnvelopeChannel3:
 wCB41:
     ds 9                                               ;; cb41
 
-wCB4A:
+wMusicLoopCounter1Channel4:
     ds 1                                               ;; cb4a
 
-wCB4B:
+wMusicLoopCounter2Channel4:
     ds 1                                               ;; cb4b
 
 wSoundEffectDurationChannel4:

@@ -110,13 +110,13 @@ musicSongPlay:
     ld   [HL+], A                                      ;; 0f:4098 $22
     ld   A, $3c                                        ;; 0f:4099 $3e $3c
     ld   [HL+], A                                      ;; 0f:409b $22
-    ld   HL, wCB02                                     ;; 0f:409c $21 $02 $cb
+    ld   HL, wMusicLoopCounter1Channel2                ;; 0f:409c $21 $02 $cb
     call musicInitChannel                              ;; 0f:409f $cd $b1 $40
-    ld   HL, wCB1A                                     ;; 0f:40a2 $21 $1a $cb
+    ld   HL, wMusicLoopCounter1Channel1                ;; 0f:40a2 $21 $1a $cb
     call musicInitChannel                              ;; 0f:40a5 $cd $b1 $40
-    ld   HL, wCB32                                     ;; 0f:40a8 $21 $32 $cb
+    ld   HL, wMusicLoopCounter1Channel3                ;; 0f:40a8 $21 $32 $cb
     call musicInitChannel                              ;; 0f:40ab $cd $b1 $40
-    ld   HL, wCB4A                                     ;; 0f:40ae $21 $4a $cb
+    ld   HL, wMusicLoopCounter1Channel4                ;; 0f:40ae $21 $4a $cb
 
 musicInitChannel:
     xor  A, A                                          ;; 0f:40b1 $af
@@ -600,16 +600,16 @@ musicOctaveRelativeOffsets:
 musicOpCodeTableChannel2:
     dw   musicOpCodeSetChannel2VolumeEnvelope          ;; 0f:4428 pP $00
     dw   musicOpCodeJump                               ;; 0f:442a pP $01
-    dw   call_0f_4503                                  ;; 0f:442c pP $02
-    dw   call_0f_44d3                                  ;; 0f:442e pP $03
+    dw   musicOpCodeChannel2LoopCounter1               ;; 0f:442c pP $02
+    dw   musicOpCodeSetChannel2LoopCounter1            ;; 0f:442e pP $03
     dw   musicOpCodeSetChannel2VibratoEnvelope         ;; 0f:4430 ?? $04
     dw   call_0f_454e                                  ;; 0f:4432 ?? $05
     dw   call_0f_459b                                  ;; 0f:4434 pP $06
     dw   call_0f_4565                                  ;; 0f:4436 pP $07
     dw   musicOpCodeHalt                               ;; 0f:4438 ?? $08
-    dw   call_0f_4517                                  ;; 0f:443a pP $09
-    dw   call_0f_44eb                                  ;; 0f:443c pP $0a
-    dw   call_0f_452f                                  ;; 0f:443e pP $0b
+    dw   musicOpCodeChannel2LoopCounter2               ;; 0f:443a pP $09
+    dw   musicOpCodeSetChannel2LoopCounter2            ;; 0f:443c pP $0a
+    dw   musicOpCodeIfChannel2LoopCounter1Equal        ;; 0f:443e pP $0b
     dw   call_0f_4613                                  ;; 0f:4440 ?? $0c
     dw   musicOpCodeHalt                               ;; 0f:4442 ?? $0d
     dw   call_0f_458f                                  ;; 0f:4444 pP $0e
@@ -619,16 +619,16 @@ musicOpCodeTableChannel2:
 musicOpCodeTableChannel1:
     dw   musicOpCodeSetChannel1VolumeEnvelope          ;; 0f:4448 pP $00
     dw   musicOpCodeJump                               ;; 0f:444a pP $01
-    dw   call_0f_4508                                  ;; 0f:444c pP $02
-    dw   call_0f_44d9                                  ;; 0f:444e pP $03
+    dw   musicOpCodeChannel1LoopCounter1               ;; 0f:444c pP $02
+    dw   musicOpCodeSetChannel1LoopCounter1            ;; 0f:444e pP $03
     dw   musicOpCodeSetChannel1VibratoEnvelope         ;; 0f:4450 ?? $04
     dw   call_0f_4556                                  ;; 0f:4452 ?? $05
     dw   call_0f_45b5                                  ;; 0f:4454 pP $06
     dw   musicOpCodeHalt                               ;; 0f:4456 ?? $07
     dw   musicOpCodeHalt                               ;; 0f:4458 ?? $08
-    dw   call_0f_451c                                  ;; 0f:445a pP $09
-    dw   call_0f_44f1                                  ;; 0f:445c pP $0a
-    dw   call_0f_4534                                  ;; 0f:445e pP $0b
+    dw   musicOpCodeChannel1LoopCounter2               ;; 0f:445a pP $09
+    dw   musicOpCodeSetChannel1LoopCounter2            ;; 0f:445c pP $0a
+    dw   musicOpCodeIfChannel1LoopCounter1Equal        ;; 0f:445e pP $0b
     dw   musicOpCodeHalt                               ;; 0f:4460 ?? $0c
     dw   musicOpCodeHalt                               ;; 0f:4462 ?? $0d
     dw   call_0f_45ac                                  ;; 0f:4464 pP $0e
@@ -638,16 +638,16 @@ musicOpCodeTableChannel1:
 musicOpCodeTableChannel3:
     dw   musicOpCodeSetChannel3Volume                  ;; 0f:4468 ?? $00
     dw   musicOpCodeJump                               ;; 0f:446a pP $01
-    dw   call_0f_450d                                  ;; 0f:446c pP $02
-    dw   call_0f_44df                                  ;; 0f:446e pP $03
+    dw   musicOpCodeChannel3LoopCounter1               ;; 0f:446c pP $02
+    dw   musicOpCodeSetChannel3LoopCounter1            ;; 0f:446e pP $03
     dw   musicOpCodeSetChannel3VibratoEnvelope         ;; 0f:4470 ?? $04
     dw   musicOpCodeHalt                               ;; 0f:4472 ?? $05
     dw   call_0f_45d8                                  ;; 0f:4474 pP $06
     dw   musicOpCodeHalt                               ;; 0f:4476 ?? $07
     dw   call_0f_456b                                  ;; 0f:4478 ?? $08
-    dw   call_0f_4521                                  ;; 0f:447a pP $09
-    dw   call_0f_44f7                                  ;; 0f:447c pP $0a
-    dw   call_0f_4539                                  ;; 0f:447e pP $0b
+    dw   musicOpCodeChannel3LoopCounter2               ;; 0f:447a pP $09
+    dw   musicOpCodeSetChannel3LoopCounter2            ;; 0f:447c pP $0a
+    dw   musicOpCodeIfChannel3LoopCounter1Equal        ;; 0f:447e pP $0b
     dw   musicOpCodeHalt                               ;; 0f:4480 ?? $0c
     dw   musicOpCodeHalt                               ;; 0f:4482 ?? $0d
     dw   call_0f_45cf                                  ;; 0f:4484 pP $0e
@@ -657,16 +657,16 @@ musicOpCodeTableChannel3:
 musicOpCodeTableChannel4:
     dw   musicOpCodeSetChannel4VolumeEnvelope          ;; 0f:4488 pP $00
     dw   musicOpCodeJump                               ;; 0f:448a pP $01
-    dw   call_0f_4512                                  ;; 0f:448c pP $02
-    dw   call_0f_44e5                                  ;; 0f:448e pP $03
+    dw   musicOpCodeChannel4LoopCounter1               ;; 0f:448c pP $02
+    dw   musicOpCodeSetChannel4LoopCounter1            ;; 0f:448e pP $03
     dw   musicOpCodeHalt                               ;; 0f:4490 ?? $04
     dw   musicOpCodeHalt                               ;; 0f:4492 ?? $05
     dw   call_0f_45e9                                  ;; 0f:4494 pP $06
     dw   musicOpCodeHalt                               ;; 0f:4496 ?? $07
     dw   musicOpCodeHalt                               ;; 0f:4498 ?? $08
-    dw   call_0f_4526                                  ;; 0f:449a pP $09
-    dw   call_0f_44fd                                  ;; 0f:449c pP $0a
-    dw   call_0f_453e                                  ;; 0f:449e ?? $0b
+    dw   musicOpCodeChannel4LoopCounter2               ;; 0f:449a pP $09
+    dw   musicOpCodeSetChannel4LoopCounter2            ;; 0f:449c pP $0a
+    dw   musicOpCodeIfChannel4LoopCounter1Equal        ;; 0f:449e ?? $0b
     dw   musicOpCodeHalt                               ;; 0f:44a0 ?? $0c
     dw   musicOpCodeHalt                               ;; 0f:44a2 ?? $0d
     dw   musicOpCodeHalt                               ;; 0f:44a4 ?? $0e
@@ -711,115 +711,115 @@ musicOpCode_SetEnvelope_Common:
     ld   [HL], A                                       ;; 0f:44d1 $77
     ret                                                ;; 0f:44d2 $c9
 
-call_0f_44d3:
+musicOpCodeSetChannel2LoopCounter1:
     ld   A, [DE]                                       ;; 0f:44d3 $1a
     inc  DE                                            ;; 0f:44d4 $13
-    ld   [wCB02], A                                    ;; 0f:44d5 $ea $02 $cb
+    ld   [wMusicLoopCounter1Channel2], A               ;; 0f:44d5 $ea $02 $cb
     ret                                                ;; 0f:44d8 $c9
 
-call_0f_44d9:
+musicOpCodeSetChannel1LoopCounter1:
     ld   A, [DE]                                       ;; 0f:44d9 $1a
     inc  DE                                            ;; 0f:44da $13
-    ld   [wCB1A], A                                    ;; 0f:44db $ea $1a $cb
+    ld   [wMusicLoopCounter1Channel1], A               ;; 0f:44db $ea $1a $cb
     ret                                                ;; 0f:44de $c9
 
-call_0f_44df:
+musicOpCodeSetChannel3LoopCounter1:
     ld   A, [DE]                                       ;; 0f:44df $1a
     inc  DE                                            ;; 0f:44e0 $13
-    ld   [wCB32], A                                    ;; 0f:44e1 $ea $32 $cb
+    ld   [wMusicLoopCounter1Channel3], A               ;; 0f:44e1 $ea $32 $cb
     ret                                                ;; 0f:44e4 $c9
 
-call_0f_44e5:
+musicOpCodeSetChannel4LoopCounter1:
     ld   A, [DE]                                       ;; 0f:44e5 $1a
     inc  DE                                            ;; 0f:44e6 $13
-    ld   [wCB4A], A                                    ;; 0f:44e7 $ea $4a $cb
+    ld   [wMusicLoopCounter1Channel4], A               ;; 0f:44e7 $ea $4a $cb
     ret                                                ;; 0f:44ea $c9
 
-call_0f_44eb:
+musicOpCodeSetChannel2LoopCounter2:
     ld   A, [DE]                                       ;; 0f:44eb $1a
     inc  DE                                            ;; 0f:44ec $13
-    ld   [wCB03], A                                    ;; 0f:44ed $ea $03 $cb
+    ld   [wMusicLoopCounter2Channel2], A               ;; 0f:44ed $ea $03 $cb
     ret                                                ;; 0f:44f0 $c9
 
-call_0f_44f1:
+musicOpCodeSetChannel1LoopCounter2:
     ld   A, [DE]                                       ;; 0f:44f1 $1a
     inc  DE                                            ;; 0f:44f2 $13
-    ld   [wCB1B], A                                    ;; 0f:44f3 $ea $1b $cb
+    ld   [wMusicLoopCounter2Channel1], A               ;; 0f:44f3 $ea $1b $cb
     ret                                                ;; 0f:44f6 $c9
 
-call_0f_44f7:
+musicOpCodeSetChannel3LoopCounter2:
     ld   A, [DE]                                       ;; 0f:44f7 $1a
     inc  DE                                            ;; 0f:44f8 $13
-    ld   [wCB33], A                                    ;; 0f:44f9 $ea $33 $cb
+    ld   [wMusicLoopCounter2Channel3], A               ;; 0f:44f9 $ea $33 $cb
     ret                                                ;; 0f:44fc $c9
 
-call_0f_44fd:
+musicOpCodeSetChannel4LoopCounter2:
     ld   A, [DE]                                       ;; 0f:44fd $1a
     inc  DE                                            ;; 0f:44fe $13
-    ld   [wCB4B], A                                    ;; 0f:44ff $ea $4b $cb
+    ld   [wMusicLoopCounter2Channel4], A               ;; 0f:44ff $ea $4b $cb
     ret                                                ;; 0f:4502 $c9
 
-call_0f_4503:
-    ld   HL, wCB02                                     ;; 0f:4503 $21 $02 $cb
-    jr   jr_0f_4529                                    ;; 0f:4506 $18 $21
+musicOpCodeChannel2LoopCounter1:
+    ld   HL, wMusicLoopCounter1Channel2                ;; 0f:4503 $21 $02 $cb
+    jr   musicOpCode_JumpNotZero_Common                ;; 0f:4506 $18 $21
 
-call_0f_4508:
-    ld   HL, wCB1A                                     ;; 0f:4508 $21 $1a $cb
-    jr   jr_0f_4529                                    ;; 0f:450b $18 $1c
+musicOpCodeChannel1LoopCounter1:
+    ld   HL, wMusicLoopCounter1Channel1                ;; 0f:4508 $21 $1a $cb
+    jr   musicOpCode_JumpNotZero_Common                ;; 0f:450b $18 $1c
 
-call_0f_450d:
-    ld   HL, wCB32                                     ;; 0f:450d $21 $32 $cb
-    jr   jr_0f_4529                                    ;; 0f:4510 $18 $17
+musicOpCodeChannel3LoopCounter1:
+    ld   HL, wMusicLoopCounter1Channel3                ;; 0f:450d $21 $32 $cb
+    jr   musicOpCode_JumpNotZero_Common                ;; 0f:4510 $18 $17
 
-call_0f_4512:
-    ld   HL, wCB4A                                     ;; 0f:4512 $21 $4a $cb
-    jr   jr_0f_4529                                    ;; 0f:4515 $18 $12
+musicOpCodeChannel4LoopCounter1:
+    ld   HL, wMusicLoopCounter1Channel4                ;; 0f:4512 $21 $4a $cb
+    jr   musicOpCode_JumpNotZero_Common                ;; 0f:4515 $18 $12
 
-call_0f_4517:
-    ld   HL, wCB03                                     ;; 0f:4517 $21 $03 $cb
-    jr   jr_0f_4529                                    ;; 0f:451a $18 $0d
+musicOpCodeChannel2LoopCounter2:
+    ld   HL, wMusicLoopCounter2Channel2                ;; 0f:4517 $21 $03 $cb
+    jr   musicOpCode_JumpNotZero_Common                ;; 0f:451a $18 $0d
 
-call_0f_451c:
-    ld   HL, wCB1B                                     ;; 0f:451c $21 $1b $cb
-    jr   jr_0f_4529                                    ;; 0f:451f $18 $08
+musicOpCodeChannel1LoopCounter2:
+    ld   HL, wMusicLoopCounter2Channel1                ;; 0f:451c $21 $1b $cb
+    jr   musicOpCode_JumpNotZero_Common                ;; 0f:451f $18 $08
 
-call_0f_4521:
-    ld   HL, wCB33                                     ;; 0f:4521 $21 $33 $cb
-    jr   jr_0f_4529                                    ;; 0f:4524 $18 $03
+musicOpCodeChannel3LoopCounter2:
+    ld   HL, wMusicLoopCounter2Channel3                ;; 0f:4521 $21 $33 $cb
+    jr   musicOpCode_JumpNotZero_Common                ;; 0f:4524 $18 $03
 
-call_0f_4526:
-    ld   HL, wCB4B                                     ;; 0f:4526 $21 $4b $cb
+musicOpCodeChannel4LoopCounter2:
+    ld   HL, wMusicLoopCounter2Channel4                ;; 0f:4526 $21 $4b $cb
 
-jr_0f_4529:
+musicOpCode_JumpNotZero_Common:
     dec  [HL]                                          ;; 0f:4529 $35
     jr   NZ, musicOpCodeJump                           ;; 0f:452a $20 $1c
 
-jr_0f_452c:
+musicOpCode_NoJump_Common:
     inc  DE                                            ;; 0f:452c $13
     inc  DE                                            ;; 0f:452d $13
     ret                                                ;; 0f:452e $c9
 
-call_0f_452f:
-    ld   HL, wCB02                                     ;; 0f:452f $21 $02 $cb
-    jr   jr_0f_4543                                    ;; 0f:4532 $18 $0f
+musicOpCodeIfChannel2LoopCounter1Equal:
+    ld   HL, wMusicLoopCounter1Channel2                ;; 0f:452f $21 $02 $cb
+    jr   musicOpCode_JumpNotEqual                      ;; 0f:4532 $18 $0f
 
-call_0f_4534:
-    ld   HL, wCB1A                                     ;; 0f:4534 $21 $1a $cb
-    jr   jr_0f_4543                                    ;; 0f:4537 $18 $0a
+musicOpCodeIfChannel1LoopCounter1Equal:
+    ld   HL, wMusicLoopCounter1Channel1                ;; 0f:4534 $21 $1a $cb
+    jr   musicOpCode_JumpNotEqual                      ;; 0f:4537 $18 $0a
 
-call_0f_4539:
-    ld   HL, wCB32                                     ;; 0f:4539 $21 $32 $cb
-    jr   jr_0f_4543                                    ;; 0f:453c $18 $05
+musicOpCodeIfChannel3LoopCounter1Equal:
+    ld   HL, wMusicLoopCounter1Channel3                ;; 0f:4539 $21 $32 $cb
+    jr   musicOpCode_JumpNotEqual                      ;; 0f:453c $18 $05
 
-call_0f_453e:
-    ld   HL, wCB4A                                     ;; 0f:453e $21 $4a $cb
-    jr   jr_0f_4543                                    ;; 0f:4541 $18 $00
+musicOpCodeIfChannel4LoopCounter1Equal:
+    ld   HL, wMusicLoopCounter1Channel4                ;; 0f:453e $21 $4a $cb
+    jr   musicOpCode_JumpNotEqual                      ;; 0f:4541 $18 $00
 
-jr_0f_4543:
+musicOpCode_JumpNotEqual:
     ld   A, [DE]                                       ;; 0f:4543 $1a
     inc  DE                                            ;; 0f:4544 $13
     cp   A, [HL]                                       ;; 0f:4545 $be
-    jr   NZ, jr_0f_452c                                ;; 0f:4546 $20 $e4
+    jr   NZ, musicOpCode_NoJump_Common                 ;; 0f:4546 $20 $e4
 
 musicOpCodeJump:
     ld   L, E                                          ;; 0f:4548 $6b
