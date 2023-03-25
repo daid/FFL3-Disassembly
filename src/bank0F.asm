@@ -151,7 +151,7 @@ muteSoundEngine:
 soundEffectRestoreChannel1:
     xor  A, A                                          ;; 0f:40dd $af
     ldh  [rNR10], A                                    ;; 0f:40de $e0 $10
-    ld   A, [wCB30]                                    ;; 0f:40e0 $fa $30 $cb
+    ld   A, [wMusicNR11DutyCycleChannel1]              ;; 0f:40e0 $fa $30 $cb
     ldh  [rNR11], A                                    ;; 0f:40e3 $e0 $11
     ld   A, $00                                        ;; 0f:40e5 $3e $00
     ldh  [rNR12], A                                    ;; 0f:40e7 $e0 $12
@@ -603,16 +603,16 @@ musicOpCodeTableChannel2:
     dw   musicOpCodeChannel2LoopCounter1               ;; 0f:442c pP $02
     dw   musicOpCodeSetChannel2LoopCounter1            ;; 0f:442e pP $03
     dw   musicOpCodeSetChannel2VibratoEnvelope         ;; 0f:4430 ?? $04
-    dw   call_0f_454e                                  ;; 0f:4432 ?? $05
-    dw   call_0f_459b                                  ;; 0f:4434 pP $06
-    dw   call_0f_4565                                  ;; 0f:4436 pP $07
+    dw   musicChannel2SetDutyCycle                     ;; 0f:4432 ?? $05
+    dw   musicOpCodeSetChannel2StereoPan               ;; 0f:4434 pP $06
+    dw   musicOpCodeSetTempo                           ;; 0f:4436 pP $07
     dw   musicOpCodeHalt                               ;; 0f:4438 ?? $08
     dw   musicOpCodeChannel2LoopCounter2               ;; 0f:443a pP $09
     dw   musicOpCodeSetChannel2LoopCounter2            ;; 0f:443c pP $0a
     dw   musicOpCodeIfChannel2LoopCounter1Equal        ;; 0f:443e pP $0b
-    dw   call_0f_4613                                  ;; 0f:4440 ?? $0c
+    dw   musicOpCodeSetDoubletimeMode                  ;; 0f:4440 ?? $0c
     dw   musicOpCodeHalt                               ;; 0f:4442 ?? $0d
-    dw   call_0f_458f                                  ;; 0f:4444 pP $0e
+    dw   musicOpCodeChannel2Init                       ;; 0f:4444 pP $0e
     dw   musicOpCodeHalt                               ;; 0f:4446 ?? $0f
 
 ;@jumptable amount=16
@@ -622,8 +622,8 @@ musicOpCodeTableChannel1:
     dw   musicOpCodeChannel1LoopCounter1               ;; 0f:444c pP $02
     dw   musicOpCodeSetChannel1LoopCounter1            ;; 0f:444e pP $03
     dw   musicOpCodeSetChannel1VibratoEnvelope         ;; 0f:4450 ?? $04
-    dw   call_0f_4556                                  ;; 0f:4452 ?? $05
-    dw   call_0f_45b5                                  ;; 0f:4454 pP $06
+    dw   musicChannel1SetDutyCycle                     ;; 0f:4452 ?? $05
+    dw   musicOpCodeSetChannel1StereoPan               ;; 0f:4454 pP $06
     dw   musicOpCodeHalt                               ;; 0f:4456 ?? $07
     dw   musicOpCodeHalt                               ;; 0f:4458 ?? $08
     dw   musicOpCodeChannel1LoopCounter2               ;; 0f:445a pP $09
@@ -631,7 +631,7 @@ musicOpCodeTableChannel1:
     dw   musicOpCodeIfChannel1LoopCounter1Equal        ;; 0f:445e pP $0b
     dw   musicOpCodeHalt                               ;; 0f:4460 ?? $0c
     dw   musicOpCodeHalt                               ;; 0f:4462 ?? $0d
-    dw   call_0f_45ac                                  ;; 0f:4464 pP $0e
+    dw   musicOpCodeChannel1Init                       ;; 0f:4464 pP $0e
     dw   musicOpCodeHalt                               ;; 0f:4466 ?? $0f
 
 ;@jumptable amount=16
@@ -642,15 +642,15 @@ musicOpCodeTableChannel3:
     dw   musicOpCodeSetChannel3LoopCounter1            ;; 0f:446e pP $03
     dw   musicOpCodeSetChannel3VibratoEnvelope         ;; 0f:4470 ?? $04
     dw   musicOpCodeHalt                               ;; 0f:4472 ?? $05
-    dw   call_0f_45d8                                  ;; 0f:4474 pP $06
+    dw   musicOpCodeSetChannel3StereoPan               ;; 0f:4474 pP $06
     dw   musicOpCodeHalt                               ;; 0f:4476 ?? $07
-    dw   call_0f_456b                                  ;; 0f:4478 ?? $08
+    dw   musicOpCodeChannel3LoadWaveTable              ;; 0f:4478 ?? $08
     dw   musicOpCodeChannel3LoopCounter2               ;; 0f:447a pP $09
     dw   musicOpCodeSetChannel3LoopCounter2            ;; 0f:447c pP $0a
     dw   musicOpCodeIfChannel3LoopCounter1Equal        ;; 0f:447e pP $0b
     dw   musicOpCodeHalt                               ;; 0f:4480 ?? $0c
     dw   musicOpCodeHalt                               ;; 0f:4482 ?? $0d
-    dw   call_0f_45cf                                  ;; 0f:4484 pP $0e
+    dw   musicOpCodeChannel3Init                       ;; 0f:4484 pP $0e
     dw   musicOpCodeHalt                               ;; 0f:4486 ?? $0f
 
 ;@jumptable amount=16
@@ -661,7 +661,7 @@ musicOpCodeTableChannel4:
     dw   musicOpCodeSetChannel4LoopCounter1            ;; 0f:448e pP $03
     dw   musicOpCodeHalt                               ;; 0f:4490 ?? $04
     dw   musicOpCodeHalt                               ;; 0f:4492 ?? $05
-    dw   call_0f_45e9                                  ;; 0f:4494 pP $06
+    dw   musicOpCodeSetChannel4StereoPan               ;; 0f:4494 pP $06
     dw   musicOpCodeHalt                               ;; 0f:4496 ?? $07
     dw   musicOpCodeHalt                               ;; 0f:4498 ?? $08
     dw   musicOpCodeChannel4LoopCounter2               ;; 0f:449a pP $09
@@ -829,17 +829,17 @@ musicOpCodeJump:
     ld   E, A                                          ;; 0f:454c $5f
     ret                                                ;; 0f:454d $c9
 
-call_0f_454e:
+musicChannel2SetDutyCycle:
     ld   A, [DE]                                       ;; 0f:454e $1a
     inc  DE                                            ;; 0f:454f $13
     ldh  [rNR21], A                                    ;; 0f:4550 $e0 $16
-    ld   [wCB18], A                                    ;; 0f:4552 $ea $18 $cb
+    ld   [wMusicNR21DutyCycleChannel2], A              ;; 0f:4552 $ea $18 $cb
     ret                                                ;; 0f:4555 $c9
 
-call_0f_4556:
+musicChannel1SetDutyCycle:
     ld   A, [DE]                                       ;; 0f:4556 $1a
     inc  DE                                            ;; 0f:4557 $13
-    ld   [wCB30], A                                    ;; 0f:4558 $ea $30 $cb
+    ld   [wMusicNR11DutyCycleChannel1], A              ;; 0f:4558 $ea $30 $cb
     ld   B, A                                          ;; 0f:455b $47
     ld   A, [wSoundEffectDurationChannel1]             ;; 0f:455c $fa $1c $cb
     or   A, A                                          ;; 0f:455f $b7
@@ -848,13 +848,13 @@ call_0f_4556:
     ldh  [rNR11], A                                    ;; 0f:4562 $e0 $11
     ret                                                ;; 0f:4564 $c9
 
-call_0f_4565:
+musicOpCodeSetTempo:
     ld   A, [DE]                                       ;; 0f:4565 $1a
     inc  DE                                            ;; 0f:4566 $13
     ld   [wMusicTempo], A                              ;; 0f:4567 $ea $01 $cb
     ret                                                ;; 0f:456a $c9
 
-call_0f_456b:
+musicOpCodeChannel3LoadWaveTable:
     ld   A, [DE]                                       ;; 0f:456b $1a
     inc  DE                                            ;; 0f:456c $13
     ld   C, A                                          ;; 0f:456d $4f
@@ -868,12 +868,12 @@ call_0f_456b:
     ldh  [rNR30], A                                    ;; 0f:4577 $e0 $1a
     ld   C, $30                                        ;; 0f:4579 $0e $30
     ld   B, $10                                        ;; 0f:457b $06 $10
-.jr_0f_457d:
+.loop:
     ld   A, [HL+]                                      ;; 0f:457d $2a
     ldh  [C], A                                        ;; 0f:457e $e2
     inc  C                                             ;; 0f:457f $0c
     dec  B                                             ;; 0f:4580 $05
-    jr   NZ, .jr_0f_457d                               ;; 0f:4581 $20 $fa
+    jr   NZ, .loop                                     ;; 0f:4581 $20 $fa
     ld   A, $80                                        ;; 0f:4583 $3e $80
     ldh  [rNR30], A                                    ;; 0f:4585 $e0 $1a
     xor  A, A                                          ;; 0f:4587 $af
@@ -882,13 +882,13 @@ call_0f_456b:
     ldh  [rNR34], A                                    ;; 0f:458c $e0 $1e
     ret                                                ;; 0f:458e $c9
 
-call_0f_458f:
-    call call_0f_4565                                  ;; 0f:458f $cd $65 $45
+musicOpCodeChannel2Init:
+    call musicOpCodeSetTempo                           ;; 0f:458f $cd $65 $45
     call musicOpCodeSetChannel2VibratoEnvelope         ;; 0f:4592 $cd $bf $44
     call musicOpCodeSetChannel2VolumeEnvelope          ;; 0f:4595 $cd $b0 $44
-    call call_0f_454e                                  ;; 0f:4598 $cd $4e $45
+    call musicChannel2SetDutyCycle                     ;; 0f:4598 $cd $4e $45
 
-call_0f_459b:
+musicOpCodeSetChannel2StereoPan:
     ld   A, [DE]                                       ;; 0f:459b $1a
     inc  DE                                            ;; 0f:459c $13
     ld   C, A                                          ;; 0f:459d $4f
@@ -901,12 +901,12 @@ call_0f_459b:
     ldh  [rNR51], A                                    ;; 0f:45a9 $e0 $25
     ret                                                ;; 0f:45ab $c9
 
-call_0f_45ac:
+musicOpCodeChannel1Init:
     call musicOpCodeSetChannel1VibratoEnvelope         ;; 0f:45ac $cd $c4 $44
     call musicOpCodeSetChannel1VolumeEnvelope          ;; 0f:45af $cd $b5 $44
-    call call_0f_4556                                  ;; 0f:45b2 $cd $56 $45
+    call musicChannel1SetDutyCycle                     ;; 0f:45b2 $cd $56 $45
 
-call_0f_45b5:
+musicOpCodeSetChannel1StereoPan:
     ld   A, [DE]                                       ;; 0f:45b5 $1a
     inc  DE                                            ;; 0f:45b6 $13
     ld   C, A                                          ;; 0f:45b7 $4f
@@ -924,12 +924,12 @@ call_0f_45b5:
     ldh  [rNR51], A                                    ;; 0f:45cc $e0 $25
     ret                                                ;; 0f:45ce $c9
 
-call_0f_45cf:
+musicOpCodeChannel3Init:
     call musicOpCodeSetChannel3VibratoEnvelope         ;; 0f:45cf $cd $c9 $44
     call musicOpCodeSetChannel3Volume                  ;; 0f:45d2 $cd $a8 $44
-    call call_0f_456b                                  ;; 0f:45d5 $cd $6b $45
+    call musicOpCodeChannel3LoadWaveTable              ;; 0f:45d5 $cd $6b $45
 
-call_0f_45d8:
+musicOpCodeSetChannel3StereoPan:
     ld   A, [DE]                                       ;; 0f:45d8 $1a
     inc  DE                                            ;; 0f:45d9 $13
     ld   C, A                                          ;; 0f:45da $4f
@@ -942,7 +942,7 @@ call_0f_45d8:
     ldh  [rNR51], A                                    ;; 0f:45e6 $e0 $25
     ret                                                ;; 0f:45e8 $c9
 
-call_0f_45e9:
+musicOpCodeSetChannel4StereoPan:
     ld   A, [DE]                                       ;; 0f:45e9 $1a
     inc  DE                                            ;; 0f:45ea $13
     ld   C, A                                          ;; 0f:45eb $4f
@@ -972,7 +972,10 @@ channel3StereoPanValues:
 channel4StereoPanValues:
     db   $00, $08, $80, $88                            ;; 0f:460f ?...
 
-call_0f_4613:
+; Final Fantasy Adventure had a (non working) command to set or clear a "double-time" mode.
+; This was gone in FFL2, which I think had a newer version of the sound engine.
+; Now it's back but doing even less than it was before.
+musicOpCodeSetDoubletimeMode:
     ld   A, [DE]                                       ;; 0f:4613 $1a
     inc  DE                                            ;; 0f:4614 $13
     ret                                                ;; 0f:4615 $c9

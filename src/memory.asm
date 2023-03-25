@@ -772,7 +772,7 @@ wMusicVolumeEnvelopeChannel2:
 wCB16:
     ds 2                                               ;; cb16
 
-wCB18:
+wMusicNR21DutyCycleChannel2:
     ds 2                                               ;; cb18
 
 wMusicLoopCounter1Channel1:
@@ -822,7 +822,7 @@ wMusicVolumeEnvelopeChannel1:
 wCB2E:
     ds 2                                               ;; cb2e
 
-wCB30:
+wMusicNR11DutyCycleChannel1:
     ds 1                                               ;; cb30
 
 wMusicStereoPanChannel1:
