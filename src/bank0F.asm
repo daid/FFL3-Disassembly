@@ -63,10 +63,10 @@ initSoundEngineReal:
     ldh  [rNR50], A                                    ;; 0f:4042 $e0 $24
     ld   A, $ff                                        ;; 0f:4044 $3e $ff
     ldh  [rNR51], A                                    ;; 0f:4046 $e0 $25
-    ld   [wCB05], A                                    ;; 0f:4048 $ea $05 $cb
-    ld   [wCB1D], A                                    ;; 0f:404b $ea $1d $cb
-    ld   [wCB35], A                                    ;; 0f:404e $ea $35 $cb
-    ld   [wCB4D], A                                    ;; 0f:4051 $ea $4d $cb
+    ld   [wMusicEndedOnChannel2], A                    ;; 0f:4048 $ea $05 $cb
+    ld   [wMusicEndedOnChannel1], A                    ;; 0f:404b $ea $1d $cb
+    ld   [wMusicEndedOnChannel3], A                    ;; 0f:404e $ea $35 $cb
+    ld   [wMusicEndedOnChannel4], A                    ;; 0f:4051 $ea $4d $cb
     xor  A, A                                          ;; 0f:4054 $af
     ld   [wSoundEffectDurationChannel1], A             ;; 0f:4055 $ea $1c $cb
     ld   [wMusicTempo], A                              ;; 0f:4058 $ea $01 $cb
@@ -174,7 +174,7 @@ soundEffectMuteChannel4:
     ldh  [rNR43], A                                    ;; 0f:4102 $e0 $22
     ld   A, $80                                        ;; 0f:4104 $3e $80
     ldh  [rNR44], A                                    ;; 0f:4106 $e0 $23
-    ld   A, [wCB61]                                    ;; 0f:4108 $fa $61 $cb
+    ld   A, [wMusicStereoPanChannel4]                  ;; 0f:4108 $fa $61 $cb
     ld   E, A                                          ;; 0f:410b $5f
     ldh  A, [rNR51]                                    ;; 0f:410c $f0 $25
     and  A, $77                                        ;; 0f:410e $e6 $77
@@ -224,7 +224,7 @@ musicPlayStep:
     ret                                                ;; 0f:41f8 $c9
 
 musicTempoPlayNotes:
-    ld   HL, wCB05                                     ;; 0f:41f9 $21 $05 $cb
+    ld   HL, wMusicEndedOnChannel2                     ;; 0f:41f9 $21 $05 $cb
     ld   A, [HL+]                                      ;; 0f:41fc $2a
     inc  A                                             ;; 0f:41fd $3c
     jr   Z, musicTempoPlayNotes_Channel1               ;; 0f:41fe $28 $60
@@ -244,7 +244,7 @@ data_0f_420c:
     jr   C, .jr_0f_4224                                ;; 0f:4210 $38 $12
     cp   A, $ff                                        ;; 0f:4212 $fe $ff
     jp   NZ, jp_0f_43da                                ;; 0f:4214 $c2 $da $43
-    ld   [wCB05], A                                    ;; 0f:4217 $ea $05 $cb
+    ld   [wMusicEndedOnChannel2], A                    ;; 0f:4217 $ea $05 $cb
 .jr_0f_421a:
     ld   A, $ff                                        ;; 0f:421a $3e $ff
     ldh  [rNR23], A                                    ;; 0f:421c $e0 $18
@@ -257,7 +257,7 @@ data_0f_420c:
     inc  L                                             ;; 0f:4228 $2c
     ld   [HL], D                                       ;; 0f:4229 $72
     call musicGetNoteDuration                          ;; 0f:422a $cd $08 $44
-    ld   HL, wCB06                                     ;; 0f:422d $21 $06 $cb
+    ld   HL, wMusicNoteDurationChannel2                ;; 0f:422d $21 $06 $cb
     ld   [HL+], A                                      ;; 0f:4230 $22
     ld   A, E                                          ;; 0f:4231 $7b
     and  A, $0f                                        ;; 0f:4232 $e6 $0f
@@ -265,7 +265,7 @@ data_0f_420c:
     cp   A, $0c                                        ;; 0f:4235 $fe $0c
     jr   Z, musicTempoPlayNotes_Channel1               ;; 0f:4237 $28 $27
     jr   NC, .jr_0f_421a                               ;; 0f:4239 $30 $df
-    ld   HL, wCB08                                     ;; 0f:423b $21 $08 $cb
+    ld   HL, wMusicOctaveChannel2                      ;; 0f:423b $21 $08 $cb
     call musicGetNoteFrequencyPointer                  ;; 0f:423e $cd $16 $44
     push HL                                            ;; 0f:4241 $e5
     ld   HL, wMusicVolumeEnvelopeChannel2              ;; 0f:4242 $21 $14 $cb
@@ -278,18 +278,18 @@ data_0f_420c:
     pop  HL                                            ;; 0f:424c $e1
     ld   A, [HL+]                                      ;; 0f:424d $2a
     ld   C, [HL]                                       ;; 0f:424e $4e
-    ld   HL, wCB0C                                     ;; 0f:424f $21 $0c $cb
+    ld   HL, wMusicCurrentPitchChannel2                ;; 0f:424f $21 $0c $cb
     ldh  [rNR23], A                                    ;; 0f:4252 $e0 $18
     ld   [HL+], A                                      ;; 0f:4254 $22
     ld   A, C                                          ;; 0f:4255 $79
     ldh  [rNR24], A                                    ;; 0f:4256 $e0 $19
     ld   [HL+], A                                      ;; 0f:4258 $22
-    call call_0f_439b                                  ;; 0f:4259 $cd $9b $43
+    call musicStartEnvelope                            ;; 0f:4259 $cd $9b $43
     inc  L                                             ;; 0f:425c $2c
-    call call_0f_439b                                  ;; 0f:425d $cd $9b $43
+    call musicStartEnvelope                            ;; 0f:425d $cd $9b $43
 
 musicTempoPlayNotes_Channel1:
-    ld   HL, wCB1D                                     ;; 0f:4260 $21 $1d $cb
+    ld   HL, wMusicEndedOnChannel1                     ;; 0f:4260 $21 $1d $cb
     ld   A, [HL+]                                      ;; 0f:4263 $2a
     inc  A                                             ;; 0f:4264 $3c
     jr   Z, musicTempoPlayNotes_Channel3               ;; 0f:4265 $28 $6c
@@ -309,7 +309,7 @@ data_0f_4273:
     jr   C, .jr_0f_428b                                ;; 0f:4277 $38 $12
     cp   A, $ff                                        ;; 0f:4279 $fe $ff
     jp   NZ, jp_0f_43c8                                ;; 0f:427b $c2 $c8 $43
-    ld   [wCB1D], A                                    ;; 0f:427e $ea $1d $cb
+    ld   [wMusicEndedOnChannel1], A                    ;; 0f:427e $ea $1d $cb
 .jr_0f_4281:
     ld   A, $ff                                        ;; 0f:4281 $3e $ff
     ldh  [rNR13], A                                    ;; 0f:4283 $e0 $13
@@ -322,7 +322,7 @@ data_0f_4273:
     inc  L                                             ;; 0f:428f $2c
     ld   [HL], D                                       ;; 0f:4290 $72
     call musicGetNoteDuration                          ;; 0f:4291 $cd $08 $44
-    ld   HL, wCB1E                                     ;; 0f:4294 $21 $1e $cb
+    ld   HL, wMusicNoteDurationChannel1                ;; 0f:4294 $21 $1e $cb
     ld   [HL+], A                                      ;; 0f:4297 $22
     ld   A, E                                          ;; 0f:4298 $7b
     and  A, $0f                                        ;; 0f:4299 $e6 $0f
@@ -335,7 +335,7 @@ data_0f_4273:
     cp   A, $0c                                        ;; 0f:42a4 $fe $0c
     jr   Z, musicTempoPlayNotes_Channel3               ;; 0f:42a6 $28 $2b
     jr   NC, .jr_0f_4281                               ;; 0f:42a8 $30 $d7
-    ld   HL, wCB20                                     ;; 0f:42aa $21 $20 $cb
+    ld   HL, wMusicOctaveChannel1                      ;; 0f:42aa $21 $20 $cb
     call musicGetNoteFrequencyPointer                  ;; 0f:42ad $cd $16 $44
     push HL                                            ;; 0f:42b0 $e5
     ld   HL, wMusicVolumeEnvelopeChannel1              ;; 0f:42b1 $21 $2c $cb
@@ -348,20 +348,20 @@ data_0f_4273:
     pop  HL                                            ;; 0f:42bb $e1
     ld   A, [HL+]                                      ;; 0f:42bc $2a
     ld   C, [HL]                                       ;; 0f:42bd $4e
-    ld   HL, wCB24                                     ;; 0f:42be $21 $24 $cb
+    ld   HL, wMusicCurrentPitchChannel1                ;; 0f:42be $21 $24 $cb
     ldh  [rNR13], A                                    ;; 0f:42c1 $e0 $13
     ld   [HL+], A                                      ;; 0f:42c3 $22
     ld   A, C                                          ;; 0f:42c4 $79
     ldh  [rNR14], A                                    ;; 0f:42c5 $e0 $14
     ld   [HL+], A                                      ;; 0f:42c7 $22
-    call call_0f_439b                                  ;; 0f:42c8 $cd $9b $43
+    call musicStartEnvelope                            ;; 0f:42c8 $cd $9b $43
     inc  L                                             ;; 0f:42cb $2c
-    call call_0f_439b                                  ;; 0f:42cc $cd $9b $43
+    call musicStartEnvelope                            ;; 0f:42cc $cd $9b $43
     xor  A, A                                          ;; 0f:42cf $af
     ld   [wCB66], A                                    ;; 0f:42d0 $ea $66 $cb
 
 musicTempoPlayNotes_Channel3:
-    ld   HL, wCB35                                     ;; 0f:42d3 $21 $35 $cb
+    ld   HL, wMusicEndedOnChannel3                     ;; 0f:42d3 $21 $35 $cb
     ld   A, [HL+]                                      ;; 0f:42d6 $2a
     inc  A                                             ;; 0f:42d7 $3c
     jr   Z, musicTempoPlayNotes_Channel4               ;; 0f:42d8 $28 $5a
@@ -381,7 +381,7 @@ data_0f_42e6:
     jr   C, .jr_0f_42fc                                ;; 0f:42ea $38 $10
     cp   A, $ff                                        ;; 0f:42ec $fe $ff
     jp   NZ, jp_0f_43b6                                ;; 0f:42ee $c2 $b6 $43
-    ld   [wCB35], A                                    ;; 0f:42f1 $ea $35 $cb
+    ld   [wMusicEndedOnChannel3], A                    ;; 0f:42f1 $ea $35 $cb
     ldh  [rNR33], A                                    ;; 0f:42f4 $e0 $1d
     ld   A, $07                                        ;; 0f:42f6 $3e $07
     ldh  [rNR34], A                                    ;; 0f:42f8 $e0 $1e
@@ -392,7 +392,7 @@ data_0f_42e6:
     inc  L                                             ;; 0f:4300 $2c
     ld   [HL], D                                       ;; 0f:4301 $72
     call musicGetNoteDuration                          ;; 0f:4302 $cd $08 $44
-    ld   HL, wCB36                                     ;; 0f:4305 $21 $36 $cb
+    ld   HL, wMusicNoteDurationChannel3                ;; 0f:4305 $21 $36 $cb
     ld   [HL+], A                                      ;; 0f:4308 $22
     ld   A, E                                          ;; 0f:4309 $7b
     and  A, $0f                                        ;; 0f:430a $e6 $0f
@@ -404,7 +404,7 @@ data_0f_42e6:
     ldh  [rNR32], A                                    ;; 0f:4314 $e0 $1c
     jr   musicTempoPlayNotes_Channel4                  ;; 0f:4316 $18 $1c
 .jr_0f_4318:
-    ld   HL, wCB38                                     ;; 0f:4318 $21 $38 $cb
+    ld   HL, wMusicOctaveChannel3                      ;; 0f:4318 $21 $38 $cb
     call musicGetNoteFrequencyPointer                  ;; 0f:431b $cd $16 $44
     ld   A, [HL+]                                      ;; 0f:431e $2a
     ld   B, [HL]                                       ;; 0f:431f $46
@@ -419,10 +419,10 @@ data_0f_42e6:
     and  A, $07                                        ;; 0f:432c $e6 $07
     ldh  [rNR34], A                                    ;; 0f:432e $e0 $1e
     ld   [HL+], A                                      ;; 0f:4330 $22
-    call call_0f_439b                                  ;; 0f:4331 $cd $9b $43
+    call musicStartEnvelope                            ;; 0f:4331 $cd $9b $43
 
 musicTempoPlayNotes_Channel4:
-    ld   HL, wCB4D                                     ;; 0f:4334 $21 $4d $cb
+    ld   HL, wMusicEndedOnChannel4                     ;; 0f:4334 $21 $4d $cb
     ld   A, [HL+]                                      ;; 0f:4337 $2a
     inc  A                                             ;; 0f:4338 $3c
     ret  Z                                             ;; 0f:4339 $c8
@@ -442,7 +442,7 @@ data_0f_4345:
     jr   C, .jr_0f_435c                                ;; 0f:4349 $38 $11
     cp   A, $ff                                        ;; 0f:434b $fe $ff
     jr   NZ, jr_0f_43a4                                ;; 0f:434d $20 $55
-    ld   [wCB4D], A                                    ;; 0f:434f $ea $4d $cb
+    ld   [wMusicEndedOnChannel4], A                    ;; 0f:434f $ea $4d $cb
 .jr_0f_4352:
     xor  A, A                                          ;; 0f:4352 $af
     ldh  [rNR42], A                                    ;; 0f:4353 $e0 $21
@@ -456,7 +456,7 @@ data_0f_4345:
     inc  L                                             ;; 0f:4360 $2c
     ld   [HL], D                                       ;; 0f:4361 $72
     call musicGetNoteDuration                          ;; 0f:4362 $cd $08 $44
-    ld   HL, wCB4E                                     ;; 0f:4365 $21 $4e $cb
+    ld   HL, wMusicNoteDurationChannel4                ;; 0f:4365 $21 $4e $cb
     ld   [HL+], A                                      ;; 0f:4368 $22
     ld   A, E                                          ;; 0f:4369 $7b
     and  A, $0f                                        ;; 0f:436a $e6 $0f
@@ -470,7 +470,7 @@ data_0f_4345:
     ret  Z                                             ;; 0f:4376 $c8
     jr   NC, .jr_0f_4352                               ;; 0f:4377 $30 $d9
     ld   D, $00                                        ;; 0f:4379 $16 $00
-    ld   HL, data_0f_4619                              ;; 0f:437b $21 $19 $46
+    ld   HL, wMusicNR43ValuesChannel4                  ;; 0f:437b $21 $19 $46
     add  HL, DE                                        ;; 0f:437e $19
     ld   C, [HL]                                       ;; 0f:437f $4e
     ld   HL, wMusicVolumeEnvelopeChannel4              ;; 0f:4380 $21 $5c $cb
@@ -482,14 +482,14 @@ data_0f_4345:
     ldh  [rNR42], A                                    ;; 0f:4388 $e0 $21
     ld   A, C                                          ;; 0f:438a $79
     ldh  [rNR43], A                                    ;; 0f:438b $e0 $22
-    ld   [wCB54], A                                    ;; 0f:438d $ea $54 $cb
+    ld   [wMusicCurrentPitchChannel4], A               ;; 0f:438d $ea $54 $cb
     ld   A, $80                                        ;; 0f:4390 $3e $80
     ldh  [rNR44], A                                    ;; 0f:4392 $e0 $23
     xor  A, A                                          ;; 0f:4394 $af
     ld   [wCB67], A                                    ;; 0f:4395 $ea $67 $cb
-    ld   HL, wCB5B                                     ;; 0f:4398 $21 $5b $cb
+    ld   HL, wMusicVolumeDurationChannel4              ;; 0f:4398 $21 $5b $cb
 
-call_0f_439b:
+musicStartEnvelope:
     ld   A, $01                                        ;; 0f:439b $3e $01
     ld   [HL+], A                                      ;; 0f:439d $22
     ld   A, [HL+]                                      ;; 0f:439e $2a
@@ -523,7 +523,7 @@ jp_0f_43b6:
     ld   HL, musicOpCodeTableChannel3                  ;; 0f:43be $21 $68 $44
     jr   jr_0f_43ab                                    ;; 0f:43c1 $18 $e8
 .jr_0f_43c3:
-    ld   BC, wCB38                                     ;; 0f:43c3 $01 $38 $cb
+    ld   BC, wMusicOctaveChannel3                      ;; 0f:43c3 $01 $38 $cb
     jr   jr_0f_43ea                                    ;; 0f:43c6 $18 $22
 
 jp_0f_43c8:
@@ -534,7 +534,7 @@ jp_0f_43c8:
     ld   HL, musicOpCodeTableChannel1                  ;; 0f:43d0 $21 $48 $44
     jr   jr_0f_43ab                                    ;; 0f:43d3 $18 $d6
 .jr_0f_43d5:
-    ld   BC, wCB20                                     ;; 0f:43d5 $01 $20 $cb
+    ld   BC, wMusicOctaveChannel1                      ;; 0f:43d5 $01 $20 $cb
     jr   jr_0f_43ea                                    ;; 0f:43d8 $18 $10
 
 jp_0f_43da:
@@ -545,7 +545,7 @@ jp_0f_43da:
     ld   HL, musicOpCodeTableChannel2                  ;; 0f:43e2 $21 $28 $44
     jr   jr_0f_43ab                                    ;; 0f:43e5 $18 $c4
 .jr_0f_43e7:
-    ld   BC, wCB08                                     ;; 0f:43e7 $01 $08 $cb
+    ld   BC, wMusicOctaveChannel2                      ;; 0f:43e7 $01 $08 $cb
 
 jr_0f_43ea:
     push DE                                            ;; 0f:43ea $d5
@@ -950,7 +950,7 @@ musicOpCodeSetChannel4StereoPan:
     ld   HL, channel4StereoPanValues                   ;; 0f:45ee $21 $0f $46
     add  HL, BC                                        ;; 0f:45f1 $09
     ld   A, [HL]                                       ;; 0f:45f2 $7e
-    ld   [wCB61], A                                    ;; 0f:45f3 $ea $61 $cb
+    ld   [wMusicStereoPanChannel4], A                  ;; 0f:45f3 $ea $61 $cb
     ld   A, [wSoundEffectDurationChannel4]             ;; 0f:45f6 $fa $4c $cb
     or   A, A                                          ;; 0f:45f9 $b7
     ret  NZ                                            ;; 0f:45fa $c0
@@ -984,12 +984,12 @@ musicOpCodeHalt:
     jr   musicOpCodeHalt                               ;; 0f:4616 $18 $fe
     db   $c9                                           ;; 0f:4618 ?
 
-data_0f_4619:
+wMusicNR43ValuesChannel4:
     db   $64, $59, $54, $2f, $44, $34, $2e, $24        ;; 0f:4619 ?????.?.
     db   $2d, $14, $1d, $04                            ;; 0f:4621 ?.?.
 
 musicVibratoAndVolumeChannel2:
-    ld   HL, wCB05                                     ;; 0f:4625 $21 $05 $cb
+    ld   HL, wMusicEndedOnChannel2                     ;; 0f:4625 $21 $05 $cb
     ld   A, [HL+]                                      ;; 0f:4628 $2a
     or   A, A                                          ;; 0f:4629 $b7
     ret  NZ                                            ;; 0f:462a $c0
@@ -1000,24 +1000,24 @@ musicVibratoAndVolumeChannel2:
     ld   A, [HL]                                       ;; 0f:4630 $7e
     cp   A, $0d                                        ;; 0f:4631 $fe $0d
     ret  Z                                             ;; 0f:4633 $c8
-    ld   HL, wCB0E                                     ;; 0f:4634 $21 $0e $cb
+    ld   HL, wMusicVibratoDurationChannel2             ;; 0f:4634 $21 $0e $cb
     dec  [HL]                                          ;; 0f:4637 $35
-    jr   NZ, .jr_0f_465f                               ;; 0f:4638 $20 $25
+    jr   NZ, .volume_envelope                          ;; 0f:4638 $20 $25
     call call_0f_474b                                  ;; 0f:463a $cd $4b $47
-    ld   [wCB0E], A                                    ;; 0f:463d $ea $0e $cb
+    ld   [wMusicVibratoDurationChannel2], A            ;; 0f:463d $ea $0e $cb
     ld   A, [HL+]                                      ;; 0f:4640 $2a
     ld   E, A                                          ;; 0f:4641 $5f
     ld   D, $00                                        ;; 0f:4642 $16 $00
     ld   C, H                                          ;; 0f:4644 $4c
     ld   A, L                                          ;; 0f:4645 $7d
-    ld   HL, wCB11                                     ;; 0f:4646 $21 $11 $cb
+    ld   HL, wMusicVibratoEnvelopePointerChannel2      ;; 0f:4646 $21 $11 $cb
     ld   [HL+], A                                      ;; 0f:4649 $22
     ld   [HL], C                                       ;; 0f:464a $71
     bit  7, E                                          ;; 0f:464b $cb $7b
-    jr   Z, .jr_0f_4650                                ;; 0f:464d $28 $01
+    jr   Z, .sign_extended                             ;; 0f:464d $28 $01
     dec  D                                             ;; 0f:464f $15
-.jr_0f_4650:
-    ld   HL, wCB0C                                     ;; 0f:4650 $21 $0c $cb
+.sign_extended:
+    ld   HL, wMusicCurrentPitchChannel2                ;; 0f:4650 $21 $0c $cb
     ld   A, [HL+]                                      ;; 0f:4653 $2a
     ld   H, [HL]                                       ;; 0f:4654 $66
     ld   L, A                                          ;; 0f:4655 $6f
@@ -1027,22 +1027,22 @@ musicVibratoAndVolumeChannel2:
     ld   A, H                                          ;; 0f:465a $7c
     and  A, $07                                        ;; 0f:465b $e6 $07
     ldh  [rNR24], A                                    ;; 0f:465d $e0 $19
-.jr_0f_465f:
-    ld   HL, wCB13                                     ;; 0f:465f $21 $13 $cb
+.volume_envelope:
+    ld   HL, wMusicVolumeDurationChannel2              ;; 0f:465f $21 $13 $cb
     ld   A, [HL]                                       ;; 0f:4662 $7e
     inc  A                                             ;; 0f:4663 $3c
     ret  Z                                             ;; 0f:4664 $c8
     dec  [HL]                                          ;; 0f:4665 $35
     ret  NZ                                            ;; 0f:4666 $c0
     call call_0f_474b                                  ;; 0f:4667 $cd $4b $47
-    ld   [wCB13], A                                    ;; 0f:466a $ea $13 $cb
+    ld   [wMusicVolumeDurationChannel2], A             ;; 0f:466a $ea $13 $cb
     ld   A, [HL+]                                      ;; 0f:466d $2a
     ldh  [rNR22], A                                    ;; 0f:466e $e0 $17
-    ld   A, [wCB0D]                                    ;; 0f:4670 $fa $0d $cb
+    ld   A, [wMusicCurrentPitchChannel2.high]          ;; 0f:4670 $fa $0d $cb
     ldh  [rNR24], A                                    ;; 0f:4673 $e0 $19
     ld   C, H                                          ;; 0f:4675 $4c
     ld   A, L                                          ;; 0f:4676 $7d
-    ld   HL, wCB16                                     ;; 0f:4677 $21 $16 $cb
+    ld   HL, wMusicVolumeEnvelopePointerChannel2       ;; 0f:4677 $21 $16 $cb
     ld   [HL+], A                                      ;; 0f:467a $22
     ld   [HL], C                                       ;; 0f:467b $71
     ret                                                ;; 0f:467c $c9
@@ -1063,24 +1063,24 @@ musicVibratoAndVolumeChannel1:
     ld   A, [wCB66]                                    ;; 0f:468d $fa $66 $cb
     and  A, A                                          ;; 0f:4690 $a7
     ret  NZ                                            ;; 0f:4691 $c0
-    ld   HL, wCB26                                     ;; 0f:4692 $21 $26 $cb
+    ld   HL, wMusicVibratoDurationChannel1             ;; 0f:4692 $21 $26 $cb
     dec  [HL]                                          ;; 0f:4695 $35
-    jr   NZ, .jr_0f_46bd                               ;; 0f:4696 $20 $25
+    jr   NZ, .volume_envelope                          ;; 0f:4696 $20 $25
     call call_0f_474b                                  ;; 0f:4698 $cd $4b $47
-    ld   [wCB26], A                                    ;; 0f:469b $ea $26 $cb
+    ld   [wMusicVibratoDurationChannel1], A            ;; 0f:469b $ea $26 $cb
     ld   A, [HL+]                                      ;; 0f:469e $2a
     ld   E, A                                          ;; 0f:469f $5f
     ld   D, $00                                        ;; 0f:46a0 $16 $00
     ld   C, H                                          ;; 0f:46a2 $4c
     ld   A, L                                          ;; 0f:46a3 $7d
-    ld   HL, wCB29                                     ;; 0f:46a4 $21 $29 $cb
+    ld   HL, wMusicVibratoEnvelopePointerChannel1      ;; 0f:46a4 $21 $29 $cb
     ld   [HL+], A                                      ;; 0f:46a7 $22
     ld   [HL], C                                       ;; 0f:46a8 $71
     bit  7, E                                          ;; 0f:46a9 $cb $7b
-    jr   Z, .jr_0f_46ae                                ;; 0f:46ab $28 $01
+    jr   Z, .sign_extended                             ;; 0f:46ab $28 $01
     dec  D                                             ;; 0f:46ad $15
-.jr_0f_46ae:
-    ld   HL, wCB24                                     ;; 0f:46ae $21 $24 $cb
+.sign_extended:
+    ld   HL, wMusicCurrentPitchChannel1                ;; 0f:46ae $21 $24 $cb
     ld   A, [HL+]                                      ;; 0f:46b1 $2a
     ld   H, [HL]                                       ;; 0f:46b2 $66
     ld   L, A                                          ;; 0f:46b3 $6f
@@ -1090,28 +1090,28 @@ musicVibratoAndVolumeChannel1:
     ld   A, H                                          ;; 0f:46b8 $7c
     and  A, $07                                        ;; 0f:46b9 $e6 $07
     ldh  [rNR14], A                                    ;; 0f:46bb $e0 $14
-.jr_0f_46bd:
-    ld   HL, wCB2B                                     ;; 0f:46bd $21 $2b $cb
+.volume_envelope:
+    ld   HL, wMusicVolumeDurationChannel1              ;; 0f:46bd $21 $2b $cb
     ld   A, [HL]                                       ;; 0f:46c0 $7e
     inc  A                                             ;; 0f:46c1 $3c
     ret  Z                                             ;; 0f:46c2 $c8
     dec  [HL]                                          ;; 0f:46c3 $35
     ret  NZ                                            ;; 0f:46c4 $c0
     call call_0f_474b                                  ;; 0f:46c5 $cd $4b $47
-    ld   [wCB2B], A                                    ;; 0f:46c8 $ea $2b $cb
+    ld   [wMusicVolumeDurationChannel1], A             ;; 0f:46c8 $ea $2b $cb
     ld   A, [HL+]                                      ;; 0f:46cb $2a
     ldh  [rNR12], A                                    ;; 0f:46cc $e0 $12
-    ld   A, [wCB25]                                    ;; 0f:46ce $fa $25 $cb
+    ld   A, [wMusicCurrentPitchChannel1.high]          ;; 0f:46ce $fa $25 $cb
     ldh  [rNR14], A                                    ;; 0f:46d1 $e0 $14
     ld   C, H                                          ;; 0f:46d3 $4c
     ld   A, L                                          ;; 0f:46d4 $7d
-    ld   HL, wCB2E                                     ;; 0f:46d5 $21 $2e $cb
+    ld   HL, wMusicVolumeEnvelopePointerChannel1       ;; 0f:46d5 $21 $2e $cb
     ld   [HL+], A                                      ;; 0f:46d8 $22
     ld   [HL], C                                       ;; 0f:46d9 $71
     ret                                                ;; 0f:46da $c9
 
 musicVibratoAndVolumeChannel3:
-    ld   HL, wCB35                                     ;; 0f:46db $21 $35 $cb
+    ld   HL, wMusicEndedOnChannel3                     ;; 0f:46db $21 $35 $cb
     ld   A, [HL+]                                      ;; 0f:46de $2a
     or   A, A                                          ;; 0f:46df $b7
     jr   NZ, .jr_0f_4718                               ;; 0f:46e0 $20 $36
@@ -1122,24 +1122,24 @@ musicVibratoAndVolumeChannel3:
     ld   A, [HL]                                       ;; 0f:46e8 $7e
     cp   A, $0d                                        ;; 0f:46e9 $fe $0d
     jr   Z, .jr_0f_4718                                ;; 0f:46eb $28 $2b
-    ld   HL, wCB3E                                     ;; 0f:46ed $21 $3e $cb
+    ld   HL, wMusicVibratoDurationChannel3             ;; 0f:46ed $21 $3e $cb
     dec  [HL]                                          ;; 0f:46f0 $35
     jr   NZ, .jr_0f_4718                               ;; 0f:46f1 $20 $25
     call call_0f_474b                                  ;; 0f:46f3 $cd $4b $47
-    ld   [wCB3E], A                                    ;; 0f:46f6 $ea $3e $cb
+    ld   [wMusicVibratoDurationChannel3], A            ;; 0f:46f6 $ea $3e $cb
     ld   A, [HL+]                                      ;; 0f:46f9 $2a
     ld   E, A                                          ;; 0f:46fa $5f
     ld   D, $00                                        ;; 0f:46fb $16 $00
     ld   C, H                                          ;; 0f:46fd $4c
     ld   A, L                                          ;; 0f:46fe $7d
-    ld   HL, wCB41                                     ;; 0f:46ff $21 $41 $cb
+    ld   HL, wMusicVibratoEnvelopePointerChannel3      ;; 0f:46ff $21 $41 $cb
     ld   [HL+], A                                      ;; 0f:4702 $22
     ld   [HL], C                                       ;; 0f:4703 $71
     bit  7, E                                          ;; 0f:4704 $cb $7b
-    jr   Z, .jr_0f_4709                                ;; 0f:4706 $28 $01
+    jr   Z, .sign_extended                             ;; 0f:4706 $28 $01
     dec  D                                             ;; 0f:4708 $15
-.jr_0f_4709:
-    ld   HL, wCB3C                                     ;; 0f:4709 $21 $3c $cb
+.sign_extended:
+    ld   HL, wMusicCurrentPitchChannel3                ;; 0f:4709 $21 $3c $cb
     ld   A, [HL+]                                      ;; 0f:470c $2a
     ld   H, [HL]                                       ;; 0f:470d $66
     ld   L, A                                          ;; 0f:470e $6f
@@ -1162,7 +1162,7 @@ musicVibratoAndVolumeChannel3:
     ld   A, [HL]                                       ;; 0f:4724 $7e
     cp   A, $0d                                        ;; 0f:4725 $fe $0d
     ret  Z                                             ;; 0f:4727 $c8
-    ld   HL, wCB5B                                     ;; 0f:4728 $21 $5b $cb
+    ld   HL, wMusicVolumeDurationChannel4              ;; 0f:4728 $21 $5b $cb
     ld   A, [HL]                                       ;; 0f:472b $7e
     inc  A                                             ;; 0f:472c $3c
     ret  Z                                             ;; 0f:472d $c8
@@ -1172,15 +1172,15 @@ musicVibratoAndVolumeChannel3:
     and  A, A                                          ;; 0f:4733 $a7
     ret  NZ                                            ;; 0f:4734 $c0
     call call_0f_474b                                  ;; 0f:4735 $cd $4b $47
-    ld   [wCB5B], A                                    ;; 0f:4738 $ea $5b $cb
+    ld   [wMusicVolumeDurationChannel4], A             ;; 0f:4738 $ea $5b $cb
     ld   A, [HL+]                                      ;; 0f:473b $2a
     ldh  [rNR42], A                                    ;; 0f:473c $e0 $21
     ld   A, $80                                        ;; 0f:473e $3e $80
     ldh  [rNR44], A                                    ;; 0f:4740 $e0 $23
     ld   A, L                                          ;; 0f:4742 $7d
-    ld   [wCB5E], A                                    ;; 0f:4743 $ea $5e $cb
+    ld   [wMusicVolumeEnvelopePointerChannel4], A      ;; 0f:4743 $ea $5e $cb
     ld   A, H                                          ;; 0f:4746 $7c
-    ld   [wCB5F], A                                    ;; 0f:4747 $ea $5f $cb
+    ld   [wMusicVolumeEnvelopePointerChannel4.high], A ;; 0f:4747 $ea $5f $cb
     ret                                                ;; 0f:474a $c9
 
 call_0f_474b:
@@ -1204,36 +1204,36 @@ soundEffectPlay:
     add  A, A                                          ;; 0f:475a $87
     ld   E, A                                          ;; 0f:475b $5f
     ld   D, $00                                        ;; 0f:475c $16 $00
-    ld   HL, data_0f_66f2                              ;; 0f:475e $21 $f2 $66
+    ld   HL, soundEffectDataChannel1                   ;; 0f:475e $21 $f2 $66
     add  HL, DE                                        ;; 0f:4761 $19
     push DE                                            ;; 0f:4762 $d5
     ld   A, [HL+]                                      ;; 0f:4763 $2a
     ld   C, [HL]                                       ;; 0f:4764 $4e
     add  A, C                                          ;; 0f:4765 $81
-    jr   Z, .jr_0f_4775                                ;; 0f:4766 $28 $0d
+    jr   Z, .channel4                                  ;; 0f:4766 $28 $0d
     sub  A, C                                          ;; 0f:4768 $91
-    ld   DE, wCB62                                     ;; 0f:4769 $11 $62 $cb
+    ld   DE, wSoundEffectInstructionPointerChannel1    ;; 0f:4769 $11 $62 $cb
     ld   [DE], A                                       ;; 0f:476c $12
     inc  E                                             ;; 0f:476d $1c
     ld   A, C                                          ;; 0f:476e $79
     ld   [DE], A                                       ;; 0f:476f $12
     ld   A, $01                                        ;; 0f:4770 $3e $01
     ld   [wSoundEffectDurationChannel1], A             ;; 0f:4772 $ea $1c $cb
-.jr_0f_4775:
+.channel4:
     pop  DE                                            ;; 0f:4775 $d1
-    ld   HL, data_0f_6774                              ;; 0f:4776 $21 $74 $67
+    ld   HL, soundEffectDataChannel4                   ;; 0f:4776 $21 $74 $67
     add  HL, DE                                        ;; 0f:4779 $19
     ld   A, [HL+]                                      ;; 0f:477a $2a
     ld   C, [HL]                                       ;; 0f:477b $4e
     add  A, C                                          ;; 0f:477c $81
-    jr   Z, .jr_0f_478a                                ;; 0f:477d $28 $0b
+    jr   Z, .finished                                  ;; 0f:477d $28 $0b
     sub  A, C                                          ;; 0f:477f $91
-    ld   HL, wCB64                                     ;; 0f:4780 $21 $64 $cb
+    ld   HL, wSoundEffectInstructionPointerChannel4    ;; 0f:4780 $21 $64 $cb
     ld   [HL+], A                                      ;; 0f:4783 $22
     ld   [HL], C                                       ;; 0f:4784 $71
     ld   A, $01                                        ;; 0f:4785 $3e $01
     ld   [wSoundEffectDurationChannel4], A             ;; 0f:4787 $ea $4c $cb
-.jr_0f_478a:
+.finished:
     xor  A, A                                          ;; 0f:478a $af
     ldh  [hSFX], A                                     ;; 0f:478b $e0 $bc
     ret                                                ;; 0f:478d $c9
@@ -1247,11 +1247,11 @@ soundEffectPlayStep:
     dec  A                                             ;; 0f:4798 $3d
     ld   [DE], A                                       ;; 0f:4799 $12
     jr   NZ, .channel4                                 ;; 0f:479a $20 $44
-    ld   HL, wCB62                                     ;; 0f:479c $21 $62 $cb
+    ld   HL, wSoundEffectInstructionPointerChannel1    ;; 0f:479c $21 $62 $cb
     ld   A, [HL+]                                      ;; 0f:479f $2a
     ld   H, [HL]                                       ;; 0f:47a0 $66
     ld   L, A                                          ;; 0f:47a1 $6f
-.jr_0f_47a2:
+.nextInstructionChannel1:
     ld   A, [HL+]                                      ;; 0f:47a2 $2a
     ld   [DE], A                                       ;; 0f:47a3 $12
     or   A, A                                          ;; 0f:47a4 $b7
@@ -1268,16 +1268,16 @@ soundEffectPlayStep:
     ldh  A, [hSoundEffectLoopCounterChannel1]          ;; 0f:47b4 $f0 $c4
     dec  A                                             ;; 0f:47b6 $3d
     ldh  [hSoundEffectLoopCounterChannel1], A          ;; 0f:47b7 $e0 $c4
-    jr   Z, .jr_0f_47a2                                ;; 0f:47b9 $28 $e7
+    jr   Z, .nextInstructionChannel1                   ;; 0f:47b9 $28 $e7
     ld   L, C                                          ;; 0f:47bb $69
     ld   H, B                                          ;; 0f:47bc $60
-    jr   .jr_0f_47a2                                   ;; 0f:47bd $18 $e3
+    jr   .nextInstructionChannel1                      ;; 0f:47bd $18 $e3
 .jr_0f_47bf:
     cp   A, $f0                                        ;; 0f:47bf $fe $f0
     jr   C, .jr_0f_47c9                                ;; 0f:47c1 $38 $06
     and  A, $0f                                        ;; 0f:47c3 $e6 $0f
     ldh  [hSoundEffectLoopCounterChannel1], A          ;; 0f:47c5 $e0 $c4
-    jr   .jr_0f_47a2                                   ;; 0f:47c7 $18 $d9
+    jr   .nextInstructionChannel1                      ;; 0f:47c7 $18 $d9
 .jr_0f_47c9:
     ld   C, $10                                        ;; 0f:47c9 $0e $10
     ld   B, $05                                        ;; 0f:47cb $06 $05
@@ -1292,7 +1292,7 @@ soundEffectPlayStep:
     ldh  [rNR51], A                                    ;; 0f:47d7 $e0 $25
     ld   C, H                                          ;; 0f:47d9 $4c
     ld   A, L                                          ;; 0f:47da $7d
-    ld   HL, wCB62                                     ;; 0f:47db $21 $62 $cb
+    ld   HL, wSoundEffectInstructionPointerChannel1    ;; 0f:47db $21 $62 $cb
     ld   [HL+], A                                      ;; 0f:47de $22
     ld   [HL], C                                       ;; 0f:47df $71
 .channel4:
@@ -1304,11 +1304,11 @@ soundEffectPlayStep:
     dec  A                                             ;; 0f:47e9 $3d
     ld   [DE], A                                       ;; 0f:47ea $12
     ret  NZ                                            ;; 0f:47eb $c0
-    ld   HL, wCB64                                     ;; 0f:47ec $21 $64 $cb
+    ld   HL, wSoundEffectInstructionPointerChannel4    ;; 0f:47ec $21 $64 $cb
     ld   A, [HL+]                                      ;; 0f:47ef $2a
     ld   H, [HL]                                       ;; 0f:47f0 $66
     ld   L, A                                          ;; 0f:47f1 $6f
-.jr_0f_47f2:
+.nextInstructionChannel4:
     ld   A, [HL+]                                      ;; 0f:47f2 $2a
     ld   [DE], A                                       ;; 0f:47f3 $12
     or   A, A                                          ;; 0f:47f4 $b7
@@ -1324,16 +1324,16 @@ soundEffectPlayStep:
     ldh  A, [hSoundEffectLoopCounterChannel4]          ;; 0f:4802 $f0 $c5
     dec  A                                             ;; 0f:4804 $3d
     ldh  [hSoundEffectLoopCounterChannel4], A          ;; 0f:4805 $e0 $c5
-    jr   Z, .jr_0f_47f2                                ;; 0f:4807 $28 $e9
+    jr   Z, .nextInstructionChannel4                   ;; 0f:4807 $28 $e9
     ld   L, C                                          ;; 0f:4809 $69
     ld   H, B                                          ;; 0f:480a $60
-    jr   .jr_0f_47f2                                   ;; 0f:480b $18 $e5
+    jr   .nextInstructionChannel4                      ;; 0f:480b $18 $e5
 .jr_0f_480d:
     cp   A, $f0                                        ;; 0f:480d $fe $f0
     jr   C, .jr_0f_4817                                ;; 0f:480f $38 $06
     and  A, $0f                                        ;; 0f:4811 $e6 $0f
     ldh  [hSoundEffectLoopCounterChannel4], A          ;; 0f:4813 $e0 $c5
-    jr   .jr_0f_47f2                                   ;; 0f:4815 $18 $db
+    jr   .nextInstructionChannel4                      ;; 0f:4815 $18 $db
 .jr_0f_4817:
     ld   A, [HL+]                                      ;; 0f:4817 $2a
     ldh  [rNR42], A                                    ;; 0f:4818 $e0 $21
@@ -1346,7 +1346,7 @@ soundEffectPlayStep:
     ldh  [rNR51], A                                    ;; 0f:4825 $e0 $25
     ld   C, H                                          ;; 0f:4827 $4c
     ld   A, L                                          ;; 0f:4828 $7d
-    ld   HL, wCB64                                     ;; 0f:4829 $21 $64 $cb
+    ld   HL, wSoundEffectInstructionPointerChannel4    ;; 0f:4829 $21 $64 $cb
     ld   [HL+], A                                      ;; 0f:482c $22
     ld   [HL], C                                       ;; 0f:482d $71
     ret                                                ;; 0f:482e $c9
@@ -2859,160 +2859,479 @@ data_0f_65c9:
     db   $dd, $00, $00, $00, $00, $00, $00, $00        ;; 0f:66e9 ........
     db   $00                                           ;; 0f:66f1 .
 
-data_0f_66f2:
-    db   $fc, $67, $00, $00, $17, $68, $25, $68        ;; 0f:66f2 ..??..??
-    db   $36, $68, $f6, $67, $00, $00, $5c, $68        ;; 0f:66fa ????????
-    db   $67, $68, $75, $68, $86, $68, $9c, $68        ;; 0f:6702 ????????
-    db   $00, $00, $b7, $68, $b1, $68, $d2, $68        ;; 0f:670a ........
-    db   $dd, $68, $00, $00, $e8, $68, $00, $00        ;; 0f:6712 ????????
-    db   $00, $00, $1a, $69, $2e, $69, $35, $69        ;; 0f:671a ??....??
-    db   $3c, $69, $4b, $69, $64, $69, $af, $69        ;; 0f:6722 ????????
-    db   $96, $69, $c4, $69, $00, $00, $cf, $69        ;; 0f:672a ????????
-    db   $d6, $69, $e1, $69, $00, $00, $fe, $69        ;; 0f:6732 ??..????
-    db   $0b, $6a, $1f, $6a, $2a, $6a, $49, $6a        ;; 0f:673a ??..????
-    db   $00, $00, $00, $00, $72, $6a, $8f, $6a        ;; 0f:6742 ..??????
-    db   $9a, $6a, $b1, $6a, $c7, $6a, $cd, $6a        ;; 0f:674a ????....
-    db   $e7, $6a, $00, $00, $03, $6b, $00, $00        ;; 0f:6752 ????????
-    db   $19, $6b, $00, $00, $0e, $6b, $00, $00        ;; 0f:675a ??..????
-    db   $32, $6b, $39, $6b, $46, $6b, $57, $6b        ;; 0f:6762 ??......
-    db   $70, $6b, $89, $6b, $90, $6b, $00, $00        ;; 0f:676a ....????
-    db   $00, $00                                      ;; 0f:6772 ??
+;@data format=p amount=65
+soundEffectDataChannel1:
+    dw   data_0f_67fc                                  ;; 0f:66f2 .. $00
+    dw   $0000                                         ;; 0f:66f4 ?? $01
+    dw   data_0f_6817                                  ;; 0f:66f6 .. $02
+    dw   data_0f_6825                                  ;; 0f:66f8 ?? $03
+    dw   data_0f_6836                                  ;; 0f:66fa ?? $04
+    dw   data_0f_67f6                                  ;; 0f:66fc ?? $05
+    dw   $0000                                         ;; 0f:66fe ?? $06
+    dw   data_0f_685c                                  ;; 0f:6700 ?? $07
+    dw   data_0f_6867                                  ;; 0f:6702 ?? $08
+    dw   data_0f_6875                                  ;; 0f:6704 ?? $09
+    dw   data_0f_6886                                  ;; 0f:6706 ?? $0a
+    dw   data_0f_689c                                  ;; 0f:6708 ?? $0b
+    dw   $0000                                         ;; 0f:670a .. $0c
+    dw   data_0f_68b7                                  ;; 0f:670c .. $0d
+    dw   data_0f_68b1                                  ;; 0f:670e .. $0e
+    dw   data_0f_68d2                                  ;; 0f:6710 .. $0f
+    dw   data_0f_68dd                                  ;; 0f:6712 ?? $10
+    dw   $0000                                         ;; 0f:6714 ?? $11
+    dw   data_0f_68e8                                  ;; 0f:6716 ?? $12
+    dw   $0000                                         ;; 0f:6718 ?? $13
+    dw   $0000                                         ;; 0f:671a ?? $14
+    dw   data_0f_691a                                  ;; 0f:671c .. $15
+    dw   data_0f_692e                                  ;; 0f:671e .. $16
+    dw   data_0f_6935                                  ;; 0f:6720 ?? $17
+    dw   data_0f_693c                                  ;; 0f:6722 ?? $18
+    dw   data_0f_694b                                  ;; 0f:6724 ?? $19
+    dw   data_0f_6964                                  ;; 0f:6726 ?? $1a
+    dw   data_0f_69af                                  ;; 0f:6728 ?? $1b
+    dw   data_0f_6996                                  ;; 0f:672a ?? $1c
+    dw   data_0f_69c4                                  ;; 0f:672c ?? $1d
+    dw   $0000                                         ;; 0f:672e ?? $1e
+    dw   data_0f_69cf                                  ;; 0f:6730 ?? $1f
+    dw   data_0f_69d6                                  ;; 0f:6732 ?? $20
+    dw   data_0f_69e1                                  ;; 0f:6734 .. $21
+    dw   $0000                                         ;; 0f:6736 ?? $22
+    dw   data_0f_69fe                                  ;; 0f:6738 ?? $23
+    dw   data_0f_6a0b                                  ;; 0f:673a ?? $24
+    dw   data_0f_6a1f                                  ;; 0f:673c .. $25
+    dw   data_0f_6a2a                                  ;; 0f:673e ?? $26
+    dw   data_0f_6a49                                  ;; 0f:6740 ?? $27
+    dw   $0000                                         ;; 0f:6742 .. $28
+    dw   $0000                                         ;; 0f:6744 ?? $29
+    dw   data_0f_6a72                                  ;; 0f:6746 ?? $2a
+    dw   data_0f_6a8f                                  ;; 0f:6748 ?? $2b
+    dw   data_0f_6a9a                                  ;; 0f:674a ?? $2c
+    dw   data_0f_6ab1                                  ;; 0f:674c ?? $2d
+    dw   data_0f_6ac7                                  ;; 0f:674e .. $2e
+    dw   data_0f_6acd                                  ;; 0f:6750 .. $2f
+    dw   data_0f_6ae7                                  ;; 0f:6752 ?? $30
+    dw   $0000                                         ;; 0f:6754 ?? $31
+    dw   data_0f_6b03                                  ;; 0f:6756 ?? $32
+    dw   $0000                                         ;; 0f:6758 ?? $33
+    dw   data_0f_6b19                                  ;; 0f:675a ?? $34
+    dw   $0000                                         ;; 0f:675c .. $35
+    dw   data_0f_6b0e                                  ;; 0f:675e ?? $36
+    dw   $0000                                         ;; 0f:6760 ?? $37
+    dw   data_0f_6b32                                  ;; 0f:6762 ?? $38
+    dw   data_0f_6b39                                  ;; 0f:6764 .. $39
+    dw   data_0f_6b46                                  ;; 0f:6766 .. $3a
+    dw   data_0f_6b57                                  ;; 0f:6768 .. $3b
+    dw   data_0f_6b70                                  ;; 0f:676a .. $3c
+    dw   data_0f_6b89                                  ;; 0f:676c .. $3d
+    dw   data_0f_6b90                                  ;; 0f:676e ?? $3e
+    dw   $0000                                         ;; 0f:6770 ?? $3f
+    dw   $0000                                         ;; 0f:6772 ?? $40
 
-data_0f_6774:
-    db   $09, $68, $10, $68, $1e, $68, $2c, $68        ;; 0f:6774 ..??..??
-    db   $4b, $68, $03, $68, $52, $68, $63, $68        ;; 0f:677c ????????
-    db   $6e, $68, $82, $68, $91, $68, $a3, $68        ;; 0f:6784 ????????
-    db   $aa, $68, $c8, $68, $c2, $68, $d9, $68        ;; 0f:678c ........
-    db   $00, $00, $e4, $68, $f5, $68, $f9, $68        ;; 0f:6794 ????????
-    db   $03, $69, $21, $69, $00, $00, $00, $00        ;; 0f:679c ??....??
-    db   $47, $69, $00, $00, $89, $69, $b6, $69        ;; 0f:67a4 ????????
-    db   $00, $00, $cb, $69, $ba, $69, $00, $00        ;; 0f:67ac ????????
-    db   $00, $00, $ec, $69, $f7, $69, $00, $00        ;; 0f:67b4 ??..????
-    db   $18, $6a, $26, $6a, $00, $00, $00, $00        ;; 0f:67bc ??..????
-    db   $56, $6a, $67, $6a, $00, $00, $00, $00        ;; 0f:67c4 ..??????
-    db   $a7, $6a, $bc, $6a, $d4, $6a, $dd, $6a        ;; 0f:67cc ????....
-    db   $00, $00, $f8, $6a, $0a, $6b, $15, $6b        ;; 0f:67d4 ????????
-    db   $00, $00, $20, $6b, $15, $6b, $2b, $6b        ;; 0f:67dc ??..????
-    db   $00, $00, $00, $00, $00, $00, $00, $00        ;; 0f:67e4 ??......
-    db   $00, $00, $97, $6b, $00, $00, $97, $6b        ;; 0f:67ec ....????
-    db   $a4, $6b, $0b, $14, $00, $f1, $70, $82        ;; 0f:67f4 ????????
-    db   $08, $14, $c0, $f0, $70, $82, $00, $04        ;; 0f:67fc .......?
-    db   $f1, $42, $07, $f1, $31, $04, $f0, $61        ;; 0f:6804 ?????...
-    db   $05, $f3, $41, $00, $03, $f0, $31, $05        ;; 0f:680c ....????
-    db   $f1, $42, $00, $09, $14, $40, $f0, $c0        ;; 0f:6814 ???.....
-    db   $83, $00, $08, $1a, $35, $05, $f1, $25        ;; 0f:681c ........
-    db   $00, $08, $1c, $c0, $f1, $00, $83, $00        ;; 0f:6824 .???????
+;@data format=p amount=65
+soundEffectDataChannel4:
+    dw   data_0f_6809                                  ;; 0f:6774 .. $00
+    dw   data_0f_6810                                  ;; 0f:6776 ?? $01
+    dw   data_0f_681e                                  ;; 0f:6778 .. $02
+    dw   data_0f_682c                                  ;; 0f:677a ?? $03
+    dw   data_0f_684b                                  ;; 0f:677c ?? $04
+    dw   data_0f_6803                                  ;; 0f:677e ?? $05
+    dw   data_0f_6852                                  ;; 0f:6780 ?? $06
+    dw   data_0f_6863                                  ;; 0f:6782 ?? $07
+    dw   data_0f_686e                                  ;; 0f:6784 ?? $08
+    dw   data_0f_6882                                  ;; 0f:6786 ?? $09
+    dw   data_0f_6891                                  ;; 0f:6788 ?? $0a
+    dw   data_0f_68a3                                  ;; 0f:678a ?? $0b
+    dw   data_0f_68aa                                  ;; 0f:678c .. $0c
+    dw   data_0f_68c8                                  ;; 0f:678e .. $0d
+    dw   data_0f_68c2                                  ;; 0f:6790 .. $0e
+    dw   data_0f_68d9                                  ;; 0f:6792 .. $0f
+    dw   $0000                                         ;; 0f:6794 ?? $10
+    dw   data_0f_68e4                                  ;; 0f:6796 ?? $11
+    dw   data_0f_68f5                                  ;; 0f:6798 ?? $12
+    dw   data_0f_68f9                                  ;; 0f:679a ?? $13
+    dw   data_0f_6903                                  ;; 0f:679c ?? $14
+    dw   data_0f_6921                                  ;; 0f:679e .. $15
+    dw   $0000                                         ;; 0f:67a0 .. $16
+    dw   $0000                                         ;; 0f:67a2 ?? $17
+    dw   data_0f_6947                                  ;; 0f:67a4 ?? $18
+    dw   $0000                                         ;; 0f:67a6 ?? $19
+    dw   data_0f_6989                                  ;; 0f:67a8 ?? $1a
+    dw   data_0f_69b6                                  ;; 0f:67aa ?? $1b
+    dw   $0000                                         ;; 0f:67ac ?? $1c
+    dw   data_0f_69cb                                  ;; 0f:67ae ?? $1d
+    dw   data_0f_69ba                                  ;; 0f:67b0 ?? $1e
+    dw   $0000                                         ;; 0f:67b2 ?? $1f
+    dw   $0000                                         ;; 0f:67b4 ?? $20
+    dw   data_0f_69ec                                  ;; 0f:67b6 .. $21
+    dw   data_0f_69f7                                  ;; 0f:67b8 ?? $22
+    dw   $0000                                         ;; 0f:67ba ?? $23
+    dw   data_0f_6a18                                  ;; 0f:67bc ?? $24
+    dw   data_0f_6a26                                  ;; 0f:67be .. $25
+    dw   $0000                                         ;; 0f:67c0 ?? $26
+    dw   $0000                                         ;; 0f:67c2 ?? $27
+    dw   data_0f_6a56                                  ;; 0f:67c4 .. $28
+    dw   data_0f_6a67                                  ;; 0f:67c6 ?? $29
+    dw   $0000                                         ;; 0f:67c8 ?? $2a
+    dw   $0000                                         ;; 0f:67ca ?? $2b
+    dw   data_0f_6aa7                                  ;; 0f:67cc ?? $2c
+    dw   data_0f_6abc                                  ;; 0f:67ce ?? $2d
+    dw   data_0f_6ad4                                  ;; 0f:67d0 .. $2e
+    dw   data_0f_6add                                  ;; 0f:67d2 .. $2f
+    dw   $0000                                         ;; 0f:67d4 ?? $30
+    dw   data_0f_6af8                                  ;; 0f:67d6 ?? $31
+    dw   data_0f_6b0a                                  ;; 0f:67d8 ?? $32
+    dw   data_0f_6b15                                  ;; 0f:67da ?? $33
+    dw   $0000                                         ;; 0f:67dc ?? $34
+    dw   data_0f_6b20                                  ;; 0f:67de .. $35
+    dw   data_0f_6b15                                  ;; 0f:67e0 ?? $36
+    dw   data_0f_6b2b                                  ;; 0f:67e2 ?? $37
+    dw   $0000                                         ;; 0f:67e4 ?? $38
+    dw   $0000                                         ;; 0f:67e6 .. $39
+    dw   $0000                                         ;; 0f:67e8 .. $3a
+    dw   $0000                                         ;; 0f:67ea .. $3b
+    dw   $0000                                         ;; 0f:67ec .. $3c
+    dw   data_0f_6b97                                  ;; 0f:67ee .. $3d
+    dw   $0000                                         ;; 0f:67f0 ?? $3e
+    dw   data_0f_6b97                                  ;; 0f:67f2 ?? $3f
+    dw   data_0f_6ba4                                  ;; 0f:67f4 ?? $40
+
+data_0f_67f6:
+    db   $0b, $14, $00, $f1, $70, $82                  ;; 0f:67f6 ??????
+
+data_0f_67fc:
+    db   $08, $14, $c0, $f0, $70, $82, $00             ;; 0f:67fc .......
+
+data_0f_6803:
+    db   $04, $f1, $42, $07, $f1, $31                  ;; 0f:6803 ??????
+
+data_0f_6809:
+    db   $04, $f0, $61, $05, $f3, $41, $00             ;; 0f:6809 .......
+
+data_0f_6810:
+    db   $03, $f0, $31, $05, $f1, $42, $00             ;; 0f:6810 ???????
+
+data_0f_6817:
+    db   $09, $14, $40, $f0, $c0, $83, $00             ;; 0f:6817 .......
+
+data_0f_681e:
+    db   $08, $1a, $35, $05, $f1, $25, $00             ;; 0f:681e .......
+
+data_0f_6825:
+    db   $08, $1c, $c0, $f1, $00, $83, $00             ;; 0f:6825 ???????
+
+data_0f_682c:
     db   $02, $c0, $33, $06, $f1, $53, $04, $d1        ;; 0f:682c ????????
-    db   $32, $00, $f2, $06, $14, $40, $a9, $80        ;; 0f:6834 ????????
-    db   $84, $ef, $37, $68, $f2, $06, $14, $40        ;; 0f:683c ????????
-    db   $59, $80, $84, $ef, $41, $68, $00, $09        ;; 0f:6844 ????????
-    db   $69, $31, $09, $d1, $31, $00, $02, $f1        ;; 0f:684c ????????
-    db   $60, $01, $00, $77, $08, $f1, $60, $00        ;; 0f:6854 ????????
-    db   $0a, $14, $40, $a9, $80, $84, $00, $14        ;; 0f:685c ????????
-    db   $f2, $50, $00, $23, $46, $00, $e0, $10        ;; 0f:6864 ????????
-    db   $82, $00, $03, $f2, $31, $20, $6a, $3b        ;; 0f:686c ????????
-    db   $00, $05, $1a, $00, $f1, $20, $81, $0a        ;; 0f:6874 ????????
-    db   $00, $c0, $d1, $f0, $87, $00, $14, $f2        ;; 0f:687c ????????
-    db   $23, $00, $f7, $03, $1c, $80, $f0, $e0        ;; 0f:6884 ????????
-    db   $87, $ef, $87, $68, $00, $f7, $02, $f1        ;; 0f:688c ????????
-    db   $3c, $01, $00, $4f, $ef, $92, $68, $00        ;; 0f:6894 ????????
-    db   $19, $08, $c0, $e0, $93, $87, $00, $05        ;; 0f:689c ????????
-    db   $f0, $27, $14, $f0, $17, $00, $04, $f0        ;; 0f:68a4 ??????..
-    db   $71, $28, $39, $71, $00, $1e, $2f, $80        ;; 0f:68ac ........
-    db   $4b, $ff, $87, $f2, $04, $1b, $c0, $f0        ;; 0f:68b4 ........
-    db   $00, $87, $ef, $b8, $68, $00, $14, $09        ;; 0f:68bc ........
-    db   $40, $0a, $f0, $41, $03, $f0, $61, $01        ;; 0f:68c4 ........
-    db   $00, $61, $08, $f2, $61, $00, $0c, $1b        ;; 0f:68cc ........
-    db   $c0, $f2, $00, $87, $00, $0c, $f1, $70        ;; 0f:68d4 ........
-    db   $00, $08, $1f, $40, $f1, $c0, $87, $00        ;; 0f:68dc .???????
-    db   $1c, $09, $32, $00, $32, $1f, $00, $f0        ;; 0f:68e4 ????????
-    db   $ff, $87, $32, $17, $00, $f0, $80, $83        ;; 0f:68ec ????????
-    db   $00, $64, $f0, $5b, $00, $05, $89, $40        ;; 0f:68f4 ????????
-    db   $06, $f0, $71, $14, $f2, $70, $00, $f2        ;; 0f:68fc ????????
-    db   $0c, $f1, $3e, $06, $f1, $3e, $06, $f1        ;; 0f:6904 ????????
-    db   $3e, $06, $f1, $2e, $0c, $f1, $3e, $06        ;; 0f:690c ????????
-    db   $f1, $3e, $ef, $04, $69, $00, $4b, $1c        ;; 0f:6914 ??????..
-    db   $00, $f0, $ff, $87, $00, $03, $f1, $30        ;; 0f:691c ....?...
-    db   $0a, $f0, $a8, $19, $f0, $47, $28, $f0        ;; 0f:6924 ......??
-    db   $67, $00, $11, $26, $80, $f0, $00, $86        ;; 0f:692c ??......
-    db   $00, $0f, $46, $40, $99, $10, $87, $00        ;; 0f:6934 .???????
+    db   $32, $00                                      ;; 0f:6834 ??
+
+data_0f_6836:
+    db   $f2, $06, $14, $40, $a9, $80, $84, $ef        ;; 0f:6836 ????????
+    db   $37, $68, $f2, $06, $14, $40, $59, $80        ;; 0f:683e ????????
+    db   $84, $ef, $41, $68, $00                       ;; 0f:6846 ?????
+
+data_0f_684b:
+    db   $09, $69, $31, $09, $d1, $31, $00             ;; 0f:684b ???????
+
+data_0f_6852:
+    db   $02, $f1, $60, $01, $00, $77, $08, $f1        ;; 0f:6852 ????????
+    db   $60, $00                                      ;; 0f:685a ??
+
+data_0f_685c:
+    db   $0a, $14, $40, $a9, $80, $84, $00             ;; 0f:685c ???????
+
+data_0f_6863:
+    db   $14, $f2, $50, $00                            ;; 0f:6863 ????
+
+data_0f_6867:
+    db   $23, $46, $00, $e0, $10, $82, $00             ;; 0f:6867 ???????
+
+data_0f_686e:
+    db   $03, $f2, $31, $20, $6a, $3b, $00             ;; 0f:686e ???????
+
+data_0f_6875:
+    db   $05, $1a, $00, $f1, $20, $81, $0a, $00        ;; 0f:6875 ????????
+    db   $c0, $d1, $f0, $87, $00                       ;; 0f:687d ?????
+
+data_0f_6882:
+    db   $14, $f2, $23, $00                            ;; 0f:6882 ????
+
+data_0f_6886:
+    db   $f7, $03, $1c, $80, $f0, $e0, $87, $ef        ;; 0f:6886 ????????
+    db   $87, $68, $00                                 ;; 0f:688e ???
+
+data_0f_6891:
+    db   $f7, $02, $f1, $3c, $01, $00, $4f, $ef        ;; 0f:6891 ????????
+    db   $92, $68, $00                                 ;; 0f:6899 ???
+
+data_0f_689c:
+    db   $19, $08, $c0, $e0, $93, $87, $00             ;; 0f:689c ???????
+
+data_0f_68a3:
+    db   $05, $f0, $27, $14, $f0, $17, $00             ;; 0f:68a3 ???????
+
+data_0f_68aa:
+    db   $04, $f0, $71, $28, $39, $71, $00             ;; 0f:68aa .......
+
+data_0f_68b1:
+    db   $1e, $2f, $80, $4b, $ff, $87                  ;; 0f:68b1 ......
+
+data_0f_68b7:
+    db   $f2, $04, $1b, $c0, $f0, $00, $87, $ef        ;; 0f:68b7 ........
+    db   $b8, $68, $00                                 ;; 0f:68bf ...
+
+data_0f_68c2:
+    db   $14, $09, $40, $0a, $f0, $41                  ;; 0f:68c2 ......
+
+data_0f_68c8:
+    db   $03, $f0, $61, $01, $00, $61, $08, $f2        ;; 0f:68c8 ........
+    db   $61, $00                                      ;; 0f:68d0 ..
+
+data_0f_68d2:
+    db   $0c, $1b, $c0, $f2, $00, $87, $00             ;; 0f:68d2 .......
+
+data_0f_68d9:
+    db   $0c, $f1, $70, $00                            ;; 0f:68d9 ....
+
+data_0f_68dd:
+    db   $08, $1f, $40, $f1, $c0, $87, $00             ;; 0f:68dd ???????
+
+data_0f_68e4:
+    db   $1c, $09, $32, $00                            ;; 0f:68e4 ????
+
+data_0f_68e8:
+    db   $32, $1f, $00, $f0, $ff, $87, $32, $17        ;; 0f:68e8 ????????
+    db   $00, $f0, $80, $83, $00                       ;; 0f:68f0 ?????
+
+data_0f_68f5:
+    db   $64, $f0, $5b, $00                            ;; 0f:68f5 ????
+
+data_0f_68f9:
+    db   $05, $89, $40, $06, $f0, $71, $14, $f2        ;; 0f:68f9 ????????
+    db   $70, $00                                      ;; 0f:6901 ??
+
+data_0f_6903:
+    db   $f2, $0c, $f1, $3e, $06, $f1, $3e, $06        ;; 0f:6903 ????????
+    db   $f1, $3e, $06, $f1, $2e, $0c, $f1, $3e        ;; 0f:690b ????????
+    db   $06, $f1, $3e, $ef, $04, $69, $00             ;; 0f:6913 ???????
+
+data_0f_691a:
+    db   $4b, $1c, $00, $f0, $ff, $87, $00             ;; 0f:691a ......?
+
+data_0f_6921:
+    db   $03, $f1, $30, $0a, $f0, $a8, $19, $f0        ;; 0f:6921 ........
+    db   $47, $28, $f0, $67, $00                       ;; 0f:6929 .????
+
+data_0f_692e:
+    db   $11, $26, $80, $f0, $00, $86, $00             ;; 0f:692e .......
+
+data_0f_6935:
+    db   $0f, $46, $40, $99, $10, $87, $00             ;; 0f:6935 ???????
+
+data_0f_693c:
     db   $f3, $0c, $4f, $40, $d9, $ff, $87, $ef        ;; 0f:693c ????????
-    db   $3d, $69, $00, $24, $0a, $40, $00, $14        ;; 0f:6944 ????????
-    db   $16, $80, $f5, $10, $84, $14, $16, $80        ;; 0f:694c ????????
-    db   $d5, $10, $84, $14, $16, $80, $b5, $10        ;; 0f:6954 ????????
-    db   $84, $14, $16, $80, $95, $10, $84, $00        ;; 0f:695c ????????
+    db   $3d, $69, $00                                 ;; 0f:6944 ???
+
+data_0f_6947:
+    db   $24, $0a, $40, $00                            ;; 0f:6947 ????
+
+data_0f_694b:
+    db   $14, $16, $80, $f5, $10, $84, $14, $16        ;; 0f:694b ????????
+    db   $80, $d5, $10, $84, $14, $16, $80, $b5        ;; 0f:6953 ????????
+    db   $10, $84, $14, $16, $80, $95, $10, $84        ;; 0f:695b ????????
+    db   $00                                           ;; 0f:6963 ?
+
+data_0f_6964:
     db   $14, $26, $40, $f0, $00, $84, $14, $26        ;; 0f:6964 ????????
     db   $40, $f0, $60, $84, $14, $26, $40, $f0        ;; 0f:696c ????????
     db   $c0, $84, $14, $26, $40, $f0, $20, $85        ;; 0f:6974 ????????
     db   $1e, $26, $40, $f0, $80, $85, $3c, $1e        ;; 0f:697c ????????
-    db   $00, $f7, $ff, $87, $00, $64, $f0, $b8        ;; 0f:6984 ????????
-    db   $0a, $00, $00, $1e, $f0, $50, $1e, $f3        ;; 0f:698c ????????
-    db   $62, $00, $0f, $3f, $c0, $59, $20, $87        ;; 0f:6994 ????????
-    db   $0f, $3f, $c0, $59, $10, $87, $0f, $3f        ;; 0f:699c ????????
-    db   $c0, $59, $00, $87, $0f, $3f, $c0, $59        ;; 0f:69a4 ????????
-    db   $f0, $86, $00, $0f, $1d, $c0, $f3, $80        ;; 0f:69ac ????????
-    db   $86, $00, $0f, $f0, $35, $00, $18, $19        ;; 0f:69b4 ????????
-    db   $70, $12, $39, $40, $1e, $f3, $10, $00        ;; 0f:69bc ????????
-    db   $0a, $13, $c0, $f0, $b0, $82, $00, $0a        ;; 0f:69c4 ????????
-    db   $f1, $23, $00, $0f, $7f, $80, $f0, $d8        ;; 0f:69cc ????????
-    db   $87, $00, $f3, $0a, $15, $80, $f0, $b0        ;; 0f:69d4 ????????
-    db   $85, $ef, $d7, $69, $00, $f7, $06, $1b        ;; 0f:69dc ?????...
-    db   $c0, $f1, $00, $86, $ef, $e2, $69, $00        ;; 0f:69e4 ........
+    db   $00, $f7, $ff, $87, $00                       ;; 0f:6984 ?????
+
+data_0f_6989:
+    db   $64, $f0, $b8, $0a, $00, $00, $1e, $f0        ;; 0f:6989 ????????
+    db   $50, $1e, $f3, $62, $00                       ;; 0f:6991 ?????
+
+data_0f_6996:
+    db   $0f, $3f, $c0, $59, $20, $87, $0f, $3f        ;; 0f:6996 ????????
+    db   $c0, $59, $10, $87, $0f, $3f, $c0, $59        ;; 0f:699e ????????
+    db   $00, $87, $0f, $3f, $c0, $59, $f0, $86        ;; 0f:69a6 ????????
+    db   $00                                           ;; 0f:69ae ?
+
+data_0f_69af:
+    db   $0f, $1d, $c0, $f3, $80, $86, $00             ;; 0f:69af ???????
+
+data_0f_69b6:
+    db   $0f, $f0, $35, $00                            ;; 0f:69b6 ????
+
+data_0f_69ba:
+    db   $18, $19, $70, $12, $39, $40, $1e, $f3        ;; 0f:69ba ????????
+    db   $10, $00                                      ;; 0f:69c2 ??
+
+data_0f_69c4:
+    db   $0a, $13, $c0, $f0, $b0, $82, $00             ;; 0f:69c4 ???????
+
+data_0f_69cb:
+    db   $0a, $f1, $23, $00                            ;; 0f:69cb ????
+
+data_0f_69cf:
+    db   $0f, $7f, $80, $f0, $d8, $87, $00             ;; 0f:69cf ???????
+
+data_0f_69d6:
+    db   $f3, $0a, $15, $80, $f0, $b0, $85, $ef        ;; 0f:69d6 ????????
+    db   $d7, $69, $00                                 ;; 0f:69de ???
+
+data_0f_69e1:
+    db   $f7, $06, $1b, $c0, $f1, $00, $86, $ef        ;; 0f:69e1 ........
+    db   $e2, $69, $00                                 ;; 0f:69e9 ...
+
+data_0f_69ec:
     db   $f7, $03, $f0, $5c, $03, $f1, $5d, $ef        ;; 0f:69ec ........
-    db   $ed, $69, $00, $04, $f1, $3d, $1e, $f3        ;; 0f:69f4 ...?????
-    db   $3d, $00, $04, $00, $80, $f1, $df, $87        ;; 0f:69fc ????????
-    db   $14, $00, $80, $f2, $e1, $87, $00, $0f        ;; 0f:6a04 ????????
-    db   $00, $00, $09, $8c, $86, $0f, $00, $00        ;; 0f:6a0c ????????
-    db   $f1, $8c, $86, $00, $0f, $09, $0e, $0f        ;; 0f:6a14 ????????
-    db   $f1, $0e, $00, $0c, $00, $80, $f0, $f3        ;; 0f:6a1c ???.....
-    db   $87, $00, $0c, $f0, $41, $00, $08, $14        ;; 0f:6a24 ......??
-    db   $80, $f0, $00, $83, $08, $14, $80, $f0        ;; 0f:6a2c ????????
-    db   $00, $84, $08, $14, $80, $f0, $00, $85        ;; 0f:6a34 ????????
-    db   $08, $14, $80, $f0, $00, $86, $08, $14        ;; 0f:6a3c ????????
-    db   $80, $f0, $00, $87, $00, $0d, $4e, $40        ;; 0f:6a44 ????????
-    db   $f0, $80, $87, $10, $2e, $40, $f0, $80        ;; 0f:6a4c ????????
-    db   $86, $00, $04, $f0, $41, $01, $f0, $89        ;; 0f:6a54 ??......
-    db   $10, $f3, $41, $fd, $04, $f0, $89, $ef        ;; 0f:6a5c ........
-    db   $60, $6a, $00, $f2, $0b, $49, $61, $05        ;; 0f:6a64 ...?????
-    db   $f3, $60, $ef, $68, $6a, $00, $06, $00        ;; 0f:6a6c ????????
-    db   $80, $f1, $b8, $87, $f2, $06, $00, $80        ;; 0f:6a74 ????????
-    db   $f1, $bd, $87, $ef, $79, $6a, $06, $00        ;; 0f:6a7c ????????
-    db   $80, $f1, $b8, $87, $17, $00, $80, $f3        ;; 0f:6a84 ????????
-    db   $bd, $87, $00, $f5, $08, $14, $40, $f3        ;; 0f:6a8c ????????
-    db   $00, $83, $ef, $90, $6a, $00, $06, $14        ;; 0f:6a94 ????????
-    db   $c0, $f0, $70, $82, $0c, $08, $c0, $a2        ;; 0f:6a9c ????????
-    db   $ef, $87, $00, $04, $f0, $61, $04, $f0        ;; 0f:6aa4 ????????
-    db   $31, $0a, $f1, $30, $00, $f5, $06, $12        ;; 0f:6aac ????????
-    db   $c0, $f0, $00, $84, $ef, $b2, $6a, $00        ;; 0f:6ab4 ????????
+    db   $ed, $69, $00                                 ;; 0f:69f4 ...
+
+data_0f_69f7:
+    db   $04, $f1, $3d, $1e, $f3, $3d, $00             ;; 0f:69f7 ???????
+
+data_0f_69fe:
+    db   $04, $00, $80, $f1, $df, $87, $14, $00        ;; 0f:69fe ????????
+    db   $80, $f2, $e1, $87, $00                       ;; 0f:6a06 ?????
+
+data_0f_6a0b:
+    db   $0f, $00, $00, $09, $8c, $86, $0f, $00        ;; 0f:6a0b ????????
+    db   $00, $f1, $8c, $86, $00                       ;; 0f:6a13 ?????
+
+data_0f_6a18:
+    db   $0f, $09, $0e, $0f, $f1, $0e, $00             ;; 0f:6a18 ???????
+
+data_0f_6a1f:
+    db   $0c, $00, $80, $f0, $f3, $87, $00             ;; 0f:6a1f .......
+
+data_0f_6a26:
+    db   $0c, $f0, $41, $00                            ;; 0f:6a26 ....
+
+data_0f_6a2a:
+    db   $08, $14, $80, $f0, $00, $83, $08, $14        ;; 0f:6a2a ????????
+    db   $80, $f0, $00, $84, $08, $14, $80, $f0        ;; 0f:6a32 ????????
+    db   $00, $85, $08, $14, $80, $f0, $00, $86        ;; 0f:6a3a ????????
+    db   $08, $14, $80, $f0, $00, $87, $00             ;; 0f:6a42 ???????
+
+data_0f_6a49:
+    db   $0d, $4e, $40, $f0, $80, $87, $10, $2e        ;; 0f:6a49 ????????
+    db   $40, $f0, $80, $86, $00                       ;; 0f:6a51 ?????
+
+data_0f_6a56:
+    db   $04, $f0, $41, $01, $f0, $89, $10, $f3        ;; 0f:6a56 ........
+    db   $41, $fd, $04, $f0, $89, $ef, $60, $6a        ;; 0f:6a5e ........
+    db   $00                                           ;; 0f:6a66 .
+
+data_0f_6a67:
+    db   $f2, $0b, $49, $61, $05, $f3, $60, $ef        ;; 0f:6a67 ????????
+    db   $68, $6a, $00                                 ;; 0f:6a6f ???
+
+data_0f_6a72:
+    db   $06, $00, $80, $f1, $b8, $87, $f2, $06        ;; 0f:6a72 ????????
+    db   $00, $80, $f1, $bd, $87, $ef, $79, $6a        ;; 0f:6a7a ????????
+    db   $06, $00, $80, $f1, $b8, $87, $17, $00        ;; 0f:6a82 ????????
+    db   $80, $f3, $bd, $87, $00                       ;; 0f:6a8a ?????
+
+data_0f_6a8f:
+    db   $f5, $08, $14, $40, $f3, $00, $83, $ef        ;; 0f:6a8f ????????
+    db   $90, $6a, $00                                 ;; 0f:6a97 ???
+
+data_0f_6a9a:
+    db   $06, $14, $c0, $f0, $70, $82, $0c, $08        ;; 0f:6a9a ????????
+    db   $c0, $a2, $ef, $87, $00                       ;; 0f:6aa2 ?????
+
+data_0f_6aa7:
+    db   $04, $f0, $61, $04, $f0, $31, $0a, $f1        ;; 0f:6aa7 ????????
+    db   $30, $00                                      ;; 0f:6aaf ??
+
+data_0f_6ab1:
+    db   $f5, $06, $12, $c0, $f0, $00, $84, $ef        ;; 0f:6ab1 ????????
+    db   $b2, $6a, $00                                 ;; 0f:6ab9 ???
+
+data_0f_6abc:
     db   $f5, $05, $f1, $32, $01, $01, $22, $ef        ;; 0f:6abc ????????
-    db   $bd, $6a, $00, $12, $1c, $80, $f2, $ff        ;; 0f:6ac4 ???.....
-    db   $87, $1f, $1c, $80, $f3, $ff, $87, $00        ;; 0f:6acc ........
+    db   $bd, $6a, $00                                 ;; 0f:6ac4 ???
+
+data_0f_6ac7:
+    db   $12, $1c, $80, $f2, $ff, $87                  ;; 0f:6ac7 ......
+
+data_0f_6acd:
+    db   $1f, $1c, $80, $f3, $ff, $87, $00             ;; 0f:6acd .......
+
+data_0f_6ad4:
     db   $03, $f1, $30, $05, $f0, $98, $0a, $f2        ;; 0f:6ad4 ........
-    db   $61, $03, $f1, $30, $05, $f0, $98, $17        ;; 0f:6adc ........
-    db   $f2, $61, $00, $fa, $02, $00, $80, $f0        ;; 0f:6ae4 ...?????
-    db   $eb, $87, $02, $00, $80, $f0, $ea, $87        ;; 0f:6aec ????????
-    db   $ef, $e8, $6a, $00, $f4, $02, $f1, $50        ;; 0f:6af4 ????????
-    db   $04, $00, $00, $ef, $f9, $6a, $00, $96        ;; 0f:6afc ????????
-    db   $27, $00, $0a, $80, $82, $00, $96, $f0        ;; 0f:6b04 ????????
-    db   $37, $00, $19, $00, $80, $f1, $ef, $87        ;; 0f:6b0c ????????
-    db   $00, $19, $f2, $70, $00, $0c, $25, $80        ;; 0f:6b14 ????????
-    db   $f0, $b0, $85, $00, $f4, $02, $f0, $44        ;; 0f:6b1c ????....
-    db   $ef, $21, $6b, $28, $f4, $44, $00, $0f        ;; 0f:6b24 .......?
-    db   $09, $44, $5a, $f7, $44, $00, $0f, $1f        ;; 0f:6b2c ????????
-    db   $80, $f3, $50, $87, $00, $04, $00, $80        ;; 0f:6b34 ?????...
-    db   $f1, $c0, $87, $08, $00, $80, $f1, $b0        ;; 0f:6b3c ........
-    db   $87, $00, $f6, $01, $00, $40, $f0, $00        ;; 0f:6b44 ........
-    db   $86, $01, $00, $80, $f0, $00, $87, $ef        ;; 0f:6b4c ........
-    db   $47, $6b, $00, $05, $00, $80, $f2, $06        ;; 0f:6b54 ........
-    db   $87, $05, $00, $80, $f2, $44, $87, $05        ;; 0f:6b5c ........
-    db   $00, $80, $f2, $59, $87, $14, $00, $80        ;; 0f:6b64 ........
-    db   $f2, $83, $87, $00, $05, $00, $80, $f2        ;; 0f:6b6c ........
-    db   $7b, $87, $05, $00, $80, $f2, $59, $87        ;; 0f:6b74 ........
-    db   $05, $00, $80, $f2, $6b, $87, $14, $00        ;; 0f:6b7c ........
-    db   $80, $f2, $90, $87, $00, $74, $57, $40        ;; 0f:6b84 ........
-    db   $0b, $30, $85, $00, $23, $2e, $80, $49        ;; 0f:6b8c ....????
-    db   $b0, $87, $00, $04, $f1, $23, $08, $f1        ;; 0f:6b94 ???.....
-    db   $25, $04, $f1, $23, $14, $f2, $25, $00        ;; 0f:6b9c ........
+    db   $61                                           ;; 0f:6adc .
+
+data_0f_6add:
+    db   $03, $f1, $30, $05, $f0, $98, $17, $f2        ;; 0f:6add ........
+    db   $61, $00                                      ;; 0f:6ae5 ..
+
+data_0f_6ae7:
+    db   $fa, $02, $00, $80, $f0, $eb, $87, $02        ;; 0f:6ae7 ????????
+    db   $00, $80, $f0, $ea, $87, $ef, $e8, $6a        ;; 0f:6aef ????????
+    db   $00                                           ;; 0f:6af7 ?
+
+data_0f_6af8:
+    db   $f4, $02, $f1, $50, $04, $00, $00, $ef        ;; 0f:6af8 ????????
+    db   $f9, $6a, $00                                 ;; 0f:6b00 ???
+
+data_0f_6b03:
+    db   $96, $27, $00, $0a, $80, $82, $00             ;; 0f:6b03 ???????
+
+data_0f_6b0a:
+    db   $96, $f0, $37, $00                            ;; 0f:6b0a ????
+
+data_0f_6b0e:
+    db   $19, $00, $80, $f1, $ef, $87, $00             ;; 0f:6b0e ???????
+
+data_0f_6b15:
+    db   $19, $f2, $70, $00                            ;; 0f:6b15 ????
+
+data_0f_6b19:
+    db   $0c, $25, $80, $f0, $b0, $85, $00             ;; 0f:6b19 ???????
+
+data_0f_6b20:
+    db   $f4, $02, $f0, $44, $ef, $21, $6b, $28        ;; 0f:6b20 ........
+    db   $f4, $44, $00                                 ;; 0f:6b28 ...
+
+data_0f_6b2b:
+    db   $0f, $09, $44, $5a, $f7, $44, $00             ;; 0f:6b2b ???????
+
+data_0f_6b32:
+    db   $0f, $1f, $80, $f3, $50, $87, $00             ;; 0f:6b32 ???????
+
+data_0f_6b39:
+    db   $04, $00, $80, $f1, $c0, $87, $08, $00        ;; 0f:6b39 ........
+    db   $80, $f1, $b0, $87, $00                       ;; 0f:6b41 .....
+
+data_0f_6b46:
+    db   $f6, $01, $00, $40, $f0, $00, $86, $01        ;; 0f:6b46 ........
+    db   $00, $80, $f0, $00, $87, $ef, $47, $6b        ;; 0f:6b4e ........
+    db   $00                                           ;; 0f:6b56 .
+
+data_0f_6b57:
+    db   $05, $00, $80, $f2, $06, $87, $05, $00        ;; 0f:6b57 ........
+    db   $80, $f2, $44, $87, $05, $00, $80, $f2        ;; 0f:6b5f ........
+    db   $59, $87, $14, $00, $80, $f2, $83, $87        ;; 0f:6b67 ........
+    db   $00                                           ;; 0f:6b6f .
+
+data_0f_6b70:
+    db   $05, $00, $80, $f2, $7b, $87, $05, $00        ;; 0f:6b70 ........
+    db   $80, $f2, $59, $87, $05, $00, $80, $f2        ;; 0f:6b78 ........
+    db   $6b, $87, $14, $00, $80, $f2, $90, $87        ;; 0f:6b80 ........
+    db   $00                                           ;; 0f:6b88 .
+
+data_0f_6b89:
+    db   $74, $57, $40, $0b, $30, $85, $00             ;; 0f:6b89 .......
+
+data_0f_6b90:
+    db   $23, $2e, $80, $49, $b0, $87, $00             ;; 0f:6b90 ???????
+
+data_0f_6b97:
+    db   $04, $f1, $23, $08, $f1, $25, $04, $f1        ;; 0f:6b97 ........
+    db   $23, $14, $f2, $25, $00                       ;; 0f:6b9f .....
+
+data_0f_6ba4:
     db   $f7, $14, $f0, $2c, $0a, $00, $00, $ef        ;; 0f:6ba4 ????????
     db   $a5, $6b, $00, $03, $ff, $1b, $7f, $7f        ;; 0f:6bac ????????
     db   $7f, $7b, $00, $00, $b0, $fe, $fc, $f0        ;; 0f:6bb4 ????????

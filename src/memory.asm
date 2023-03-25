@@ -734,13 +734,13 @@ wMusicLoopCounter1Channel2:
 wMusicLoopCounter2Channel2:
     ds 2                                               ;; cb03
 
-wCB05:
+wMusicEndedOnChannel2:
     ds 1                                               ;; cb05
 
-wCB06:
+wMusicNoteDurationChannel2:
     ds 2                                               ;; cb06
 
-wCB08:
+wMusicOctaveChannel2:
     ds 1                                               ;; cb08
 
 wMusicInstructionPointerChannel2:
@@ -748,28 +748,27 @@ wMusicInstructionPointerChannel2:
 .high:
     ds 2                                               ;; cb0a
 
-wCB0C:
+wMusicCurrentPitchChannel2:
     ds 1                                               ;; cb0c
-
-wCB0D:
+.high:
     ds 1                                               ;; cb0d
 
-wCB0E:
+wMusicVibratoDurationChannel2:
     ds 1                                               ;; cb0e
 
 wMusicVibratoEnvelopeChannel2:
     ds 2                                               ;; cb0f
 
-wCB11:
+wMusicVibratoEnvelopePointerChannel2:
     ds 2                                               ;; cb11
 
-wCB13:
+wMusicVolumeDurationChannel2:
     ds 1                                               ;; cb13
 
 wMusicVolumeEnvelopeChannel2:
     ds 2                                               ;; cb14
 
-wCB16:
+wMusicVolumeEnvelopePointerChannel2:
     ds 2                                               ;; cb16
 
 wMusicNR21DutyCycleChannel2:
@@ -784,13 +783,13 @@ wMusicLoopCounter2Channel1:
 wSoundEffectDurationChannel1:
     ds 1                                               ;; cb1c
 
-wCB1D:
+wMusicEndedOnChannel1:
     ds 1                                               ;; cb1d
 
-wCB1E:
+wMusicNoteDurationChannel1:
     ds 2                                               ;; cb1e
 
-wCB20:
+wMusicOctaveChannel1:
     ds 1                                               ;; cb20
 
 wMusicInstructionPointerChannel1:
@@ -798,28 +797,27 @@ wMusicInstructionPointerChannel1:
 .high:
     ds 2                                               ;; cb22
 
-wCB24:
+wMusicCurrentPitchChannel1:
     ds 1                                               ;; cb24
-
-wCB25:
+.high:
     ds 1                                               ;; cb25
 
-wCB26:
+wMusicVibratoDurationChannel1:
     ds 1                                               ;; cb26
 
 wMusicVibratoEnvelopeChannel1:
     ds 2                                               ;; cb27
 
-wCB29:
+wMusicVibratoEnvelopePointerChannel1:
     ds 2                                               ;; cb29
 
-wCB2B:
+wMusicVolumeDurationChannel1:
     ds 1                                               ;; cb2b
 
 wMusicVolumeEnvelopeChannel1:
     ds 2                                               ;; cb2c
 
-wCB2E:
+wMusicVolumeEnvelopePointerChannel1:
     ds 2                                               ;; cb2e
 
 wMusicNR11DutyCycleChannel1:
@@ -834,13 +832,13 @@ wMusicLoopCounter1Channel3:
 wMusicLoopCounter2Channel3:
     ds 2                                               ;; cb33
 
-wCB35:
+wMusicEndedOnChannel3:
     ds 1                                               ;; cb35
 
-wCB36:
+wMusicNoteDurationChannel3:
     ds 2                                               ;; cb36
 
-wCB38:
+wMusicOctaveChannel3:
     ds 1                                               ;; cb38
 
 wMusicInstructionPointerChannel3:
@@ -851,16 +849,16 @@ wMusicInstructionPointerChannel3:
 wMusicVolumeChannel3:
     ds 1                                               ;; cb3b
 
-wCB3C:
+wMusicCurrentPitchChannel3:
     ds 2                                               ;; cb3c
 
-wCB3E:
+wMusicVibratoDurationChannel3:
     ds 1                                               ;; cb3e
 
 wMusicVibratoEnvelopeChannel3:
     ds 2                                               ;; cb3f
 
-wCB41:
+wMusicVibratoEnvelopePointerChannel3:
     ds 9                                               ;; cb41
 
 wMusicLoopCounter1Channel4:
@@ -872,10 +870,10 @@ wMusicLoopCounter2Channel4:
 wSoundEffectDurationChannel4:
     ds 1                                               ;; cb4c
 
-wCB4D:
+wMusicEndedOnChannel4:
     ds 1                                               ;; cb4d
 
-wCB4E:
+wMusicNoteDurationChannel4:
     ds 3                                               ;; cb4e
 
 wMusicInstructionPointerChannel4:
@@ -883,28 +881,27 @@ wMusicInstructionPointerChannel4:
 .high:
     ds 2                                               ;; cb52
 
-wCB54:
+wMusicCurrentPitchChannel4:
     ds 7                                               ;; cb54
 
-wCB5B:
+wMusicVolumeDurationChannel4:
     ds 1                                               ;; cb5b
 
 wMusicVolumeEnvelopeChannel4:
     ds 2                                               ;; cb5c
 
-wCB5E:
+wMusicVolumeEnvelopePointerChannel4:
     ds 1                                               ;; cb5e
-
-wCB5F:
+.high:
     ds 2                                               ;; cb5f
 
-wCB61:
+wMusicStereoPanChannel4:
     ds 1                                               ;; cb61
 
-wCB62:
+wSoundEffectInstructionPointerChannel1:
     ds 2                                               ;; cb62
 
-wCB64:
+wSoundEffectInstructionPointerChannel4:
     ds 2                                               ;; cb64
 
 wCB66:
