@@ -80,6 +80,7 @@ initSoundEngineReal:
 
 musicSongPlay:
     dec  A                                             ;; 0f:4065 $3d
+; Range check requested song number.
     cp   A, $14                                        ;; 0f:4066 $fe $14
     ret  NC                                            ;; 0f:4068 $d0
     add  A, A                                          ;; 0f:4069 $87
@@ -167,6 +168,7 @@ soundEffectRestoreChannel1:
     ldh  [rNR51], A                                    ;; 0f:40fa $e0 $25
     ret                                                ;; 0f:40fc $c9
 
+; FFL2 and FFA set NR42 to 00 here. According to Pan Docs doing that "may cause an audio pop".
 soundEffectMuteChannel4:
     ld   A, $08                                        ;; 0f:40fd $3e $08
     ldh  [rNR42], A                                    ;; 0f:40ff $e0 $21
@@ -236,22 +238,22 @@ musicTempoPlayNotes:
     ld   A, [HL+]                                      ;; 0f:4209 $2a
     ld   D, [HL]                                       ;; 0f:420a $56
     ld   E, A                                          ;; 0f:420b $5f
-
-data_0f_420c:
+.nextMusicInstruction:
     ld   A, [DE]                                       ;; 0f:420c $1a
     inc  DE                                            ;; 0f:420d $13
     cp   A, $e0                                        ;; 0f:420e $fe $e0
-    jr   C, .jr_0f_4224                                ;; 0f:4210 $38 $12
+    jr   C, .playNote                                  ;; 0f:4210 $38 $12
     cp   A, $ff                                        ;; 0f:4212 $fe $ff
     jp   NZ, jp_0f_43da                                ;; 0f:4214 $c2 $da $43
     ld   [wMusicEndedOnChannel2], A                    ;; 0f:4217 $ea $05 $cb
-.jr_0f_421a:
+; Rest note by maxing frequency
+.rest:
     ld   A, $ff                                        ;; 0f:421a $3e $ff
     ldh  [rNR23], A                                    ;; 0f:421c $e0 $18
     ld   A, $07                                        ;; 0f:421e $3e $07
     ldh  [rNR24], A                                    ;; 0f:4220 $e0 $19
     jr   musicTempoPlayNotes_Channel1                  ;; 0f:4222 $18 $3c
-.jr_0f_4224:
+.playNote:
     ld   HL, wMusicInstructionPointerChannel2          ;; 0f:4224 $21 $09 $cb
     ld   [HL], E                                       ;; 0f:4227 $73
     inc  L                                             ;; 0f:4228 $2c
@@ -264,7 +266,7 @@ data_0f_420c:
     ld   [HL], A                                       ;; 0f:4234 $77
     cp   A, $0c                                        ;; 0f:4235 $fe $0c
     jr   Z, musicTempoPlayNotes_Channel1               ;; 0f:4237 $28 $27
-    jr   NC, .jr_0f_421a                               ;; 0f:4239 $30 $df
+    jr   NC, .rest                                     ;; 0f:4239 $30 $df
     ld   HL, wMusicOctaveChannel2                      ;; 0f:423b $21 $08 $cb
     call musicGetNoteFrequencyPointer                  ;; 0f:423e $cd $16 $44
     push HL                                            ;; 0f:4241 $e5
@@ -301,22 +303,22 @@ musicTempoPlayNotes_Channel1:
     ld   A, [HL+]                                      ;; 0f:4270 $2a
     ld   D, [HL]                                       ;; 0f:4271 $56
     ld   E, A                                          ;; 0f:4272 $5f
-
-data_0f_4273:
+.nextMusicInstruction:
     ld   A, [DE]                                       ;; 0f:4273 $1a
     inc  DE                                            ;; 0f:4274 $13
     cp   A, $e0                                        ;; 0f:4275 $fe $e0
-    jr   C, .jr_0f_428b                                ;; 0f:4277 $38 $12
+    jr   C, .playNote                                  ;; 0f:4277 $38 $12
     cp   A, $ff                                        ;; 0f:4279 $fe $ff
     jp   NZ, jp_0f_43c8                                ;; 0f:427b $c2 $c8 $43
     ld   [wMusicEndedOnChannel1], A                    ;; 0f:427e $ea $1d $cb
-.jr_0f_4281:
+; Rest note by maxing frequency
+.rest:
     ld   A, $ff                                        ;; 0f:4281 $3e $ff
     ldh  [rNR13], A                                    ;; 0f:4283 $e0 $13
     ld   A, $07                                        ;; 0f:4285 $3e $07
     ldh  [rNR14], A                                    ;; 0f:4287 $e0 $14
     jr   musicTempoPlayNotes_Channel3                  ;; 0f:4289 $18 $48
-.jr_0f_428b:
+.playNote:
     ld   HL, wMusicInstructionPointerChannel1          ;; 0f:428b $21 $21 $cb
     ld   [HL], E                                       ;; 0f:428e $73
     inc  L                                             ;; 0f:428f $2c
@@ -334,7 +336,7 @@ data_0f_4273:
     ld   A, C                                          ;; 0f:42a3 $79
     cp   A, $0c                                        ;; 0f:42a4 $fe $0c
     jr   Z, musicTempoPlayNotes_Channel3               ;; 0f:42a6 $28 $2b
-    jr   NC, .jr_0f_4281                               ;; 0f:42a8 $30 $d7
+    jr   NC, .rest                                     ;; 0f:42a8 $30 $d7
     ld   HL, wMusicOctaveChannel1                      ;; 0f:42aa $21 $20 $cb
     call musicGetNoteFrequencyPointer                  ;; 0f:42ad $cd $16 $44
     push HL                                            ;; 0f:42b0 $e5
@@ -373,12 +375,11 @@ musicTempoPlayNotes_Channel3:
     ld   A, [HL+]                                      ;; 0f:42e3 $2a
     ld   D, [HL]                                       ;; 0f:42e4 $56
     ld   E, A                                          ;; 0f:42e5 $5f
-
-data_0f_42e6:
+.nextMusicInstruction:
     ld   A, [DE]                                       ;; 0f:42e6 $1a
     inc  DE                                            ;; 0f:42e7 $13
     cp   A, $e0                                        ;; 0f:42e8 $fe $e0
-    jr   C, .jr_0f_42fc                                ;; 0f:42ea $38 $10
+    jr   C, .playNote                                  ;; 0f:42ea $38 $10
     cp   A, $ff                                        ;; 0f:42ec $fe $ff
     jp   NZ, jp_0f_43b6                                ;; 0f:42ee $c2 $b6 $43
     ld   [wMusicEndedOnChannel3], A                    ;; 0f:42f1 $ea $35 $cb
@@ -386,7 +387,7 @@ data_0f_42e6:
     ld   A, $07                                        ;; 0f:42f6 $3e $07
     ldh  [rNR34], A                                    ;; 0f:42f8 $e0 $1e
     jr   musicTempoPlayNotes_Channel4                  ;; 0f:42fa $18 $38
-.jr_0f_42fc:
+.playNote:
     ld   HL, wMusicInstructionPointerChannel3          ;; 0f:42fc $21 $39 $cb
     ld   [HL], E                                       ;; 0f:42ff $73
     inc  L                                             ;; 0f:4300 $2c
@@ -434,23 +435,22 @@ musicTempoPlayNotes_Channel4:
     ld   A, [HL+]                                      ;; 0f:4342 $2a
     ld   D, [HL]                                       ;; 0f:4343 $56
     ld   E, A                                          ;; 0f:4344 $5f
-
-data_0f_4345:
+.nextMusicInstruction:
     ld   A, [DE]                                       ;; 0f:4345 $1a
     inc  DE                                            ;; 0f:4346 $13
     cp   A, $e0                                        ;; 0f:4347 $fe $e0
-    jr   C, .jr_0f_435c                                ;; 0f:4349 $38 $11
+    jr   C, .playNote                                  ;; 0f:4349 $38 $11
     cp   A, $ff                                        ;; 0f:434b $fe $ff
     jr   NZ, jr_0f_43a4                                ;; 0f:434d $20 $55
     ld   [wMusicEndedOnChannel4], A                    ;; 0f:434f $ea $4d $cb
-.jr_0f_4352:
+.rest:
     xor  A, A                                          ;; 0f:4352 $af
     ldh  [rNR42], A                                    ;; 0f:4353 $e0 $21
     ldh  [rNR43], A                                    ;; 0f:4355 $e0 $22
     ld   A, $80                                        ;; 0f:4357 $3e $80
     ldh  [rNR44], A                                    ;; 0f:4359 $e0 $23
     ret                                                ;; 0f:435b $c9
-.jr_0f_435c:
+.playNote:
     ld   HL, wMusicInstructionPointerChannel4          ;; 0f:435c $21 $51 $cb
     ld   [HL], E                                       ;; 0f:435f $73
     inc  L                                             ;; 0f:4360 $2c
@@ -468,7 +468,7 @@ data_0f_4345:
     ld   A, E                                          ;; 0f:4373 $7b
     cp   A, $0c                                        ;; 0f:4374 $fe $0c
     ret  Z                                             ;; 0f:4376 $c8
-    jr   NC, .jr_0f_4352                               ;; 0f:4377 $30 $d9
+    jr   NC, .rest                                     ;; 0f:4377 $30 $d9
     ld   D, $00                                        ;; 0f:4379 $16 $00
     ld   HL, wMusicNR43ValuesChannel4                  ;; 0f:437b $21 $19 $46
     add  HL, DE                                        ;; 0f:437e $19
@@ -500,11 +500,11 @@ musicStartEnvelope:
     ret                                                ;; 0f:43a3 $c9
 
 jr_0f_43a4:
-    ld   HL, data_0f_4345                              ;; 0f:43a4 $21 $45 $43
+    ld   HL, musicTempoPlayNotes_Channel4.nextMusicInstruction ;; 0f:43a4 $21 $45 $43
     push HL                                            ;; 0f:43a7 $e5
     ld   HL, musicOpCodeTableChannel4                  ;; 0f:43a8 $21 $88 $44
 
-jr_0f_43ab:
+musicCallOpCode:
     and  A, $0f                                        ;; 0f:43ab $e6 $0f
     add  A, A                                          ;; 0f:43ad $87
     ld   C, A                                          ;; 0f:43ae $4f
@@ -516,34 +516,34 @@ jr_0f_43ab:
     jp   HL                                            ;; 0f:43b5 $e9
 
 jp_0f_43b6:
-    ld   HL, data_0f_42e6                              ;; 0f:43b6 $21 $e6 $42
+    ld   HL, musicTempoPlayNotes_Channel3.nextMusicInstruction ;; 0f:43b6 $21 $e6 $42
     push HL                                            ;; 0f:43b9 $e5
     cp   A, $f0                                        ;; 0f:43ba $fe $f0
     jr   C, .jr_0f_43c3                                ;; 0f:43bc $38 $05
     ld   HL, musicOpCodeTableChannel3                  ;; 0f:43be $21 $68 $44
-    jr   jr_0f_43ab                                    ;; 0f:43c1 $18 $e8
+    jr   musicCallOpCode                               ;; 0f:43c1 $18 $e8
 .jr_0f_43c3:
     ld   BC, wMusicOctaveChannel3                      ;; 0f:43c3 $01 $38 $cb
     jr   jr_0f_43ea                                    ;; 0f:43c6 $18 $22
 
 jp_0f_43c8:
-    ld   HL, data_0f_4273                              ;; 0f:43c8 $21 $73 $42
+    ld   HL, musicTempoPlayNotes_Channel1.nextMusicInstruction ;; 0f:43c8 $21 $73 $42
     push HL                                            ;; 0f:43cb $e5
     cp   A, $f0                                        ;; 0f:43cc $fe $f0
     jr   C, .jr_0f_43d5                                ;; 0f:43ce $38 $05
     ld   HL, musicOpCodeTableChannel1                  ;; 0f:43d0 $21 $48 $44
-    jr   jr_0f_43ab                                    ;; 0f:43d3 $18 $d6
+    jr   musicCallOpCode                               ;; 0f:43d3 $18 $d6
 .jr_0f_43d5:
     ld   BC, wMusicOctaveChannel1                      ;; 0f:43d5 $01 $20 $cb
     jr   jr_0f_43ea                                    ;; 0f:43d8 $18 $10
 
 jp_0f_43da:
-    ld   HL, data_0f_420c                              ;; 0f:43da $21 $0c $42
+    ld   HL, musicTempoPlayNotes.nextMusicInstruction  ;; 0f:43da $21 $0c $42
     push HL                                            ;; 0f:43dd $e5
     cp   A, $f0                                        ;; 0f:43de $fe $f0
     jr   C, .jr_0f_43e7                                ;; 0f:43e0 $38 $05
     ld   HL, musicOpCodeTableChannel2                  ;; 0f:43e2 $21 $28 $44
-    jr   jr_0f_43ab                                    ;; 0f:43e5 $18 $c4
+    jr   musicCallOpCode                               ;; 0f:43e5 $18 $c4
 .jr_0f_43e7:
     ld   BC, wMusicOctaveChannel2                      ;; 0f:43e7 $01 $08 $cb
 
