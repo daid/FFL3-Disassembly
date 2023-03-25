@@ -550,7 +550,7 @@ jp_0f_43da:
 jr_0f_43ea:
     push DE                                            ;; 0f:43ea $d5
     bit  3, A                                          ;; 0f:43eb $cb $5f
-    jr   NZ, .jr_0f_43fa                               ;; 0f:43ed $20 $0b
+    jr   NZ, .relativeOctave                           ;; 0f:43ed $20 $0b
     and  A, $07                                        ;; 0f:43ef $e6 $07
     add  A, A                                          ;; 0f:43f1 $87
     add  A, A                                          ;; 0f:43f2 $87
@@ -561,7 +561,7 @@ jr_0f_43ea:
     ld   [BC], A                                       ;; 0f:43f7 $02
     pop  DE                                            ;; 0f:43f8 $d1
     ret                                                ;; 0f:43f9 $c9
-.jr_0f_43fa:
+.relativeOctave:
     and  A, $07                                        ;; 0f:43fa $e6 $07
     ld   E, A                                          ;; 0f:43fc $5f
     ld   D, $00                                        ;; 0f:43fd $16 $00
@@ -1114,17 +1114,17 @@ musicVibratoAndVolumeChannel3:
     ld   HL, wMusicEndedOnChannel3                     ;; 0f:46db $21 $35 $cb
     ld   A, [HL+]                                      ;; 0f:46de $2a
     or   A, A                                          ;; 0f:46df $b7
-    jr   NZ, .jr_0f_4718                               ;; 0f:46e0 $20 $36
+    jr   NZ, musicVolumeChannel4                       ;; 0f:46e0 $20 $36
     ldh  A, [hMusicNoteDurationChannel3Copy]           ;; 0f:46e2 $f0 $c0
     or   A, A                                          ;; 0f:46e4 $b7
-    jr   Z, .jr_0f_4718                                ;; 0f:46e5 $28 $31
+    jr   Z, musicVolumeChannel4                        ;; 0f:46e5 $28 $31
     inc  L                                             ;; 0f:46e7 $2c
     ld   A, [HL]                                       ;; 0f:46e8 $7e
     cp   A, $0d                                        ;; 0f:46e9 $fe $0d
-    jr   Z, .jr_0f_4718                                ;; 0f:46eb $28 $2b
+    jr   Z, musicVolumeChannel4                        ;; 0f:46eb $28 $2b
     ld   HL, wMusicVibratoDurationChannel3             ;; 0f:46ed $21 $3e $cb
     dec  [HL]                                          ;; 0f:46f0 $35
-    jr   NZ, .jr_0f_4718                               ;; 0f:46f1 $20 $25
+    jr   NZ, musicVolumeChannel4                       ;; 0f:46f1 $20 $25
     call call_0f_474b                                  ;; 0f:46f3 $cd $4b $47
     ld   [wMusicVibratoDurationChannel3], A            ;; 0f:46f6 $ea $3e $cb
     ld   A, [HL+]                                      ;; 0f:46f9 $2a
@@ -1149,7 +1149,8 @@ musicVibratoAndVolumeChannel3:
     ld   A, H                                          ;; 0f:4713 $7c
     and  A, $07                                        ;; 0f:4714 $e6 $07
     ldh  [rNR34], A                                    ;; 0f:4716 $e0 $1e
-.jr_0f_4718:
+
+musicVolumeChannel4:
     ld   HL, wSoundEffectDurationChannel4              ;; 0f:4718 $21 $4c $cb
     ld   A, [HL+]                                      ;; 0f:471b $2a
     or   A, [HL]                                       ;; 0f:471c $b6
@@ -1255,12 +1256,12 @@ soundEffectPlayStep:
     ld   A, [HL+]                                      ;; 0f:47a2 $2a
     ld   [DE], A                                       ;; 0f:47a3 $12
     or   A, A                                          ;; 0f:47a4 $b7
-    jr   NZ, .jr_0f_47ac                               ;; 0f:47a5 $20 $05
+    jr   NZ, .notTerminatorChannel1                    ;; 0f:47a5 $20 $05
     call soundEffectRestoreChannel1                    ;; 0f:47a7 $cd $dd $40
     jr   .channel4                                     ;; 0f:47aa $18 $34
-.jr_0f_47ac:
+.notTerminatorChannel1:
     cp   A, $ef                                        ;; 0f:47ac $fe $ef
-    jr   NZ, .jr_0f_47bf                               ;; 0f:47ae $20 $0f
+    jr   NZ, .notLoopChannel1                          ;; 0f:47ae $20 $0f
     ld   A, [HL+]                                      ;; 0f:47b0 $2a
     ld   C, A                                          ;; 0f:47b1 $4f
     ld   A, [HL+]                                      ;; 0f:47b2 $2a
@@ -1272,13 +1273,13 @@ soundEffectPlayStep:
     ld   L, C                                          ;; 0f:47bb $69
     ld   H, B                                          ;; 0f:47bc $60
     jr   .nextInstructionChannel1                      ;; 0f:47bd $18 $e3
-.jr_0f_47bf:
+.notLoopChannel1:
     cp   A, $f0                                        ;; 0f:47bf $fe $f0
-    jr   C, .jr_0f_47c9                                ;; 0f:47c1 $38 $06
+    jr   C, .playChannel1                              ;; 0f:47c1 $38 $06
     and  A, $0f                                        ;; 0f:47c3 $e6 $0f
     ldh  [hSoundEffectLoopCounterChannel1], A          ;; 0f:47c5 $e0 $c4
     jr   .nextInstructionChannel1                      ;; 0f:47c7 $18 $d9
-.jr_0f_47c9:
+.playChannel1:
     ld   C, $10                                        ;; 0f:47c9 $0e $10
     ld   B, $05                                        ;; 0f:47cb $06 $05
 .copyLoop:
@@ -1312,11 +1313,11 @@ soundEffectPlayStep:
     ld   A, [HL+]                                      ;; 0f:47f2 $2a
     ld   [DE], A                                       ;; 0f:47f3 $12
     or   A, A                                          ;; 0f:47f4 $b7
-    jr   NZ, .jr_0f_47fa                               ;; 0f:47f5 $20 $03
+    jr   NZ, .notTerminatorChannel4                    ;; 0f:47f5 $20 $03
     jp   soundEffectMuteChannel4                       ;; 0f:47f7 $c3 $fd $40
-.jr_0f_47fa:
+.notTerminatorChannel4:
     cp   A, $ef                                        ;; 0f:47fa $fe $ef
-    jr   NZ, .jr_0f_480d                               ;; 0f:47fc $20 $0f
+    jr   NZ, .notLoopChannel4                          ;; 0f:47fc $20 $0f
     ld   A, [HL+]                                      ;; 0f:47fe $2a
     ld   C, A                                          ;; 0f:47ff $4f
     ld   A, [HL+]                                      ;; 0f:4800 $2a
@@ -1328,13 +1329,13 @@ soundEffectPlayStep:
     ld   L, C                                          ;; 0f:4809 $69
     ld   H, B                                          ;; 0f:480a $60
     jr   .nextInstructionChannel4                      ;; 0f:480b $18 $e5
-.jr_0f_480d:
+.notLoopChannel4:
     cp   A, $f0                                        ;; 0f:480d $fe $f0
-    jr   C, .jr_0f_4817                                ;; 0f:480f $38 $06
+    jr   C, .notSetCounterChannel4                     ;; 0f:480f $38 $06
     and  A, $0f                                        ;; 0f:4811 $e6 $0f
     ldh  [hSoundEffectLoopCounterChannel4], A          ;; 0f:4813 $e0 $c5
     jr   .nextInstructionChannel4                      ;; 0f:4815 $18 $db
-.jr_0f_4817:
+.notSetCounterChannel4:
     ld   A, [HL+]                                      ;; 0f:4817 $2a
     ldh  [rNR42], A                                    ;; 0f:4818 $e0 $21
     ld   A, [HL+]                                      ;; 0f:481a $2a
