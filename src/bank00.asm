@@ -353,7 +353,7 @@ call_00_027d:
     and  A, A                                          ;; 00:02cd $a7
     jr   NZ, .jr_00_02d7                               ;; 00:02ce $20 $07
     ld   A, [wC7CC]                                    ;; 00:02d0 $fa $cc $c7
-    ldh  [hFFBA], A                                    ;; 00:02d3 $e0 $ba
+    ldh  [hCurrentMusic], A                            ;; 00:02d3 $e0 $ba
     jr   .jr_00_02e6                                   ;; 00:02d5 $18 $0f
 .jr_00_02d7:
     ld   A, [wCA59]                                    ;; 00:02d7 $fa $59 $ca
@@ -363,7 +363,7 @@ call_00_027d:
     and  A, $1f                                        ;; 00:02de $e6 $1f
     cp   A, $1f                                        ;; 00:02e0 $fe $1f
     jr   Z, .jr_00_02e6                                ;; 00:02e2 $28 $02
-    ldh  [hFFBA], A                                    ;; 00:02e4 $e0 $ba
+    ldh  [hCurrentMusic], A                            ;; 00:02e4 $e0 $ba
 .jr_00_02e6:
     xor  A, A                                          ;; 00:02e6 $af
     ld   [wCA59], A                                    ;; 00:02e7 $ea $59 $ca
@@ -1196,7 +1196,7 @@ call_00_07bb:
     and  A, $04                                        ;; 00:084d $e6 $04
     jr   Z, .jr_00_0860                                ;; 00:084f $28 $0f
     ld   A, $3c                                        ;; 00:0851 $3e $3c
-    ldh  [hFFBC], A                                    ;; 00:0853 $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:0853 $e0 $bc
     ld   A, [wC6F3]                                    ;; 00:0855 $fa $f3 $c6
     rlca                                               ;; 00:0858 $07
     rlca                                               ;; 00:0859 $07
@@ -2415,15 +2415,15 @@ call_00_10c2:
     ret                                                ;; 00:10d6 $c9
 
 call_00_10d7:
-    ldh  A, [hFFBA]                                    ;; 00:10d7 $f0 $ba
+    ldh  A, [hCurrentMusic]                            ;; 00:10d7 $f0 $ba
     ldh  [hFFA0], A                                    ;; 00:10d9 $e0 $a0
     xor  A, A                                          ;; 00:10db $af
-    ldh  [hFFBA], A                                    ;; 00:10dc $e0 $ba
+    ldh  [hCurrentMusic], A                            ;; 00:10dc $e0 $ba
     call call_00_3a60                                  ;; 00:10de $cd $60 $3a
     ld   A, $01                                        ;; 00:10e1 $3e $01
     rst  pushActiveBankSafe                            ;; 00:10e3 $e7
     ld   A, $36                                        ;; 00:10e4 $3e $36
-    ldh  [hFFBC], A                                    ;; 00:10e6 $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:10e6 $e0 $bc
     call call_00_3a60                                  ;; 00:10e8 $cd $60 $3a
     ld   A, $31                                        ;; 00:10eb $3e $31
     call call_00_3cb2                                  ;; 00:10ed $cd $b2 $3c
@@ -2489,7 +2489,7 @@ call_00_1126:
 
 call_00_1151:
     xor  A, A                                          ;; 00:1151 $af
-    ldh  [hFFBA], A                                    ;; 00:1152 $e0 $ba
+    ldh  [hCurrentMusic], A                            ;; 00:1152 $e0 $ba
     ld   [wCA2C], A                                    ;; 00:1154 $ea $2c $ca
     ld   A, [wCA15]                                    ;; 00:1157 $fa $15 $ca
     and  A, A                                          ;; 00:115a $a7
@@ -2510,7 +2510,7 @@ call_00_1151:
     call $78f5                                         ;; 00:116f $cd $f5 $78
     rst  popActiveBankSafe                             ;; 00:1172 $ef
     ldh  A, [hFFA0]                                    ;; 00:1173 $f0 $a0
-    ldh  [hFFBA], A                                    ;; 00:1175 $e0 $ba
+    ldh  [hCurrentMusic], A                            ;; 00:1175 $e0 $ba
     call call_00_0150                                  ;; 00:1177 $cd $50 $01
     call call_00_0e34                                  ;; 00:117a $cd $34 $0e
     call call_00_01a0                                  ;; 00:117d $cd $a0 $01
@@ -2947,7 +2947,7 @@ call_00_14aa:
 
 call_00_14b2:
     ld   A, $3f                                        ;; 00:14b2 $3e $3f
-    ldh  [hFFBC], A                                    ;; 00:14b4 $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:14b4 $e0 $bc
     ld   A, $01                                        ;; 00:14b6 $3e $01
     rst  pushActiveBankSafe                            ;; 00:14b8 $e7
     call $661c                                         ;; 00:14b9 $cd $1c $66
@@ -3156,7 +3156,7 @@ call_00_15f7:
     ld   A, $01                                        ;; 00:15fb $3e $01
     ld   [wCDC4], A                                    ;; 00:15fd $ea $c4 $cd
     ld   A, $38                                        ;; 00:1600 $3e $38
-    ldh  [hFFBC], A                                    ;; 00:1602 $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:1602 $e0 $bc
     call call_00_39f3                                  ;; 00:1604 $cd $f3 $39
     ld   A, $10                                        ;; 00:1607 $3e $10
     call call_00_3a6d                                  ;; 00:1609 $cd $6d $3a
@@ -3634,7 +3634,7 @@ call_00_18fb:
 
 call_00_190d:
     ld   A, $3f                                        ;; 00:190d $3e $3f
-    ldh  [hFFBC], A                                    ;; 00:190f $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:190f $e0 $bc
     xor  A, A                                          ;; 00:1911 $af
     ld   [wCA6A], A                                    ;; 00:1912 $ea $6a $ca
     ld   B, $a0                                        ;; 00:1915 $06 $a0
@@ -3678,7 +3678,7 @@ call_00_1934:
 
 call_00_1950:
     ld   A, $1f                                        ;; 00:1950 $3e $1f
-    ldh  [hFFBC], A                                    ;; 00:1952 $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:1952 $e0 $bc
     ld   B, $a0                                        ;; 00:1954 $06 $a0
 .jr_00_1956:
     push BC                                            ;; 00:1956 $c5
@@ -3819,12 +3819,12 @@ call_00_1a02:
 
 call_00_1a28:
     ld   A, [wCA28]                                    ;; 00:1a28 $fa $28 $ca
-    ldh  [hFFBA], A                                    ;; 00:1a2b $e0 $ba
+    ldh  [hCurrentMusic], A                            ;; 00:1a2b $e0 $ba
     ret                                                ;; 00:1a2d $c9
 
 call_00_1a2e:
     ld   A, [wCA28]                                    ;; 00:1a2e $fa $28 $ca
-    ldh  [hFFBC], A                                    ;; 00:1a31 $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:1a31 $e0 $bc
     ret                                                ;; 00:1a33 $c9
 
 call_00_1a34:
@@ -3856,7 +3856,7 @@ call_00_1a34:
     cp   A, B                                          ;; 00:1a57 $b8
     jr   NZ, .jr_00_1a36                               ;; 00:1a58 $20 $dc
     ld   A, $07                                        ;; 00:1a5a $3e $07
-    ldh  [hFFBC], A                                    ;; 00:1a5c $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:1a5c $e0 $bc
     ldh  A, [rBGP]                                     ;; 00:1a5e $f0 $47
     push AF                                            ;; 00:1a60 $f5
     xor  A, A                                          ;; 00:1a61 $af
@@ -3886,7 +3886,7 @@ call_00_1a7f:
 
 call_00_1a84:
     ld   A, $17                                        ;; 00:1a84 $3e $17
-    ldh  [hFFBC], A                                    ;; 00:1a86 $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:1a86 $e0 $bc
     rst  rst_00_0018                                   ;; 00:1a88 $df
     db   $08                                           ;; 00:1a89 .
     call call_00_39f3                                  ;; 00:1a8a $cd $f3 $39
@@ -3944,7 +3944,7 @@ call_00_1ade:
 
 call_00_1aea:
     ld   A, $3e                                        ;; 00:1aea $3e $3e
-    ldh  [hFFBC], A                                    ;; 00:1aec $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:1aec $e0 $bc
     ld   B, $04                                        ;; 00:1aee $06 $04
 .jr_00_1af0:
     call call_00_1af7                                  ;; 00:1af0 $cd $f7 $1a
@@ -4094,7 +4094,7 @@ call_00_1bd7:
 
 call_00_1be4:
     ld   A, $1c                                        ;; 00:1be4 $3e $1c
-    ldh  [hFFBC], A                                    ;; 00:1be6 $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:1be6 $e0 $bc
     ld   A, $01                                        ;; 00:1be8 $3e $01
     ld   [wC6F2], A                                    ;; 00:1bea $ea $f2 $c6
     ld   A, $08                                        ;; 00:1bed $3e $08
@@ -4534,14 +4534,14 @@ call_00_1e79:
 call_00_1e7c:
     push AF                                            ;; 00:1e7c $f5
     ld   A, $3a                                        ;; 00:1e7d $3e $3a
-    ldh  [hFFBC], A                                    ;; 00:1e7f $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:1e7f $e0 $bc
     pop  AF                                            ;; 00:1e81 $f1
     ret                                                ;; 00:1e82 $c9
 
 call_00_1e83:
     push AF                                            ;; 00:1e83 $f5
     ld   A, $3b                                        ;; 00:1e84 $3e $3b
-    ldh  [hFFBC], A                                    ;; 00:1e86 $e0 $bc
+    ldh  [hSFX], A                                     ;; 00:1e86 $e0 $bc
     ld   A, $02                                        ;; 00:1e88 $3e $02
     call call_00_3a6d                                  ;; 00:1e8a $cd $6d $3a
     pop  AF                                            ;; 00:1e8d $f1
@@ -4684,7 +4684,7 @@ data_00_1f27:
 call_00_1f3a:
     ld   A, $0f                                        ;; 00:1f3a $3e $0f
     call pushActiveBank                                ;; 00:1f3c $cd $e1 $38
-    call call_0f_4006                                  ;; 00:1f3f $cd $06 $40
+    call runSoundEngineReal                            ;; 00:1f3f $cd $06 $40
     jp   popActiveBank                                 ;; 00:1f42 $c3 $fc $38
 
 call_00_1f45:
@@ -5880,7 +5880,7 @@ call_00_2551:
     ld   [HL], A                                       ;; 00:25b4 $77
     cp   A, $78                                        ;; 00:25b5 $fe $78
     ret  NC                                            ;; 00:25b7 $d0
-    ld   DE, hFFC0                                     ;; 00:25b8 $11 $c0 $ff
+    ld   DE, hMusicNoteDurationChannel3Copy            ;; 00:25b8 $11 $c0 $ff
     add  HL, DE                                        ;; 00:25bb $19
     ld   A, [HL]                                       ;; 00:25bc $7e
     and  A, $f0                                        ;; 00:25bd $e6 $f0
@@ -5891,7 +5891,7 @@ call_00_2551:
     ret                                                ;; 00:25c5 $c9
 .jr_00_25c6:
     ld   [HL], C                                       ;; 00:25c6 $71
-    ld   BC, hFFC0                                     ;; 00:25c7 $01 $c0 $ff
+    ld   BC, hMusicNoteDurationChannel3Copy            ;; 00:25c7 $01 $c0 $ff
     add  HL, BC                                        ;; 00:25ca $09
     ld   A, [DE]                                       ;; 00:25cb $1a
     inc  DE                                            ;; 00:25cc $13
@@ -5949,7 +5949,7 @@ call_00_2607:
     ld   [wCE94], A                                    ;; 00:2614 $ea $94 $ce
     cp   A, $78                                        ;; 00:2617 $fe $78
     jr   NC, .jr_00_2627                               ;; 00:2619 $30 $0c
-    ld   DE, hFFC0                                     ;; 00:261b $11 $c0 $ff
+    ld   DE, hMusicNoteDurationChannel3Copy            ;; 00:261b $11 $c0 $ff
     add  HL, DE                                        ;; 00:261e $19
     ld   A, [HL]                                       ;; 00:261f $7e
     and  A, $0f                                        ;; 00:2620 $e6 $0f
@@ -6131,7 +6131,7 @@ data_00_26cc:
     add  A, $02                                        ;; 00:2723 $c6 $02
     cp   A, D                                          ;; 00:2725 $ba
     jr   NZ, .jr_00_2739                               ;; 00:2726 $20 $11
-    ld   HL, hFFC0                                     ;; 00:2728 $21 $c0 $ff
+    ld   HL, hMusicNoteDurationChannel3Copy            ;; 00:2728 $21 $c0 $ff
     add  HL, BC                                        ;; 00:272b $09
     ld   A, L                                          ;; 00:272c $7d
     ld   [wCD04], A                                    ;; 00:272d $ea $04 $cd
@@ -7120,7 +7120,7 @@ data_00_2d11:
     jr   C, .jr_00_2d8d                                ;; 00:2d72 $38 $19
     cp   A, $78                                        ;; 00:2d74 $fe $78
     jr   NC, .jr_00_2d8d                               ;; 00:2d76 $30 $15
-    ld   DE, hFFC0                                     ;; 00:2d78 $11 $c0 $ff
+    ld   DE, hMusicNoteDurationChannel3Copy            ;; 00:2d78 $11 $c0 $ff
     add  HL, DE                                        ;; 00:2d7b $19
     ld   A, [HL]                                       ;; 00:2d7c $7e
     and  A, $0f                                        ;; 00:2d7d $e6 $0f
@@ -8495,7 +8495,7 @@ call_00_361f:
     ldh  [rLYC], A                                     ;; 00:361f $e0 $45
     ld   A, $0f                                        ;; 00:3621 $3e $0f
     rst  pushActiveBankSafe                            ;; 00:3623 $e7
-    call call_0f_4006                                  ;; 00:3624 $cd $06 $40
+    call runSoundEngineReal                            ;; 00:3624 $cd $06 $40
     rst  popActiveBankSafe                             ;; 00:3627 $ef
     call call_00_3575                                  ;; 00:3628 $cd $75 $35
     ld   HL, wCDC6                                     ;; 00:362b $21 $c6 $cd
@@ -9170,7 +9170,7 @@ call_00_3a60:
     ld   A, $0f                                        ;; 00:3a61 $3e $0f
     rst  pushActiveBankSafe                            ;; 00:3a63 $e7
     di                                                 ;; 00:3a64 $f3
-    call call_0f_4006                                  ;; 00:3a65 $cd $06 $40
+    call runSoundEngineReal                            ;; 00:3a65 $cd $06 $40
     rst  popActiveBankSafe                             ;; 00:3a68 $ef
     pop  AF                                            ;; 00:3a69 $f1
     ret                                                ;; 00:3a6a $c9

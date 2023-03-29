@@ -6,6 +6,666 @@ MACRO ld_long_store
 db $EA
 dw \1
 ENDM
+MACRO mA_0
+db $90
+ENDM
+MACRO mA_1
+db $90
+ENDM
+MACRO mA_10
+db $b0
+ENDM
+MACRO mA_11
+db $b0
+ENDM
+MACRO mA_12
+db $d0
+ENDM
+MACRO mA_2
+db $b0
+ENDM
+MACRO mA_3
+db $b0
+ENDM
+MACRO mA_4
+db $d0
+ENDM
+MACRO mA_5
+db $d0
+ENDM
+MACRO mA_6
+db $f0
+ENDM
+MACRO mA_7
+db $f0
+ENDM
+MACRO mA_8
+db $90
+ENDM
+MACRO mA_9
+db $90
+ENDM
+MACRO mAis_0
+db $a0
+ENDM
+MACRO mAis_1
+db $b0
+ENDM
+MACRO mAis_10
+db $a0
+ENDM
+MACRO mAis_11
+db $b0
+ENDM
+MACRO mAis_12
+db $e0
+ENDM
+MACRO mAis_2
+db $a0
+ENDM
+MACRO mAis_3
+db $b0
+ENDM
+MACRO mAis_4
+db $e0
+ENDM
+MACRO mAis_5
+db $f0
+ENDM
+MACRO mAis_6
+db $e0
+ENDM
+MACRO mAis_7
+db $f0
+ENDM
+MACRO mAis_8
+db $a0
+ENDM
+MACRO mAis_9
+db $b0
+ENDM
+MACRO mB_0
+db $b0
+ENDM
+MACRO mB_1
+db $b0
+ENDM
+MACRO mB_10
+db $b0
+ENDM
+MACRO mB_11
+db $b0
+ENDM
+MACRO mB_12
+db $f0
+ENDM
+MACRO mB_2
+db $b0
+ENDM
+MACRO mB_3
+db $b0
+ENDM
+MACRO mB_4
+db $f0
+ENDM
+MACRO mB_5
+db $f0
+ENDM
+MACRO mB_6
+db $f0
+ENDM
+MACRO mB_7
+db $f0
+ENDM
+MACRO mB_8
+db $b0
+ENDM
+MACRO mB_9
+db $b0
+ENDM
+MACRO mCOUNTER
+db $f3
+db \1
+ENDM
+MACRO mCOUNTER_2
+db $fa
+db \1
+ENDM
+MACRO mC_0
+db $00
+ENDM
+MACRO mC_1
+db $10
+ENDM
+MACRO mC_10
+db $a0
+ENDM
+MACRO mC_11
+db $b0
+ENDM
+MACRO mC_12
+db $c0
+ENDM
+MACRO mC_2
+db $20
+ENDM
+MACRO mC_3
+db $30
+ENDM
+MACRO mC_4
+db $40
+ENDM
+MACRO mC_5
+db $50
+ENDM
+MACRO mC_6
+db $60
+ENDM
+MACRO mC_7
+db $70
+ENDM
+MACRO mC_8
+db $80
+ENDM
+MACRO mC_9
+db $90
+ENDM
+MACRO mCis_0
+db $10
+ENDM
+MACRO mCis_1
+db $10
+ENDM
+MACRO mCis_10
+db $b0
+ENDM
+MACRO mCis_11
+db $b0
+ENDM
+MACRO mCis_12
+db $d0
+ENDM
+MACRO mCis_2
+db $30
+ENDM
+MACRO mCis_3
+db $30
+ENDM
+MACRO mCis_4
+db $50
+ENDM
+MACRO mCis_5
+db $50
+ENDM
+MACRO mCis_6
+db $70
+ENDM
+MACRO mCis_7
+db $70
+ENDM
+MACRO mCis_8
+db $90
+ENDM
+MACRO mCis_9
+db $90
+ENDM
+MACRO mDUTYCYCLE
+db $f5
+db \1
+ENDM
+MACRO mD_0
+db $20
+ENDM
+MACRO mD_1
+db $30
+ENDM
+MACRO mD_10
+db $a0
+ENDM
+MACRO mD_11
+db $b0
+ENDM
+MACRO mD_12
+db $e0
+ENDM
+MACRO mD_2
+db $20
+ENDM
+MACRO mD_3
+db $30
+ENDM
+MACRO mD_4
+db $60
+ENDM
+MACRO mD_5
+db $70
+ENDM
+MACRO mD_6
+db $60
+ENDM
+MACRO mD_7
+db $70
+ENDM
+MACRO mD_8
+db $a0
+ENDM
+MACRO mD_9
+db $b0
+ENDM
+MACRO mDis_0
+db $30
+ENDM
+MACRO mDis_1
+db $30
+ENDM
+MACRO mDis_10
+db $b0
+ENDM
+MACRO mDis_11
+db $b0
+ENDM
+MACRO mDis_12
+db $f0
+ENDM
+MACRO mDis_2
+db $30
+ENDM
+MACRO mDis_3
+db $30
+ENDM
+MACRO mDis_4
+db $70
+ENDM
+MACRO mDis_5
+db $70
+ENDM
+MACRO mDis_6
+db $70
+ENDM
+MACRO mDis_7
+db $70
+ENDM
+MACRO mDis_8
+db $b0
+ENDM
+MACRO mDis_9
+db $b0
+ENDM
+MACRO mEND
+db $ff
+ENDM
+MACRO mE_0
+db $40
+ENDM
+MACRO mE_1
+db $50
+ENDM
+MACRO mE_10
+db $e0
+ENDM
+MACRO mE_11
+db $f0
+ENDM
+MACRO mE_12
+db $c0
+ENDM
+MACRO mE_2
+db $60
+ENDM
+MACRO mE_3
+db $70
+ENDM
+MACRO mE_4
+db $40
+ENDM
+MACRO mE_5
+db $50
+ENDM
+MACRO mE_6
+db $60
+ENDM
+MACRO mE_7
+db $70
+ENDM
+MACRO mE_8
+db $c0
+ENDM
+MACRO mE_9
+db $d0
+ENDM
+MACRO mF_0
+db $50
+ENDM
+MACRO mF_1
+db $50
+ENDM
+MACRO mF_10
+db $f0
+ENDM
+MACRO mF_11
+db $f0
+ENDM
+MACRO mF_12
+db $d0
+ENDM
+MACRO mF_2
+db $70
+ENDM
+MACRO mF_3
+db $70
+ENDM
+MACRO mF_4
+db $50
+ENDM
+MACRO mF_5
+db $50
+ENDM
+MACRO mF_6
+db $70
+ENDM
+MACRO mF_7
+db $70
+ENDM
+MACRO mF_8
+db $d0
+ENDM
+MACRO mF_9
+db $d0
+ENDM
+MACRO mFis_0
+db $60
+ENDM
+MACRO mFis_1
+db $70
+ENDM
+MACRO mFis_10
+db $e0
+ENDM
+MACRO mFis_11
+db $f0
+ENDM
+MACRO mFis_12
+db $e0
+ENDM
+MACRO mFis_2
+db $60
+ENDM
+MACRO mFis_3
+db $70
+ENDM
+MACRO mFis_4
+db $60
+ENDM
+MACRO mFis_5
+db $70
+ENDM
+MACRO mFis_6
+db $60
+ENDM
+MACRO mFis_7
+db $70
+ENDM
+MACRO mFis_8
+db $e0
+ENDM
+MACRO mFis_9
+db $f0
+ENDM
+MACRO mG_0
+db $70
+ENDM
+MACRO mG_1
+db $70
+ENDM
+MACRO mG_10
+db $f0
+ENDM
+MACRO mG_11
+db $f0
+ENDM
+MACRO mG_12
+db $f0
+ENDM
+MACRO mG_2
+db $70
+ENDM
+MACRO mG_3
+db $70
+ENDM
+MACRO mG_4
+db $70
+ENDM
+MACRO mG_5
+db $70
+ENDM
+MACRO mG_6
+db $70
+ENDM
+MACRO mG_7
+db $70
+ENDM
+MACRO mG_8
+db $f0
+ENDM
+MACRO mG_9
+db $f0
+ENDM
+MACRO mGis_0
+db $80
+ENDM
+MACRO mGis_1
+db $90
+ENDM
+MACRO mGis_10
+db $a0
+ENDM
+MACRO mGis_11
+db $b0
+ENDM
+MACRO mGis_12
+db $c0
+ENDM
+MACRO mGis_2
+db $a0
+ENDM
+MACRO mGis_3
+db $b0
+ENDM
+MACRO mGis_4
+db $c0
+ENDM
+MACRO mGis_5
+db $d0
+ENDM
+MACRO mGis_6
+db $e0
+ENDM
+MACRO mGis_7
+db $f0
+ENDM
+MACRO mGis_8
+db $80
+ENDM
+MACRO mGis_9
+db $90
+ENDM
+MACRO mINIT
+db $fe
+dw \1
+db \2
+dw \3
+ENDM
+MACRO mJUMP
+db $f1
+dw \1
+ENDM
+MACRO mJUMPIF
+db $fb
+db \1
+dw \2
+ENDM
+MACRO mOCTAVE_0
+db $e0
+ENDM
+MACRO mOCTAVE_1
+db $e1
+ENDM
+MACRO mOCTAVE_2
+db $e2
+ENDM
+MACRO mOCTAVE_3
+db $e3
+ENDM
+MACRO mOCTAVE_4
+db $e4
+ENDM
+MACRO mOCTAVE_5
+db $e5
+ENDM
+MACRO mOCTAVE_6
+db $e6
+ENDM
+MACRO mOCTAVE_7
+db $e7
+ENDM
+MACRO mOCTAVE_MINUS_1
+db $ec
+ENDM
+MACRO mOCTAVE_MINUS_2
+db $ed
+ENDM
+MACRO mOCTAVE_MINUS_3
+db $ee
+ENDM
+MACRO mOCTAVE_MINUS_4
+db $ef
+ENDM
+MACRO mOCTAVE_PLUS_1
+db $e8
+ENDM
+MACRO mOCTAVE_PLUS_2
+db $e9
+ENDM
+MACRO mOCTAVE_PLUS_3
+db $ea
+ENDM
+MACRO mOCTAVE_PLUS_4
+db $eb
+ENDM
+MACRO mREPEAT
+db $f2
+dw \1
+ENDM
+MACRO mREPEAT_2
+db $f9
+dw \1
+ENDM
+MACRO mRest_0
+db $d0
+ENDM
+MACRO mRest_1
+db $d0
+ENDM
+MACRO mRest_10
+db $f0
+ENDM
+MACRO mRest_11
+db $f0
+ENDM
+MACRO mRest_12
+db $d0
+ENDM
+MACRO mRest_2
+db $f0
+ENDM
+MACRO mRest_3
+db $f0
+ENDM
+MACRO mRest_4
+db $d0
+ENDM
+MACRO mRest_5
+db $d0
+ENDM
+MACRO mRest_6
+db $f0
+ENDM
+MACRO mRest_7
+db $f0
+ENDM
+MACRO mRest_8
+db $d0
+ENDM
+MACRO mRest_9
+db $d0
+ENDM
+MACRO mSTEREOPAN
+db $f6
+db \1
+ENDM
+MACRO mTEMPO
+db $f7
+db \1
+ENDM
+MACRO mUNK_ED
+db $fd
+db \1
+ENDM
+MACRO mVIBRATO
+db $f4
+dw \1
+ENDM
+MACRO mVOLUME
+db $f0
+db \1
+ENDM
+MACRO mVOLUME_ENVELOPE
+db $f0
+dw \1
+ENDM
+MACRO mWAVETABLE
+db $f8
+dw \1
+ENDM
+MACRO mWait_0
+db $c0
+ENDM
+MACRO mWait_1
+db $d0
+ENDM
+MACRO mWait_10
+db $e0
+ENDM
+MACRO mWait_11
+db $f0
+ENDM
+MACRO mWait_12
+db $c0
+ENDM
+MACRO mWait_2
+db $e0
+ENDM
+MACRO mWait_3
+db $f0
+ENDM
+MACRO mWait_4
+db $c0
+ENDM
+MACRO mWait_5
+db $d0
+ENDM
+MACRO mWait_6
+db $e0
+ENDM
+MACRO mWait_7
+db $f0
+ENDM
+MACRO mWait_8
+db $c0
+ENDM
+MACRO mWait_9
+db $d0
+ENDM
 MACRO short_halt
 db $76
 ENDM

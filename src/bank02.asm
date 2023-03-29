@@ -2357,7 +2357,7 @@ call_02_50ed:
     and  A, A                                          ;; 02:5111 $a7
     jr   NZ, .jr_02_5118                               ;; 02:5112 $20 $04
     ld   A, $1c                                        ;; 02:5114 $3e $1c
-    ldh  [hFFBC], A                                    ;; 02:5116 $e0 $bc
+    ldh  [hSFX], A                                     ;; 02:5116 $e0 $bc
 .jr_02_5118:
     ld   A, [HL]                                       ;; 02:5118 $7e
     ldh  [rSCY], A                                     ;; 02:5119 $e0 $42
@@ -2387,7 +2387,7 @@ call_02_50ed:
     dec  D                                             ;; 02:513f $15
     jr   NZ, .jr_02_5106                               ;; 02:5140 $20 $c4
     ld   A, $1c                                        ;; 02:5142 $3e $1c
-    ldh  [hFFBC], A                                    ;; 02:5144 $e0 $bc
+    ldh  [hSFX], A                                     ;; 02:5144 $e0 $bc
     call call_02_4fc5                                  ;; 02:5146 $cd $c5 $4f
     ld   A, $30                                        ;; 02:5149 $3e $30
     ld   [wDE11], A                                    ;; 02:514b $ea $11 $de
@@ -2408,7 +2408,7 @@ call_02_5167:
 .jr_02_516a:
     push BC                                            ;; 02:516a $c5
     ld   A, $30                                        ;; 02:516b $3e $30
-    ldh  [hFFBC], A                                    ;; 02:516d $e0 $bc
+    ldh  [hSFX], A                                     ;; 02:516d $e0 $bc
 .jr_02_516f:
     ld   A, C                                          ;; 02:516f $79
     ld   HL, data_02_51ca                              ;; 02:5170 $21 $ca $51
@@ -2503,7 +2503,7 @@ call_02_51fd:
     and  A, $01                                        ;; 02:5204 $e6 $01
     jr   NZ, .jr_02_520c                               ;; 02:5206 $20 $04
     ld   A, $36                                        ;; 02:5208 $3e $36
-    ldh  [hFFBC], A                                    ;; 02:520a $e0 $bc
+    ldh  [hSFX], A                                     ;; 02:520a $e0 $bc
 .jr_02_520c:
     call call_00_3a6b                                  ;; 02:520c $cd $6b $3a
     ld   A, $5a                                        ;; 02:520f $3e $5a

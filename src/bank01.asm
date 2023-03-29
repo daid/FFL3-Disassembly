@@ -44,7 +44,7 @@ call_01_402d:
     ret                                                ;; 01:4048 $c9
 .jr_01_4049:
     ld   A, $1f                                        ;; 01:4049 $3e $1f
-    ldh  [hFFBC], A                                    ;; 01:404b $e0 $bc
+    ldh  [hSFX], A                                     ;; 01:404b $e0 $bc
     call call_01_4063                                  ;; 01:404d $cd $63 $40
     call call_00_01d7                                  ;; 01:4050 $cd $d7 $01
     ld   A, $01                                        ;; 01:4053 $3e $01
@@ -115,7 +115,7 @@ jp_01_40dd:
     call call_01_4132                                  ;; 01:40dd $cd $32 $41
     ret  NZ                                            ;; 01:40e0 $c0
     ld   A, $27                                        ;; 01:40e1 $3e $27
-    ldh  [hFFBC], A                                    ;; 01:40e3 $e0 $bc
+    ldh  [hSFX], A                                     ;; 01:40e3 $e0 $bc
     call call_00_3a6b                                  ;; 01:40e5 $cd $6b $3a
     ld   A, [wC6EE]                                    ;; 01:40e8 $fa $ee $c6
     rlca                                               ;; 01:40eb $07
@@ -266,7 +266,7 @@ jp_01_41d6:
     ret  NZ                                            ;; 01:41d9 $c0
     call call_01_5f39                                  ;; 01:41da $cd $39 $5f
     ld   A, $1a                                        ;; 01:41dd $3e $1a
-    ldh  [hFFBC], A                                    ;; 01:41df $e0 $bc
+    ldh  [hSFX], A                                     ;; 01:41df $e0 $bc
     ld   A, $02                                        ;; 01:41e1 $3e $02
     ld   [wCA6B], A                                    ;; 01:41e3 $ea $6b $ca
     ld   A, [wC6F7]                                    ;; 01:41e6 $fa $f7 $c6
@@ -310,7 +310,7 @@ call_01_422e:
 
 jp_01_4233:
     ld   A, $2c                                        ;; 01:4233 $3e $2c
-    ldh  [hFFBC], A                                    ;; 01:4235 $e0 $bc
+    ldh  [hSFX], A                                     ;; 01:4235 $e0 $bc
     ld   A, $0a                                        ;; 01:4237 $3e $0a
     call call_00_3cb2                                  ;; 01:4239 $cd $b2 $3c
     jr   C, .jr_01_4245                                ;; 01:423c $38 $07
@@ -982,7 +982,7 @@ call_01_47b2:
     and  A, $02                                        ;; 01:47b4 $e6 $02
     ret  Z                                             ;; 01:47b6 $c8
     ld   A, $39                                        ;; 01:47b7 $3e $39
-    ldh  [hFFBC], A                                    ;; 01:47b9 $e0 $bc
+    ldh  [hSFX], A                                     ;; 01:47b9 $e0 $bc
     xor  A, A                                          ;; 01:47bb $af
     ld   [wCA26], A                                    ;; 01:47bc $ea $26 $ca
     ld   A, $01                                        ;; 01:47bf $3e $01
@@ -1144,7 +1144,7 @@ call_01_48f1:
 
 call_01_48ff:
     ld   A, $10                                        ;; 01:48ff $3e $10
-    ldh  [hFFBC], A                                    ;; 01:4901 $e0 $bc
+    ldh  [hSFX], A                                     ;; 01:4901 $e0 $bc
     ld   C, $0f                                        ;; 01:4903 $0e $0f
     ld   B, $00                                        ;; 01:4905 $06 $00
 .jr_01_4907:
@@ -4437,7 +4437,7 @@ call_01_6374:
     sbc  A, $03                                        ;; 01:63aa $de $03
     ret  NC                                            ;; 01:63ac $d0
     ld   A, $40                                        ;; 01:63ad $3e $40
-    ldh  [hFFBC], A                                    ;; 01:63af $e0 $bc
+    ldh  [hSFX], A                                     ;; 01:63af $e0 $bc
     ld   A, $01                                        ;; 01:63b1 $3e $01
     ld   [wC6F2], A                                    ;; 01:63b3 $ea $f2 $c6
     ld   B, $06                                        ;; 01:63b6 $06 $06
@@ -5982,7 +5982,7 @@ call_01_7c79:
     ld   A, $0a                                        ;; 01:7c79 $3e $0a
     ld   [wCED9], A                                    ;; 01:7c7b $ea $d9 $ce
     ld   A, $06                                        ;; 01:7c7e $3e $06
-    ldh  [hFFBA], A                                    ;; 01:7c80 $e0 $ba
+    ldh  [hCurrentMusic], A                            ;; 01:7c80 $e0 $ba
     call call_00_1d9e                                  ;; 01:7c82 $cd $9e $1d
     ld   HL, data_01_7dda                              ;; 01:7c85 $21 $da $7d
     ld   DE, wCDB4                                     ;; 01:7c88 $11 $b4 $cd
