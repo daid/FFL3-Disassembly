@@ -17,9 +17,9 @@ def music_pointers(memory, addr, *, amount):
             elif PARAM_SIZE[param] == 2:
                 params += f"\ndw \{idx+1}"
         RomInfo.macros[v[0]] = f"db ${(k&0xFF):02x}" + params
-    for n in range(13):
+    for n in range(16):
         for k, v in NOTES.items():
-            RomInfo.macros[f"{v}_{n}"] = f"db ${(n << 4) | k:02x}"
+            RomInfo.macros[f"{v}_{n}"] = f"db ${k | n:02x}"
 
 
 class MusicPointerBlock(Block):
@@ -78,9 +78,9 @@ OPCODES = {
     0xFA: ("mCOUNTER_2", "byte"),
     0xFB: ("mJUMPIF", "byte", "mptr"),
     0xFD: ("mUNK_ED", "byte"),
-    0x1FE: ("mINIT", "ptr", "ptr", "byte"),
-    0x2FE: ("mINIT", "byte", "ptr", "ptr", "byte"),
-    0x3FE: ("mINIT", "ptr", "byte", "ptr"),
+    0x1FE: ("mINIT1", "ptr", "ptr", "byte"),
+    0x2FE: ("mINIT2", "byte", "ptr", "ptr", "byte"),
+    0x3FE: ("mINIT3", "ptr", "byte", "ptr"),
     0xFF: ("mEND", )
 }
 PARAM_SIZE = {"byte": 1, "ptr": 2, "mptr": 2}

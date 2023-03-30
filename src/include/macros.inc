@@ -10,118 +10,145 @@ MACRO mA_0
 db $90
 ENDM
 MACRO mA_1
-db $90
+db $91
 ENDM
 MACRO mA_10
-db $b0
+db $9a
 ENDM
 MACRO mA_11
-db $b0
+db $9b
 ENDM
 MACRO mA_12
-db $d0
+db $9c
+ENDM
+MACRO mA_13
+db $9d
+ENDM
+MACRO mA_14
+db $9e
+ENDM
+MACRO mA_15
+db $9f
 ENDM
 MACRO mA_2
-db $b0
+db $92
 ENDM
 MACRO mA_3
-db $b0
+db $93
 ENDM
 MACRO mA_4
-db $d0
+db $94
 ENDM
 MACRO mA_5
-db $d0
+db $95
 ENDM
 MACRO mA_6
-db $f0
+db $96
 ENDM
 MACRO mA_7
-db $f0
+db $97
 ENDM
 MACRO mA_8
-db $90
+db $98
 ENDM
 MACRO mA_9
-db $90
+db $99
 ENDM
 MACRO mAis_0
 db $a0
 ENDM
 MACRO mAis_1
-db $b0
+db $a1
 ENDM
 MACRO mAis_10
-db $a0
+db $aa
 ENDM
 MACRO mAis_11
-db $b0
+db $ab
 ENDM
 MACRO mAis_12
-db $e0
+db $ac
+ENDM
+MACRO mAis_13
+db $ad
+ENDM
+MACRO mAis_14
+db $ae
+ENDM
+MACRO mAis_15
+db $af
 ENDM
 MACRO mAis_2
-db $a0
+db $a2
 ENDM
 MACRO mAis_3
-db $b0
+db $a3
 ENDM
 MACRO mAis_4
-db $e0
+db $a4
 ENDM
 MACRO mAis_5
-db $f0
+db $a5
 ENDM
 MACRO mAis_6
-db $e0
+db $a6
 ENDM
 MACRO mAis_7
-db $f0
+db $a7
 ENDM
 MACRO mAis_8
-db $a0
+db $a8
 ENDM
 MACRO mAis_9
-db $b0
+db $a9
 ENDM
 MACRO mB_0
 db $b0
 ENDM
 MACRO mB_1
-db $b0
+db $b1
 ENDM
 MACRO mB_10
-db $b0
+db $ba
 ENDM
 MACRO mB_11
-db $b0
+db $bb
 ENDM
 MACRO mB_12
-db $f0
+db $bc
+ENDM
+MACRO mB_13
+db $bd
+ENDM
+MACRO mB_14
+db $be
+ENDM
+MACRO mB_15
+db $bf
 ENDM
 MACRO mB_2
-db $b0
+db $b2
 ENDM
 MACRO mB_3
-db $b0
+db $b3
 ENDM
 MACRO mB_4
-db $f0
+db $b4
 ENDM
 MACRO mB_5
-db $f0
+db $b5
 ENDM
 MACRO mB_6
-db $f0
+db $b6
 ENDM
 MACRO mB_7
-db $f0
+db $b7
 ENDM
 MACRO mB_8
-db $b0
+db $b8
 ENDM
 MACRO mB_9
-db $b0
+db $b9
 ENDM
 MACRO mCOUNTER
 db $f3
@@ -135,79 +162,97 @@ MACRO mC_0
 db $00
 ENDM
 MACRO mC_1
-db $10
+db $01
 ENDM
 MACRO mC_10
-db $a0
+db $0a
 ENDM
 MACRO mC_11
-db $b0
+db $0b
 ENDM
 MACRO mC_12
-db $c0
+db $0c
+ENDM
+MACRO mC_13
+db $0d
+ENDM
+MACRO mC_14
+db $0e
+ENDM
+MACRO mC_15
+db $0f
 ENDM
 MACRO mC_2
-db $20
+db $02
 ENDM
 MACRO mC_3
-db $30
+db $03
 ENDM
 MACRO mC_4
-db $40
+db $04
 ENDM
 MACRO mC_5
-db $50
+db $05
 ENDM
 MACRO mC_6
-db $60
+db $06
 ENDM
 MACRO mC_7
-db $70
+db $07
 ENDM
 MACRO mC_8
-db $80
+db $08
 ENDM
 MACRO mC_9
-db $90
+db $09
 ENDM
 MACRO mCis_0
 db $10
 ENDM
 MACRO mCis_1
-db $10
+db $11
 ENDM
 MACRO mCis_10
-db $b0
+db $1a
 ENDM
 MACRO mCis_11
-db $b0
+db $1b
 ENDM
 MACRO mCis_12
-db $d0
+db $1c
+ENDM
+MACRO mCis_13
+db $1d
+ENDM
+MACRO mCis_14
+db $1e
+ENDM
+MACRO mCis_15
+db $1f
 ENDM
 MACRO mCis_2
-db $30
+db $12
 ENDM
 MACRO mCis_3
-db $30
+db $13
 ENDM
 MACRO mCis_4
-db $50
+db $14
 ENDM
 MACRO mCis_5
-db $50
+db $15
 ENDM
 MACRO mCis_6
-db $70
+db $16
 ENDM
 MACRO mCis_7
-db $70
+db $17
 ENDM
 MACRO mCis_8
-db $90
+db $18
 ENDM
 MACRO mCis_9
-db $90
+db $19
 ENDM
 MACRO mDUTYCYCLE
 db $f5
@@ -217,79 +262,97 @@ MACRO mD_0
 db $20
 ENDM
 MACRO mD_1
-db $30
+db $21
 ENDM
 MACRO mD_10
-db $a0
+db $2a
 ENDM
 MACRO mD_11
-db $b0
+db $2b
 ENDM
 MACRO mD_12
-db $e0
+db $2c
+ENDM
+MACRO mD_13
+db $2d
+ENDM
+MACRO mD_14
+db $2e
+ENDM
+MACRO mD_15
+db $2f
 ENDM
 MACRO mD_2
-db $20
+db $22
 ENDM
 MACRO mD_3
-db $30
+db $23
 ENDM
 MACRO mD_4
-db $60
+db $24
 ENDM
 MACRO mD_5
-db $70
+db $25
 ENDM
 MACRO mD_6
-db $60
+db $26
 ENDM
 MACRO mD_7
-db $70
+db $27
 ENDM
 MACRO mD_8
-db $a0
+db $28
 ENDM
 MACRO mD_9
-db $b0
+db $29
 ENDM
 MACRO mDis_0
 db $30
 ENDM
 MACRO mDis_1
-db $30
+db $31
 ENDM
 MACRO mDis_10
-db $b0
+db $3a
 ENDM
 MACRO mDis_11
-db $b0
+db $3b
 ENDM
 MACRO mDis_12
-db $f0
+db $3c
+ENDM
+MACRO mDis_13
+db $3d
+ENDM
+MACRO mDis_14
+db $3e
+ENDM
+MACRO mDis_15
+db $3f
 ENDM
 MACRO mDis_2
-db $30
+db $32
 ENDM
 MACRO mDis_3
-db $30
+db $33
 ENDM
 MACRO mDis_4
-db $70
+db $34
 ENDM
 MACRO mDis_5
-db $70
+db $35
 ENDM
 MACRO mDis_6
-db $70
+db $36
 ENDM
 MACRO mDis_7
-db $70
+db $37
 ENDM
 MACRO mDis_8
-db $b0
+db $38
 ENDM
 MACRO mDis_9
-db $b0
+db $39
 ENDM
 MACRO mEND
 db $ff
@@ -298,198 +361,256 @@ MACRO mE_0
 db $40
 ENDM
 MACRO mE_1
-db $50
+db $41
 ENDM
 MACRO mE_10
-db $e0
+db $4a
 ENDM
 MACRO mE_11
-db $f0
+db $4b
 ENDM
 MACRO mE_12
-db $c0
+db $4c
+ENDM
+MACRO mE_13
+db $4d
+ENDM
+MACRO mE_14
+db $4e
+ENDM
+MACRO mE_15
+db $4f
 ENDM
 MACRO mE_2
-db $60
+db $42
 ENDM
 MACRO mE_3
-db $70
+db $43
 ENDM
 MACRO mE_4
-db $40
+db $44
 ENDM
 MACRO mE_5
-db $50
+db $45
 ENDM
 MACRO mE_6
-db $60
+db $46
 ENDM
 MACRO mE_7
-db $70
+db $47
 ENDM
 MACRO mE_8
-db $c0
+db $48
 ENDM
 MACRO mE_9
-db $d0
+db $49
 ENDM
 MACRO mF_0
 db $50
 ENDM
 MACRO mF_1
-db $50
+db $51
 ENDM
 MACRO mF_10
-db $f0
+db $5a
 ENDM
 MACRO mF_11
-db $f0
+db $5b
 ENDM
 MACRO mF_12
-db $d0
+db $5c
+ENDM
+MACRO mF_13
+db $5d
+ENDM
+MACRO mF_14
+db $5e
+ENDM
+MACRO mF_15
+db $5f
 ENDM
 MACRO mF_2
-db $70
+db $52
 ENDM
 MACRO mF_3
-db $70
+db $53
 ENDM
 MACRO mF_4
-db $50
+db $54
 ENDM
 MACRO mF_5
-db $50
+db $55
 ENDM
 MACRO mF_6
-db $70
+db $56
 ENDM
 MACRO mF_7
-db $70
+db $57
 ENDM
 MACRO mF_8
-db $d0
+db $58
 ENDM
 MACRO mF_9
-db $d0
+db $59
 ENDM
 MACRO mFis_0
 db $60
 ENDM
 MACRO mFis_1
-db $70
+db $61
 ENDM
 MACRO mFis_10
-db $e0
+db $6a
 ENDM
 MACRO mFis_11
-db $f0
+db $6b
 ENDM
 MACRO mFis_12
-db $e0
+db $6c
+ENDM
+MACRO mFis_13
+db $6d
+ENDM
+MACRO mFis_14
+db $6e
+ENDM
+MACRO mFis_15
+db $6f
 ENDM
 MACRO mFis_2
-db $60
+db $62
 ENDM
 MACRO mFis_3
-db $70
+db $63
 ENDM
 MACRO mFis_4
-db $60
+db $64
 ENDM
 MACRO mFis_5
-db $70
+db $65
 ENDM
 MACRO mFis_6
-db $60
+db $66
 ENDM
 MACRO mFis_7
-db $70
+db $67
 ENDM
 MACRO mFis_8
-db $e0
+db $68
 ENDM
 MACRO mFis_9
-db $f0
+db $69
 ENDM
 MACRO mG_0
 db $70
 ENDM
 MACRO mG_1
-db $70
+db $71
 ENDM
 MACRO mG_10
-db $f0
+db $7a
 ENDM
 MACRO mG_11
-db $f0
+db $7b
 ENDM
 MACRO mG_12
-db $f0
+db $7c
+ENDM
+MACRO mG_13
+db $7d
+ENDM
+MACRO mG_14
+db $7e
+ENDM
+MACRO mG_15
+db $7f
 ENDM
 MACRO mG_2
-db $70
+db $72
 ENDM
 MACRO mG_3
-db $70
+db $73
 ENDM
 MACRO mG_4
-db $70
+db $74
 ENDM
 MACRO mG_5
-db $70
+db $75
 ENDM
 MACRO mG_6
-db $70
+db $76
 ENDM
 MACRO mG_7
-db $70
+db $77
 ENDM
 MACRO mG_8
-db $f0
+db $78
 ENDM
 MACRO mG_9
-db $f0
+db $79
 ENDM
 MACRO mGis_0
 db $80
 ENDM
 MACRO mGis_1
-db $90
+db $81
 ENDM
 MACRO mGis_10
-db $a0
+db $8a
 ENDM
 MACRO mGis_11
-db $b0
+db $8b
 ENDM
 MACRO mGis_12
-db $c0
+db $8c
+ENDM
+MACRO mGis_13
+db $8d
+ENDM
+MACRO mGis_14
+db $8e
+ENDM
+MACRO mGis_15
+db $8f
 ENDM
 MACRO mGis_2
-db $a0
+db $82
 ENDM
 MACRO mGis_3
-db $b0
+db $83
 ENDM
 MACRO mGis_4
-db $c0
+db $84
 ENDM
 MACRO mGis_5
-db $d0
+db $85
 ENDM
 MACRO mGis_6
-db $e0
+db $86
 ENDM
 MACRO mGis_7
-db $f0
+db $87
 ENDM
 MACRO mGis_8
-db $80
+db $88
 ENDM
 MACRO mGis_9
-db $90
+db $89
 ENDM
-MACRO mINIT
+MACRO mINIT1
+db $fe
+dw \1
+dw \2
+db \3
+ENDM
+MACRO mINIT2
+db $fe
+db \1
+dw \2
+dw \3
+db \4
+ENDM
+MACRO mINIT3
 db $fe
 dw \1
 db \2
@@ -564,40 +685,49 @@ MACRO mRest_0
 db $d0
 ENDM
 MACRO mRest_1
-db $d0
+db $d1
 ENDM
 MACRO mRest_10
-db $f0
+db $da
 ENDM
 MACRO mRest_11
-db $f0
+db $db
 ENDM
 MACRO mRest_12
-db $d0
+db $dc
+ENDM
+MACRO mRest_13
+db $dd
+ENDM
+MACRO mRest_14
+db $de
+ENDM
+MACRO mRest_15
+db $df
 ENDM
 MACRO mRest_2
-db $f0
+db $d2
 ENDM
 MACRO mRest_3
-db $f0
+db $d3
 ENDM
 MACRO mRest_4
-db $d0
+db $d4
 ENDM
 MACRO mRest_5
-db $d0
+db $d5
 ENDM
 MACRO mRest_6
-db $f0
+db $d6
 ENDM
 MACRO mRest_7
-db $f0
+db $d7
 ENDM
 MACRO mRest_8
-db $d0
+db $d8
 ENDM
 MACRO mRest_9
-db $d0
+db $d9
 ENDM
 MACRO mSTEREOPAN
 db $f6
@@ -631,40 +761,49 @@ MACRO mWait_0
 db $c0
 ENDM
 MACRO mWait_1
-db $d0
+db $c1
 ENDM
 MACRO mWait_10
-db $e0
+db $ca
 ENDM
 MACRO mWait_11
-db $f0
+db $cb
 ENDM
 MACRO mWait_12
-db $c0
+db $cc
+ENDM
+MACRO mWait_13
+db $cd
+ENDM
+MACRO mWait_14
+db $ce
+ENDM
+MACRO mWait_15
+db $cf
 ENDM
 MACRO mWait_2
-db $e0
+db $c2
 ENDM
 MACRO mWait_3
-db $f0
+db $c3
 ENDM
 MACRO mWait_4
-db $c0
+db $c4
 ENDM
 MACRO mWait_5
-db $d0
+db $c5
 ENDM
 MACRO mWait_6
-db $e0
+db $c6
 ENDM
 MACRO mWait_7
-db $f0
+db $c7
 ENDM
 MACRO mWait_8
-db $c0
+db $c8
 ENDM
 MACRO mWait_9
-db $d0
+db $c9
 ENDM
 MACRO short_halt
 db $76
