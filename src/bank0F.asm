@@ -1353,7 +1353,7 @@ soundEffectPlayStep:
     ret                                                ;; 0f:482e $c9
 
 ; BUG: This table is 19 entries long, but the music plugin chokes on the 12 song.
-;@music_pointers amount=11
+;@music_pointers amount=19
 musicSongChannelPointers:
     dw   song00_channel2, song00_channel1, song00_channel3, song00_channel4 ;; 0f:482f $66 $5d $e5 $5d $81 $5e $fb $5e
     dw   song01_channel2, song01_channel1, song01_channel3, song01_channel4 ;; 0f:4837 $0d $5f $d8 $5f $99 $60 $e9 $60
