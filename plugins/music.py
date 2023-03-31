@@ -138,11 +138,10 @@ class MusicBlock(Block):
                     if 0x4000 <= target < 0x8000:
                         memory.addAutoLabel(target, addr + len(self), "data")
                 size += PARAM_SIZE[param]
-            print(hex(addr))
-            print(hex(instruction))
-            print(channel_nr)
-            print(len(self))
-            print(size)
+            print(hex(addr + len(self)), hex(instruction), channel_nr, len(self), size)
+            if memory[addr + len(self) + size - 1] is not None:
+                print("OMG")
+                break
             self.resize(len(self) + size)
 
             if instruction == 0xFF or instruction == 0xF1: # channels seem to loop on this jump.
