@@ -1366,23 +1366,14 @@ musicSongChannelPointers:
     dw   song08_channel2, song08_channel1, song08_channel3, song08_channel4 ;; 0f:486f $5b $4e $19 $4f $08 $50 $8b $50
     dw   song09_channel2, song09_channel1, song09_channel3, song02_channel4 ;; 0f:4877 $b6 $52 $0f $53 $2a $53 $91 $4b
     dw   song0a_channel2, song0a_channel1, song0a_channel3, song0a_channel4 ;; 0f:487f $9f $50 $10 $51 $d0 $51 $a5 $52
-    db   $72, $5b, $ae, $5b, $ea, $5b, $11, $5c        ;; 0f:4887 ????????
-    dw   data_0f_63d5                                  ;; 0f:488f pP
-    dw   data_0f_644e                                  ;; 0f:4891 pP
-    dw   data_0f_64ea                                  ;; 0f:4893 pP
-    dw   data_0f_650a                                  ;; 0f:4895 pP
-    db   $10, $61, $94, $61, $71, $62, $d5, $62        ;; 0f:4897 ????????
-    dw   data_0f_55f3                                  ;; 0f:489f pP
-    dw   data_0f_56b6                                  ;; 0f:48a1 pP
-    dw   data_0f_5730                                  ;; 0f:48a3 pP
-    dw   data_0f_574f                                  ;; 0f:48a5 pP
-    db   $6e, $57, $ed, $57, $3f, $58, $2f, $59        ;; 0f:48a7 ????????
-    db   $45, $59, $86, $59, $91, $59, $be, $59        ;; 0f:48af ????????
-    db   $6d, $53, $9f, $53, $20, $54, $c2, $54        ;; 0f:48b7 ????????
-    dw   data_0f_5c2c                                  ;; 0f:48bf pP
-    dw   data_0f_5ca3                                  ;; 0f:48c1 pP
-    dw   data_0f_5cd7                                  ;; 0f:48c3 pP
-    dw   data_0f_5d48                                  ;; 0f:48c5 pP
+    dw   song0b_channel2, song0b_channel1, song0b_channel3, song0b_channel4 ;; 0f:4887 $72 $5b $ae $5b $ea $5b $11 $5c
+    dw   song0c_channel2, song0c_channel1, song0c_channel3, song0c_channel4 ;; 0f:488f $d5 $63 $4e $64 $ea $64 $0a $65
+    dw   song0d_channel2, song0d_channel1, song0d_channel3, song0d_channel4 ;; 0f:4897 $10 $61 $94 $61 $71 $62 $d5 $62
+    dw   song0e_channel2, song0e_channel1, song0e_channel3, song0e_channel4 ;; 0f:489f $f3 $55 $b6 $56 $30 $57 $4f $57
+    dw   song0f_channel2, song0f_channel1, song0f_channel3, song0f_channel4 ;; 0f:48a7 $6e $57 $ed $57 $3f $58 $2f $59
+    dw   song10_channel2, song10_channel1, song10_channel3, song10_channel4 ;; 0f:48af $45 $59 $86 $59 $91 $59 $be $59
+    dw   song11_channel2, song11_channel1, song11_channel3, song11_channel4 ;; 0f:48b7 $6d $53 $9f $53 $20 $54 $c2 $54
+    dw   song12_channel2, song12_channel1, song12_channel3, song12_channel4 ;; 0f:48bf $2c $5c $a3 $5c $d7 $5c $48 $5d
     dw   data_0f_54d5                                  ;; 0f:48c7 pP
     dw   data_0f_5521                                  ;; 0f:48c9 pP
     dw   data_0f_559b                                  ;; 0f:48cb pP
@@ -3714,51 +3705,311 @@ song09_channel3:
     mRest_9                                            ;; 0f:5367 $d9
     mVOLUME $20                                        ;; 0f:5368 $f0 $20
     mJUMP .data_0f_5331                                ;; 0f:536a $f1 $31 $53
-    db   $fe, $c8, $8c, $66, $ef, $65, $c0, $03        ;; 0f:536d ????????
-    db   $e3, $90, $e8, $20, $00, $54, $04, $ec        ;; 0f:5375 ????????
-    db   $b4, $74, $90, $70, $50, $ec, $94, $74        ;; 0f:537d ????????
-    db   $e8, $04, $ec, $b4, $e8, $92, $e8, $02        ;; 0f:5385 ????????
-    db   $ec, $b2, $72, $e8, $02, $ec, $b2, $e8        ;; 0f:538d ????????
-    db   $20, $fa, $08, $40, $f9, $98, $53, $f1        ;; 0f:5395 ????????
-    db   $75, $53, $fe, $63, $66, $fb, $65, $40        ;; 0f:539d ????????
-    db   $03, $e3, $40, $70, $50, $ec, $f0, $11        ;; 0f:53a5 ????????
-    db   $66, $5d, $cd, $9d, $cd, $e8, $0d, $cd        ;; 0f:53ad ????????
-    db   $59, $f6, $02, $99, $89, $99, $f6, $01        ;; 0f:53b5 ????????
-    db   $b9, $99, $b9, $f6, $02, $e8, $09, $ec        ;; 0f:53bd ????????
-    db   $b9, $e8, $09, $f6, $03, $f0, $fb, $65        ;; 0f:53c5 ????????
-    db   $ec, $40, $20, $00, $f0, $11, $66, $e8        ;; 0f:53cd ????????
-    db   $0d, $cd, $ec, $bd, $cd, $9d, $cd, $79        ;; 0f:53d5 ????????
-    db   $f6, $01, $59, $ec, $b9, $e8, $49, $f6        ;; 0f:53dd ????????
-    db   $02, $09, $ec, $49, $e8, $29, $f6, $01        ;; 0f:53e5 ????????
-    db   $ec, $59, $b9, $79, $f6, $03, $f0, $fb        ;; 0f:53ed ????????
-    db   $65, $e8, $42, $52, $72, $22, $92, $72        ;; 0f:53f5 ????????
-    db   $b0, $f0, $11, $66, $fa, $08, $f6, $01        ;; 0f:53fd ????????
-    db   $99, $29, $49, $f6, $03, $99, $29, $49        ;; 0f:5405 ????????
-    db   $f6, $02, $99, $29, $49, $f6, $03, $99        ;; 0f:540d ????????
-    db   $29, $49, $f9, $03, $54, $f0, $fb, $65        ;; 0f:5415 ????????
-    db   $f1, $a6, $53, $fe, $8c, $66, $20, $e2        ;; 0f:541d ????????
-    db   $66, $03, $e1, $fa, $06, $99, $e8, $99        ;; 0f:5425 ????????
-    db   $ec, $f9, $2a, $54, $f3, $02, $fa, $0c        ;; 0f:542d ????????
-    db   $99, $e8, $99, $ec, $f9, $35, $54, $fb        ;; 0f:5435 ????????
-    db   $01, $57, $54, $57, $dc, $5a, $de, $9a        ;; 0f:543d ????????
-    db   $de, $9a, $de, $9a, $de, $77, $dc, $7a        ;; 0f:5445 ????????
-    db   $de, $4a, $de, $4a, $de, $4a, $de, $f2        ;; 0f:544d ????????
-    db   $33, $54, $fa, $06, $59, $e8, $59, $ec        ;; 0f:5455 ????????
-    db   $f9, $59, $54, $57, $dc, $5a, $de, $4a        ;; 0f:545d ????????
-    db   $de, $4a, $de, $4a, $de, $07, $dc, $0a        ;; 0f:5465 ????????
-    db   $de, $ec, $ba, $de, $ba, $de, $ba, $de        ;; 0f:546d ????????
-    db   $e8, $96, $e8, $09, $ec, $99, $e8, $09        ;; 0f:5475 ????????
-    db   $ec, $99, $57, $dc, $59, $e8, $09, $ec        ;; 0f:547d ????????
-    db   $b9, $e8, $09, $27, $dc, $29, $09, $ec        ;; 0f:5485 ????????
-    db   $b9, $99, $77, $dc, $79, $e8, $29, $19        ;; 0f:548d ????????
-    db   $29, $ec, $97, $dc, $99, $e8, $49, $ec        ;; 0f:5495 ????????
-    db   $99, $e8, $49, $27, $dc, $29, $09, $ec        ;; 0f:549d ????????
-    db   $b9, $99, $77, $dc, $79, $e8, $79, $ec        ;; 0f:54a5 ????????
-    db   $79, $e8, $79, $77, $dc, $79, $ec, $79        ;; 0f:54ad ????????
-    db   $29, $b9, $90, $70, $50, $70, $90, $70        ;; 0f:54b5 ????????
-    db   $50, $70, $f1, $27, $54, $f0, $1b, $66        ;; 0f:54bd ????????
-    db   $f6, $01, $b9, $b9, $b9, $f6, $02, $79        ;; 0f:54c5 ????????
-    db   $b9, $b9, $f6, $03, $52, $f1, $c5, $54        ;; 0f:54cd ????????
+
+song11_channel2:
+    mINIT2 $c8, data_0f_668c, data_0f_65ef, $c0        ;; 0f:536d $fe $c8 $8c $66 $ef $65 $c0
+    mC_3                                               ;; 0f:5374 $03
+.data_0f_5375:
+    mOCTAVE_3                                          ;; 0f:5375 $e3
+    mA_0                                               ;; 0f:5376 $90
+    mOCTAVE_PLUS_1                                     ;; 0f:5377 $e8
+    mD_0                                               ;; 0f:5378 $20
+    mC_0                                               ;; 0f:5379 $00
+    mF_4                                               ;; 0f:537a $54
+    mC_4                                               ;; 0f:537b $04
+    mOCTAVE_MINUS_1                                    ;; 0f:537c $ec
+    mB_4                                               ;; 0f:537d $b4
+    mG_4                                               ;; 0f:537e $74
+    mA_0                                               ;; 0f:537f $90
+    mG_0                                               ;; 0f:5380 $70
+    mF_0                                               ;; 0f:5381 $50
+    mOCTAVE_MINUS_1                                    ;; 0f:5382 $ec
+    mA_4                                               ;; 0f:5383 $94
+    mG_4                                               ;; 0f:5384 $74
+    mOCTAVE_PLUS_1                                     ;; 0f:5385 $e8
+    mC_4                                               ;; 0f:5386 $04
+    mOCTAVE_MINUS_1                                    ;; 0f:5387 $ec
+    mB_4                                               ;; 0f:5388 $b4
+    mOCTAVE_PLUS_1                                     ;; 0f:5389 $e8
+    mA_2                                               ;; 0f:538a $92
+    mOCTAVE_PLUS_1                                     ;; 0f:538b $e8
+    mC_2                                               ;; 0f:538c $02
+    mOCTAVE_MINUS_1                                    ;; 0f:538d $ec
+    mB_2                                               ;; 0f:538e $b2
+    mG_2                                               ;; 0f:538f $72
+    mOCTAVE_PLUS_1                                     ;; 0f:5390 $e8
+    mC_2                                               ;; 0f:5391 $02
+    mOCTAVE_MINUS_1                                    ;; 0f:5392 $ec
+    mB_2                                               ;; 0f:5393 $b2
+    mOCTAVE_PLUS_1                                     ;; 0f:5394 $e8
+    mD_0                                               ;; 0f:5395 $20
+    mCOUNTER_2 $08                                     ;; 0f:5396 $fa $08
+.data_0f_5398:
+    mE_0                                               ;; 0f:5398 $40
+    mREPEAT_2 .data_0f_5398                            ;; 0f:5399 $f9 $98 $53
+    mJUMP .data_0f_5375                                ;; 0f:539c $f1 $75 $53
+
+song11_channel1:
+    mINIT1 frequencyDeltaData, data_0f_65fb, $40       ;; 0f:539f $fe $63 $66 $fb $65 $40
+    mC_3                                               ;; 0f:53a5 $03
+.data_0f_53a6:
+    mOCTAVE_3                                          ;; 0f:53a6 $e3
+    mE_0                                               ;; 0f:53a7 $40
+    mG_0                                               ;; 0f:53a8 $70
+    mF_0                                               ;; 0f:53a9 $50
+    mOCTAVE_MINUS_1                                    ;; 0f:53aa $ec
+    mVOLUME_ENVELOPE data_0f_6611                      ;; 0f:53ab $f0 $11 $66
+    mF_13                                              ;; 0f:53ae $5d
+    mWait_13                                           ;; 0f:53af $cd
+    mA_13                                              ;; 0f:53b0 $9d
+    mWait_13                                           ;; 0f:53b1 $cd
+    mOCTAVE_PLUS_1                                     ;; 0f:53b2 $e8
+    mC_13                                              ;; 0f:53b3 $0d
+    mWait_13                                           ;; 0f:53b4 $cd
+    mF_9                                               ;; 0f:53b5 $59
+    mSTEREOPAN $02                                     ;; 0f:53b6 $f6 $02
+    mA_9                                               ;; 0f:53b8 $99
+    mGis_9                                             ;; 0f:53b9 $89
+    mA_9                                               ;; 0f:53ba $99
+    mSTEREOPAN $01                                     ;; 0f:53bb $f6 $01
+    mB_9                                               ;; 0f:53bd $b9
+    mA_9                                               ;; 0f:53be $99
+    mB_9                                               ;; 0f:53bf $b9
+    mSTEREOPAN $02                                     ;; 0f:53c0 $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:53c2 $e8
+    mC_9                                               ;; 0f:53c3 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:53c4 $ec
+    mB_9                                               ;; 0f:53c5 $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:53c6 $e8
+    mC_9                                               ;; 0f:53c7 $09
+    mSTEREOPAN $03                                     ;; 0f:53c8 $f6 $03
+    mVOLUME_ENVELOPE data_0f_65fb                      ;; 0f:53ca $f0 $fb $65
+    mOCTAVE_MINUS_1                                    ;; 0f:53cd $ec
+    mE_0                                               ;; 0f:53ce $40
+    mD_0                                               ;; 0f:53cf $20
+    mC_0                                               ;; 0f:53d0 $00
+    mVOLUME_ENVELOPE data_0f_6611                      ;; 0f:53d1 $f0 $11 $66
+    mOCTAVE_PLUS_1                                     ;; 0f:53d4 $e8
+    mC_13                                              ;; 0f:53d5 $0d
+    mWait_13                                           ;; 0f:53d6 $cd
+    mOCTAVE_MINUS_1                                    ;; 0f:53d7 $ec
+    mB_13                                              ;; 0f:53d8 $bd
+    mWait_13                                           ;; 0f:53d9 $cd
+    mA_13                                              ;; 0f:53da $9d
+    mWait_13                                           ;; 0f:53db $cd
+    mG_9                                               ;; 0f:53dc $79
+    mSTEREOPAN $01                                     ;; 0f:53dd $f6 $01
+    mF_9                                               ;; 0f:53df $59
+    mOCTAVE_MINUS_1                                    ;; 0f:53e0 $ec
+    mB_9                                               ;; 0f:53e1 $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:53e2 $e8
+    mE_9                                               ;; 0f:53e3 $49
+    mSTEREOPAN $02                                     ;; 0f:53e4 $f6 $02
+    mC_9                                               ;; 0f:53e6 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:53e7 $ec
+    mE_9                                               ;; 0f:53e8 $49
+    mOCTAVE_PLUS_1                                     ;; 0f:53e9 $e8
+    mD_9                                               ;; 0f:53ea $29
+    mSTEREOPAN $01                                     ;; 0f:53eb $f6 $01
+    mOCTAVE_MINUS_1                                    ;; 0f:53ed $ec
+    mF_9                                               ;; 0f:53ee $59
+    mB_9                                               ;; 0f:53ef $b9
+    mG_9                                               ;; 0f:53f0 $79
+    mSTEREOPAN $03                                     ;; 0f:53f1 $f6 $03
+    mVOLUME_ENVELOPE data_0f_65fb                      ;; 0f:53f3 $f0 $fb $65
+    mOCTAVE_PLUS_1                                     ;; 0f:53f6 $e8
+    mE_2                                               ;; 0f:53f7 $42
+    mF_2                                               ;; 0f:53f8 $52
+    mG_2                                               ;; 0f:53f9 $72
+    mD_2                                               ;; 0f:53fa $22
+    mA_2                                               ;; 0f:53fb $92
+    mG_2                                               ;; 0f:53fc $72
+    mB_0                                               ;; 0f:53fd $b0
+    mVOLUME_ENVELOPE data_0f_6611                      ;; 0f:53fe $f0 $11 $66
+    mCOUNTER_2 $08                                     ;; 0f:5401 $fa $08
+.data_0f_5403:
+    mSTEREOPAN $01                                     ;; 0f:5403 $f6 $01
+    mA_9                                               ;; 0f:5405 $99
+    mD_9                                               ;; 0f:5406 $29
+    mE_9                                               ;; 0f:5407 $49
+    mSTEREOPAN $03                                     ;; 0f:5408 $f6 $03
+    mA_9                                               ;; 0f:540a $99
+    mD_9                                               ;; 0f:540b $29
+    mE_9                                               ;; 0f:540c $49
+    mSTEREOPAN $02                                     ;; 0f:540d $f6 $02
+    mA_9                                               ;; 0f:540f $99
+    mD_9                                               ;; 0f:5410 $29
+    mE_9                                               ;; 0f:5411 $49
+    mSTEREOPAN $03                                     ;; 0f:5412 $f6 $03
+    mA_9                                               ;; 0f:5414 $99
+    mD_9                                               ;; 0f:5415 $29
+    mE_9                                               ;; 0f:5416 $49
+    mREPEAT_2 .data_0f_5403                            ;; 0f:5417 $f9 $03 $54
+    mVOLUME_ENVELOPE data_0f_65fb                      ;; 0f:541a $f0 $fb $65
+    mJUMP .data_0f_53a6                                ;; 0f:541d $f1 $a6 $53
+
+song11_channel3:
+    mINIT3 data_0f_668c, $20, data_0f_66e2             ;; 0f:5420 $fe $8c $66 $20 $e2 $66
+    mC_3                                               ;; 0f:5426 $03
+.data_0f_5427:
+    mOCTAVE_1                                          ;; 0f:5427 $e1
+    mCOUNTER_2 $06                                     ;; 0f:5428 $fa $06
+.data_0f_542a:
+    mA_9                                               ;; 0f:542a $99
+    mOCTAVE_PLUS_1                                     ;; 0f:542b $e8
+    mA_9                                               ;; 0f:542c $99
+    mOCTAVE_MINUS_1                                    ;; 0f:542d $ec
+    mREPEAT_2 .data_0f_542a                            ;; 0f:542e $f9 $2a $54
+    mCOUNTER $02                                       ;; 0f:5431 $f3 $02
+.data_0f_5433:
+    mCOUNTER_2 $0c                                     ;; 0f:5433 $fa $0c
+.data_0f_5435:
+    mA_9                                               ;; 0f:5435 $99
+    mOCTAVE_PLUS_1                                     ;; 0f:5436 $e8
+    mA_9                                               ;; 0f:5437 $99
+    mOCTAVE_MINUS_1                                    ;; 0f:5438 $ec
+    mREPEAT_2 .data_0f_5435                            ;; 0f:5439 $f9 $35 $54
+    mJUMPIF $01, .data_0f_5457                         ;; 0f:543c $fb $01 $57 $54
+    mF_7                                               ;; 0f:5440 $57
+    mRest_12                                           ;; 0f:5441 $dc
+    mF_10                                              ;; 0f:5442 $5a
+    mRest_14                                           ;; 0f:5443 $de
+    mA_10                                              ;; 0f:5444 $9a
+    mRest_14                                           ;; 0f:5445 $de
+    mA_10                                              ;; 0f:5446 $9a
+    mRest_14                                           ;; 0f:5447 $de
+    mA_10                                              ;; 0f:5448 $9a
+    mRest_14                                           ;; 0f:5449 $de
+    mG_7                                               ;; 0f:544a $77
+    mRest_12                                           ;; 0f:544b $dc
+    mG_10                                              ;; 0f:544c $7a
+    mRest_14                                           ;; 0f:544d $de
+    mE_10                                              ;; 0f:544e $4a
+    mRest_14                                           ;; 0f:544f $de
+    mE_10                                              ;; 0f:5450 $4a
+    mRest_14                                           ;; 0f:5451 $de
+    mE_10                                              ;; 0f:5452 $4a
+    mRest_14                                           ;; 0f:5453 $de
+    mREPEAT .data_0f_5433                              ;; 0f:5454 $f2 $33 $54
+.data_0f_5457:
+    mCOUNTER_2 $06                                     ;; 0f:5457 $fa $06
+.data_0f_5459:
+    mF_9                                               ;; 0f:5459 $59
+    mOCTAVE_PLUS_1                                     ;; 0f:545a $e8
+    mF_9                                               ;; 0f:545b $59
+    mOCTAVE_MINUS_1                                    ;; 0f:545c $ec
+    mREPEAT_2 .data_0f_5459                            ;; 0f:545d $f9 $59 $54
+    mF_7                                               ;; 0f:5460 $57
+    mRest_12                                           ;; 0f:5461 $dc
+    mF_10                                              ;; 0f:5462 $5a
+    mRest_14                                           ;; 0f:5463 $de
+    mE_10                                              ;; 0f:5464 $4a
+    mRest_14                                           ;; 0f:5465 $de
+    mE_10                                              ;; 0f:5466 $4a
+    mRest_14                                           ;; 0f:5467 $de
+    mE_10                                              ;; 0f:5468 $4a
+    mRest_14                                           ;; 0f:5469 $de
+    mC_7                                               ;; 0f:546a $07
+    mRest_12                                           ;; 0f:546b $dc
+    mC_10                                              ;; 0f:546c $0a
+    mRest_14                                           ;; 0f:546d $de
+    mOCTAVE_MINUS_1                                    ;; 0f:546e $ec
+    mB_10                                              ;; 0f:546f $ba
+    mRest_14                                           ;; 0f:5470 $de
+    mB_10                                              ;; 0f:5471 $ba
+    mRest_14                                           ;; 0f:5472 $de
+    mB_10                                              ;; 0f:5473 $ba
+    mRest_14                                           ;; 0f:5474 $de
+    mOCTAVE_PLUS_1                                     ;; 0f:5475 $e8
+    mA_6                                               ;; 0f:5476 $96
+    mOCTAVE_PLUS_1                                     ;; 0f:5477 $e8
+    mC_9                                               ;; 0f:5478 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5479 $ec
+    mA_9                                               ;; 0f:547a $99
+    mOCTAVE_PLUS_1                                     ;; 0f:547b $e8
+    mC_9                                               ;; 0f:547c $09
+    mOCTAVE_MINUS_1                                    ;; 0f:547d $ec
+    mA_9                                               ;; 0f:547e $99
+    mF_7                                               ;; 0f:547f $57
+    mRest_12                                           ;; 0f:5480 $dc
+    mF_9                                               ;; 0f:5481 $59
+    mOCTAVE_PLUS_1                                     ;; 0f:5482 $e8
+    mC_9                                               ;; 0f:5483 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5484 $ec
+    mB_9                                               ;; 0f:5485 $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:5486 $e8
+    mC_9                                               ;; 0f:5487 $09
+    mD_7                                               ;; 0f:5488 $27
+    mRest_12                                           ;; 0f:5489 $dc
+    mD_9                                               ;; 0f:548a $29
+    mC_9                                               ;; 0f:548b $09
+    mOCTAVE_MINUS_1                                    ;; 0f:548c $ec
+    mB_9                                               ;; 0f:548d $b9
+    mA_9                                               ;; 0f:548e $99
+    mG_7                                               ;; 0f:548f $77
+    mRest_12                                           ;; 0f:5490 $dc
+    mG_9                                               ;; 0f:5491 $79
+    mOCTAVE_PLUS_1                                     ;; 0f:5492 $e8
+    mD_9                                               ;; 0f:5493 $29
+    mCis_9                                             ;; 0f:5494 $19
+    mD_9                                               ;; 0f:5495 $29
+    mOCTAVE_MINUS_1                                    ;; 0f:5496 $ec
+    mA_7                                               ;; 0f:5497 $97
+    mRest_12                                           ;; 0f:5498 $dc
+    mA_9                                               ;; 0f:5499 $99
+    mOCTAVE_PLUS_1                                     ;; 0f:549a $e8
+    mE_9                                               ;; 0f:549b $49
+    mOCTAVE_MINUS_1                                    ;; 0f:549c $ec
+    mA_9                                               ;; 0f:549d $99
+    mOCTAVE_PLUS_1                                     ;; 0f:549e $e8
+    mE_9                                               ;; 0f:549f $49
+    mD_7                                               ;; 0f:54a0 $27
+    mRest_12                                           ;; 0f:54a1 $dc
+    mD_9                                               ;; 0f:54a2 $29
+    mC_9                                               ;; 0f:54a3 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:54a4 $ec
+    mB_9                                               ;; 0f:54a5 $b9
+    mA_9                                               ;; 0f:54a6 $99
+    mG_7                                               ;; 0f:54a7 $77
+    mRest_12                                           ;; 0f:54a8 $dc
+    mG_9                                               ;; 0f:54a9 $79
+    mOCTAVE_PLUS_1                                     ;; 0f:54aa $e8
+    mG_9                                               ;; 0f:54ab $79
+    mOCTAVE_MINUS_1                                    ;; 0f:54ac $ec
+    mG_9                                               ;; 0f:54ad $79
+    mOCTAVE_PLUS_1                                     ;; 0f:54ae $e8
+    mG_9                                               ;; 0f:54af $79
+    mG_7                                               ;; 0f:54b0 $77
+    mRest_12                                           ;; 0f:54b1 $dc
+    mG_9                                               ;; 0f:54b2 $79
+    mOCTAVE_MINUS_1                                    ;; 0f:54b3 $ec
+    mG_9                                               ;; 0f:54b4 $79
+    mD_9                                               ;; 0f:54b5 $29
+    mB_9                                               ;; 0f:54b6 $b9
+    mA_0                                               ;; 0f:54b7 $90
+    mG_0                                               ;; 0f:54b8 $70
+    mF_0                                               ;; 0f:54b9 $50
+    mG_0                                               ;; 0f:54ba $70
+    mA_0                                               ;; 0f:54bb $90
+    mG_0                                               ;; 0f:54bc $70
+    mF_0                                               ;; 0f:54bd $50
+    mG_0                                               ;; 0f:54be $70
+    mJUMP .data_0f_5427                                ;; 0f:54bf $f1 $27 $54
+
+song11_channel4:
+    mVOLUME_ENVELOPE data_0f_661b                      ;; 0f:54c2 $f0 $1b $66
+.data_0f_54c5:
+    mSTEREOPAN $01                                     ;; 0f:54c5 $f6 $01
+    mB_9                                               ;; 0f:54c7 $b9
+    mB_9                                               ;; 0f:54c8 $b9
+    mB_9                                               ;; 0f:54c9 $b9
+    mSTEREOPAN $02                                     ;; 0f:54ca $f6 $02
+    mG_9                                               ;; 0f:54cc $79
+    mB_9                                               ;; 0f:54cd $b9
+    mB_9                                               ;; 0f:54ce $b9
+    mSTEREOPAN $03                                     ;; 0f:54cf $f6 $03
+    mF_2                                               ;; 0f:54d1 $52
+    mJUMP .data_0f_54c5                                ;; 0f:54d2 $f1 $c5 $54
 
 data_0f_54d5:
     db   $fe, $4a, $7a, $66                            ;; 0f:54d5 ....
@@ -3813,173 +4064,870 @@ data_0f_559b:
     db   $ec, $86, $e1, $94, $e8, $44, $ec, $96        ;; 0f:55e6 ????????
     db   $53, $73, $f1, $a2, $55                       ;; 0f:55ee ?????
 
-data_0f_55f3:
-    db   $fe, $4c, $63, $66                            ;; 0f:55f3 ....
-    dw   $6613                                         ;; 0f:55f7 wP
-    db   $c0, $03, $fa, $0a                            ;; 0f:55f9 .w..
+song0e_channel2:
+    mINIT2 $4c, frequencyDeltaData, data_0f_6613, $c0  ;; 0f:55f3 $fe $4c $63 $66 $13 $66 $c0
+    mC_3                                               ;; 0f:55fa $03
+    mCOUNTER_2 $0a                                     ;; 0f:55fb $fa $0a
 .data_0f_55fd:
-    db   $e4, $2c, $ec, $7c, $7c, $e8, $2c, $ec        ;; 0f:55fd ........
-    db   $7c, $7c, $e8, $2c, $ec, $7c, $e8, $0c        ;; 0f:5605 ........
-    db   $ec, $7c, $f9                                 ;; 0f:560d ...
-    dw   .data_0f_55fd                                 ;; 0f:5610 pP
-    db   $f0                                           ;; 0f:5612 .
-    dw   $660f                                         ;; 0f:5613 wP
-    db   $fa, $02                                      ;; 0f:5615 ..
+    mOCTAVE_4                                          ;; 0f:55fd $e4
+    mD_12                                              ;; 0f:55fe $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:55ff $ec
+    mG_12                                              ;; 0f:5600 $7c
+    mG_12                                              ;; 0f:5601 $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:5602 $e8
+    mD_12                                              ;; 0f:5603 $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:5604 $ec
+    mG_12                                              ;; 0f:5605 $7c
+    mG_12                                              ;; 0f:5606 $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:5607 $e8
+    mD_12                                              ;; 0f:5608 $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:5609 $ec
+    mG_12                                              ;; 0f:560a $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:560b $e8
+    mC_12                                              ;; 0f:560c $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:560d $ec
+    mG_12                                              ;; 0f:560e $7c
+    mREPEAT_2 .data_0f_55fd                            ;; 0f:560f $f9 $fd $55
+    mVOLUME_ENVELOPE data_0f_660f                      ;; 0f:5612 $f0 $0f $66
+    mCOUNTER_2 $02                                     ;; 0f:5615 $fa $02
 .data_0f_5617:
-    db   $79, $2c, $99, $2c, $ac, $2c, $7c, $2c        ;; 0f:5617 ........
-    db   $99, $2c, $a9, $2c, $e8, $0c, $ec, $2c        ;; 0f:561f ........
-    db   $9c, $2c, $a9, $3c, $e8, $09, $ec, $3c        ;; 0f:5627 ........
-    db   $ac, $3c, $9c, $3c, $79, $3c, $99, $3c        ;; 0f:562f ........
-    db   $ac, $3c, $9c, $3c, $a9, $4c, $e8, $09        ;; 0f:5637 ........
-    db   $ec, $4c, $e8, $2c, $ec, $4c, $e8, $0c        ;; 0f:563f ........
-    db   $ec, $4c, $a9, $0c, $99, $0c, $7c, $0c        ;; 0f:5647 ........
-    db   $9c, $0c, $e8, $29, $ec, $3c, $e8, $09        ;; 0f:564f ........
-    db   $ec, $3c, $e8, $3c, $ec, $3c, $e8, $2c        ;; 0f:5657 ........
-    db   $ec, $3c, $e8, $0c, $ec, $3c, $ac, $3c        ;; 0f:565f ........
-    db   $9c, $3c, $7c, $ec, $ac, $e8, $5c, $ec        ;; 0f:5667 ........
-    db   $9c, $e8, $f9                                 ;; 0f:566f ...
-    dw   .data_0f_5617                                 ;; 0f:5672 pP
-    db   $f0                                           ;; 0f:5674 .
-    dw   $662b                                         ;; 0f:5675 wP
-    db   $73, $c9, $53, $c9, $33, $c9, $f6, $02        ;; 0f:5677 ...?????
-    db   $7c, $2c, $7c, $f6, $01, $9c, $2c, $9c        ;; 0f:567f ????????
-    db   $f6, $02, $ac, $2c, $f6, $01, $e8, $0c        ;; 0f:5687 ????????
-    db   $ec, $2c, $f6, $03, $73, $c9, $93, $c9        ;; 0f:568f ????????
-    db   $99, $ac, $76, $c7, $f6, $02, $e8, $2c        ;; 0f:5697 ????????
-    db   $ec, $7c, $e8, $2c, $f6, $01, $0c, $ec        ;; 0f:569f ????????
-    db   $7c, $e8, $0c, $f6, $02, $ec, $ac, $2c        ;; 0f:56a7 ????????
-    db   $f6, $01, $9c, $2c, $f1, $f3, $55             ;; 0f:56af ???????
+    mG_9                                               ;; 0f:5617 $79
+    mD_12                                              ;; 0f:5618 $2c
+    mA_9                                               ;; 0f:5619 $99
+    mD_12                                              ;; 0f:561a $2c
+    mAis_12                                            ;; 0f:561b $ac
+    mD_12                                              ;; 0f:561c $2c
+    mG_12                                              ;; 0f:561d $7c
+    mD_12                                              ;; 0f:561e $2c
+    mA_9                                               ;; 0f:561f $99
+    mD_12                                              ;; 0f:5620 $2c
+    mAis_9                                             ;; 0f:5621 $a9
+    mD_12                                              ;; 0f:5622 $2c
+    mOCTAVE_PLUS_1                                     ;; 0f:5623 $e8
+    mC_12                                              ;; 0f:5624 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:5625 $ec
+    mD_12                                              ;; 0f:5626 $2c
+    mA_12                                              ;; 0f:5627 $9c
+    mD_12                                              ;; 0f:5628 $2c
+    mAis_9                                             ;; 0f:5629 $a9
+    mDis_12                                            ;; 0f:562a $3c
+    mOCTAVE_PLUS_1                                     ;; 0f:562b $e8
+    mC_9                                               ;; 0f:562c $09
+    mOCTAVE_MINUS_1                                    ;; 0f:562d $ec
+    mDis_12                                            ;; 0f:562e $3c
+    mAis_12                                            ;; 0f:562f $ac
+    mDis_12                                            ;; 0f:5630 $3c
+    mA_12                                              ;; 0f:5631 $9c
+    mDis_12                                            ;; 0f:5632 $3c
+    mG_9                                               ;; 0f:5633 $79
+    mDis_12                                            ;; 0f:5634 $3c
+    mA_9                                               ;; 0f:5635 $99
+    mDis_12                                            ;; 0f:5636 $3c
+    mAis_12                                            ;; 0f:5637 $ac
+    mDis_12                                            ;; 0f:5638 $3c
+    mA_12                                              ;; 0f:5639 $9c
+    mDis_12                                            ;; 0f:563a $3c
+    mAis_9                                             ;; 0f:563b $a9
+    mE_12                                              ;; 0f:563c $4c
+    mOCTAVE_PLUS_1                                     ;; 0f:563d $e8
+    mC_9                                               ;; 0f:563e $09
+    mOCTAVE_MINUS_1                                    ;; 0f:563f $ec
+    mE_12                                              ;; 0f:5640 $4c
+    mOCTAVE_PLUS_1                                     ;; 0f:5641 $e8
+    mD_12                                              ;; 0f:5642 $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:5643 $ec
+    mE_12                                              ;; 0f:5644 $4c
+    mOCTAVE_PLUS_1                                     ;; 0f:5645 $e8
+    mC_12                                              ;; 0f:5646 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:5647 $ec
+    mE_12                                              ;; 0f:5648 $4c
+    mAis_9                                             ;; 0f:5649 $a9
+    mC_12                                              ;; 0f:564a $0c
+    mA_9                                               ;; 0f:564b $99
+    mC_12                                              ;; 0f:564c $0c
+    mG_12                                              ;; 0f:564d $7c
+    mC_12                                              ;; 0f:564e $0c
+    mA_12                                              ;; 0f:564f $9c
+    mC_12                                              ;; 0f:5650 $0c
+    mOCTAVE_PLUS_1                                     ;; 0f:5651 $e8
+    mD_9                                               ;; 0f:5652 $29
+    mOCTAVE_MINUS_1                                    ;; 0f:5653 $ec
+    mDis_12                                            ;; 0f:5654 $3c
+    mOCTAVE_PLUS_1                                     ;; 0f:5655 $e8
+    mC_9                                               ;; 0f:5656 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5657 $ec
+    mDis_12                                            ;; 0f:5658 $3c
+    mOCTAVE_PLUS_1                                     ;; 0f:5659 $e8
+    mDis_12                                            ;; 0f:565a $3c
+    mOCTAVE_MINUS_1                                    ;; 0f:565b $ec
+    mDis_12                                            ;; 0f:565c $3c
+    mOCTAVE_PLUS_1                                     ;; 0f:565d $e8
+    mD_12                                              ;; 0f:565e $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:565f $ec
+    mDis_12                                            ;; 0f:5660 $3c
+    mOCTAVE_PLUS_1                                     ;; 0f:5661 $e8
+    mC_12                                              ;; 0f:5662 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:5663 $ec
+    mDis_12                                            ;; 0f:5664 $3c
+    mAis_12                                            ;; 0f:5665 $ac
+    mDis_12                                            ;; 0f:5666 $3c
+    mA_12                                              ;; 0f:5667 $9c
+    mDis_12                                            ;; 0f:5668 $3c
+    mG_12                                              ;; 0f:5669 $7c
+    mOCTAVE_MINUS_1                                    ;; 0f:566a $ec
+    mAis_12                                            ;; 0f:566b $ac
+    mOCTAVE_PLUS_1                                     ;; 0f:566c $e8
+    mF_12                                              ;; 0f:566d $5c
+    mOCTAVE_MINUS_1                                    ;; 0f:566e $ec
+    mA_12                                              ;; 0f:566f $9c
+    mOCTAVE_PLUS_1                                     ;; 0f:5670 $e8
+    mREPEAT_2 .data_0f_5617                            ;; 0f:5671 $f9 $17 $56
+    mVOLUME_ENVELOPE data_0f_662b                      ;; 0f:5674 $f0 $2b $66
+    mG_3                                               ;; 0f:5677 $73
+    mWait_9                                            ;; 0f:5678 $c9
+    mF_3                                               ;; 0f:5679 $53
+    mWait_9                                            ;; 0f:567a $c9
+    mDis_3                                             ;; 0f:567b $33
+    mWait_9                                            ;; 0f:567c $c9
+    mSTEREOPAN $02                                     ;; 0f:567d $f6 $02
+    mG_12                                              ;; 0f:567f $7c
+    mD_12                                              ;; 0f:5680 $2c
+    mG_12                                              ;; 0f:5681 $7c
+    mSTEREOPAN $01                                     ;; 0f:5682 $f6 $01
+    mA_12                                              ;; 0f:5684 $9c
+    mD_12                                              ;; 0f:5685 $2c
+    mA_12                                              ;; 0f:5686 $9c
+    mSTEREOPAN $02                                     ;; 0f:5687 $f6 $02
+    mAis_12                                            ;; 0f:5689 $ac
+    mD_12                                              ;; 0f:568a $2c
+    mSTEREOPAN $01                                     ;; 0f:568b $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:568d $e8
+    mC_12                                              ;; 0f:568e $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:568f $ec
+    mD_12                                              ;; 0f:5690 $2c
+    mSTEREOPAN $03                                     ;; 0f:5691 $f6 $03
+    mG_3                                               ;; 0f:5693 $73
+    mWait_9                                            ;; 0f:5694 $c9
+    mA_3                                               ;; 0f:5695 $93
+    mWait_9                                            ;; 0f:5696 $c9
+    mA_9                                               ;; 0f:5697 $99
+    mAis_12                                            ;; 0f:5698 $ac
+    mG_6                                               ;; 0f:5699 $76
+    mWait_7                                            ;; 0f:569a $c7
+    mSTEREOPAN $02                                     ;; 0f:569b $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:569d $e8
+    mD_12                                              ;; 0f:569e $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:569f $ec
+    mG_12                                              ;; 0f:56a0 $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:56a1 $e8
+    mD_12                                              ;; 0f:56a2 $2c
+    mSTEREOPAN $01                                     ;; 0f:56a3 $f6 $01
+    mC_12                                              ;; 0f:56a5 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:56a6 $ec
+    mG_12                                              ;; 0f:56a7 $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:56a8 $e8
+    mC_12                                              ;; 0f:56a9 $0c
+    mSTEREOPAN $02                                     ;; 0f:56aa $f6 $02
+    mOCTAVE_MINUS_1                                    ;; 0f:56ac $ec
+    mAis_12                                            ;; 0f:56ad $ac
+    mD_12                                              ;; 0f:56ae $2c
+    mSTEREOPAN $01                                     ;; 0f:56af $f6 $01
+    mA_12                                              ;; 0f:56b1 $9c
+    mD_12                                              ;; 0f:56b2 $2c
+    mJUMP song0e_channel2                              ;; 0f:56b3 $f1 $f3 $55
 
-data_0f_56b6:
-    db   $fe, $8c, $66                                 ;; 0f:56b6 ...
-    dw   $6619                                         ;; 0f:56b9 wP
-    db   $00, $03, $dd, $f3, $06                       ;; 0f:56bb .w...
+song0e_channel1:
+    mINIT1 data_0f_668c, data_0f_6619, $00             ;; 0f:56b6 $fe $8c $66 $19 $66 $00
+    mC_3                                               ;; 0f:56bc $03
+    mRest_13                                           ;; 0f:56bd $dd
+    mCOUNTER $06                                       ;; 0f:56be $f3 $06
 .data_0f_56c0:
-    db   $e4, $2c, $ec, $7c, $7c, $e8, $2c, $ec        ;; 0f:56c0 ........
-    db   $7c, $7c, $e8, $2c, $ec, $7c, $e8, $0c        ;; 0f:56c8 ........
-    db   $ec, $fb, $01                                 ;; 0f:56d0 ...
-    dw   .data_0f_56d9                                 ;; 0f:56d3 pP
-    db   $7c, $f2                                      ;; 0f:56d5 ..
-    dw   .data_0f_56c0                                 ;; 0f:56d7 pP
+    mOCTAVE_4                                          ;; 0f:56c0 $e4
+    mD_12                                              ;; 0f:56c1 $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:56c2 $ec
+    mG_12                                              ;; 0f:56c3 $7c
+    mG_12                                              ;; 0f:56c4 $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:56c5 $e8
+    mD_12                                              ;; 0f:56c6 $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:56c7 $ec
+    mG_12                                              ;; 0f:56c8 $7c
+    mG_12                                              ;; 0f:56c9 $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:56ca $e8
+    mD_12                                              ;; 0f:56cb $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:56cc $ec
+    mG_12                                              ;; 0f:56cd $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:56ce $e8
+    mC_12                                              ;; 0f:56cf $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:56d0 $ec
+    mJUMPIF $01, .data_0f_56d9                         ;; 0f:56d1 $fb $01 $d9 $56
+    mG_12                                              ;; 0f:56d5 $7c
+    mREPEAT .data_0f_56c0                              ;; 0f:56d6 $f2 $c0 $56
 .data_0f_56d9:
-    db   $7f, $f0                                      ;; 0f:56d9 ..
-    dw   $6645                                         ;; 0f:56db wP
-    db   $e2, $fa, $02                                 ;; 0f:56dd ...
+    mG_15                                              ;; 0f:56d9 $7f
+    mVOLUME_ENVELOPE data_0f_6645                      ;; 0f:56da $f0 $45 $66
+    mOCTAVE_2                                          ;; 0f:56dd $e2
+    mCOUNTER_2 $02                                     ;; 0f:56de $fa $02
 .data_0f_56e0:
-    db   $f6, $02, $73, $c9, $f6, $01, $73, $c9        ;; 0f:56e0 .w...w..
-    db   $f9                                           ;; 0f:56e8 .
-    dw   .data_0f_56e0                                 ;; 0f:56e9 pP
-    db   $fa, $02                                      ;; 0f:56eb ..
+    mSTEREOPAN $02                                     ;; 0f:56e0 $f6 $02
+    mG_3                                               ;; 0f:56e2 $73
+    mWait_9                                            ;; 0f:56e3 $c9
+    mSTEREOPAN $01                                     ;; 0f:56e4 $f6 $01
+    mG_3                                               ;; 0f:56e6 $73
+    mWait_9                                            ;; 0f:56e7 $c9
+    mREPEAT_2 .data_0f_56e0                            ;; 0f:56e8 $f9 $e0 $56
+    mCOUNTER_2 $02                                     ;; 0f:56eb $fa $02
 .data_0f_56ed:
-    db   $f6, $02, $73, $c9, $f6, $01, $73, $c9        ;; 0f:56ed .w...w..
-    db   $f6, $02, $33, $c9, $f6, $01, $33, $c9        ;; 0f:56f5 .w...w..
-    db   $f6, $02, $43, $c9, $f6, $01, $43, $c9        ;; 0f:56fd .w...w..
-    db   $f6, $02, $33, $c9, $f6, $01, $33, $c9        ;; 0f:5705 .w...w..
-    db   $f9                                           ;; 0f:570d .
-    dw   .data_0f_56ed                                 ;; 0f:570e pP
-    db   $f6, $03, $f0                                 ;; 0f:5710 .w.
-    dw   $6631                                         ;; 0f:5713 wP
-    db   $e8, $23, $c9, $03, $c9, $a3, $c9, $ec        ;; 0f:5715 ....????
-    db   $a7, $97, $59, $29, $e8, $23, $c9, $23        ;; 0f:571d ????????
-    db   $c9, $33, $c9, $ec, $37, $57, $79, $99        ;; 0f:5725 ????????
-    db   $f1, $b6, $56                                 ;; 0f:572d ???
+    mSTEREOPAN $02                                     ;; 0f:56ed $f6 $02
+    mG_3                                               ;; 0f:56ef $73
+    mWait_9                                            ;; 0f:56f0 $c9
+    mSTEREOPAN $01                                     ;; 0f:56f1 $f6 $01
+    mG_3                                               ;; 0f:56f3 $73
+    mWait_9                                            ;; 0f:56f4 $c9
+    mSTEREOPAN $02                                     ;; 0f:56f5 $f6 $02
+    mDis_3                                             ;; 0f:56f7 $33
+    mWait_9                                            ;; 0f:56f8 $c9
+    mSTEREOPAN $01                                     ;; 0f:56f9 $f6 $01
+    mDis_3                                             ;; 0f:56fb $33
+    mWait_9                                            ;; 0f:56fc $c9
+    mSTEREOPAN $02                                     ;; 0f:56fd $f6 $02
+    mE_3                                               ;; 0f:56ff $43
+    mWait_9                                            ;; 0f:5700 $c9
+    mSTEREOPAN $01                                     ;; 0f:5701 $f6 $01
+    mE_3                                               ;; 0f:5703 $43
+    mWait_9                                            ;; 0f:5704 $c9
+    mSTEREOPAN $02                                     ;; 0f:5705 $f6 $02
+    mDis_3                                             ;; 0f:5707 $33
+    mWait_9                                            ;; 0f:5708 $c9
+    mSTEREOPAN $01                                     ;; 0f:5709 $f6 $01
+    mDis_3                                             ;; 0f:570b $33
+    mWait_9                                            ;; 0f:570c $c9
+    mREPEAT_2 .data_0f_56ed                            ;; 0f:570d $f9 $ed $56
+    mSTEREOPAN $03                                     ;; 0f:5710 $f6 $03
+    mVOLUME_ENVELOPE data_0f_6631                      ;; 0f:5712 $f0 $31 $66
+    mOCTAVE_PLUS_1                                     ;; 0f:5715 $e8
+    mD_3                                               ;; 0f:5716 $23
+    mWait_9                                            ;; 0f:5717 $c9
+    mC_3                                               ;; 0f:5718 $03
+    mWait_9                                            ;; 0f:5719 $c9
+    mAis_3                                             ;; 0f:571a $a3
+    mWait_9                                            ;; 0f:571b $c9
+    mOCTAVE_MINUS_1                                    ;; 0f:571c $ec
+    mAis_7                                             ;; 0f:571d $a7
+    mA_7                                               ;; 0f:571e $97
+    mF_9                                               ;; 0f:571f $59
+    mD_9                                               ;; 0f:5720 $29
+    mOCTAVE_PLUS_1                                     ;; 0f:5721 $e8
+    mD_3                                               ;; 0f:5722 $23
+    mWait_9                                            ;; 0f:5723 $c9
+    mD_3                                               ;; 0f:5724 $23
+    mWait_9                                            ;; 0f:5725 $c9
+    mDis_3                                             ;; 0f:5726 $33
+    mWait_9                                            ;; 0f:5727 $c9
+    mOCTAVE_MINUS_1                                    ;; 0f:5728 $ec
+    mDis_7                                             ;; 0f:5729 $37
+    mF_7                                               ;; 0f:572a $57
+    mG_9                                               ;; 0f:572b $79
+    mA_9                                               ;; 0f:572c $99
+    mJUMP song0e_channel1                              ;; 0f:572d $f1 $b6 $56
 
-data_0f_5730:
-    db   $fe, $68, $66, $20, $e2, $66, $03, $e2        ;; 0f:5730 ......w.
-    db   $71, $c6, $31, $c6, $51, $c6, $e1, $f3        ;; 0f:5738 ........
-    db   $1c                                           ;; 0f:5740 .
+song0e_channel3:
+    mINIT3 data_0f_6668, $20, data_0f_66e2             ;; 0f:5730 $fe $68 $66 $20 $e2 $66
+    mC_3                                               ;; 0f:5736 $03
+.data_0f_5737:
+    mOCTAVE_2                                          ;; 0f:5737 $e2
+    mG_1                                               ;; 0f:5738 $71
+    mWait_6                                            ;; 0f:5739 $c6
+    mDis_1                                             ;; 0f:573a $31
+    mWait_6                                            ;; 0f:573b $c6
+    mF_1                                               ;; 0f:573c $51
+    mWait_6                                            ;; 0f:573d $c6
+    mOCTAVE_1                                          ;; 0f:573e $e1
+    mCOUNTER $1c                                       ;; 0f:573f $f3 $1c
 .data_0f_5741:
-    db   $7c, $d9, $7c, $d9, $7c, $dc, $7c, $dc        ;; 0f:5741 ........
-    db   $f2                                           ;; 0f:5749 .
-    dw   .data_0f_5741                                 ;; 0f:574a pP
-    db   $f1, $37, $57                                 ;; 0f:574c ???
+    mG_12                                              ;; 0f:5741 $7c
+    mRest_9                                            ;; 0f:5742 $d9
+    mG_12                                              ;; 0f:5743 $7c
+    mRest_9                                            ;; 0f:5744 $d9
+    mG_12                                              ;; 0f:5745 $7c
+    mRest_12                                           ;; 0f:5746 $dc
+    mG_12                                              ;; 0f:5747 $7c
+    mRest_12                                           ;; 0f:5748 $dc
+    mREPEAT .data_0f_5741                              ;; 0f:5749 $f2 $41 $57
+    mJUMP .data_0f_5737                                ;; 0f:574c $f1 $37 $57
 
-data_0f_574f:
-    db   $f0                                           ;; 0f:574f .
-    dw   $661b                                         ;; 0f:5750 wP
-    db   $d0, $d0, $d2, $fa, $0e                       ;; 0f:5752 .....
+song0e_channel4:
+    mVOLUME_ENVELOPE data_0f_661b                      ;; 0f:574f $f0 $1b $66
+.data_0f_5752:
+    mRest_0                                            ;; 0f:5752 $d0
+    mRest_0                                            ;; 0f:5753 $d0
+    mRest_2                                            ;; 0f:5754 $d2
+    mCOUNTER_2 $0e                                     ;; 0f:5755 $fa $0e
 .data_0f_5757:
-    db   $f6, $02, $57, $57, $59, $f6, $01, $79        ;; 0f:5757 .w....w.
-    db   $f6, $02, $57, $57, $59, $f6, $03, $7c        ;; 0f:575f .w....w.
-    db   $7c, $f9                                      ;; 0f:5767 ..
-    dw   .data_0f_5757                                 ;; 0f:5769 pP
-    db   $f1, $52, $57, $fe, $78, $63, $66, $0d        ;; 0f:576b ????????
-    db   $66, $c0, $03, $f6, $03, $e0, $47, $47        ;; 0f:5773 ????????
-    db   $43, $c9, $f6, $01, $e8, $9c, $bc, $9c        ;; 0f:577b ????????
-    db   $7c, $5c, $7c, $f6, $02, $44, $ec, $9c        ;; 0f:5783 ????????
-    db   $e8, $0c, $4c, $9c, $f6, $03, $ec, $57        ;; 0f:578b ????????
-    db   $57, $53, $c9, $f6, $02, $e9, $0c, $2c        ;; 0f:5793 ????????
-    db   $0c, $ec, $bc, $9c, $7c, $f6, $01, $54        ;; 0f:579b ????????
-    db   $59, $9c, $e8, $2c, $f6, $03, $ed, $77        ;; 0f:57a3 ????????
-    db   $77, $73, $c9, $f6, $01, $e9, $4c, $2c        ;; 0f:57ab ????????
-    db   $0c, $ec, $b9, $f6, $02, $9c, $e8, $4c        ;; 0f:57b3 ????????
-    db   $5c, $f6, $01, $ec, $b9, $7c, $59, $f6        ;; 0f:57bb ????????
-    db   $02, $4c, $29, $f6, $03, $ec, $97, $97        ;; 0f:57c3 ????????
-    db   $93, $c9, $f6, $02, $e8, $4c, $9c, $e8        ;; 0f:57cb ????????
-    db   $49, $ec, $f6, $01, $bc, $e8, $0c, $ec        ;; 0f:57d3 ????????
-    db   $bc, $7c, $f6, $02, $5c, $4c, $2c, $09        ;; 0f:57db ????????
-    db   $f6, $01, $ec, $9c, $7c, $e8, $2c, $f1        ;; 0f:57e3 ????????
-    db   $76, $57, $fe, $63, $66, $31, $66, $40        ;; 0f:57eb ????????
-    db   $03, $d6, $e2, $99, $b9, $d3, $bc, $d9        ;; 0f:57f3 ????????
-    db   $9c, $d9, $b9, $d9, $e8, $64, $d6, $ec        ;; 0f:57fb ????????
-    db   $b9, $e8, $09, $d3, $4c, $d9, $2c, $d9        ;; 0f:5803 ????????
-    db   $09, $d9, $04, $d6, $09, $29, $d3, $4c        ;; 0f:580b ????????
-    db   $d9, $2c, $d9, $49, $d9, $24, $d6, $29        ;; 0f:5813 ????????
-    db   $49, $d3, $4c, $ec, $bc, $7c, $e8, $42        ;; 0f:581b ????????
-    db   $cc, $ec, $72, $ec, $b6, $e8, $41, $51        ;; 0f:5823 ????????
-    db   $51, $71, $71, $41, $41, $b1, $b3, $43        ;; 0f:582b ????????
-    db   $91, $91, $23, $ec, $b3, $e8, $71, $41        ;; 0f:5833 ????????
-    db   $41, $f1, $f4, $57, $fe, $68, $66, $20        ;; 0f:583b ????????
-    db   $d2, $66, $03, $d6, $e4, $29, $49, $d3        ;; 0f:5843 ????????
-    db   $4c, $d9, $2c, $d9, $49, $d9, $b4, $d6        ;; 0f:584b ????????
-    db   $49, $59, $d3, $9c, $d9, $7c, $d9, $59        ;; 0f:5853 ????????
-    db   $d9, $54, $d6, $59, $79, $d3, $bc, $d9        ;; 0f:585b ????????
-    db   $9c, $d9, $b9, $d9, $74, $d6, $79, $99        ;; 0f:5863 ????????
-    db   $d3, $bc, $7c, $4c, $92, $cc, $ec, $b2        ;; 0f:586b ????????
-    db   $4c, $6c, $7c, $9c, $b1, $e8, $06, $ec        ;; 0f:5873 ????????
-    db   $bc, $9c, $7c, $5c, $e8, $53, $93, $e8        ;; 0f:587b ????????
-    db   $24, $1c, $0c, $ec, $b3, $43, $29, $0c        ;; 0f:5883 ????????
-    db   $ec, $b9, $e8, $0c, $2c, $7c, $0c, $2c        ;; 0f:588b ????????
-    db   $0c, $ec, $b9, $7c, $bc, $e8, $2c, $ec        ;; 0f:5893 ????????
-    db   $b7, $e8, $07, $ec, $93, $c9, $e8, $4c        ;; 0f:589b ????????
-    db   $0c, $ec, $9c, $e8, $2c, $ec, $bc, $7c        ;; 0f:58a3 ????????
-    db   $e8, $0c, $ec, $9c, $4c, $0c, $ec, $9c        ;; 0f:58ab ????????
-    db   $4c, $e9, $4c, $0c, $ec, $9c, $5c, $46        ;; 0f:58b3 ????????
-    db   $4c, $5c, $4c, $2c, $43, $e8, $44, $ec        ;; 0f:58bb ????????
-    db   $b4, $99, $79, $53, $e8, $2c, $0c, $ec        ;; 0f:58c3 ????????
-    db   $bc, $e8, $0c, $ec, $9c, $bc, $7c, $9c        ;; 0f:58cb ????????
-    db   $e8, $2c, $0c, $ec, $bc, $e8, $0c, $5c        ;; 0f:58d3 ????????
-    db   $4c, $2c, $0c, $9c, $7c, $5c, $4c, $2c        ;; 0f:58db ????????
-    db   $0c, $ec, $bc, $9c, $74, $5c, $4c, $23        ;; 0f:58e3 ????????
-    db   $b4, $e8, $0c, $ec, $bc, $79, $bc, $e8        ;; 0f:58eb ????????
-    db   $2c, $79, $ec, $b9, $e8, $0d, $cd, $ec        ;; 0f:58f3 ????????
-    db   $9d, $cd, $4d, $cd, $e8, $2d, $cd, $ec        ;; 0f:58fb ????????
-    db   $9d, $cd, $4d, $cd, $e8, $4d, $cd, $ec        ;; 0f:5903 ????????
-    db   $9d, $cd, $4d, $cd, $e8, $9d, $cd, $0d        ;; 0f:590b ????????
-    db   $cd, $ec, $9d, $cd, $e8, $4c, $0c, $ec        ;; 0f:5913 ????????
-    db   $99, $e8, $2c, $ec, $bc, $79, $ec, $9c        ;; 0f:591b ????????
-    db   $e8, $0c, $4c, $9c, $4c, $9c, $e8, $0c        ;; 0f:5923 ????????
-    db   $4c, $f1, $46, $58, $f0, $1b, $66, $f6        ;; 0f:592b ????????
-    db   $01, $77, $77, $79, $f6, $02, $5c, $9c        ;; 0f:5933 ????????
-    db   $5c, $5c, $f6, $03, $7e, $7e, $57, $f1        ;; 0f:593b ????????
-    db   $32, $59, $fe, $8c, $63, $66, $0d, $66        ;; 0f:5943 ????????
-    db   $40, $02, $fa, $02, $e3, $b9, $49, $99        ;; 0f:594b ????????
-    db   $39, $79, $ec, $b9, $e8, $49, $ec, $a9        ;; 0f:5953 ????????
-    db   $e8, $a9, $49, $99, $ec, $b9, $e8, $69        ;; 0f:595b ????????
-    db   $ec, $b9, $f9, $4f, $59, $fa, $02, $e8        ;; 0f:5963 ????????
-    db   $a9, $39, $89, $29, $69, $ec, $a9, $e8        ;; 0f:596b ????????
-    db   $39, $ec, $99, $e8, $99, $39, $89, $ec        ;; 0f:5973 ????????
-    db   $a9, $e8, $59, $ec, $a9, $f9, $6a, $59        ;; 0f:597b ????????
-    db   $f1, $4d, $59, $fe, $87, $66, $15, $66        ;; 0f:5983 ????????
-    db   $40, $01, $dd, $f1, $4d, $59, $fe, $63        ;; 0f:598b ????????
-    db   $66, $20, $e2, $66, $03, $e1, $fa, $02        ;; 0f:5993 ????????
-    db   $49, $d6, $49, $d6, $4a, $de, $4a, $de        ;; 0f:599b ????????
-    db   $49, $d6, $49, $d6, $f9, $9b, $59, $fa        ;; 0f:59a3 ????????
-    db   $02, $39, $d6, $39, $d6, $3a, $de, $3a        ;; 0f:59ab ????????
-    db   $de, $39, $d6, $39, $d6, $f9, $ac, $59        ;; 0f:59b3 ????????
-    db   $f1, $98, $59, $f6, $03, $f0, $1b, $66        ;; 0f:59bb ????????
-    db   $44, $43, $d9, $53, $b9, $b9, $f1, $c3        ;; 0f:59c3 ????????
-    db   $59                                           ;; 0f:59cb ?
+    mSTEREOPAN $02                                     ;; 0f:5757 $f6 $02
+    mF_7                                               ;; 0f:5759 $57
+    mF_7                                               ;; 0f:575a $57
+    mF_9                                               ;; 0f:575b $59
+    mSTEREOPAN $01                                     ;; 0f:575c $f6 $01
+    mG_9                                               ;; 0f:575e $79
+    mSTEREOPAN $02                                     ;; 0f:575f $f6 $02
+    mF_7                                               ;; 0f:5761 $57
+    mF_7                                               ;; 0f:5762 $57
+    mF_9                                               ;; 0f:5763 $59
+    mSTEREOPAN $03                                     ;; 0f:5764 $f6 $03
+    mG_12                                              ;; 0f:5766 $7c
+    mG_12                                              ;; 0f:5767 $7c
+    mREPEAT_2 .data_0f_5757                            ;; 0f:5768 $f9 $57 $57
+    mJUMP .data_0f_5752                                ;; 0f:576b $f1 $52 $57
+
+song0f_channel2:
+    mINIT2 $78, frequencyDeltaData, data_0f_660d, $c0  ;; 0f:576e $fe $78 $63 $66 $0d $66 $c0
+    mC_3                                               ;; 0f:5775 $03
+.data_0f_5776:
+    mSTEREOPAN $03                                     ;; 0f:5776 $f6 $03
+    mOCTAVE_0                                          ;; 0f:5778 $e0
+    mE_7                                               ;; 0f:5779 $47
+    mE_7                                               ;; 0f:577a $47
+    mE_3                                               ;; 0f:577b $43
+    mWait_9                                            ;; 0f:577c $c9
+    mSTEREOPAN $01                                     ;; 0f:577d $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:577f $e8
+    mA_12                                              ;; 0f:5780 $9c
+    mB_12                                              ;; 0f:5781 $bc
+    mA_12                                              ;; 0f:5782 $9c
+    mG_12                                              ;; 0f:5783 $7c
+    mF_12                                              ;; 0f:5784 $5c
+    mG_12                                              ;; 0f:5785 $7c
+    mSTEREOPAN $02                                     ;; 0f:5786 $f6 $02
+    mE_4                                               ;; 0f:5788 $44
+    mOCTAVE_MINUS_1                                    ;; 0f:5789 $ec
+    mA_12                                              ;; 0f:578a $9c
+    mOCTAVE_PLUS_1                                     ;; 0f:578b $e8
+    mC_12                                              ;; 0f:578c $0c
+    mE_12                                              ;; 0f:578d $4c
+    mA_12                                              ;; 0f:578e $9c
+    mSTEREOPAN $03                                     ;; 0f:578f $f6 $03
+    mOCTAVE_MINUS_1                                    ;; 0f:5791 $ec
+    mF_7                                               ;; 0f:5792 $57
+    mF_7                                               ;; 0f:5793 $57
+    mF_3                                               ;; 0f:5794 $53
+    mWait_9                                            ;; 0f:5795 $c9
+    mSTEREOPAN $02                                     ;; 0f:5796 $f6 $02
+    mOCTAVE_PLUS_2                                     ;; 0f:5798 $e9
+    mC_12                                              ;; 0f:5799 $0c
+    mD_12                                              ;; 0f:579a $2c
+    mC_12                                              ;; 0f:579b $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:579c $ec
+    mB_12                                              ;; 0f:579d $bc
+    mA_12                                              ;; 0f:579e $9c
+    mG_12                                              ;; 0f:579f $7c
+    mSTEREOPAN $01                                     ;; 0f:57a0 $f6 $01
+    mF_4                                               ;; 0f:57a2 $54
+    mF_9                                               ;; 0f:57a3 $59
+    mA_12                                              ;; 0f:57a4 $9c
+    mOCTAVE_PLUS_1                                     ;; 0f:57a5 $e8
+    mD_12                                              ;; 0f:57a6 $2c
+    mSTEREOPAN $03                                     ;; 0f:57a7 $f6 $03
+    mOCTAVE_MINUS_2                                    ;; 0f:57a9 $ed
+    mG_7                                               ;; 0f:57aa $77
+    mG_7                                               ;; 0f:57ab $77
+    mG_3                                               ;; 0f:57ac $73
+    mWait_9                                            ;; 0f:57ad $c9
+    mSTEREOPAN $01                                     ;; 0f:57ae $f6 $01
+    mOCTAVE_PLUS_2                                     ;; 0f:57b0 $e9
+    mE_12                                              ;; 0f:57b1 $4c
+    mD_12                                              ;; 0f:57b2 $2c
+    mC_12                                              ;; 0f:57b3 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:57b4 $ec
+    mB_9                                               ;; 0f:57b5 $b9
+    mSTEREOPAN $02                                     ;; 0f:57b6 $f6 $02
+    mA_12                                              ;; 0f:57b8 $9c
+    mOCTAVE_PLUS_1                                     ;; 0f:57b9 $e8
+    mE_12                                              ;; 0f:57ba $4c
+    mF_12                                              ;; 0f:57bb $5c
+    mSTEREOPAN $01                                     ;; 0f:57bc $f6 $01
+    mOCTAVE_MINUS_1                                    ;; 0f:57be $ec
+    mB_9                                               ;; 0f:57bf $b9
+    mG_12                                              ;; 0f:57c0 $7c
+    mF_9                                               ;; 0f:57c1 $59
+    mSTEREOPAN $02                                     ;; 0f:57c2 $f6 $02
+    mE_12                                              ;; 0f:57c4 $4c
+    mD_9                                               ;; 0f:57c5 $29
+    mSTEREOPAN $03                                     ;; 0f:57c6 $f6 $03
+    mOCTAVE_MINUS_1                                    ;; 0f:57c8 $ec
+    mA_7                                               ;; 0f:57c9 $97
+    mA_7                                               ;; 0f:57ca $97
+    mA_3                                               ;; 0f:57cb $93
+    mWait_9                                            ;; 0f:57cc $c9
+    mSTEREOPAN $02                                     ;; 0f:57cd $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:57cf $e8
+    mE_12                                              ;; 0f:57d0 $4c
+    mA_12                                              ;; 0f:57d1 $9c
+    mOCTAVE_PLUS_1                                     ;; 0f:57d2 $e8
+    mE_9                                               ;; 0f:57d3 $49
+    mOCTAVE_MINUS_1                                    ;; 0f:57d4 $ec
+    mSTEREOPAN $01                                     ;; 0f:57d5 $f6 $01
+    mB_12                                              ;; 0f:57d7 $bc
+    mOCTAVE_PLUS_1                                     ;; 0f:57d8 $e8
+    mC_12                                              ;; 0f:57d9 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:57da $ec
+    mB_12                                              ;; 0f:57db $bc
+    mG_12                                              ;; 0f:57dc $7c
+    mSTEREOPAN $02                                     ;; 0f:57dd $f6 $02
+    mF_12                                              ;; 0f:57df $5c
+    mE_12                                              ;; 0f:57e0 $4c
+    mD_12                                              ;; 0f:57e1 $2c
+    mC_9                                               ;; 0f:57e2 $09
+    mSTEREOPAN $01                                     ;; 0f:57e3 $f6 $01
+    mOCTAVE_MINUS_1                                    ;; 0f:57e5 $ec
+    mA_12                                              ;; 0f:57e6 $9c
+    mG_12                                              ;; 0f:57e7 $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:57e8 $e8
+    mD_12                                              ;; 0f:57e9 $2c
+    mJUMP .data_0f_5776                                ;; 0f:57ea $f1 $76 $57
+
+song0f_channel1:
+    mINIT1 frequencyDeltaData, data_0f_6631, $40       ;; 0f:57ed $fe $63 $66 $31 $66 $40
+    mC_3                                               ;; 0f:57f3 $03
+.data_0f_57f4:
+    mRest_6                                            ;; 0f:57f4 $d6
+    mOCTAVE_2                                          ;; 0f:57f5 $e2
+    mA_9                                               ;; 0f:57f6 $99
+    mB_9                                               ;; 0f:57f7 $b9
+    mRest_3                                            ;; 0f:57f8 $d3
+    mB_12                                              ;; 0f:57f9 $bc
+    mRest_9                                            ;; 0f:57fa $d9
+    mA_12                                              ;; 0f:57fb $9c
+    mRest_9                                            ;; 0f:57fc $d9
+    mB_9                                               ;; 0f:57fd $b9
+    mRest_9                                            ;; 0f:57fe $d9
+    mOCTAVE_PLUS_1                                     ;; 0f:57ff $e8
+    mFis_4                                             ;; 0f:5800 $64
+    mRest_6                                            ;; 0f:5801 $d6
+    mOCTAVE_MINUS_1                                    ;; 0f:5802 $ec
+    mB_9                                               ;; 0f:5803 $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:5804 $e8
+    mC_9                                               ;; 0f:5805 $09
+    mRest_3                                            ;; 0f:5806 $d3
+    mE_12                                              ;; 0f:5807 $4c
+    mRest_9                                            ;; 0f:5808 $d9
+    mD_12                                              ;; 0f:5809 $2c
+    mRest_9                                            ;; 0f:580a $d9
+    mC_9                                               ;; 0f:580b $09
+    mRest_9                                            ;; 0f:580c $d9
+    mC_4                                               ;; 0f:580d $04
+    mRest_6                                            ;; 0f:580e $d6
+    mC_9                                               ;; 0f:580f $09
+    mD_9                                               ;; 0f:5810 $29
+    mRest_3                                            ;; 0f:5811 $d3
+    mE_12                                              ;; 0f:5812 $4c
+    mRest_9                                            ;; 0f:5813 $d9
+    mD_12                                              ;; 0f:5814 $2c
+    mRest_9                                            ;; 0f:5815 $d9
+    mE_9                                               ;; 0f:5816 $49
+    mRest_9                                            ;; 0f:5817 $d9
+    mD_4                                               ;; 0f:5818 $24
+    mRest_6                                            ;; 0f:5819 $d6
+    mD_9                                               ;; 0f:581a $29
+    mE_9                                               ;; 0f:581b $49
+    mRest_3                                            ;; 0f:581c $d3
+    mE_12                                              ;; 0f:581d $4c
+    mOCTAVE_MINUS_1                                    ;; 0f:581e $ec
+    mB_12                                              ;; 0f:581f $bc
+    mG_12                                              ;; 0f:5820 $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:5821 $e8
+    mE_2                                               ;; 0f:5822 $42
+    mWait_12                                           ;; 0f:5823 $cc
+    mOCTAVE_MINUS_1                                    ;; 0f:5824 $ec
+    mG_2                                               ;; 0f:5825 $72
+    mOCTAVE_MINUS_1                                    ;; 0f:5826 $ec
+    mB_6                                               ;; 0f:5827 $b6
+    mOCTAVE_PLUS_1                                     ;; 0f:5828 $e8
+    mE_1                                               ;; 0f:5829 $41
+    mF_1                                               ;; 0f:582a $51
+    mF_1                                               ;; 0f:582b $51
+    mG_1                                               ;; 0f:582c $71
+    mG_1                                               ;; 0f:582d $71
+    mE_1                                               ;; 0f:582e $41
+    mE_1                                               ;; 0f:582f $41
+    mB_1                                               ;; 0f:5830 $b1
+    mB_3                                               ;; 0f:5831 $b3
+    mE_3                                               ;; 0f:5832 $43
+    mA_1                                               ;; 0f:5833 $91
+    mA_1                                               ;; 0f:5834 $91
+    mD_3                                               ;; 0f:5835 $23
+    mOCTAVE_MINUS_1                                    ;; 0f:5836 $ec
+    mB_3                                               ;; 0f:5837 $b3
+    mOCTAVE_PLUS_1                                     ;; 0f:5838 $e8
+    mG_1                                               ;; 0f:5839 $71
+    mE_1                                               ;; 0f:583a $41
+    mE_1                                               ;; 0f:583b $41
+    mJUMP .data_0f_57f4                                ;; 0f:583c $f1 $f4 $57
+
+song0f_channel3:
+    mINIT3 data_0f_6668, $20, data_0f_66d2             ;; 0f:583f $fe $68 $66 $20 $d2 $66
+    mC_3                                               ;; 0f:5845 $03
+.data_0f_5846:
+    mRest_6                                            ;; 0f:5846 $d6
+    mOCTAVE_4                                          ;; 0f:5847 $e4
+    mD_9                                               ;; 0f:5848 $29
+    mE_9                                               ;; 0f:5849 $49
+    mRest_3                                            ;; 0f:584a $d3
+    mE_12                                              ;; 0f:584b $4c
+    mRest_9                                            ;; 0f:584c $d9
+    mD_12                                              ;; 0f:584d $2c
+    mRest_9                                            ;; 0f:584e $d9
+    mE_9                                               ;; 0f:584f $49
+    mRest_9                                            ;; 0f:5850 $d9
+    mB_4                                               ;; 0f:5851 $b4
+    mRest_6                                            ;; 0f:5852 $d6
+    mE_9                                               ;; 0f:5853 $49
+    mF_9                                               ;; 0f:5854 $59
+    mRest_3                                            ;; 0f:5855 $d3
+    mA_12                                              ;; 0f:5856 $9c
+    mRest_9                                            ;; 0f:5857 $d9
+    mG_12                                              ;; 0f:5858 $7c
+    mRest_9                                            ;; 0f:5859 $d9
+    mF_9                                               ;; 0f:585a $59
+    mRest_9                                            ;; 0f:585b $d9
+    mF_4                                               ;; 0f:585c $54
+    mRest_6                                            ;; 0f:585d $d6
+    mF_9                                               ;; 0f:585e $59
+    mG_9                                               ;; 0f:585f $79
+    mRest_3                                            ;; 0f:5860 $d3
+    mB_12                                              ;; 0f:5861 $bc
+    mRest_9                                            ;; 0f:5862 $d9
+    mA_12                                              ;; 0f:5863 $9c
+    mRest_9                                            ;; 0f:5864 $d9
+    mB_9                                               ;; 0f:5865 $b9
+    mRest_9                                            ;; 0f:5866 $d9
+    mG_4                                               ;; 0f:5867 $74
+    mRest_6                                            ;; 0f:5868 $d6
+    mG_9                                               ;; 0f:5869 $79
+    mA_9                                               ;; 0f:586a $99
+    mRest_3                                            ;; 0f:586b $d3
+    mB_12                                              ;; 0f:586c $bc
+    mG_12                                              ;; 0f:586d $7c
+    mE_12                                              ;; 0f:586e $4c
+    mA_2                                               ;; 0f:586f $92
+    mWait_12                                           ;; 0f:5870 $cc
+    mOCTAVE_MINUS_1                                    ;; 0f:5871 $ec
+    mB_2                                               ;; 0f:5872 $b2
+    mE_12                                              ;; 0f:5873 $4c
+    mFis_12                                            ;; 0f:5874 $6c
+    mG_12                                              ;; 0f:5875 $7c
+    mA_12                                              ;; 0f:5876 $9c
+    mB_1                                               ;; 0f:5877 $b1
+    mOCTAVE_PLUS_1                                     ;; 0f:5878 $e8
+    mC_6                                               ;; 0f:5879 $06
+    mOCTAVE_MINUS_1                                    ;; 0f:587a $ec
+    mB_12                                              ;; 0f:587b $bc
+    mA_12                                              ;; 0f:587c $9c
+    mG_12                                              ;; 0f:587d $7c
+    mF_12                                              ;; 0f:587e $5c
+    mOCTAVE_PLUS_1                                     ;; 0f:587f $e8
+    mF_3                                               ;; 0f:5880 $53
+    mA_3                                               ;; 0f:5881 $93
+    mOCTAVE_PLUS_1                                     ;; 0f:5882 $e8
+    mD_4                                               ;; 0f:5883 $24
+    mCis_12                                            ;; 0f:5884 $1c
+    mC_12                                              ;; 0f:5885 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:5886 $ec
+    mB_3                                               ;; 0f:5887 $b3
+    mE_3                                               ;; 0f:5888 $43
+    mD_9                                               ;; 0f:5889 $29
+    mC_12                                              ;; 0f:588a $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:588b $ec
+    mB_9                                               ;; 0f:588c $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:588d $e8
+    mC_12                                              ;; 0f:588e $0c
+    mD_12                                              ;; 0f:588f $2c
+    mG_12                                              ;; 0f:5890 $7c
+    mC_12                                              ;; 0f:5891 $0c
+    mD_12                                              ;; 0f:5892 $2c
+    mC_12                                              ;; 0f:5893 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:5894 $ec
+    mB_9                                               ;; 0f:5895 $b9
+    mG_12                                              ;; 0f:5896 $7c
+    mB_12                                              ;; 0f:5897 $bc
+    mOCTAVE_PLUS_1                                     ;; 0f:5898 $e8
+    mD_12                                              ;; 0f:5899 $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:589a $ec
+    mB_7                                               ;; 0f:589b $b7
+    mOCTAVE_PLUS_1                                     ;; 0f:589c $e8
+    mC_7                                               ;; 0f:589d $07
+    mOCTAVE_MINUS_1                                    ;; 0f:589e $ec
+    mA_3                                               ;; 0f:589f $93
+    mWait_9                                            ;; 0f:58a0 $c9
+    mOCTAVE_PLUS_1                                     ;; 0f:58a1 $e8
+    mE_12                                              ;; 0f:58a2 $4c
+    mC_12                                              ;; 0f:58a3 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:58a4 $ec
+    mA_12                                              ;; 0f:58a5 $9c
+    mOCTAVE_PLUS_1                                     ;; 0f:58a6 $e8
+    mD_12                                              ;; 0f:58a7 $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:58a8 $ec
+    mB_12                                              ;; 0f:58a9 $bc
+    mG_12                                              ;; 0f:58aa $7c
+    mOCTAVE_PLUS_1                                     ;; 0f:58ab $e8
+    mC_12                                              ;; 0f:58ac $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:58ad $ec
+    mA_12                                              ;; 0f:58ae $9c
+    mE_12                                              ;; 0f:58af $4c
+    mC_12                                              ;; 0f:58b0 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:58b1 $ec
+    mA_12                                              ;; 0f:58b2 $9c
+    mE_12                                              ;; 0f:58b3 $4c
+    mOCTAVE_PLUS_2                                     ;; 0f:58b4 $e9
+    mE_12                                              ;; 0f:58b5 $4c
+    mC_12                                              ;; 0f:58b6 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:58b7 $ec
+    mA_12                                              ;; 0f:58b8 $9c
+    mF_12                                              ;; 0f:58b9 $5c
+    mE_6                                               ;; 0f:58ba $46
+    mE_12                                              ;; 0f:58bb $4c
+    mF_12                                              ;; 0f:58bc $5c
+    mE_12                                              ;; 0f:58bd $4c
+    mD_12                                              ;; 0f:58be $2c
+    mE_3                                               ;; 0f:58bf $43
+    mOCTAVE_PLUS_1                                     ;; 0f:58c0 $e8
+    mE_4                                               ;; 0f:58c1 $44
+    mOCTAVE_MINUS_1                                    ;; 0f:58c2 $ec
+    mB_4                                               ;; 0f:58c3 $b4
+    mA_9                                               ;; 0f:58c4 $99
+    mG_9                                               ;; 0f:58c5 $79
+    mF_3                                               ;; 0f:58c6 $53
+    mOCTAVE_PLUS_1                                     ;; 0f:58c7 $e8
+    mD_12                                              ;; 0f:58c8 $2c
+    mC_12                                              ;; 0f:58c9 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:58ca $ec
+    mB_12                                              ;; 0f:58cb $bc
+    mOCTAVE_PLUS_1                                     ;; 0f:58cc $e8
+    mC_12                                              ;; 0f:58cd $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:58ce $ec
+    mA_12                                              ;; 0f:58cf $9c
+    mB_12                                              ;; 0f:58d0 $bc
+    mG_12                                              ;; 0f:58d1 $7c
+    mA_12                                              ;; 0f:58d2 $9c
+    mOCTAVE_PLUS_1                                     ;; 0f:58d3 $e8
+    mD_12                                              ;; 0f:58d4 $2c
+    mC_12                                              ;; 0f:58d5 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:58d6 $ec
+    mB_12                                              ;; 0f:58d7 $bc
+    mOCTAVE_PLUS_1                                     ;; 0f:58d8 $e8
+    mC_12                                              ;; 0f:58d9 $0c
+    mF_12                                              ;; 0f:58da $5c
+    mE_12                                              ;; 0f:58db $4c
+    mD_12                                              ;; 0f:58dc $2c
+    mC_12                                              ;; 0f:58dd $0c
+    mA_12                                              ;; 0f:58de $9c
+    mG_12                                              ;; 0f:58df $7c
+    mF_12                                              ;; 0f:58e0 $5c
+    mE_12                                              ;; 0f:58e1 $4c
+    mD_12                                              ;; 0f:58e2 $2c
+    mC_12                                              ;; 0f:58e3 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:58e4 $ec
+    mB_12                                              ;; 0f:58e5 $bc
+    mA_12                                              ;; 0f:58e6 $9c
+    mG_4                                               ;; 0f:58e7 $74
+    mF_12                                              ;; 0f:58e8 $5c
+    mE_12                                              ;; 0f:58e9 $4c
+    mD_3                                               ;; 0f:58ea $23
+    mB_4                                               ;; 0f:58eb $b4
+    mOCTAVE_PLUS_1                                     ;; 0f:58ec $e8
+    mC_12                                              ;; 0f:58ed $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:58ee $ec
+    mB_12                                              ;; 0f:58ef $bc
+    mG_9                                               ;; 0f:58f0 $79
+    mB_12                                              ;; 0f:58f1 $bc
+    mOCTAVE_PLUS_1                                     ;; 0f:58f2 $e8
+    mD_12                                              ;; 0f:58f3 $2c
+    mG_9                                               ;; 0f:58f4 $79
+    mOCTAVE_MINUS_1                                    ;; 0f:58f5 $ec
+    mB_9                                               ;; 0f:58f6 $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:58f7 $e8
+    mC_13                                              ;; 0f:58f8 $0d
+    mWait_13                                           ;; 0f:58f9 $cd
+    mOCTAVE_MINUS_1                                    ;; 0f:58fa $ec
+    mA_13                                              ;; 0f:58fb $9d
+    mWait_13                                           ;; 0f:58fc $cd
+    mE_13                                              ;; 0f:58fd $4d
+    mWait_13                                           ;; 0f:58fe $cd
+    mOCTAVE_PLUS_1                                     ;; 0f:58ff $e8
+    mD_13                                              ;; 0f:5900 $2d
+    mWait_13                                           ;; 0f:5901 $cd
+    mOCTAVE_MINUS_1                                    ;; 0f:5902 $ec
+    mA_13                                              ;; 0f:5903 $9d
+    mWait_13                                           ;; 0f:5904 $cd
+    mE_13                                              ;; 0f:5905 $4d
+    mWait_13                                           ;; 0f:5906 $cd
+    mOCTAVE_PLUS_1                                     ;; 0f:5907 $e8
+    mE_13                                              ;; 0f:5908 $4d
+    mWait_13                                           ;; 0f:5909 $cd
+    mOCTAVE_MINUS_1                                    ;; 0f:590a $ec
+    mA_13                                              ;; 0f:590b $9d
+    mWait_13                                           ;; 0f:590c $cd
+    mE_13                                              ;; 0f:590d $4d
+    mWait_13                                           ;; 0f:590e $cd
+    mOCTAVE_PLUS_1                                     ;; 0f:590f $e8
+    mA_13                                              ;; 0f:5910 $9d
+    mWait_13                                           ;; 0f:5911 $cd
+    mC_13                                              ;; 0f:5912 $0d
+    mWait_13                                           ;; 0f:5913 $cd
+    mOCTAVE_MINUS_1                                    ;; 0f:5914 $ec
+    mA_13                                              ;; 0f:5915 $9d
+    mWait_13                                           ;; 0f:5916 $cd
+    mOCTAVE_PLUS_1                                     ;; 0f:5917 $e8
+    mE_12                                              ;; 0f:5918 $4c
+    mC_12                                              ;; 0f:5919 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:591a $ec
+    mA_9                                               ;; 0f:591b $99
+    mOCTAVE_PLUS_1                                     ;; 0f:591c $e8
+    mD_12                                              ;; 0f:591d $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:591e $ec
+    mB_12                                              ;; 0f:591f $bc
+    mG_9                                               ;; 0f:5920 $79
+    mOCTAVE_MINUS_1                                    ;; 0f:5921 $ec
+    mA_12                                              ;; 0f:5922 $9c
+    mOCTAVE_PLUS_1                                     ;; 0f:5923 $e8
+    mC_12                                              ;; 0f:5924 $0c
+    mE_12                                              ;; 0f:5925 $4c
+    mA_12                                              ;; 0f:5926 $9c
+    mE_12                                              ;; 0f:5927 $4c
+    mA_12                                              ;; 0f:5928 $9c
+    mOCTAVE_PLUS_1                                     ;; 0f:5929 $e8
+    mC_12                                              ;; 0f:592a $0c
+    mE_12                                              ;; 0f:592b $4c
+    mJUMP .data_0f_5846                                ;; 0f:592c $f1 $46 $58
+
+song0f_channel4:
+    mVOLUME_ENVELOPE data_0f_661b                      ;; 0f:592f $f0 $1b $66
+.data_0f_5932:
+    mSTEREOPAN $01                                     ;; 0f:5932 $f6 $01
+    mG_7                                               ;; 0f:5934 $77
+    mG_7                                               ;; 0f:5935 $77
+    mG_9                                               ;; 0f:5936 $79
+    mSTEREOPAN $02                                     ;; 0f:5937 $f6 $02
+    mF_12                                              ;; 0f:5939 $5c
+    mA_12                                              ;; 0f:593a $9c
+    mF_12                                              ;; 0f:593b $5c
+    mF_12                                              ;; 0f:593c $5c
+    mSTEREOPAN $03                                     ;; 0f:593d $f6 $03
+    mG_14                                              ;; 0f:593f $7e
+    mG_14                                              ;; 0f:5940 $7e
+    mF_7                                               ;; 0f:5941 $57
+    mJUMP .data_0f_5932                                ;; 0f:5942 $f1 $32 $59
+
+song10_channel2:
+    mINIT2 $8c, frequencyDeltaData, data_0f_660d, $40  ;; 0f:5945 $fe $8c $63 $66 $0d $66 $40
+    mC_2                                               ;; 0f:594c $02
+
+data_0f_594d:
+    mCOUNTER_2 $02                                     ;; 0f:594d $fa $02
+.data_0f_594f:
+    mOCTAVE_3                                          ;; 0f:594f $e3
+    mB_9                                               ;; 0f:5950 $b9
+    mE_9                                               ;; 0f:5951 $49
+    mA_9                                               ;; 0f:5952 $99
+    mDis_9                                             ;; 0f:5953 $39
+    mG_9                                               ;; 0f:5954 $79
+    mOCTAVE_MINUS_1                                    ;; 0f:5955 $ec
+    mB_9                                               ;; 0f:5956 $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:5957 $e8
+    mE_9                                               ;; 0f:5958 $49
+    mOCTAVE_MINUS_1                                    ;; 0f:5959 $ec
+    mAis_9                                             ;; 0f:595a $a9
+    mOCTAVE_PLUS_1                                     ;; 0f:595b $e8
+    mAis_9                                             ;; 0f:595c $a9
+    mE_9                                               ;; 0f:595d $49
+    mA_9                                               ;; 0f:595e $99
+    mOCTAVE_MINUS_1                                    ;; 0f:595f $ec
+    mB_9                                               ;; 0f:5960 $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:5961 $e8
+    mFis_9                                             ;; 0f:5962 $69
+    mOCTAVE_MINUS_1                                    ;; 0f:5963 $ec
+    mB_9                                               ;; 0f:5964 $b9
+    mREPEAT_2 .data_0f_594f                            ;; 0f:5965 $f9 $4f $59
+    mCOUNTER_2 $02                                     ;; 0f:5968 $fa $02
+.data_0f_596a:
+    mOCTAVE_PLUS_1                                     ;; 0f:596a $e8
+    mAis_9                                             ;; 0f:596b $a9
+    mDis_9                                             ;; 0f:596c $39
+    mGis_9                                             ;; 0f:596d $89
+    mD_9                                               ;; 0f:596e $29
+    mFis_9                                             ;; 0f:596f $69
+    mOCTAVE_MINUS_1                                    ;; 0f:5970 $ec
+    mAis_9                                             ;; 0f:5971 $a9
+    mOCTAVE_PLUS_1                                     ;; 0f:5972 $e8
+    mDis_9                                             ;; 0f:5973 $39
+    mOCTAVE_MINUS_1                                    ;; 0f:5974 $ec
+    mA_9                                               ;; 0f:5975 $99
+    mOCTAVE_PLUS_1                                     ;; 0f:5976 $e8
+    mA_9                                               ;; 0f:5977 $99
+    mDis_9                                             ;; 0f:5978 $39
+    mGis_9                                             ;; 0f:5979 $89
+    mOCTAVE_MINUS_1                                    ;; 0f:597a $ec
+    mAis_9                                             ;; 0f:597b $a9
+    mOCTAVE_PLUS_1                                     ;; 0f:597c $e8
+    mF_9                                               ;; 0f:597d $59
+    mOCTAVE_MINUS_1                                    ;; 0f:597e $ec
+    mAis_9                                             ;; 0f:597f $a9
+    mREPEAT_2 .data_0f_596a                            ;; 0f:5980 $f9 $6a $59
+    mJUMP data_0f_594d                                 ;; 0f:5983 $f1 $4d $59
+
+song10_channel1:
+    mINIT1 data_0f_6687, data_0f_6615, $40             ;; 0f:5986 $fe $87 $66 $15 $66 $40
+    mC_1                                               ;; 0f:598c $01
+    mRest_13                                           ;; 0f:598d $dd
+    mJUMP data_0f_594d                                 ;; 0f:598e $f1 $4d $59
+
+song10_channel3:
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:5991 $fe $63 $66 $20 $e2 $66
+    mC_3                                               ;; 0f:5997 $03
+.data_0f_5998:
+    mOCTAVE_1                                          ;; 0f:5998 $e1
+    mCOUNTER_2 $02                                     ;; 0f:5999 $fa $02
+.data_0f_599b:
+    mE_9                                               ;; 0f:599b $49
+    mRest_6                                            ;; 0f:599c $d6
+    mE_9                                               ;; 0f:599d $49
+    mRest_6                                            ;; 0f:599e $d6
+    mE_10                                              ;; 0f:599f $4a
+    mRest_14                                           ;; 0f:59a0 $de
+    mE_10                                              ;; 0f:59a1 $4a
+    mRest_14                                           ;; 0f:59a2 $de
+    mE_9                                               ;; 0f:59a3 $49
+    mRest_6                                            ;; 0f:59a4 $d6
+    mE_9                                               ;; 0f:59a5 $49
+    mRest_6                                            ;; 0f:59a6 $d6
+    mREPEAT_2 .data_0f_599b                            ;; 0f:59a7 $f9 $9b $59
+    mCOUNTER_2 $02                                     ;; 0f:59aa $fa $02
+.data_0f_59ac:
+    mDis_9                                             ;; 0f:59ac $39
+    mRest_6                                            ;; 0f:59ad $d6
+    mDis_9                                             ;; 0f:59ae $39
+    mRest_6                                            ;; 0f:59af $d6
+    mDis_10                                            ;; 0f:59b0 $3a
+    mRest_14                                           ;; 0f:59b1 $de
+    mDis_10                                            ;; 0f:59b2 $3a
+    mRest_14                                           ;; 0f:59b3 $de
+    mDis_9                                             ;; 0f:59b4 $39
+    mRest_6                                            ;; 0f:59b5 $d6
+    mDis_9                                             ;; 0f:59b6 $39
+    mRest_6                                            ;; 0f:59b7 $d6
+    mREPEAT_2 .data_0f_59ac                            ;; 0f:59b8 $f9 $ac $59
+    mJUMP .data_0f_5998                                ;; 0f:59bb $f1 $98 $59
+
+song10_channel4:
+    mSTEREOPAN $03                                     ;; 0f:59be $f6 $03
+    mVOLUME_ENVELOPE data_0f_661b                      ;; 0f:59c0 $f0 $1b $66
+.data_0f_59c3:
+    mE_4                                               ;; 0f:59c3 $44
+    mE_3                                               ;; 0f:59c4 $43
+    mRest_9                                            ;; 0f:59c5 $d9
+    mF_3                                               ;; 0f:59c6 $53
+    mB_9                                               ;; 0f:59c7 $b9
+    mB_9                                               ;; 0f:59c8 $b9
+    mJUMP .data_0f_59c3                                ;; 0f:59c9 $f1 $c3 $59
 
 song07_channel2:
     mINIT2 $96, frequencyDeltaData, data_0f_661f, $c0  ;; 0f:59cc $fe $96 $63 $66 $1f $66 $c0
@@ -4322,111 +5270,416 @@ song07_channel4:
     mG_9                                               ;; 0f:5b6b $79
     mREPEAT_2 .data_0f_5b60                            ;; 0f:5b6c $f9 $60 $5b
     mJUMP .data_0f_5b3d                                ;; 0f:5b6f $f1 $3d $5b
-    db   $fe, $5a, $68, $66, $f3, $65, $80, $03        ;; 0f:5b72 ????????
-    db   $e3, $67, $57, $47, $37, $fa, $02, $f3        ;; 0f:5b7a ????????
-    db   $02, $fb, $01, $a6, $5b, $e4, $a4, $34        ;; 0f:5b82 ????????
-    db   $04, $a4, $92, $2c, $5c, $bc, $e8, $2c        ;; 0f:5b8a ????????
-    db   $ec, $bc, $5c, $2c, $5c, $bc, $e8, $2c        ;; 0f:5b92 ????????
-    db   $ec, $bc, $5c, $f2, $83, $5b, $f9, $81        ;; 0f:5b9a ????????
-    db   $5b, $f1, $7a, $5b, $64, $04, $a4, $34        ;; 0f:5ba2 ????????
-    db   $22, $f1, $8d, $5b, $fe, $63, $66, $03        ;; 0f:5baa ????????
-    db   $66, $c0, $03, $f0, $03, $66, $e3, $37        ;; 0f:5bb2 ????????
-    db   $27, $17, $07, $f0, $e7, $65, $fa, $04        ;; 0f:5bba ????????
-    db   $f3, $04, $f6, $02, $0c, $3c, $6c, $f6        ;; 0f:5bc2 ????????
-    db   $01, $e8, $0c, $ec, $6c, $3c, $f2, $c4        ;; 0f:5bca ????????
-    db   $5b, $f3, $04, $f6, $02, $ec, $bc, $e8        ;; 0f:5bd2 ????????
-    db   $2c, $5c, $f6, $01, $bc, $5c, $2c, $f2        ;; 0f:5bda ????????
-    db   $d5, $5b, $f9, $c2, $5b, $f1, $b5, $5b        ;; 0f:5be2 ????????
-    db   $fe, $63, $66, $20, $e2, $66, $03, $e2        ;; 0f:5bea ????????
-    db   $07, $ec, $b7, $a7, $97, $f3, $04, $0c        ;; 0f:5bf2 ????????
-    db   $d9, $0c, $d3, $0c, $d9, $0c, $d3, $ec        ;; 0f:5bfa ????????
-    db   $bc, $d9, $bc, $d3, $bc, $d9, $bc, $d3        ;; 0f:5c02 ????????
-    db   $e8, $f2, $f9, $5b, $f1, $f1, $5b, $f0        ;; 0f:5c0a ????????
-    db   $1b, $66, $f6, $03, $d4, $d7, $7c, $7c        ;; 0f:5c12 ????????
-    db   $7c, $fa, $10, $f6, $01, $57, $57, $f6        ;; 0f:5c1a ????????
-    db   $02, $7e, $9a, $d6, $f9, $1d, $5c, $f1        ;; 0f:5c22 ????????
-    db   $14, $5c                                      ;; 0f:5c2a ??
 
-data_0f_5c2c:
-    db   $fe, $78, $68, $66                            ;; 0f:5c2c ....
-    dw   $6641                                         ;; 0f:5c30 wP
-    db   $80, $03                                      ;; 0f:5c32 .w
+song0b_channel2:
+    mINIT2 $5a, data_0f_6668, data_0f_65f3, $80        ;; 0f:5b72 $fe $5a $68 $66 $f3 $65 $80
+    mC_3                                               ;; 0f:5b79 $03
+.data_0f_5b7a:
+    mOCTAVE_3                                          ;; 0f:5b7a $e3
+    mFis_7                                             ;; 0f:5b7b $67
+    mF_7                                               ;; 0f:5b7c $57
+    mE_7                                               ;; 0f:5b7d $47
+    mDis_7                                             ;; 0f:5b7e $37
+    mCOUNTER_2 $02                                     ;; 0f:5b7f $fa $02
+.data_0f_5b81:
+    mCOUNTER $02                                       ;; 0f:5b81 $f3 $02
+.data_0f_5b83:
+    mJUMPIF $01, .data_0f_5ba6                         ;; 0f:5b83 $fb $01 $a6 $5b
+    mOCTAVE_4                                          ;; 0f:5b87 $e4
+    mAis_4                                             ;; 0f:5b88 $a4
+    mDis_4                                             ;; 0f:5b89 $34
+    mC_4                                               ;; 0f:5b8a $04
+    mAis_4                                             ;; 0f:5b8b $a4
+    mA_2                                               ;; 0f:5b8c $92
+.data_0f_5b8d:
+    mD_12                                              ;; 0f:5b8d $2c
+    mF_12                                              ;; 0f:5b8e $5c
+    mB_12                                              ;; 0f:5b8f $bc
+    mOCTAVE_PLUS_1                                     ;; 0f:5b90 $e8
+    mD_12                                              ;; 0f:5b91 $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:5b92 $ec
+    mB_12                                              ;; 0f:5b93 $bc
+    mF_12                                              ;; 0f:5b94 $5c
+    mD_12                                              ;; 0f:5b95 $2c
+    mF_12                                              ;; 0f:5b96 $5c
+    mB_12                                              ;; 0f:5b97 $bc
+    mOCTAVE_PLUS_1                                     ;; 0f:5b98 $e8
+    mD_12                                              ;; 0f:5b99 $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:5b9a $ec
+    mB_12                                              ;; 0f:5b9b $bc
+    mF_12                                              ;; 0f:5b9c $5c
+    mREPEAT .data_0f_5b83                              ;; 0f:5b9d $f2 $83 $5b
+    mREPEAT_2 .data_0f_5b81                            ;; 0f:5ba0 $f9 $81 $5b
+    mJUMP .data_0f_5b7a                                ;; 0f:5ba3 $f1 $7a $5b
+.data_0f_5ba6:
+    mFis_4                                             ;; 0f:5ba6 $64
+    mC_4                                               ;; 0f:5ba7 $04
+    mAis_4                                             ;; 0f:5ba8 $a4
+    mDis_4                                             ;; 0f:5ba9 $34
+    mD_2                                               ;; 0f:5baa $22
+    mJUMP .data_0f_5b8d                                ;; 0f:5bab $f1 $8d $5b
+
+song0b_channel1:
+    mINIT1 frequencyDeltaData, data_0f_6603, $c0       ;; 0f:5bae $fe $63 $66 $03 $66 $c0
+    mC_3                                               ;; 0f:5bb4 $03
+.data_0f_5bb5:
+    mVOLUME_ENVELOPE data_0f_6603                      ;; 0f:5bb5 $f0 $03 $66
+    mOCTAVE_3                                          ;; 0f:5bb8 $e3
+    mDis_7                                             ;; 0f:5bb9 $37
+    mD_7                                               ;; 0f:5bba $27
+    mCis_7                                             ;; 0f:5bbb $17
+    mC_7                                               ;; 0f:5bbc $07
+    mVOLUME_ENVELOPE data_0f_65e7                      ;; 0f:5bbd $f0 $e7 $65
+    mCOUNTER_2 $04                                     ;; 0f:5bc0 $fa $04
+.data_0f_5bc2:
+    mCOUNTER $04                                       ;; 0f:5bc2 $f3 $04
+.data_0f_5bc4:
+    mSTEREOPAN $02                                     ;; 0f:5bc4 $f6 $02
+    mC_12                                              ;; 0f:5bc6 $0c
+    mDis_12                                            ;; 0f:5bc7 $3c
+    mFis_12                                            ;; 0f:5bc8 $6c
+    mSTEREOPAN $01                                     ;; 0f:5bc9 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:5bcb $e8
+    mC_12                                              ;; 0f:5bcc $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:5bcd $ec
+    mFis_12                                            ;; 0f:5bce $6c
+    mDis_12                                            ;; 0f:5bcf $3c
+    mREPEAT .data_0f_5bc4                              ;; 0f:5bd0 $f2 $c4 $5b
+    mCOUNTER $04                                       ;; 0f:5bd3 $f3 $04
+.data_0f_5bd5:
+    mSTEREOPAN $02                                     ;; 0f:5bd5 $f6 $02
+    mOCTAVE_MINUS_1                                    ;; 0f:5bd7 $ec
+    mB_12                                              ;; 0f:5bd8 $bc
+    mOCTAVE_PLUS_1                                     ;; 0f:5bd9 $e8
+    mD_12                                              ;; 0f:5bda $2c
+    mF_12                                              ;; 0f:5bdb $5c
+    mSTEREOPAN $01                                     ;; 0f:5bdc $f6 $01
+    mB_12                                              ;; 0f:5bde $bc
+    mF_12                                              ;; 0f:5bdf $5c
+    mD_12                                              ;; 0f:5be0 $2c
+    mREPEAT .data_0f_5bd5                              ;; 0f:5be1 $f2 $d5 $5b
+    mREPEAT_2 .data_0f_5bc2                            ;; 0f:5be4 $f9 $c2 $5b
+    mJUMP .data_0f_5bb5                                ;; 0f:5be7 $f1 $b5 $5b
+
+song0b_channel3:
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:5bea $fe $63 $66 $20 $e2 $66
+    mC_3                                               ;; 0f:5bf0 $03
+.data_0f_5bf1:
+    mOCTAVE_2                                          ;; 0f:5bf1 $e2
+    mC_7                                               ;; 0f:5bf2 $07
+    mOCTAVE_MINUS_1                                    ;; 0f:5bf3 $ec
+    mB_7                                               ;; 0f:5bf4 $b7
+    mAis_7                                             ;; 0f:5bf5 $a7
+    mA_7                                               ;; 0f:5bf6 $97
+    mCOUNTER $04                                       ;; 0f:5bf7 $f3 $04
+.data_0f_5bf9:
+    mC_12                                              ;; 0f:5bf9 $0c
+    mRest_9                                            ;; 0f:5bfa $d9
+    mC_12                                              ;; 0f:5bfb $0c
+    mRest_3                                            ;; 0f:5bfc $d3
+    mC_12                                              ;; 0f:5bfd $0c
+    mRest_9                                            ;; 0f:5bfe $d9
+    mC_12                                              ;; 0f:5bff $0c
+    mRest_3                                            ;; 0f:5c00 $d3
+    mOCTAVE_MINUS_1                                    ;; 0f:5c01 $ec
+    mB_12                                              ;; 0f:5c02 $bc
+    mRest_9                                            ;; 0f:5c03 $d9
+    mB_12                                              ;; 0f:5c04 $bc
+    mRest_3                                            ;; 0f:5c05 $d3
+    mB_12                                              ;; 0f:5c06 $bc
+    mRest_9                                            ;; 0f:5c07 $d9
+    mB_12                                              ;; 0f:5c08 $bc
+    mRest_3                                            ;; 0f:5c09 $d3
+    mOCTAVE_PLUS_1                                     ;; 0f:5c0a $e8
+    mREPEAT .data_0f_5bf9                              ;; 0f:5c0b $f2 $f9 $5b
+    mJUMP .data_0f_5bf1                                ;; 0f:5c0e $f1 $f1 $5b
+
+song0b_channel4:
+    mVOLUME_ENVELOPE data_0f_661b                      ;; 0f:5c11 $f0 $1b $66
+.data_0f_5c14:
+    mSTEREOPAN $03                                     ;; 0f:5c14 $f6 $03
+    mRest_4                                            ;; 0f:5c16 $d4
+    mRest_7                                            ;; 0f:5c17 $d7
+    mG_12                                              ;; 0f:5c18 $7c
+    mG_12                                              ;; 0f:5c19 $7c
+    mG_12                                              ;; 0f:5c1a $7c
+    mCOUNTER_2 $10                                     ;; 0f:5c1b $fa $10
+.data_0f_5c1d:
+    mSTEREOPAN $01                                     ;; 0f:5c1d $f6 $01
+    mF_7                                               ;; 0f:5c1f $57
+    mF_7                                               ;; 0f:5c20 $57
+    mSTEREOPAN $02                                     ;; 0f:5c21 $f6 $02
+    mG_14                                              ;; 0f:5c23 $7e
+    mA_10                                              ;; 0f:5c24 $9a
+    mRest_6                                            ;; 0f:5c25 $d6
+    mREPEAT_2 .data_0f_5c1d                            ;; 0f:5c26 $f9 $1d $5c
+    mJUMP .data_0f_5c14                                ;; 0f:5c29 $f1 $14 $5c
+
+song12_channel2:
+    mINIT2 $78, data_0f_6668, data_0f_6641, $80        ;; 0f:5c2c $fe $78 $68 $66 $41 $66 $80
+    mC_3                                               ;; 0f:5c33 $03
 .data_0f_5c34:
-    db   $e3, $79, $69, $79, $e8, $06, $ec, $b9        ;; 0f:5c34 ........
-    db   $99, $b9, $49, $39, $49, $56, $49, $29        ;; 0f:5c3c ........
-    db   $09, $e8, $09, $ec, $79, $59, $46, $29        ;; 0f:5c44 ........
-    db   $09, $ec, $b9, $e8, $76, $e8, $09, $ec        ;; 0f:5c4c ........
-    db   $94, $c6, $76, $e8, $09, $ec, $96, $79        ;; 0f:5c54 ........
-    db   $59, $29, $49, $39, $49, $94, $56, $49        ;; 0f:5c5c ........
-    db   $59, $79, $26, $49, $29, $09, $b6, $e8        ;; 0f:5c64 ........
-    db   $09, $ec, $94, $c6, $f3, $02                  ;; 0f:5c6c ......
+    mOCTAVE_3                                          ;; 0f:5c34 $e3
+    mG_9                                               ;; 0f:5c35 $79
+    mFis_9                                             ;; 0f:5c36 $69
+    mG_9                                               ;; 0f:5c37 $79
+    mOCTAVE_PLUS_1                                     ;; 0f:5c38 $e8
+    mC_6                                               ;; 0f:5c39 $06
+    mOCTAVE_MINUS_1                                    ;; 0f:5c3a $ec
+    mB_9                                               ;; 0f:5c3b $b9
+    mA_9                                               ;; 0f:5c3c $99
+    mB_9                                               ;; 0f:5c3d $b9
+    mE_9                                               ;; 0f:5c3e $49
+    mDis_9                                             ;; 0f:5c3f $39
+    mE_9                                               ;; 0f:5c40 $49
+    mF_6                                               ;; 0f:5c41 $56
+    mE_9                                               ;; 0f:5c42 $49
+    mD_9                                               ;; 0f:5c43 $29
+    mC_9                                               ;; 0f:5c44 $09
+    mOCTAVE_PLUS_1                                     ;; 0f:5c45 $e8
+    mC_9                                               ;; 0f:5c46 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5c47 $ec
+    mG_9                                               ;; 0f:5c48 $79
+    mF_9                                               ;; 0f:5c49 $59
+    mE_6                                               ;; 0f:5c4a $46
+    mD_9                                               ;; 0f:5c4b $29
+    mC_9                                               ;; 0f:5c4c $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5c4d $ec
+    mB_9                                               ;; 0f:5c4e $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:5c4f $e8
+    mG_6                                               ;; 0f:5c50 $76
+    mOCTAVE_PLUS_1                                     ;; 0f:5c51 $e8
+    mC_9                                               ;; 0f:5c52 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5c53 $ec
+    mA_4                                               ;; 0f:5c54 $94
+    mWait_6                                            ;; 0f:5c55 $c6
+    mG_6                                               ;; 0f:5c56 $76
+    mOCTAVE_PLUS_1                                     ;; 0f:5c57 $e8
+    mC_9                                               ;; 0f:5c58 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5c59 $ec
+    mA_6                                               ;; 0f:5c5a $96
+    mG_9                                               ;; 0f:5c5b $79
+    mF_9                                               ;; 0f:5c5c $59
+    mD_9                                               ;; 0f:5c5d $29
+    mE_9                                               ;; 0f:5c5e $49
+    mDis_9                                             ;; 0f:5c5f $39
+    mE_9                                               ;; 0f:5c60 $49
+    mA_4                                               ;; 0f:5c61 $94
+    mF_6                                               ;; 0f:5c62 $56
+    mE_9                                               ;; 0f:5c63 $49
+    mF_9                                               ;; 0f:5c64 $59
+    mG_9                                               ;; 0f:5c65 $79
+    mD_6                                               ;; 0f:5c66 $26
+    mE_9                                               ;; 0f:5c67 $49
+    mD_9                                               ;; 0f:5c68 $29
+    mC_9                                               ;; 0f:5c69 $09
+    mB_6                                               ;; 0f:5c6a $b6
+    mOCTAVE_PLUS_1                                     ;; 0f:5c6b $e8
+    mC_9                                               ;; 0f:5c6c $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5c6d $ec
+    mA_4                                               ;; 0f:5c6e $94
+    mWait_6                                            ;; 0f:5c6f $c6
+    mCOUNTER $02                                       ;; 0f:5c70 $f3 $02
 .data_0f_5c72:
-    db   $e8, $49, $29, $09, $ec, $b6, $79, $69        ;; 0f:5c72 ........
-    db   $79, $99, $89, $99, $b6, $fb, $01             ;; 0f:5c7a .......
-    dw   .data_0f_5c97                                 ;; 0f:5c81 pP
-    db   $79, $29, $ec, $b9, $e8, $06, $79, $56        ;; 0f:5c83 ........
-    db   $49, $29, $49, $06, $ec, $79, $e8, $73        ;; 0f:5c8b ........
-    db   $c9, $f2                                      ;; 0f:5c93 ..
-    dw   .data_0f_5c72                                 ;; 0f:5c95 pP
+    mOCTAVE_PLUS_1                                     ;; 0f:5c72 $e8
+    mE_9                                               ;; 0f:5c73 $49
+    mD_9                                               ;; 0f:5c74 $29
+    mC_9                                               ;; 0f:5c75 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5c76 $ec
+    mB_6                                               ;; 0f:5c77 $b6
+    mG_9                                               ;; 0f:5c78 $79
+    mFis_9                                             ;; 0f:5c79 $69
+    mG_9                                               ;; 0f:5c7a $79
+    mA_9                                               ;; 0f:5c7b $99
+    mGis_9                                             ;; 0f:5c7c $89
+    mA_9                                               ;; 0f:5c7d $99
+    mB_6                                               ;; 0f:5c7e $b6
+    mJUMPIF $01, .data_0f_5c97                         ;; 0f:5c7f $fb $01 $97 $5c
+    mG_9                                               ;; 0f:5c83 $79
+    mD_9                                               ;; 0f:5c84 $29
+    mOCTAVE_MINUS_1                                    ;; 0f:5c85 $ec
+    mB_9                                               ;; 0f:5c86 $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:5c87 $e8
+    mC_6                                               ;; 0f:5c88 $06
+    mG_9                                               ;; 0f:5c89 $79
+    mF_6                                               ;; 0f:5c8a $56
+    mE_9                                               ;; 0f:5c8b $49
+    mD_9                                               ;; 0f:5c8c $29
+    mE_9                                               ;; 0f:5c8d $49
+    mC_6                                               ;; 0f:5c8e $06
+    mOCTAVE_MINUS_1                                    ;; 0f:5c8f $ec
+    mG_9                                               ;; 0f:5c90 $79
+    mOCTAVE_PLUS_1                                     ;; 0f:5c91 $e8
+    mG_3                                               ;; 0f:5c92 $73
+    mWait_9                                            ;; 0f:5c93 $c9
+    mREPEAT .data_0f_5c72                              ;; 0f:5c94 $f2 $72 $5c
 .data_0f_5c97:
-    db   $b9, $e8, $09, $29, $43, $03, $ec, $73        ;; 0f:5c97 ........
-    db   $53, $f1                                      ;; 0f:5c9f ..
-    dw   .data_0f_5c34                                 ;; 0f:5ca1 pP
+    mB_9                                               ;; 0f:5c97 $b9
+    mOCTAVE_PLUS_1                                     ;; 0f:5c98 $e8
+    mC_9                                               ;; 0f:5c99 $09
+    mD_9                                               ;; 0f:5c9a $29
+    mE_3                                               ;; 0f:5c9b $43
+    mC_3                                               ;; 0f:5c9c $03
+    mOCTAVE_MINUS_1                                    ;; 0f:5c9d $ec
+    mG_3                                               ;; 0f:5c9e $73
+    mF_3                                               ;; 0f:5c9f $53
+    mJUMP .data_0f_5c34                                ;; 0f:5ca0 $f1 $34 $5c
 
-data_0f_5ca3:
-    db   $fe, $68, $66                                 ;; 0f:5ca3 ...
-    dw   $6631                                         ;; 0f:5ca6 wP
-    db   $80, $02, $e2, $fa, $04                       ;; 0f:5ca8 .w...
+song12_channel1:
+    mINIT1 data_0f_6668, data_0f_6631, $80             ;; 0f:5ca3 $fe $68 $66 $31 $66 $80
+    mC_2                                               ;; 0f:5ca9 $02
+    mOCTAVE_2                                          ;; 0f:5caa $e2
+    mCOUNTER_2 $04                                     ;; 0f:5cab $fa $04
 .data_0f_5cad:
-    db   $74, $53, $c9, $44, $53, $c9, $f9             ;; 0f:5cad .......
-    dw   .data_0f_5cad                                 ;; 0f:5cb4 pP
-    db   $94, $b3, $c9, $e8, $04, $ec, $73, $c9        ;; 0f:5cb6 ........
-    db   $44, $53, $c9, $74, $23, $c9, $94, $b3        ;; 0f:5cbe ........
-    db   $c9, $e8, $04, $ec, $73, $c9, $f0             ;; 0f:5cc6 .......
-    dw   $663d                                         ;; 0f:5ccd wP
-    db   $e8, $73, $53, $43, $23, $f1                  ;; 0f:5ccf ......
-    dw   data_0f_5ca3                                  ;; 0f:5cd5 pP
+    mG_4                                               ;; 0f:5cad $74
+    mF_3                                               ;; 0f:5cae $53
+    mWait_9                                            ;; 0f:5caf $c9
+    mE_4                                               ;; 0f:5cb0 $44
+    mF_3                                               ;; 0f:5cb1 $53
+    mWait_9                                            ;; 0f:5cb2 $c9
+    mREPEAT_2 .data_0f_5cad                            ;; 0f:5cb3 $f9 $ad $5c
+    mA_4                                               ;; 0f:5cb6 $94
+    mB_3                                               ;; 0f:5cb7 $b3
+    mWait_9                                            ;; 0f:5cb8 $c9
+    mOCTAVE_PLUS_1                                     ;; 0f:5cb9 $e8
+    mC_4                                               ;; 0f:5cba $04
+    mOCTAVE_MINUS_1                                    ;; 0f:5cbb $ec
+    mG_3                                               ;; 0f:5cbc $73
+    mWait_9                                            ;; 0f:5cbd $c9
+    mE_4                                               ;; 0f:5cbe $44
+    mF_3                                               ;; 0f:5cbf $53
+    mWait_9                                            ;; 0f:5cc0 $c9
+    mG_4                                               ;; 0f:5cc1 $74
+    mD_3                                               ;; 0f:5cc2 $23
+    mWait_9                                            ;; 0f:5cc3 $c9
+    mA_4                                               ;; 0f:5cc4 $94
+    mB_3                                               ;; 0f:5cc5 $b3
+    mWait_9                                            ;; 0f:5cc6 $c9
+    mOCTAVE_PLUS_1                                     ;; 0f:5cc7 $e8
+    mC_4                                               ;; 0f:5cc8 $04
+    mOCTAVE_MINUS_1                                    ;; 0f:5cc9 $ec
+    mG_3                                               ;; 0f:5cca $73
+    mWait_9                                            ;; 0f:5ccb $c9
+    mVOLUME_ENVELOPE data_0f_663d                      ;; 0f:5ccc $f0 $3d $66
+    mOCTAVE_PLUS_1                                     ;; 0f:5ccf $e8
+    mG_3                                               ;; 0f:5cd0 $73
+    mF_3                                               ;; 0f:5cd1 $53
+    mE_3                                               ;; 0f:5cd2 $43
+    mD_3                                               ;; 0f:5cd3 $23
+    mJUMP song12_channel1                              ;; 0f:5cd4 $f1 $a3 $5c
 
-data_0f_5cd7:
-    db   $fe, $63, $66, $20, $e2, $66, $03             ;; 0f:5cd7 ......w
+song12_channel3:
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:5cd7 $fe $63 $66 $20 $e2 $66
+    mC_3                                               ;; 0f:5cdd $03
 .data_0f_5cde:
-    db   $fa, $04                                      ;; 0f:5cde ..
+    mCOUNTER_2 $04                                     ;; 0f:5cde $fa $04
 .data_0f_5ce0:
-    db   $f6, $03, $e1, $09, $79, $e8, $09, $ec        ;; 0f:5ce0 .w......
-    db   $56, $f6, $01, $e8, $59, $49, $59, $f6        ;; 0f:5ce8 ..w.....
-    db   $03, $ec, $09, $79, $e8, $09, $ec, $56        ;; 0f:5cf0 w.......
-    db   $f6, $01, $e8, $59, $49, $29, $f9             ;; 0f:5cf8 .w.....
-    dw   .data_0f_5ce0                                 ;; 0f:5cff pP
-    db   $f3, $02                                      ;; 0f:5d01 ..
+    mSTEREOPAN $03                                     ;; 0f:5ce0 $f6 $03
+    mOCTAVE_1                                          ;; 0f:5ce2 $e1
+    mC_9                                               ;; 0f:5ce3 $09
+    mG_9                                               ;; 0f:5ce4 $79
+    mOCTAVE_PLUS_1                                     ;; 0f:5ce5 $e8
+    mC_9                                               ;; 0f:5ce6 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5ce7 $ec
+    mF_6                                               ;; 0f:5ce8 $56
+    mSTEREOPAN $01                                     ;; 0f:5ce9 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:5ceb $e8
+    mF_9                                               ;; 0f:5cec $59
+    mE_9                                               ;; 0f:5ced $49
+    mF_9                                               ;; 0f:5cee $59
+    mSTEREOPAN $03                                     ;; 0f:5cef $f6 $03
+    mOCTAVE_MINUS_1                                    ;; 0f:5cf1 $ec
+    mC_9                                               ;; 0f:5cf2 $09
+    mG_9                                               ;; 0f:5cf3 $79
+    mOCTAVE_PLUS_1                                     ;; 0f:5cf4 $e8
+    mC_9                                               ;; 0f:5cf5 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5cf6 $ec
+    mF_6                                               ;; 0f:5cf7 $56
+    mSTEREOPAN $01                                     ;; 0f:5cf8 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:5cfa $e8
+    mF_9                                               ;; 0f:5cfb $59
+    mE_9                                               ;; 0f:5cfc $49
+    mD_9                                               ;; 0f:5cfd $29
+    mREPEAT_2 .data_0f_5ce0                            ;; 0f:5cfe $f9 $e0 $5c
+    mCOUNTER $02                                       ;; 0f:5d01 $f3 $02
 .data_0f_5d03:
-    db   $fa, $02                                      ;; 0f:5d03 ..
+    mCOUNTER_2 $02                                     ;; 0f:5d03 $fa $02
 .data_0f_5d05:
-    db   $f6, $03, $ec, $59, $e8, $09, $59, $ec        ;; 0f:5d05 .w......
-    db   $76, $f6, $01, $e8, $29, $79, $b9, $f9        ;; 0f:5d0d ..w.....
-    dw   .data_0f_5d05                                 ;; 0f:5d15 pP
-    db   $fb, $01                                      ;; 0f:5d17 ..
-    dw   .data_0f_5d3c                                 ;; 0f:5d19 pP
-    db   $f6, $03, $ec, $09, $79, $e8, $09, $ec        ;; 0f:5d1b .w......
-    db   $56, $f6, $01, $e8, $59, $49, $29, $f6        ;; 0f:5d23 ..w.....
-    db   $03, $ec, $09, $79, $e8, $09, $ec, $76        ;; 0f:5d2b w.......
-    db   $f6, $01, $e8, $29, $79, $b9, $f2             ;; 0f:5d33 .w.....
-    dw   .data_0f_5d03                                 ;; 0f:5d3a pP
+    mSTEREOPAN $03                                     ;; 0f:5d05 $f6 $03
+    mOCTAVE_MINUS_1                                    ;; 0f:5d07 $ec
+    mF_9                                               ;; 0f:5d08 $59
+    mOCTAVE_PLUS_1                                     ;; 0f:5d09 $e8
+    mC_9                                               ;; 0f:5d0a $09
+    mF_9                                               ;; 0f:5d0b $59
+    mOCTAVE_MINUS_1                                    ;; 0f:5d0c $ec
+    mG_6                                               ;; 0f:5d0d $76
+    mSTEREOPAN $01                                     ;; 0f:5d0e $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:5d10 $e8
+    mD_9                                               ;; 0f:5d11 $29
+    mG_9                                               ;; 0f:5d12 $79
+    mB_9                                               ;; 0f:5d13 $b9
+    mREPEAT_2 .data_0f_5d05                            ;; 0f:5d14 $f9 $05 $5d
+    mJUMPIF $01, .data_0f_5d3c                         ;; 0f:5d17 $fb $01 $3c $5d
+    mSTEREOPAN $03                                     ;; 0f:5d1b $f6 $03
+    mOCTAVE_MINUS_1                                    ;; 0f:5d1d $ec
+    mC_9                                               ;; 0f:5d1e $09
+    mG_9                                               ;; 0f:5d1f $79
+    mOCTAVE_PLUS_1                                     ;; 0f:5d20 $e8
+    mC_9                                               ;; 0f:5d21 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5d22 $ec
+    mF_6                                               ;; 0f:5d23 $56
+    mSTEREOPAN $01                                     ;; 0f:5d24 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:5d26 $e8
+    mF_9                                               ;; 0f:5d27 $59
+    mE_9                                               ;; 0f:5d28 $49
+    mD_9                                               ;; 0f:5d29 $29
+    mSTEREOPAN $03                                     ;; 0f:5d2a $f6 $03
+    mOCTAVE_MINUS_1                                    ;; 0f:5d2c $ec
+    mC_9                                               ;; 0f:5d2d $09
+    mG_9                                               ;; 0f:5d2e $79
+    mOCTAVE_PLUS_1                                     ;; 0f:5d2f $e8
+    mC_9                                               ;; 0f:5d30 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:5d31 $ec
+    mG_6                                               ;; 0f:5d32 $76
+    mSTEREOPAN $01                                     ;; 0f:5d33 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:5d35 $e8
+    mD_9                                               ;; 0f:5d36 $29
+    mG_9                                               ;; 0f:5d37 $79
+    mB_9                                               ;; 0f:5d38 $b9
+    mREPEAT .data_0f_5d03                              ;; 0f:5d39 $f2 $03 $5d
 .data_0f_5d3c:
-    db   $09, $d4, $ec, $59, $d4, $49, $d4, $29        ;; 0f:5d3c ........
-    db   $d4, $f1                                      ;; 0f:5d44 ..
-    dw   .data_0f_5cde                                 ;; 0f:5d46 pP
+    mC_9                                               ;; 0f:5d3c $09
+    mRest_4                                            ;; 0f:5d3d $d4
+    mOCTAVE_MINUS_1                                    ;; 0f:5d3e $ec
+    mF_9                                               ;; 0f:5d3f $59
+    mRest_4                                            ;; 0f:5d40 $d4
+    mE_9                                               ;; 0f:5d41 $49
+    mRest_4                                            ;; 0f:5d42 $d4
+    mD_9                                               ;; 0f:5d43 $29
+    mRest_4                                            ;; 0f:5d44 $d4
+    mJUMP .data_0f_5cde                                ;; 0f:5d45 $f1 $de $5c
 
-data_0f_5d48:
-    db   $f0                                           ;; 0f:5d48 .
-    dw   $661b                                         ;; 0f:5d49 wP
+song12_channel4:
+    mVOLUME_ENVELOPE data_0f_661b                      ;; 0f:5d48 $f0 $1b $66
 .data_0f_5d4b:
-    db   $fa, $0e                                      ;; 0f:5d4b ..
+    mCOUNTER_2 $0e                                     ;; 0f:5d4b $fa $0e
 .data_0f_5d4d:
-    db   $f6, $01, $d6, $74, $f6, $02, $b9, $f6        ;; 0f:5d4d .w...w..
-    db   $03, $79, $f6, $02, $b9, $f9                  ;; 0f:5d55 w..w..
-    dw   .data_0f_5d4d                                 ;; 0f:5d5b pP
-    db   $f6, $01, $b3, $b3, $b3, $b3, $f1             ;; 0f:5d5d .w.....
-    dw   .data_0f_5d4b                                 ;; 0f:5d64 pP
+    mSTEREOPAN $01                                     ;; 0f:5d4d $f6 $01
+    mRest_6                                            ;; 0f:5d4f $d6
+    mG_4                                               ;; 0f:5d50 $74
+    mSTEREOPAN $02                                     ;; 0f:5d51 $f6 $02
+    mB_9                                               ;; 0f:5d53 $b9
+    mSTEREOPAN $03                                     ;; 0f:5d54 $f6 $03
+    mG_9                                               ;; 0f:5d56 $79
+    mSTEREOPAN $02                                     ;; 0f:5d57 $f6 $02
+    mB_9                                               ;; 0f:5d59 $b9
+    mREPEAT_2 .data_0f_5d4d                            ;; 0f:5d5a $f9 $4d $5d
+    mSTEREOPAN $01                                     ;; 0f:5d5d $f6 $01
+    mB_3                                               ;; 0f:5d5f $b3
+    mB_3                                               ;; 0f:5d60 $b3
+    mB_3                                               ;; 0f:5d61 $b3
+    mB_3                                               ;; 0f:5d62 $b3
+    mJUMP .data_0f_5d4b                                ;; 0f:5d63 $f1 $4b $5d
 
 song00_channel2:
     mINIT2 $7e, frequencyDeltaData, data_0f_6621, $40  ;; 0f:5d66 $fe $7e $63 $66 $21 $66 $40
@@ -5224,65 +6477,405 @@ song01_channel4:
     mRest_1                                            ;; 0f:610b $d1
     mF_6                                               ;; 0f:610c $56
     mJUMP .data_0f_60ed                                ;; 0f:610d $f1 $ed $60
-    db   $fe, $82, $63, $66, $d7, $65, $00, $03        ;; 0f:6110 ????????
-    db   $e3, $be, $ae, $9e, $8e, $7e, $6e, $5e        ;; 0f:6118 ????????
-    db   $4e, $3e, $2e, $1e, $0e, $e3, $49, $3c        ;; 0f:6120 ????????
-    db   $dc, $d3, $79, $6c, $dc, $d3, $99, $7c        ;; 0f:6128 ????????
-    db   $d7, $49, $6c, $d7, $39, $4c, $d7, $f6        ;; 0f:6130 ????????
-    db   $01, $4c, $3c, $2c, $f6, $02, $1c, $0c        ;; 0f:6138 ????????
-    db   $ec, $bc, $f6, $03, $e8, $b9, $9c, $dc        ;; 0f:6140 ????????
-    db   $d3, $99, $7c, $dc, $d3, $79, $6c, $d7        ;; 0f:6148 ????????
-    db   $99, $3c, $d7, $f6, $01, $3c, $4c, $6c        ;; 0f:6150 ????????
-    db   $f6, $02, $9c, $bc, $e8, $0c, $f6, $01        ;; 0f:6158 ????????
-    db   $3c, $4c, $6c, $f6, $02, $7c, $6c, $4c        ;; 0f:6160 ????????
-    db   $f6, $03, $ec, $fa, $02, $47, $67, $37        ;; 0f:6168 ????????
-    db   $47, $67, $97, $77, $67, $47, $37, $47        ;; 0f:6170 ????????
-    db   $ec, $b7, $e8, $b4, $94, $77, $97, $77        ;; 0f:6178 ????????
-    db   $67, $47, $ec, $b7, $e8, $67, $ec, $b7        ;; 0f:6180 ????????
-    db   $e8, $77, $47, $67, $27, $42, $f9, $6d        ;; 0f:6188 ????????
-    db   $61, $f1, $25, $61, $fe, $63, $66, $e3        ;; 0f:6190 ????????
-    db   $65, $40, $03, $e3, $4e, $3e, $2e, $1e        ;; 0f:6198 ????????
-    db   $0e, $ec, $be, $ae, $9e, $8e, $7e, $6e        ;; 0f:61a0 ????????
-    db   $5e, $f6, $03, $e2, $b9, $bc, $d3, $dc        ;; 0f:61a8 ????????
-    db   $e8, $49, $3c, $d3, $dc, $09, $ec, $bc        ;; 0f:61b0 ????????
-    db   $d7, $79, $9c, $d7, $69, $7c, $d7, $bc        ;; 0f:61b8 ????????
-    db   $ac, $9c, $8c, $7c, $6c, $e8, $79, $6c        ;; 0f:61c0 ????????
-    db   $d3, $dc, $69, $4c, $d3, $dc, $49, $3c        ;; 0f:61c8 ????????
-    db   $d7, $69, $ec, $bc, $d7, $b7, $b7, $e8        ;; 0f:61d0 ????????
-    db   $6c, $4c, $3c, $0c, $ec, $bc, $ac, $e3        ;; 0f:61d8 ????????
-    db   $f3, $02, $fa, $04, $f6, $01, $e8, $b9        ;; 0f:61e0 ????????
-    db   $ec, $bc, $f6, $02, $e8, $b9, $ec, $bc        ;; 0f:61e8 ????????
-    db   $f9, $e4, $61, $f6, $01, $e8, $79, $ec        ;; 0f:61f0 ????????
-    db   $7c, $f6, $02, $e8, $69, $ec, $7c, $f6        ;; 0f:61f8 ????????
-    db   $01, $e8, $49, $ec, $7c, $f6, $02, $e8        ;; 0f:6200 ????????
-    db   $39, $ec, $7c, $f6, $01, $e8, $49, $ec        ;; 0f:6208 ????????
-    db   $4c, $f6, $02, $e8, $49, $ec, $4c, $f6        ;; 0f:6210 ????????
-    db   $01, $e8, $69, $ec, $6c, $f6, $02, $e8        ;; 0f:6218 ????????
-    db   $69, $ec, $6c, $fa, $02, $f6, $01, $e8        ;; 0f:6220 ????????
-    db   $b9, $ec, $bc, $f6, $02, $e8, $b9, $ec        ;; 0f:6228 ????????
-    db   $bc, $f9, $25, $62, $f6, $01, $e8, $99        ;; 0f:6230 ????????
-    db   $ec, $9c, $f6, $02, $e8, $79, $ec, $7c        ;; 0f:6238 ????????
-    db   $f6, $01, $e8, $69, $ec, $6c, $f6, $02        ;; 0f:6240 ????????
-    db   $e8, $39, $ec, $3c, $f6, $03, $b7, $77        ;; 0f:6248 ????????
-    db   $97, $67, $f6, $01, $e8, $7c, $6c, $4c        ;; 0f:6250 ????????
-    db   $f6, $02, $ec, $bc, $7c, $4c, $f6, $01        ;; 0f:6258 ????????
-    db   $9c, $6c, $ec, $bc, $f6, $02, $e8, $7c        ;; 0f:6260 ????????
-    db   $4c, $ec, $bc, $f2, $e2, $61, $f1, $a9        ;; 0f:6268 ????????
-    db   $61, $fe, $63, $66, $20, $e2, $66, $03        ;; 0f:6270 ????????
-    db   $d4, $e1, $fa, $1e, $4c, $dc, $4d, $df        ;; 0f:6278 ????????
-    db   $f9, $7c, $62, $6c, $5c, $6c, $9c, $bc        ;; 0f:6280 ????????
-    db   $e8, $0c, $ec, $f3, $02, $fa, $04, $4c        ;; 0f:6288 ????????
-    db   $dc, $4d, $df, $f9, $8f, $62, $fa, $04        ;; 0f:6290 ????????
-    db   $6c, $dc, $6d, $df, $f9, $98, $62, $fa        ;; 0f:6298 ????????
-    db   $04, $7c, $dc, $7d, $df, $f9, $a1, $62        ;; 0f:62a0 ????????
-    db   $fa, $04, $6c, $dc, $6d, $df, $f9, $aa        ;; 0f:62a8 ????????
-    db   $62, $fa, $04, $4c, $dc, $4d, $df, $f9        ;; 0f:62b0 ????????
-    db   $b3, $62, $6c, $dc, $6c, $bc, $dc, $bc        ;; 0f:62b8 ????????
-    db   $3c, $dc, $3c, $6c, $dc, $6c, $fa, $08        ;; 0f:62c0 ????????
-    db   $4c, $dc, $4d, $df, $f9, $c8, $62, $f2        ;; 0f:62c8 ????????
-    db   $8d, $62, $f1, $79, $62, $f0, $1b, $66        ;; 0f:62d0 ????????
-    db   $d4, $d7, $f6, $01, $7e, $5e, $d9, $f6        ;; 0f:62d8 ????????
-    db   $02, $57, $f1, $da, $62                       ;; 0f:62e0 ?????
+
+song0d_channel2:
+    mINIT2 $82, frequencyDeltaData, volumeEnvelopeData, $00 ;; 0f:6110 $fe $82 $63 $66 $d7 $65 $00
+    mC_3                                               ;; 0f:6117 $03
+    mOCTAVE_3                                          ;; 0f:6118 $e3
+    mB_14                                              ;; 0f:6119 $be
+    mAis_14                                            ;; 0f:611a $ae
+    mA_14                                              ;; 0f:611b $9e
+    mGis_14                                            ;; 0f:611c $8e
+    mG_14                                              ;; 0f:611d $7e
+    mFis_14                                            ;; 0f:611e $6e
+    mF_14                                              ;; 0f:611f $5e
+    mE_14                                              ;; 0f:6120 $4e
+    mDis_14                                            ;; 0f:6121 $3e
+    mD_14                                              ;; 0f:6122 $2e
+    mCis_14                                            ;; 0f:6123 $1e
+    mC_14                                              ;; 0f:6124 $0e
+.data_0f_6125:
+    mOCTAVE_3                                          ;; 0f:6125 $e3
+    mE_9                                               ;; 0f:6126 $49
+    mDis_12                                            ;; 0f:6127 $3c
+    mRest_12                                           ;; 0f:6128 $dc
+    mRest_3                                            ;; 0f:6129 $d3
+    mG_9                                               ;; 0f:612a $79
+    mFis_12                                            ;; 0f:612b $6c
+    mRest_12                                           ;; 0f:612c $dc
+    mRest_3                                            ;; 0f:612d $d3
+    mA_9                                               ;; 0f:612e $99
+    mG_12                                              ;; 0f:612f $7c
+    mRest_7                                            ;; 0f:6130 $d7
+    mE_9                                               ;; 0f:6131 $49
+    mFis_12                                            ;; 0f:6132 $6c
+    mRest_7                                            ;; 0f:6133 $d7
+    mDis_9                                             ;; 0f:6134 $39
+    mE_12                                              ;; 0f:6135 $4c
+    mRest_7                                            ;; 0f:6136 $d7
+    mSTEREOPAN $01                                     ;; 0f:6137 $f6 $01
+    mE_12                                              ;; 0f:6139 $4c
+    mDis_12                                            ;; 0f:613a $3c
+    mD_12                                              ;; 0f:613b $2c
+    mSTEREOPAN $02                                     ;; 0f:613c $f6 $02
+    mCis_12                                            ;; 0f:613e $1c
+    mC_12                                              ;; 0f:613f $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:6140 $ec
+    mB_12                                              ;; 0f:6141 $bc
+    mSTEREOPAN $03                                     ;; 0f:6142 $f6 $03
+    mOCTAVE_PLUS_1                                     ;; 0f:6144 $e8
+    mB_9                                               ;; 0f:6145 $b9
+    mA_12                                              ;; 0f:6146 $9c
+    mRest_12                                           ;; 0f:6147 $dc
+    mRest_3                                            ;; 0f:6148 $d3
+    mA_9                                               ;; 0f:6149 $99
+    mG_12                                              ;; 0f:614a $7c
+    mRest_12                                           ;; 0f:614b $dc
+    mRest_3                                            ;; 0f:614c $d3
+    mG_9                                               ;; 0f:614d $79
+    mFis_12                                            ;; 0f:614e $6c
+    mRest_7                                            ;; 0f:614f $d7
+    mA_9                                               ;; 0f:6150 $99
+    mDis_12                                            ;; 0f:6151 $3c
+    mRest_7                                            ;; 0f:6152 $d7
+    mSTEREOPAN $01                                     ;; 0f:6153 $f6 $01
+    mDis_12                                            ;; 0f:6155 $3c
+    mE_12                                              ;; 0f:6156 $4c
+    mFis_12                                            ;; 0f:6157 $6c
+    mSTEREOPAN $02                                     ;; 0f:6158 $f6 $02
+    mA_12                                              ;; 0f:615a $9c
+    mB_12                                              ;; 0f:615b $bc
+    mOCTAVE_PLUS_1                                     ;; 0f:615c $e8
+    mC_12                                              ;; 0f:615d $0c
+    mSTEREOPAN $01                                     ;; 0f:615e $f6 $01
+    mDis_12                                            ;; 0f:6160 $3c
+    mE_12                                              ;; 0f:6161 $4c
+    mFis_12                                            ;; 0f:6162 $6c
+    mSTEREOPAN $02                                     ;; 0f:6163 $f6 $02
+    mG_12                                              ;; 0f:6165 $7c
+    mFis_12                                            ;; 0f:6166 $6c
+    mE_12                                              ;; 0f:6167 $4c
+    mSTEREOPAN $03                                     ;; 0f:6168 $f6 $03
+    mOCTAVE_MINUS_1                                    ;; 0f:616a $ec
+    mCOUNTER_2 $02                                     ;; 0f:616b $fa $02
+.data_0f_616d:
+    mE_7                                               ;; 0f:616d $47
+    mFis_7                                             ;; 0f:616e $67
+    mDis_7                                             ;; 0f:616f $37
+    mE_7                                               ;; 0f:6170 $47
+    mFis_7                                             ;; 0f:6171 $67
+    mA_7                                               ;; 0f:6172 $97
+    mG_7                                               ;; 0f:6173 $77
+    mFis_7                                             ;; 0f:6174 $67
+    mE_7                                               ;; 0f:6175 $47
+    mDis_7                                             ;; 0f:6176 $37
+    mE_7                                               ;; 0f:6177 $47
+    mOCTAVE_MINUS_1                                    ;; 0f:6178 $ec
+    mB_7                                               ;; 0f:6179 $b7
+    mOCTAVE_PLUS_1                                     ;; 0f:617a $e8
+    mB_4                                               ;; 0f:617b $b4
+    mA_4                                               ;; 0f:617c $94
+    mG_7                                               ;; 0f:617d $77
+    mA_7                                               ;; 0f:617e $97
+    mG_7                                               ;; 0f:617f $77
+    mFis_7                                             ;; 0f:6180 $67
+    mE_7                                               ;; 0f:6181 $47
+    mOCTAVE_MINUS_1                                    ;; 0f:6182 $ec
+    mB_7                                               ;; 0f:6183 $b7
+    mOCTAVE_PLUS_1                                     ;; 0f:6184 $e8
+    mFis_7                                             ;; 0f:6185 $67
+    mOCTAVE_MINUS_1                                    ;; 0f:6186 $ec
+    mB_7                                               ;; 0f:6187 $b7
+    mOCTAVE_PLUS_1                                     ;; 0f:6188 $e8
+    mG_7                                               ;; 0f:6189 $77
+    mE_7                                               ;; 0f:618a $47
+    mFis_7                                             ;; 0f:618b $67
+    mD_7                                               ;; 0f:618c $27
+    mE_2                                               ;; 0f:618d $42
+    mREPEAT_2 .data_0f_616d                            ;; 0f:618e $f9 $6d $61
+    mJUMP .data_0f_6125                                ;; 0f:6191 $f1 $25 $61
+
+song0d_channel1:
+    mINIT1 frequencyDeltaData, data_0f_65e3, $40       ;; 0f:6194 $fe $63 $66 $e3 $65 $40
+    mC_3                                               ;; 0f:619a $03
+    mOCTAVE_3                                          ;; 0f:619b $e3
+    mE_14                                              ;; 0f:619c $4e
+    mDis_14                                            ;; 0f:619d $3e
+    mD_14                                              ;; 0f:619e $2e
+    mCis_14                                            ;; 0f:619f $1e
+    mC_14                                              ;; 0f:61a0 $0e
+    mOCTAVE_MINUS_1                                    ;; 0f:61a1 $ec
+    mB_14                                              ;; 0f:61a2 $be
+    mAis_14                                            ;; 0f:61a3 $ae
+    mA_14                                              ;; 0f:61a4 $9e
+    mGis_14                                            ;; 0f:61a5 $8e
+    mG_14                                              ;; 0f:61a6 $7e
+    mFis_14                                            ;; 0f:61a7 $6e
+    mF_14                                              ;; 0f:61a8 $5e
+.data_0f_61a9:
+    mSTEREOPAN $03                                     ;; 0f:61a9 $f6 $03
+    mOCTAVE_2                                          ;; 0f:61ab $e2
+    mB_9                                               ;; 0f:61ac $b9
+    mB_12                                              ;; 0f:61ad $bc
+    mRest_3                                            ;; 0f:61ae $d3
+    mRest_12                                           ;; 0f:61af $dc
+    mOCTAVE_PLUS_1                                     ;; 0f:61b0 $e8
+    mE_9                                               ;; 0f:61b1 $49
+    mDis_12                                            ;; 0f:61b2 $3c
+    mRest_3                                            ;; 0f:61b3 $d3
+    mRest_12                                           ;; 0f:61b4 $dc
+    mC_9                                               ;; 0f:61b5 $09
+    mOCTAVE_MINUS_1                                    ;; 0f:61b6 $ec
+    mB_12                                              ;; 0f:61b7 $bc
+    mRest_7                                            ;; 0f:61b8 $d7
+    mG_9                                               ;; 0f:61b9 $79
+    mA_12                                              ;; 0f:61ba $9c
+    mRest_7                                            ;; 0f:61bb $d7
+    mFis_9                                             ;; 0f:61bc $69
+    mG_12                                              ;; 0f:61bd $7c
+    mRest_7                                            ;; 0f:61be $d7
+    mB_12                                              ;; 0f:61bf $bc
+    mAis_12                                            ;; 0f:61c0 $ac
+    mA_12                                              ;; 0f:61c1 $9c
+    mGis_12                                            ;; 0f:61c2 $8c
+    mG_12                                              ;; 0f:61c3 $7c
+    mFis_12                                            ;; 0f:61c4 $6c
+    mOCTAVE_PLUS_1                                     ;; 0f:61c5 $e8
+    mG_9                                               ;; 0f:61c6 $79
+    mFis_12                                            ;; 0f:61c7 $6c
+    mRest_3                                            ;; 0f:61c8 $d3
+    mRest_12                                           ;; 0f:61c9 $dc
+    mFis_9                                             ;; 0f:61ca $69
+    mE_12                                              ;; 0f:61cb $4c
+    mRest_3                                            ;; 0f:61cc $d3
+    mRest_12                                           ;; 0f:61cd $dc
+    mE_9                                               ;; 0f:61ce $49
+    mDis_12                                            ;; 0f:61cf $3c
+    mRest_7                                            ;; 0f:61d0 $d7
+    mFis_9                                             ;; 0f:61d1 $69
+    mOCTAVE_MINUS_1                                    ;; 0f:61d2 $ec
+    mB_12                                              ;; 0f:61d3 $bc
+    mRest_7                                            ;; 0f:61d4 $d7
+    mB_7                                               ;; 0f:61d5 $b7
+    mB_7                                               ;; 0f:61d6 $b7
+    mOCTAVE_PLUS_1                                     ;; 0f:61d7 $e8
+    mFis_12                                            ;; 0f:61d8 $6c
+    mE_12                                              ;; 0f:61d9 $4c
+    mDis_12                                            ;; 0f:61da $3c
+    mC_12                                              ;; 0f:61db $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:61dc $ec
+    mB_12                                              ;; 0f:61dd $bc
+    mAis_12                                            ;; 0f:61de $ac
+    mOCTAVE_3                                          ;; 0f:61df $e3
+    mCOUNTER $02                                       ;; 0f:61e0 $f3 $02
+.data_0f_61e2:
+    mCOUNTER_2 $04                                     ;; 0f:61e2 $fa $04
+.data_0f_61e4:
+    mSTEREOPAN $01                                     ;; 0f:61e4 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:61e6 $e8
+    mB_9                                               ;; 0f:61e7 $b9
+    mOCTAVE_MINUS_1                                    ;; 0f:61e8 $ec
+    mB_12                                              ;; 0f:61e9 $bc
+    mSTEREOPAN $02                                     ;; 0f:61ea $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:61ec $e8
+    mB_9                                               ;; 0f:61ed $b9
+    mOCTAVE_MINUS_1                                    ;; 0f:61ee $ec
+    mB_12                                              ;; 0f:61ef $bc
+    mREPEAT_2 .data_0f_61e4                            ;; 0f:61f0 $f9 $e4 $61
+    mSTEREOPAN $01                                     ;; 0f:61f3 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:61f5 $e8
+    mG_9                                               ;; 0f:61f6 $79
+    mOCTAVE_MINUS_1                                    ;; 0f:61f7 $ec
+    mG_12                                              ;; 0f:61f8 $7c
+    mSTEREOPAN $02                                     ;; 0f:61f9 $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:61fb $e8
+    mFis_9                                             ;; 0f:61fc $69
+    mOCTAVE_MINUS_1                                    ;; 0f:61fd $ec
+    mG_12                                              ;; 0f:61fe $7c
+    mSTEREOPAN $01                                     ;; 0f:61ff $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:6201 $e8
+    mE_9                                               ;; 0f:6202 $49
+    mOCTAVE_MINUS_1                                    ;; 0f:6203 $ec
+    mG_12                                              ;; 0f:6204 $7c
+    mSTEREOPAN $02                                     ;; 0f:6205 $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:6207 $e8
+    mDis_9                                             ;; 0f:6208 $39
+    mOCTAVE_MINUS_1                                    ;; 0f:6209 $ec
+    mG_12                                              ;; 0f:620a $7c
+    mSTEREOPAN $01                                     ;; 0f:620b $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:620d $e8
+    mE_9                                               ;; 0f:620e $49
+    mOCTAVE_MINUS_1                                    ;; 0f:620f $ec
+    mE_12                                              ;; 0f:6210 $4c
+    mSTEREOPAN $02                                     ;; 0f:6211 $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:6213 $e8
+    mE_9                                               ;; 0f:6214 $49
+    mOCTAVE_MINUS_1                                    ;; 0f:6215 $ec
+    mE_12                                              ;; 0f:6216 $4c
+    mSTEREOPAN $01                                     ;; 0f:6217 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:6219 $e8
+    mFis_9                                             ;; 0f:621a $69
+    mOCTAVE_MINUS_1                                    ;; 0f:621b $ec
+    mFis_12                                            ;; 0f:621c $6c
+    mSTEREOPAN $02                                     ;; 0f:621d $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:621f $e8
+    mFis_9                                             ;; 0f:6220 $69
+    mOCTAVE_MINUS_1                                    ;; 0f:6221 $ec
+    mFis_12                                            ;; 0f:6222 $6c
+    mCOUNTER_2 $02                                     ;; 0f:6223 $fa $02
+.data_0f_6225:
+    mSTEREOPAN $01                                     ;; 0f:6225 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:6227 $e8
+    mB_9                                               ;; 0f:6228 $b9
+    mOCTAVE_MINUS_1                                    ;; 0f:6229 $ec
+    mB_12                                              ;; 0f:622a $bc
+    mSTEREOPAN $02                                     ;; 0f:622b $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:622d $e8
+    mB_9                                               ;; 0f:622e $b9
+    mOCTAVE_MINUS_1                                    ;; 0f:622f $ec
+    mB_12                                              ;; 0f:6230 $bc
+    mREPEAT_2 .data_0f_6225                            ;; 0f:6231 $f9 $25 $62
+    mSTEREOPAN $01                                     ;; 0f:6234 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:6236 $e8
+    mA_9                                               ;; 0f:6237 $99
+    mOCTAVE_MINUS_1                                    ;; 0f:6238 $ec
+    mA_12                                              ;; 0f:6239 $9c
+    mSTEREOPAN $02                                     ;; 0f:623a $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:623c $e8
+    mG_9                                               ;; 0f:623d $79
+    mOCTAVE_MINUS_1                                    ;; 0f:623e $ec
+    mG_12                                              ;; 0f:623f $7c
+    mSTEREOPAN $01                                     ;; 0f:6240 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:6242 $e8
+    mFis_9                                             ;; 0f:6243 $69
+    mOCTAVE_MINUS_1                                    ;; 0f:6244 $ec
+    mFis_12                                            ;; 0f:6245 $6c
+    mSTEREOPAN $02                                     ;; 0f:6246 $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:6248 $e8
+    mDis_9                                             ;; 0f:6249 $39
+    mOCTAVE_MINUS_1                                    ;; 0f:624a $ec
+    mDis_12                                            ;; 0f:624b $3c
+    mSTEREOPAN $03                                     ;; 0f:624c $f6 $03
+    mB_7                                               ;; 0f:624e $b7
+    mG_7                                               ;; 0f:624f $77
+    mA_7                                               ;; 0f:6250 $97
+    mFis_7                                             ;; 0f:6251 $67
+    mSTEREOPAN $01                                     ;; 0f:6252 $f6 $01
+    mOCTAVE_PLUS_1                                     ;; 0f:6254 $e8
+    mG_12                                              ;; 0f:6255 $7c
+    mFis_12                                            ;; 0f:6256 $6c
+    mE_12                                              ;; 0f:6257 $4c
+    mSTEREOPAN $02                                     ;; 0f:6258 $f6 $02
+    mOCTAVE_MINUS_1                                    ;; 0f:625a $ec
+    mB_12                                              ;; 0f:625b $bc
+    mG_12                                              ;; 0f:625c $7c
+    mE_12                                              ;; 0f:625d $4c
+    mSTEREOPAN $01                                     ;; 0f:625e $f6 $01
+    mA_12                                              ;; 0f:6260 $9c
+    mFis_12                                            ;; 0f:6261 $6c
+    mOCTAVE_MINUS_1                                    ;; 0f:6262 $ec
+    mB_12                                              ;; 0f:6263 $bc
+    mSTEREOPAN $02                                     ;; 0f:6264 $f6 $02
+    mOCTAVE_PLUS_1                                     ;; 0f:6266 $e8
+    mG_12                                              ;; 0f:6267 $7c
+    mE_12                                              ;; 0f:6268 $4c
+    mOCTAVE_MINUS_1                                    ;; 0f:6269 $ec
+    mB_12                                              ;; 0f:626a $bc
+    mREPEAT .data_0f_61e2                              ;; 0f:626b $f2 $e2 $61
+    mJUMP .data_0f_61a9                                ;; 0f:626e $f1 $a9 $61
+
+song0d_channel3:
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:6271 $fe $63 $66 $20 $e2 $66
+    mC_3                                               ;; 0f:6277 $03
+    mRest_4                                            ;; 0f:6278 $d4
+.data_0f_6279:
+    mOCTAVE_1                                          ;; 0f:6279 $e1
+    mCOUNTER_2 $1e                                     ;; 0f:627a $fa $1e
+.data_0f_627c:
+    mE_12                                              ;; 0f:627c $4c
+    mRest_12                                           ;; 0f:627d $dc
+    mE_13                                              ;; 0f:627e $4d
+    mRest_15                                           ;; 0f:627f $df
+    mREPEAT_2 .data_0f_627c                            ;; 0f:6280 $f9 $7c $62
+    mFis_12                                            ;; 0f:6283 $6c
+    mF_12                                              ;; 0f:6284 $5c
+    mFis_12                                            ;; 0f:6285 $6c
+    mA_12                                              ;; 0f:6286 $9c
+    mB_12                                              ;; 0f:6287 $bc
+    mOCTAVE_PLUS_1                                     ;; 0f:6288 $e8
+    mC_12                                              ;; 0f:6289 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:628a $ec
+    mCOUNTER $02                                       ;; 0f:628b $f3 $02
+.data_0f_628d:
+    mCOUNTER_2 $04                                     ;; 0f:628d $fa $04
+.data_0f_628f:
+    mE_12                                              ;; 0f:628f $4c
+    mRest_12                                           ;; 0f:6290 $dc
+    mE_13                                              ;; 0f:6291 $4d
+    mRest_15                                           ;; 0f:6292 $df
+    mREPEAT_2 .data_0f_628f                            ;; 0f:6293 $f9 $8f $62
+    mCOUNTER_2 $04                                     ;; 0f:6296 $fa $04
+.data_0f_6298:
+    mFis_12                                            ;; 0f:6298 $6c
+    mRest_12                                           ;; 0f:6299 $dc
+    mFis_13                                            ;; 0f:629a $6d
+    mRest_15                                           ;; 0f:629b $df
+    mREPEAT_2 .data_0f_6298                            ;; 0f:629c $f9 $98 $62
+    mCOUNTER_2 $04                                     ;; 0f:629f $fa $04
+.data_0f_62a1:
+    mG_12                                              ;; 0f:62a1 $7c
+    mRest_12                                           ;; 0f:62a2 $dc
+    mG_13                                              ;; 0f:62a3 $7d
+    mRest_15                                           ;; 0f:62a4 $df
+    mREPEAT_2 .data_0f_62a1                            ;; 0f:62a5 $f9 $a1 $62
+    mCOUNTER_2 $04                                     ;; 0f:62a8 $fa $04
+.data_0f_62aa:
+    mFis_12                                            ;; 0f:62aa $6c
+    mRest_12                                           ;; 0f:62ab $dc
+    mFis_13                                            ;; 0f:62ac $6d
+    mRest_15                                           ;; 0f:62ad $df
+    mREPEAT_2 .data_0f_62aa                            ;; 0f:62ae $f9 $aa $62
+    mCOUNTER_2 $04                                     ;; 0f:62b1 $fa $04
+.data_0f_62b3:
+    mE_12                                              ;; 0f:62b3 $4c
+    mRest_12                                           ;; 0f:62b4 $dc
+    mE_13                                              ;; 0f:62b5 $4d
+    mRest_15                                           ;; 0f:62b6 $df
+    mREPEAT_2 .data_0f_62b3                            ;; 0f:62b7 $f9 $b3 $62
+    mFis_12                                            ;; 0f:62ba $6c
+    mRest_12                                           ;; 0f:62bb $dc
+    mFis_12                                            ;; 0f:62bc $6c
+    mB_12                                              ;; 0f:62bd $bc
+    mRest_12                                           ;; 0f:62be $dc
+    mB_12                                              ;; 0f:62bf $bc
+    mDis_12                                            ;; 0f:62c0 $3c
+    mRest_12                                           ;; 0f:62c1 $dc
+    mDis_12                                            ;; 0f:62c2 $3c
+    mFis_12                                            ;; 0f:62c3 $6c
+    mRest_12                                           ;; 0f:62c4 $dc
+    mFis_12                                            ;; 0f:62c5 $6c
+    mCOUNTER_2 $08                                     ;; 0f:62c6 $fa $08
+.data_0f_62c8:
+    mE_12                                              ;; 0f:62c8 $4c
+    mRest_12                                           ;; 0f:62c9 $dc
+    mE_13                                              ;; 0f:62ca $4d
+    mRest_15                                           ;; 0f:62cb $df
+    mREPEAT_2 .data_0f_62c8                            ;; 0f:62cc $f9 $c8 $62
+    mREPEAT .data_0f_628d                              ;; 0f:62cf $f2 $8d $62
+    mJUMP .data_0f_6279                                ;; 0f:62d2 $f1 $79 $62
+
+song0d_channel4:
+    mVOLUME_ENVELOPE data_0f_661b                      ;; 0f:62d5 $f0 $1b $66
+    mRest_4                                            ;; 0f:62d8 $d4
+    mRest_7                                            ;; 0f:62d9 $d7
+.data_0f_62da:
+    mSTEREOPAN $01                                     ;; 0f:62da $f6 $01
+    mG_14                                              ;; 0f:62dc $7e
+    mF_14                                              ;; 0f:62dd $5e
+    mRest_9                                            ;; 0f:62de $d9
+    mSTEREOPAN $02                                     ;; 0f:62df $f6 $02
+    mF_7                                               ;; 0f:62e1 $57
+    mJUMP .data_0f_62da                                ;; 0f:62e2 $f1 $da $62
 
 song03_channel2:
     mINIT2 $41, frequencyDeltaData, data_0f_65e3, $00  ;; 0f:62e5 $fe $41 $63 $66 $e3 $65 $00
@@ -5483,103 +7076,267 @@ song03_channel4:
     mG_6                                               ;; 0f:63d1 $76
     mJUMP .data_0f_63cc                                ;; 0f:63d2 $f1 $cc $63
 
-data_0f_63d5:
-    db   $fe, $96, $63, $66                            ;; 0f:63d5 ....
-    dw   $660f                                         ;; 0f:63d9 wP
-    db   $00, $03                                      ;; 0f:63db .w
+song0c_channel2:
+    mINIT2 $96, frequencyDeltaData, data_0f_660f, $00  ;; 0f:63d5 $fe $96 $63 $66 $0f $66 $00
+    mC_3                                               ;; 0f:63dc $03
 .data_0f_63dd:
-    db   $fa, $02                                      ;; 0f:63dd ..
+    mCOUNTER_2 $02                                     ;; 0f:63dd $fa $02
 .data_0f_63df:
-    db   $e3, $f3, $04                                 ;; 0f:63df ...
+    mOCTAVE_3                                          ;; 0f:63df $e3
+    mCOUNTER $04                                       ;; 0f:63e0 $f3 $04
 .data_0f_63e2:
-    db   $5c, $6c, $f2                                 ;; 0f:63e2 ...
-    dw   .data_0f_63e2                                 ;; 0f:63e5 pP
-    db   $e8, $f3, $04                                 ;; 0f:63e7 ...
+    mF_12                                              ;; 0f:63e2 $5c
+    mFis_12                                            ;; 0f:63e3 $6c
+    mREPEAT .data_0f_63e2                              ;; 0f:63e4 $f2 $e2 $63
+    mOCTAVE_PLUS_1                                     ;; 0f:63e7 $e8
+    mCOUNTER $04                                       ;; 0f:63e8 $f3 $04
 .data_0f_63ea:
-    db   $1c, $0c, $f2                                 ;; 0f:63ea ...
-    dw   .data_0f_63ea                                 ;; 0f:63ed pP
-    db   $f9                                           ;; 0f:63ef .
-    dw   .data_0f_63df                                 ;; 0f:63f0 pP
-    db   $5c, $0c, $ec, $5c, $e8, $5c, $4c, $ec        ;; 0f:63f2 ........
-    db   $bc, $4c, $e8, $4c, $3c, $ec, $ac, $3c        ;; 0f:63fa ........
-    db   $e8, $3c, $2c, $ec, $9c, $2c, $e8, $2c        ;; 0f:6402 ........
-    db   $5c, $3c, $1c, $0c, $ec, $ac, $9c, $ac        ;; 0f:640a ........
-    db   $9c, $6c, $5c, $3c, $1c, $0c, $3c, $5c        ;; 0f:6412 ........
-    db   $9c, $ec, $f3, $02                            ;; 0f:641a ....
+    mCis_12                                            ;; 0f:63ea $1c
+    mC_12                                              ;; 0f:63eb $0c
+    mREPEAT .data_0f_63ea                              ;; 0f:63ec $f2 $ea $63
+    mREPEAT_2 .data_0f_63df                            ;; 0f:63ef $f9 $df $63
+    mF_12                                              ;; 0f:63f2 $5c
+    mC_12                                              ;; 0f:63f3 $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:63f4 $ec
+    mF_12                                              ;; 0f:63f5 $5c
+    mOCTAVE_PLUS_1                                     ;; 0f:63f6 $e8
+    mF_12                                              ;; 0f:63f7 $5c
+    mE_12                                              ;; 0f:63f8 $4c
+    mOCTAVE_MINUS_1                                    ;; 0f:63f9 $ec
+    mB_12                                              ;; 0f:63fa $bc
+    mE_12                                              ;; 0f:63fb $4c
+    mOCTAVE_PLUS_1                                     ;; 0f:63fc $e8
+    mE_12                                              ;; 0f:63fd $4c
+    mDis_12                                            ;; 0f:63fe $3c
+    mOCTAVE_MINUS_1                                    ;; 0f:63ff $ec
+    mAis_12                                            ;; 0f:6400 $ac
+    mDis_12                                            ;; 0f:6401 $3c
+    mOCTAVE_PLUS_1                                     ;; 0f:6402 $e8
+    mDis_12                                            ;; 0f:6403 $3c
+    mD_12                                              ;; 0f:6404 $2c
+    mOCTAVE_MINUS_1                                    ;; 0f:6405 $ec
+    mA_12                                              ;; 0f:6406 $9c
+    mD_12                                              ;; 0f:6407 $2c
+    mOCTAVE_PLUS_1                                     ;; 0f:6408 $e8
+    mD_12                                              ;; 0f:6409 $2c
+    mF_12                                              ;; 0f:640a $5c
+    mDis_12                                            ;; 0f:640b $3c
+    mCis_12                                            ;; 0f:640c $1c
+    mC_12                                              ;; 0f:640d $0c
+    mOCTAVE_MINUS_1                                    ;; 0f:640e $ec
+    mAis_12                                            ;; 0f:640f $ac
+    mA_12                                              ;; 0f:6410 $9c
+    mAis_12                                            ;; 0f:6411 $ac
+    mA_12                                              ;; 0f:6412 $9c
+    mFis_12                                            ;; 0f:6413 $6c
+    mF_12                                              ;; 0f:6414 $5c
+    mDis_12                                            ;; 0f:6415 $3c
+    mCis_12                                            ;; 0f:6416 $1c
+    mC_12                                              ;; 0f:6417 $0c
+    mDis_12                                            ;; 0f:6418 $3c
+    mF_12                                              ;; 0f:6419 $5c
+    mA_12                                              ;; 0f:641a $9c
+    mOCTAVE_MINUS_1                                    ;; 0f:641b $ec
+    mCOUNTER $02                                       ;; 0f:641c $f3 $02
 .data_0f_641e:
-    db   $f0                                           ;; 0f:641e .
-    dw   $6609                                         ;; 0f:641f wP
-    db   $5c, $5c, $5c, $5c, $59, $6c, $6c, $6c        ;; 0f:6421 ........
-    db   $6c, $69, $8c, $8c, $8c, $8c, $f0             ;; 0f:6429 .......
-    dw   $660f                                         ;; 0f:6430 wP
-    db   $89, $e8, $fb, $01                            ;; 0f:6432 ....
-    dw   .data_0f_6445                                 ;; 0f:6436 pP
-    db   $8c, $e8, $2c, $8c, $ec, $8c, $e8, $2c        ;; 0f:6438 ........
-    db   $8c, $ed, $f2                                 ;; 0f:6440 ...
-    dw   .data_0f_641e                                 ;; 0f:6443 pP
+    mVOLUME_ENVELOPE data_0f_6609                      ;; 0f:641e $f0 $09 $66
+    mF_12                                              ;; 0f:6421 $5c
+    mF_12                                              ;; 0f:6422 $5c
+    mF_12                                              ;; 0f:6423 $5c
+    mF_12                                              ;; 0f:6424 $5c
+    mF_9                                               ;; 0f:6425 $59
+    mFis_12                                            ;; 0f:6426 $6c
+    mFis_12                                            ;; 0f:6427 $6c
+    mFis_12                                            ;; 0f:6428 $6c
+    mFis_12                                            ;; 0f:6429 $6c
+    mFis_9                                             ;; 0f:642a $69
+    mGis_12                                            ;; 0f:642b $8c
+    mGis_12                                            ;; 0f:642c $8c
+    mGis_12                                            ;; 0f:642d $8c
+    mGis_12                                            ;; 0f:642e $8c
+    mVOLUME_ENVELOPE data_0f_660f                      ;; 0f:642f $f0 $0f $66
+    mGis_9                                             ;; 0f:6432 $89
+    mOCTAVE_PLUS_1                                     ;; 0f:6433 $e8
+    mJUMPIF $01, .data_0f_6445                         ;; 0f:6434 $fb $01 $45 $64
+    mGis_12                                            ;; 0f:6438 $8c
+    mOCTAVE_PLUS_1                                     ;; 0f:6439 $e8
+    mD_12                                              ;; 0f:643a $2c
+    mGis_12                                            ;; 0f:643b $8c
+    mOCTAVE_MINUS_1                                    ;; 0f:643c $ec
+    mGis_12                                            ;; 0f:643d $8c
+    mOCTAVE_PLUS_1                                     ;; 0f:643e $e8
+    mD_12                                              ;; 0f:643f $2c
+    mGis_12                                            ;; 0f:6440 $8c
+    mOCTAVE_MINUS_2                                    ;; 0f:6441 $ed
+    mREPEAT .data_0f_641e                              ;; 0f:6442 $f2 $1e $64
 .data_0f_6445:
-    db   $bc, $ac, $9c, $8c, $7c, $6c, $f1             ;; 0f:6445 .......
-    dw   .data_0f_63dd                                 ;; 0f:644c pP
+    mB_12                                              ;; 0f:6445 $bc
+    mAis_12                                            ;; 0f:6446 $ac
+    mA_12                                              ;; 0f:6447 $9c
+    mGis_12                                            ;; 0f:6448 $8c
+    mG_12                                              ;; 0f:6449 $7c
+    mFis_12                                            ;; 0f:644a $6c
+    mJUMP .data_0f_63dd                                ;; 0f:644b $f1 $dd $63
 
-data_0f_644e:
-    db   $fe, $63, $66                                 ;; 0f:644e ...
-    dw   $6613                                         ;; 0f:6451 wP
-    db   $00, $03                                      ;; 0f:6453 .w
+song0c_channel1:
+    mINIT1 frequencyDeltaData, data_0f_6613, $00       ;; 0f:644e $fe $63 $66 $13 $66 $00
+    mC_3                                               ;; 0f:6454 $03
 .data_0f_6455:
-    db   $e2, $f6, $02, $0c, $5c, $0c, $5c, $f6        ;; 0f:6455 ..w.....
-    db   $03, $0c, $5c, $0c, $5c, $f6, $01, $1c        ;; 0f:645d w.....w.
-    db   $6c, $1c, $6c, $f6, $03, $1c, $6c, $1c        ;; 0f:6465 ....w...
-    db   $6c, $f6, $02, $3c, $8c, $3c, $8c, $f6        ;; 0f:646d ..w.....
-    db   $03, $3c, $8c, $3c, $8c, $f6, $01, $1c        ;; 0f:6475 w.....w.
-    db   $6c, $1c, $6c, $f6, $03, $1c, $6c, $1c        ;; 0f:647d ....w...
-    db   $6c, $f6, $02, $0c, $5c, $0c, $5c, $f6        ;; 0f:6485 ..w.....
-    db   $01, $1c, $6c, $1c, $6c, $f6, $02, $3c        ;; 0f:648d w.....w.
-    db   $8c, $3c, $8c, $f6, $01, $1c, $6c, $1c        ;; 0f:6495 ....w...
-    db   $6c, $f3, $03                                 ;; 0f:649d ...
+    mOCTAVE_2                                          ;; 0f:6455 $e2
+    mSTEREOPAN $02                                     ;; 0f:6456 $f6 $02
+    mC_12                                              ;; 0f:6458 $0c
+    mF_12                                              ;; 0f:6459 $5c
+    mC_12                                              ;; 0f:645a $0c
+    mF_12                                              ;; 0f:645b $5c
+    mSTEREOPAN $03                                     ;; 0f:645c $f6 $03
+    mC_12                                              ;; 0f:645e $0c
+    mF_12                                              ;; 0f:645f $5c
+    mC_12                                              ;; 0f:6460 $0c
+    mF_12                                              ;; 0f:6461 $5c
+    mSTEREOPAN $01                                     ;; 0f:6462 $f6 $01
+    mCis_12                                            ;; 0f:6464 $1c
+    mFis_12                                            ;; 0f:6465 $6c
+    mCis_12                                            ;; 0f:6466 $1c
+    mFis_12                                            ;; 0f:6467 $6c
+    mSTEREOPAN $03                                     ;; 0f:6468 $f6 $03
+    mCis_12                                            ;; 0f:646a $1c
+    mFis_12                                            ;; 0f:646b $6c
+    mCis_12                                            ;; 0f:646c $1c
+    mFis_12                                            ;; 0f:646d $6c
+    mSTEREOPAN $02                                     ;; 0f:646e $f6 $02
+    mDis_12                                            ;; 0f:6470 $3c
+    mGis_12                                            ;; 0f:6471 $8c
+    mDis_12                                            ;; 0f:6472 $3c
+    mGis_12                                            ;; 0f:6473 $8c
+    mSTEREOPAN $03                                     ;; 0f:6474 $f6 $03
+    mDis_12                                            ;; 0f:6476 $3c
+    mGis_12                                            ;; 0f:6477 $8c
+    mDis_12                                            ;; 0f:6478 $3c
+    mGis_12                                            ;; 0f:6479 $8c
+    mSTEREOPAN $01                                     ;; 0f:647a $f6 $01
+    mCis_12                                            ;; 0f:647c $1c
+    mFis_12                                            ;; 0f:647d $6c
+    mCis_12                                            ;; 0f:647e $1c
+    mFis_12                                            ;; 0f:647f $6c
+    mSTEREOPAN $03                                     ;; 0f:6480 $f6 $03
+    mCis_12                                            ;; 0f:6482 $1c
+    mFis_12                                            ;; 0f:6483 $6c
+    mCis_12                                            ;; 0f:6484 $1c
+    mFis_12                                            ;; 0f:6485 $6c
+    mSTEREOPAN $02                                     ;; 0f:6486 $f6 $02
+    mC_12                                              ;; 0f:6488 $0c
+    mF_12                                              ;; 0f:6489 $5c
+    mC_12                                              ;; 0f:648a $0c
+    mF_12                                              ;; 0f:648b $5c
+    mSTEREOPAN $01                                     ;; 0f:648c $f6 $01
+    mCis_12                                            ;; 0f:648e $1c
+    mFis_12                                            ;; 0f:648f $6c
+    mCis_12                                            ;; 0f:6490 $1c
+    mFis_12                                            ;; 0f:6491 $6c
+    mSTEREOPAN $02                                     ;; 0f:6492 $f6 $02
+    mDis_12                                            ;; 0f:6494 $3c
+    mGis_12                                            ;; 0f:6495 $8c
+    mDis_12                                            ;; 0f:6496 $3c
+    mGis_12                                            ;; 0f:6497 $8c
+    mSTEREOPAN $01                                     ;; 0f:6498 $f6 $01
+    mCis_12                                            ;; 0f:649a $1c
+    mFis_12                                            ;; 0f:649b $6c
+    mCis_12                                            ;; 0f:649c $1c
+    mFis_12                                            ;; 0f:649d $6c
+    mCOUNTER $03                                       ;; 0f:649e $f3 $03
 .data_0f_64a0:
-    db   $f6, $02, $9c, $5c, $0c, $fb, $01             ;; 0f:64a0 .w.....
-    dw   .data_0f_64b1                                 ;; 0f:64a7 pP
-    db   $f6, $01, $9c, $5c, $0c, $f2                  ;; 0f:64a9 .w....
-    dw   .data_0f_64a0                                 ;; 0f:64af pP
+    mSTEREOPAN $02                                     ;; 0f:64a0 $f6 $02
+    mA_12                                              ;; 0f:64a2 $9c
+    mF_12                                              ;; 0f:64a3 $5c
+    mC_12                                              ;; 0f:64a4 $0c
+    mJUMPIF $01, .data_0f_64b1                         ;; 0f:64a5 $fb $01 $b1 $64
+    mSTEREOPAN $01                                     ;; 0f:64a9 $f6 $01
+    mA_12                                              ;; 0f:64ab $9c
+    mF_12                                              ;; 0f:64ac $5c
+    mC_12                                              ;; 0f:64ad $0c
+    mREPEAT .data_0f_64a0                              ;; 0f:64ae $f2 $a0 $64
 .data_0f_64b1:
-    db   $9c, $f3, $02                                 ;; 0f:64b1 ...
+    mA_12                                              ;; 0f:64b1 $9c
+    mCOUNTER $02                                       ;; 0f:64b2 $f3 $02
 .data_0f_64b4:
-    db   $f6, $03, $f0                                 ;; 0f:64b4 .w.
-    dw   $660b                                         ;; 0f:64b7 wP
-    db   $0c, $0c, $0c, $0c, $09, $1c, $1c, $1c        ;; 0f:64b9 ........
-    db   $1c, $19, $3c, $3c, $3c, $3c, $39, $e8        ;; 0f:64c1 ........
-    db   $f0                                           ;; 0f:64c9 .
-    dw   $6613                                         ;; 0f:64ca wP
-    db   $fb, $01                                      ;; 0f:64cc ..
-    dw   .data_0f_64e1                                 ;; 0f:64ce pP
-    db   $f6, $01, $2c, $8c, $e8, $2c, $f6, $02        ;; 0f:64d0 .w.....w
-    db   $ec, $2c, $8c, $e8, $2c, $ed, $f2             ;; 0f:64d8 .......
-    dw   .data_0f_64b4                                 ;; 0f:64df pP
+    mSTEREOPAN $03                                     ;; 0f:64b4 $f6 $03
+    mVOLUME_ENVELOPE data_0f_660b                      ;; 0f:64b6 $f0 $0b $66
+    mC_12                                              ;; 0f:64b9 $0c
+    mC_12                                              ;; 0f:64ba $0c
+    mC_12                                              ;; 0f:64bb $0c
+    mC_12                                              ;; 0f:64bc $0c
+    mC_9                                               ;; 0f:64bd $09
+    mCis_12                                            ;; 0f:64be $1c
+    mCis_12                                            ;; 0f:64bf $1c
+    mCis_12                                            ;; 0f:64c0 $1c
+    mCis_12                                            ;; 0f:64c1 $1c
+    mCis_9                                             ;; 0f:64c2 $19
+    mDis_12                                            ;; 0f:64c3 $3c
+    mDis_12                                            ;; 0f:64c4 $3c
+    mDis_12                                            ;; 0f:64c5 $3c
+    mDis_12                                            ;; 0f:64c6 $3c
+    mDis_9                                             ;; 0f:64c7 $39
+    mOCTAVE_PLUS_1                                     ;; 0f:64c8 $e8
+    mVOLUME_ENVELOPE data_0f_6613                      ;; 0f:64c9 $f0 $13 $66
+    mJUMPIF $01, .data_0f_64e1                         ;; 0f:64cc $fb $01 $e1 $64
+    mSTEREOPAN $01                                     ;; 0f:64d0 $f6 $01
+    mD_12                                              ;; 0f:64d2 $2c
+    mGis_12                                            ;; 0f:64d3 $8c
+    mOCTAVE_PLUS_1                                     ;; 0f:64d4 $e8
+    mD_12                                              ;; 0f:64d5 $2c
+    mSTEREOPAN $02                                     ;; 0f:64d6 $f6 $02
+    mOCTAVE_MINUS_1                                    ;; 0f:64d8 $ec
+    mD_12                                              ;; 0f:64d9 $2c
+    mGis_12                                            ;; 0f:64da $8c
+    mOCTAVE_PLUS_1                                     ;; 0f:64db $e8
+    mD_12                                              ;; 0f:64dc $2c
+    mOCTAVE_MINUS_2                                    ;; 0f:64dd $ed
+    mREPEAT .data_0f_64b4                              ;; 0f:64de $f2 $b4 $64
 .data_0f_64e1:
-    db   $5c, $4c, $3c, $2c, $1c, $0c, $f1             ;; 0f:64e1 .......
-    dw   .data_0f_6455                                 ;; 0f:64e8 pP
+    mF_12                                              ;; 0f:64e1 $5c
+    mE_12                                              ;; 0f:64e2 $4c
+    mDis_12                                            ;; 0f:64e3 $3c
+    mD_12                                              ;; 0f:64e4 $2c
+    mCis_12                                            ;; 0f:64e5 $1c
+    mC_12                                              ;; 0f:64e6 $0c
+    mJUMP .data_0f_6455                                ;; 0f:64e7 $f1 $55 $64
 
-data_0f_64ea:
-    db   $fe, $63, $66, $20, $e2, $66, $03, $e1        ;; 0f:64ea ......w.
+song0c_channel3:
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:64ea $fe $63 $66 $20 $e2 $66
+    mC_3                                               ;; 0f:64f0 $03
+    mOCTAVE_1                                          ;; 0f:64f1 $e1
 .data_0f_64f2:
-    db   $fa, $10                                      ;; 0f:64f2 ..
+    mCOUNTER_2 $10                                     ;; 0f:64f2 $fa $10
 .data_0f_64f4:
-    db   $5a, $de, $6a, $de, $f9                       ;; 0f:64f4 .....
-    dw   .data_0f_64f4                                 ;; 0f:64f9 pP
-    db   $fa, $02                                      ;; 0f:64fb ..
+    mF_10                                              ;; 0f:64f4 $5a
+    mRest_14                                           ;; 0f:64f5 $de
+    mFis_10                                            ;; 0f:64f6 $6a
+    mRest_14                                           ;; 0f:64f7 $de
+    mREPEAT_2 .data_0f_64f4                            ;; 0f:64f8 $f9 $f4 $64
+    mCOUNTER_2 $02                                     ;; 0f:64fb $fa $02
 .data_0f_64fd:
-    db   $59, $d6, $69, $d6, $89, $d3, $d9, $f9        ;; 0f:64fd ........
-    dw   .data_0f_64fd                                 ;; 0f:6505 pP
-    db   $f1                                           ;; 0f:6507 .
-    dw   .data_0f_64f2                                 ;; 0f:6508 pP
+    mF_9                                               ;; 0f:64fd $59
+    mRest_6                                            ;; 0f:64fe $d6
+    mFis_9                                             ;; 0f:64ff $69
+    mRest_6                                            ;; 0f:6500 $d6
+    mGis_9                                             ;; 0f:6501 $89
+    mRest_3                                            ;; 0f:6502 $d3
+    mRest_9                                            ;; 0f:6503 $d9
+    mREPEAT_2 .data_0f_64fd                            ;; 0f:6504 $f9 $fd $64
+    mJUMP .data_0f_64f2                                ;; 0f:6507 $f1 $f2 $64
 
-data_0f_650a:
-    db   $f0                                           ;; 0f:650a .
-    dw   $661b                                         ;; 0f:650b wP
+song0c_channel4:
+    mVOLUME_ENVELOPE data_0f_661b                      ;; 0f:650a $f0 $1b $66
 .data_0f_650d:
-    db   $f6, $01, $99, $bc, $bc, $f6, $02, $99        ;; 0f:650d .w....w.
-    db   $bc, $bc, $f1                                 ;; 0f:6515 ...
-    dw   .data_0f_650d                                 ;; 0f:6518 pP
+    mSTEREOPAN $01                                     ;; 0f:650d $f6 $01
+    mA_9                                               ;; 0f:650f $99
+    mB_12                                              ;; 0f:6510 $bc
+    mB_12                                              ;; 0f:6511 $bc
+    mSTEREOPAN $02                                     ;; 0f:6512 $f6 $02
+    mA_9                                               ;; 0f:6514 $99
+    mB_12                                              ;; 0f:6515 $bc
+    mB_12                                              ;; 0f:6516 $bc
+    mJUMP .data_0f_650d                                ;; 0f:6517 $f1 $0d $65
 
 song04_channel2:
     mINIT2 $78, frequencyDeltaData, data_0f_65df, $c0  ;; 0f:651a $fe $78 $63 $66 $df $65 $c0
@@ -5757,7 +7514,12 @@ data_0f_65e7:
     db   $01, $91, $63, $65                            ;; 0f:65e7 ????
 
 data_0f_65eb:
-    db   $01, $81, $63, $55, $02, $79, $63, $a7        ;; 0f:65eb ....????
+    db   $01, $81, $63, $55                            ;; 0f:65eb ....
+
+data_0f_65ef:
+    db   $02, $79, $63, $a7                            ;; 0f:65ef ????
+
+data_0f_65f3:
     db   $02, $79, $63, $97                            ;; 0f:65f3 ????
 
 data_0f_65f7:
@@ -5767,8 +7529,19 @@ data_0f_65fb:
     db   $02, $79, $63, $77                            ;; 0f:65fb ????
 
 data_0f_65ff:
-    db   $02, $79, $63, $67, $02, $79, $63, $57        ;; 0f:65ff ????????
-    db   $63, $d2, $63, $c2, $63, $92, $63, $d3        ;; 0f:6607 ??....??
+    db   $02, $79, $63, $67                            ;; 0f:65ff ????
+
+data_0f_6603:
+    db   $02, $79, $63, $57, $63, $d2                  ;; 0f:6603 ??????
+
+data_0f_6609:
+    db   $63, $c2                                      ;; 0f:6609 ..
+
+data_0f_660b:
+    db   $63, $92                                      ;; 0f:660b ..
+
+data_0f_660d:
+    db   $63, $d3                                      ;; 0f:660d ??
 
 data_0f_660f:
     db   $63, $c3                                      ;; 0f:660f ..
@@ -5777,10 +7550,16 @@ data_0f_6611:
     db   $63, $a3                                      ;; 0f:6611 ..
 
 data_0f_6613:
-    db   $63, $93, $63, $83                            ;; 0f:6613 ..??
+    db   $63, $93                                      ;; 0f:6613 ..
+
+data_0f_6615:
+    db   $63, $83                                      ;; 0f:6615 ??
 
 data_0f_6617:
-    db   $63, $73, $63, $53                            ;; 0f:6617 ??..
+    db   $63, $73                                      ;; 0f:6617 ??
+
+data_0f_6619:
+    db   $63, $53                                      ;; 0f:6619 ..
 
 data_0f_661b:
     db   $01, $60, $63, $00                            ;; 0f:661b ....
@@ -5835,11 +7614,16 @@ data_0f_6671:
 
 data_0f_667a:
     db   $05, $00, $01, $00, $01, $02, $01, $00        ;; 0f:667a .w.w.w.w
-    db   $01, $fe, $00, $7c, $66, $63, $ff, $00        ;; 0f:6682 .w...???
-    db   $87, $66, $02, $00, $01, $01, $01, $00        ;; 0f:668a ??.w.w.w
-    db   $01, $ff, $01, $00, $01, $02, $01, $00        ;; 0f:6692 .w.w.w.w
-    db   $01, $fe, $01, $00, $01, $03, $01, $00        ;; 0f:669a .w.w.w.w
-    db   $01, $fd, $01, $00, $00, $9e, $66             ;; 0f:66a2 .w.w...
+    db   $01, $fe, $00, $7c, $66                       ;; 0f:6682 .w...
+
+data_0f_6687:
+    db   $63, $ff, $00, $87, $66                       ;; 0f:6687 ?????
+
+data_0f_668c:
+    db   $02, $00, $01, $01, $01, $00, $01, $ff        ;; 0f:668c .w.w.w.w
+    db   $01, $00, $01, $02, $01, $00, $01, $fe        ;; 0f:6694 .w.w.w.w
+    db   $01, $00, $01, $03, $01, $00, $01, $fd        ;; 0f:669c .w.w.w.w
+    db   $01, $00, $00, $9e, $66                       ;; 0f:66a4 .w...
 
 data_0f_66a9:
     db   $08, $00, $01, $ff, $01, $00, $00, $ab        ;; 0f:66a9 .w.w.w..
