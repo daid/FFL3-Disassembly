@@ -131,8 +131,8 @@ musicInitChannel:
 
 muteSoundEngine:
     xor  A, A                                          ;; 0f:40b9 $af
-    ld   [wCB66], A                                    ;; 0f:40ba $ea $66 $cb
-    ld   [wCB67], A                                    ;; 0f:40bd $ea $67 $cb
+    ld   [wSoundEffectPlayingChannel1], A              ;; 0f:40ba $ea $66 $cb
+    ld   [wSoundEffectPlayingChannel4], A              ;; 0f:40bd $ea $67 $cb
     ldh  [rNR10], A                                    ;; 0f:40c0 $e0 $10
     ld   A, $ff                                        ;; 0f:40c2 $3e $ff
     ldh  [rNR13], A                                    ;; 0f:40c4 $e0 $13
@@ -360,7 +360,7 @@ musicTempoPlayNotes_Channel1:
     inc  L                                             ;; 0f:42cb $2c
     call musicStartEnvelope                            ;; 0f:42cc $cd $9b $43
     xor  A, A                                          ;; 0f:42cf $af
-    ld   [wCB66], A                                    ;; 0f:42d0 $ea $66 $cb
+    ld   [wSoundEffectPlayingChannel1], A              ;; 0f:42d0 $ea $66 $cb
 
 musicTempoPlayNotes_Channel3:
     ld   HL, wMusicEndedOnChannel3                     ;; 0f:42d3 $21 $35 $cb
@@ -486,7 +486,7 @@ musicTempoPlayNotes_Channel4:
     ld   A, $80                                        ;; 0f:4390 $3e $80
     ldh  [rNR44], A                                    ;; 0f:4392 $e0 $23
     xor  A, A                                          ;; 0f:4394 $af
-    ld   [wCB67], A                                    ;; 0f:4395 $ea $67 $cb
+    ld   [wSoundEffectPlayingChannel4], A              ;; 0f:4395 $ea $67 $cb
     ld   HL, wMusicVolumeDurationChannel4              ;; 0f:4398 $21 $5b $cb
 
 musicStartEnvelope:
@@ -1060,7 +1060,7 @@ musicVibratoAndVolumeChannel1:
     ld   A, [HL]                                       ;; 0f:4689 $7e
     cp   A, $0d                                        ;; 0f:468a $fe $0d
     ret  Z                                             ;; 0f:468c $c8
-    ld   A, [wCB66]                                    ;; 0f:468d $fa $66 $cb
+    ld   A, [wSoundEffectPlayingChannel1]              ;; 0f:468d $fa $66 $cb
     and  A, A                                          ;; 0f:4690 $a7
     ret  NZ                                            ;; 0f:4691 $c0
     ld   HL, wMusicVibratoDurationChannel1             ;; 0f:4692 $21 $26 $cb
@@ -1169,7 +1169,7 @@ musicVolumeChannel4:
     ret  Z                                             ;; 0f:472d $c8
     dec  [HL]                                          ;; 0f:472e $35
     ret  NZ                                            ;; 0f:472f $c0
-    ld   A, [wCB67]                                    ;; 0f:4730 $fa $67 $cb
+    ld   A, [wSoundEffectPlayingChannel4]              ;; 0f:4730 $fa $67 $cb
     and  A, A                                          ;; 0f:4733 $a7
     ret  NZ                                            ;; 0f:4734 $c0
     call call_0f_474b                                  ;; 0f:4735 $cd $4b $47
@@ -1244,7 +1244,7 @@ soundEffectPlayStep:
     ld   A, [DE]                                       ;; 0f:4791 $1a
     or   A, A                                          ;; 0f:4792 $b7
     jr   Z, .channel4                                  ;; 0f:4793 $28 $4b
-    ld   [wCB66], A                                    ;; 0f:4795 $ea $66 $cb
+    ld   [wSoundEffectPlayingChannel1], A              ;; 0f:4795 $ea $66 $cb
     dec  A                                             ;; 0f:4798 $3d
     ld   [DE], A                                       ;; 0f:4799 $12
     jr   NZ, .channel4                                 ;; 0f:479a $20 $44
@@ -1301,7 +1301,7 @@ soundEffectPlayStep:
     ld   A, [DE]                                       ;; 0f:47e3 $1a
     or   A, A                                          ;; 0f:47e4 $b7
     ret  Z                                             ;; 0f:47e5 $c8
-    ld   [wCB67], A                                    ;; 0f:47e6 $ea $67 $cb
+    ld   [wSoundEffectPlayingChannel4], A              ;; 0f:47e6 $ea $67 $cb
     dec  A                                             ;; 0f:47e9 $3d
     ld   [DE], A                                       ;; 0f:47ea $12
     ret  NZ                                            ;; 0f:47eb $c0
