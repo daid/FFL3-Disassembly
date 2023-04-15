@@ -904,10 +904,10 @@ wSoundEffectInstructionPointerChannel1:
 wSoundEffectInstructionPointerChannel4:
     ds 2                                               ;; cb64
 
-wCB66:
+wSoundEffectPlayingChannel1:
     ds 1                                               ;; cb66
 
-wCB67:
+wSoundEffectPlayingChannel4:
     ds 152                                             ;; cb67
 
 wCBFF:

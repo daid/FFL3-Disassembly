@@ -602,6 +602,7 @@ db $fe
 dw \1
 dw \2
 db \3
+db \4
 ENDM
 MACRO mINIT2
 db $fe
@@ -609,12 +610,14 @@ db \1
 dw \2
 dw \3
 db \4
+db \5
 ENDM
 MACRO mINIT3
 db $fe
 dw \1
 db \2
 dw \3
+db \4
 ENDM
 MACRO mJUMP
 db $f1
