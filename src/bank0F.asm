@@ -1380,8 +1380,7 @@ musicSongChannelPointers:
     dw   song02_channel4                               ;; 0f:48cd pP
 
 song05_channel2:
-    mINIT2 $60, data_0f_6668, data_0f_6625, $80        ;; 0f:48cf $fe $60 $68 $66 $25 $66 $80
-    mC_3                                               ;; 0f:48d6 $03
+    mINIT2 $60, data_0f_6668, data_0f_6625, $80, $03   ;; 0f:48cf $fe $60 $68 $66 $25 $66 $80 $03
     mOCTAVE_3                                          ;; 0f:48d7 $e3
     mCOUNTER_2 $02                                     ;; 0f:48d8 $fa $02
 .data_0f_48da:
@@ -1447,8 +1446,7 @@ song05_channel2:
     mJUMP .data_0f_48e6                                ;; 0f:491c $f1 $e6 $48
 
 song05_channel1:
-    mINIT1 frequencyDeltaData, data_0f_65e3, $80       ;; 0f:491f $fe $63 $66 $e3 $65 $80
-    mC_3                                               ;; 0f:4925 $03
+    mINIT1 frequencyDeltaData, data_0f_65e3, $80, $03  ;; 0f:491f $fe $63 $66 $e3 $65 $80 $03
     mCOUNTER_2 $02                                     ;; 0f:4926 $fa $02
 .data_0f_4928:
     mSTEREOPAN $03                                     ;; 0f:4928 $f6 $03
@@ -1609,8 +1607,7 @@ song05_channel1:
     mJUMP .data_0f_4957                                ;; 0f:49dc $f1 $57 $49
 
 song05_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:49df $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:49e5 $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:49df $fe $63 $66 $20 $e2 $66 $03
     mOCTAVE_0                                          ;; 0f:49e6 $e0
     mA_6                                               ;; 0f:49e7 $96
     mOCTAVE_PLUS_1                                     ;; 0f:49e8 $e8
@@ -1797,8 +1794,7 @@ song05_channel4:
     mJUMP .data_0f_4a8d                                ;; 0f:4abd $f1 $8d $4a
 
 song02_channel2:
-    mINIT2 $40, frequencyDeltaData, data_0f_6625, $80  ;; 0f:4ac0 $fe $40 $63 $66 $25 $66 $80
-    mC_3                                               ;; 0f:4ac7 $03
+    mINIT2 $40, frequencyDeltaData, data_0f_6625, $80, $03 ;; 0f:4ac0 $fe $40 $63 $66 $25 $66 $80 $03
 .data_0f_4ac8:
     mOCTAVE_1                                          ;; 0f:4ac8 $e1
     mA_4                                               ;; 0f:4ac9 $94
@@ -1836,8 +1832,7 @@ song02_channel2:
     mJUMP .data_0f_4ac8                                ;; 0f:4ae9 $f1 $c8 $4a
 
 song02_channel1:
-    mINIT1 frequencyDeltaData, data_0f_65e7, $40       ;; 0f:4aec $fe $63 $66 $e7 $65 $40
-    mC_3                                               ;; 0f:4af2 $03
+    mINIT1 frequencyDeltaData, data_0f_65e7, $40, $03  ;; 0f:4aec $fe $63 $66 $e7 $65 $40 $03
 .data_0f_4af3:
     mOCTAVE_3                                          ;; 0f:4af3 $e3
     mA_9                                               ;; 0f:4af4 $99
@@ -1942,8 +1937,7 @@ song02_channel1:
     mJUMP .data_0f_4af3                                ;; 0f:4b63 $f1 $f3 $4a
 
 song02_channel3:
-    mINIT3 data_0f_6668, $20, data_0f_66c2             ;; 0f:4b66 $fe $68 $66 $20 $c2 $66
-    mC_3                                               ;; 0f:4b6c $03
+    mINIT3 data_0f_6668, $20, data_0f_66c2, $03        ;; 0f:4b66 $fe $68 $66 $20 $c2 $66 $03
     mOCTAVE_4                                          ;; 0f:4b6d $e4
     mC_6                                               ;; 0f:4b6e $06
     mOCTAVE_MINUS_1                                    ;; 0f:4b6f $ec
@@ -1982,8 +1976,7 @@ song02_channel4:
     mEND                                               ;; 0f:4b91 $ff
 
 song06_channel2:
-    mINIT2 $57, data_0f_667a, data_0f_6625, $c0        ;; 0f:4b92 $fe $57 $7a $66 $25 $66 $c0
-    mC_3                                               ;; 0f:4b99 $03
+    mINIT2 $57, data_0f_667a, data_0f_6625, $c0, $03   ;; 0f:4b92 $fe $57 $7a $66 $25 $66 $c0 $03
     mOCTAVE_3                                          ;; 0f:4b9a $e3
     mCOUNTER_2 $10                                     ;; 0f:4b9b $fa $10
 .data_0f_4b9d:
@@ -2161,8 +2154,7 @@ song06_channel2:
     mEND                                               ;; 0f:4c63 $ff
 
 song06_channel1:
-    mINIT1 data_0f_6671, data_0f_6637, $80             ;; 0f:4c64 $fe $71 $66 $37 $66 $80
-    mC_3                                               ;; 0f:4c6a $03
+    mINIT1 data_0f_6671, data_0f_6637, $80, $03        ;; 0f:4c64 $fe $71 $66 $37 $66 $80 $03
     mCOUNTER_2 $10                                     ;; 0f:4c6b $fa $10
 .data_0f_4c6d:
     mCOUNTER $02                                       ;; 0f:4c6d $f3 $02
@@ -2326,8 +2318,7 @@ song06_channel1:
     mEND                                               ;; 0f:4d22 $ff
 
 song06_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:4d23 $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:4d29 $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:4d23 $fe $63 $66 $20 $e2 $66 $03
     mCOUNTER_2 $10                                     ;; 0f:4d2a $fa $10
 .data_0f_4d2c:
     mCOUNTER $02                                       ;; 0f:4d2c $f3 $02
@@ -2576,8 +2567,7 @@ song06_channel4:
     mEND                                               ;; 0f:4e5a $ff
 
 song08_channel2:
-    mINIT2 $5d, frequencyDeltaData, data_0f_6651, $c0  ;; 0f:4e5b $fe $5d $63 $66 $51 $66 $c0
-    mC_3                                               ;; 0f:4e62 $03
+    mINIT2 $5d, frequencyDeltaData, data_0f_6651, $c0, $03 ;; 0f:4e5b $fe $5d $63 $66 $51 $66 $c0 $03
     mOCTAVE_2                                          ;; 0f:4e63 $e2
     mD_12                                              ;; 0f:4e64 $2c
     mRest_12                                           ;; 0f:4e65 $dc
@@ -2753,8 +2743,7 @@ song08_channel2:
     mJUMP .data_0f_4e8b                                ;; 0f:4f16 $f1 $8b $4e
 
 song08_channel1:
-    mINIT1 frequencyDeltaData, data_0f_6657, $40       ;; 0f:4f19 $fe $63 $66 $57 $66 $40
-    mC_3                                               ;; 0f:4f1f $03
+    mINIT1 frequencyDeltaData, data_0f_6657, $40, $03  ;; 0f:4f19 $fe $63 $66 $57 $66 $40 $03
     mOCTAVE_1                                          ;; 0f:4f20 $e1
     mA_12                                              ;; 0f:4f21 $9c
     mRest_12                                           ;; 0f:4f22 $dc
@@ -2974,8 +2963,7 @@ song08_channel1:
     mJUMP .data_0f_4f3f                                ;; 0f:5005 $f1 $3f $4f
 
 song08_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:5008 $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:500e $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:5008 $fe $63 $66 $20 $e2 $66 $03
     mOCTAVE_1                                          ;; 0f:500f $e1
     mD_12                                              ;; 0f:5010 $2c
     mRest_12                                           ;; 0f:5011 $dc
@@ -3102,8 +3090,7 @@ song08_channel4:
     mJUMP .data_0f_508f                                ;; 0f:509c $f1 $8f $50
 
 song0a_channel2:
-    mINIT2 $7d, data_0f_6668, data_0f_6611, $c0        ;; 0f:509f $fe $7d $68 $66 $11 $66 $c0
-    mC_3                                               ;; 0f:50a6 $03
+    mINIT2 $7d, data_0f_6668, data_0f_6611, $c0, $03   ;; 0f:509f $fe $7d $68 $66 $11 $66 $c0 $03
     mOCTAVE_2                                          ;; 0f:50a7 $e2
     mD_12                                              ;; 0f:50a8 $2c
     mE_12                                              ;; 0f:50a9 $4c
@@ -3206,8 +3193,7 @@ song0a_channel2:
     mJUMP .data_0f_50b4                                ;; 0f:510d $f1 $b4 $50
 
 song0a_channel1:
-    mINIT1 frequencyDeltaData, data_0f_6613, $40       ;; 0f:5110 $fe $63 $66 $13 $66 $40
-    mC_3                                               ;; 0f:5116 $03
+    mINIT1 frequencyDeltaData, data_0f_6613, $40, $03  ;; 0f:5110 $fe $63 $66 $13 $66 $40 $03
     mOCTAVE_1                                          ;; 0f:5117 $e1
     mA_12                                              ;; 0f:5118 $9c
     mAis_12                                            ;; 0f:5119 $ac
@@ -3371,8 +3357,7 @@ song0a_channel1:
     mJUMP .data_0f_5121                                ;; 0f:51cd $f1 $21 $51
 
 song0a_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:51d0 $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:51d6 $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:51d0 $fe $63 $66 $20 $e2 $66 $03
     mRest_3                                            ;; 0f:51d7 $d3
 .data_0f_51d8:
     mCOUNTER_2 $04                                     ;; 0f:51d8 $fa $04
@@ -3558,8 +3543,7 @@ song0a_channel4:
     mJUMP .data_0f_52a9                                ;; 0f:52b3 $f1 $a9 $52
 
 song09_channel2:
-    mINIT2 $42, frequencyDeltaData, data_0f_6641, $80  ;; 0f:52b6 $fe $42 $63 $66 $41 $66 $80
-    mC_3                                               ;; 0f:52bd $03
+    mINIT2 $42, frequencyDeltaData, data_0f_6641, $80, $03 ;; 0f:52b6 $fe $42 $63 $66 $41 $66 $80 $03
 .data_0f_52be:
     mCOUNTER $02                                       ;; 0f:52be $f3 $02
 .data_0f_52c0:
@@ -3634,8 +3618,7 @@ song09_channel2:
     mJUMP .data_0f_52be                                ;; 0f:530c $f1 $be $52
 
 song09_channel1:
-    mINIT1 frequencyDeltaData, data_0f_663d, $00       ;; 0f:530f $fe $63 $66 $3d $66 $00
-    mC_3                                               ;; 0f:5315 $03
+    mINIT1 frequencyDeltaData, data_0f_663d, $00, $03  ;; 0f:530f $fe $63 $66 $3d $66 $00 $03
     mOCTAVE_4                                          ;; 0f:5316 $e4
 .data_0f_5317:
     mSTEREOPAN $02                                     ;; 0f:5317 $f6 $02
@@ -3654,8 +3637,7 @@ song09_channel1:
     mJUMP .data_0f_5317                                ;; 0f:5327 $f1 $17 $53
 
 song09_channel3:
-    mINIT3 data_0f_6668, $20, wavePatternsData         ;; 0f:532a $fe $68 $66 $20 $b2 $66
-    mC_3                                               ;; 0f:5330 $03
+    mINIT3 data_0f_6668, $20, wavePatternsData, $03    ;; 0f:532a $fe $68 $66 $20 $b2 $66 $03
 .data_0f_5331:
     mCOUNTER_2 $02                                     ;; 0f:5331 $fa $02
 .data_0f_5333:
@@ -3707,8 +3689,7 @@ song09_channel3:
     mJUMP .data_0f_5331                                ;; 0f:536a $f1 $31 $53
 
 song11_channel2:
-    mINIT2 $c8, data_0f_668c, data_0f_65ef, $c0        ;; 0f:536d $fe $c8 $8c $66 $ef $65 $c0
-    mC_3                                               ;; 0f:5374 $03
+    mINIT2 $c8, data_0f_668c, data_0f_65ef, $c0, $03   ;; 0f:536d $fe $c8 $8c $66 $ef $65 $c0 $03
 .data_0f_5375:
     mOCTAVE_3                                          ;; 0f:5375 $e3
     mA_0                                               ;; 0f:5376 $90
@@ -3750,8 +3731,7 @@ song11_channel2:
     mJUMP .data_0f_5375                                ;; 0f:539c $f1 $75 $53
 
 song11_channel1:
-    mINIT1 frequencyDeltaData, data_0f_65fb, $40       ;; 0f:539f $fe $63 $66 $fb $65 $40
-    mC_3                                               ;; 0f:53a5 $03
+    mINIT1 frequencyDeltaData, data_0f_65fb, $40, $03  ;; 0f:539f $fe $63 $66 $fb $65 $40 $03
 .data_0f_53a6:
     mOCTAVE_3                                          ;; 0f:53a6 $e3
     mE_0                                               ;; 0f:53a7 $40
@@ -3849,8 +3829,7 @@ song11_channel1:
     mJUMP .data_0f_53a6                                ;; 0f:541d $f1 $a6 $53
 
 song11_channel3:
-    mINIT3 data_0f_668c, $20, data_0f_66e2             ;; 0f:5420 $fe $8c $66 $20 $e2 $66
-    mC_3                                               ;; 0f:5426 $03
+    mINIT3 data_0f_668c, $20, data_0f_66e2, $03        ;; 0f:5420 $fe $8c $66 $20 $e2 $66 $03
 .data_0f_5427:
     mOCTAVE_1                                          ;; 0f:5427 $e1
     mCOUNTER_2 $06                                     ;; 0f:5428 $fa $06
@@ -4065,8 +4044,7 @@ data_0f_559b:
     db   $53, $73, $f1, $a2, $55                       ;; 0f:55ee ?????
 
 song0e_channel2:
-    mINIT2 $4c, frequencyDeltaData, data_0f_6613, $c0  ;; 0f:55f3 $fe $4c $63 $66 $13 $66 $c0
-    mC_3                                               ;; 0f:55fa $03
+    mINIT2 $4c, frequencyDeltaData, data_0f_6613, $c0, $03 ;; 0f:55f3 $fe $4c $63 $66 $13 $66 $c0 $03
     mCOUNTER_2 $0a                                     ;; 0f:55fb $fa $0a
 .data_0f_55fd:
     mOCTAVE_4                                          ;; 0f:55fd $e4
@@ -4237,8 +4215,7 @@ song0e_channel2:
     mJUMP song0e_channel2                              ;; 0f:56b3 $f1 $f3 $55
 
 song0e_channel1:
-    mINIT1 data_0f_668c, data_0f_6619, $00             ;; 0f:56b6 $fe $8c $66 $19 $66 $00
-    mC_3                                               ;; 0f:56bc $03
+    mINIT1 data_0f_668c, data_0f_6619, $00, $03        ;; 0f:56b6 $fe $8c $66 $19 $66 $00 $03
     mRest_13                                           ;; 0f:56bd $dd
     mCOUNTER $06                                       ;; 0f:56be $f3 $06
 .data_0f_56c0:
@@ -4331,8 +4308,7 @@ song0e_channel1:
     mJUMP song0e_channel1                              ;; 0f:572d $f1 $b6 $56
 
 song0e_channel3:
-    mINIT3 data_0f_6668, $20, data_0f_66e2             ;; 0f:5730 $fe $68 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:5736 $03
+    mINIT3 data_0f_6668, $20, data_0f_66e2, $03        ;; 0f:5730 $fe $68 $66 $20 $e2 $66 $03
 .data_0f_5737:
     mOCTAVE_2                                          ;; 0f:5737 $e2
     mG_1                                               ;; 0f:5738 $71
@@ -4380,8 +4356,7 @@ song0e_channel4:
     mJUMP .data_0f_5752                                ;; 0f:576b $f1 $52 $57
 
 song0f_channel2:
-    mINIT2 $78, frequencyDeltaData, data_0f_660d, $c0  ;; 0f:576e $fe $78 $63 $66 $0d $66 $c0
-    mC_3                                               ;; 0f:5775 $03
+    mINIT2 $78, frequencyDeltaData, data_0f_660d, $c0, $03 ;; 0f:576e $fe $78 $63 $66 $0d $66 $c0 $03
 .data_0f_5776:
     mSTEREOPAN $03                                     ;; 0f:5776 $f6 $03
     mOCTAVE_0                                          ;; 0f:5778 $e0
@@ -4486,8 +4461,7 @@ song0f_channel2:
     mJUMP .data_0f_5776                                ;; 0f:57ea $f1 $76 $57
 
 song0f_channel1:
-    mINIT1 frequencyDeltaData, data_0f_6631, $40       ;; 0f:57ed $fe $63 $66 $31 $66 $40
-    mC_3                                               ;; 0f:57f3 $03
+    mINIT1 frequencyDeltaData, data_0f_6631, $40, $03  ;; 0f:57ed $fe $63 $66 $31 $66 $40 $03
 .data_0f_57f4:
     mRest_6                                            ;; 0f:57f4 $d6
     mOCTAVE_2                                          ;; 0f:57f5 $e2
@@ -4564,8 +4538,7 @@ song0f_channel1:
     mJUMP .data_0f_57f4                                ;; 0f:583c $f1 $f4 $57
 
 song0f_channel3:
-    mINIT3 data_0f_6668, $20, data_0f_66d2             ;; 0f:583f $fe $68 $66 $20 $d2 $66
-    mC_3                                               ;; 0f:5845 $03
+    mINIT3 data_0f_6668, $20, data_0f_66d2, $03        ;; 0f:583f $fe $68 $66 $20 $d2 $66 $03
 .data_0f_5846:
     mRest_6                                            ;; 0f:5846 $d6
     mOCTAVE_4                                          ;; 0f:5847 $e4
@@ -4818,8 +4791,7 @@ song0f_channel4:
     mJUMP .data_0f_5932                                ;; 0f:5942 $f1 $32 $59
 
 song10_channel2:
-    mINIT2 $8c, frequencyDeltaData, data_0f_660d, $40  ;; 0f:5945 $fe $8c $63 $66 $0d $66 $40
-    mC_2                                               ;; 0f:594c $02
+    mINIT2 $8c, frequencyDeltaData, data_0f_660d, $40, $02 ;; 0f:5945 $fe $8c $63 $66 $0d $66 $40 $02
 
 data_0f_594d:
     mCOUNTER_2 $02                                     ;; 0f:594d $fa $02
@@ -4875,14 +4847,12 @@ data_0f_594d:
     mJUMP data_0f_594d                                 ;; 0f:5983 $f1 $4d $59
 
 song10_channel1:
-    mINIT1 data_0f_6687, data_0f_6615, $40             ;; 0f:5986 $fe $87 $66 $15 $66 $40
-    mC_1                                               ;; 0f:598c $01
+    mINIT1 data_0f_6687, data_0f_6615, $40, $01        ;; 0f:5986 $fe $87 $66 $15 $66 $40 $01
     mRest_13                                           ;; 0f:598d $dd
     mJUMP data_0f_594d                                 ;; 0f:598e $f1 $4d $59
 
 song10_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:5991 $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:5997 $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:5991 $fe $63 $66 $20 $e2 $66 $03
 .data_0f_5998:
     mOCTAVE_1                                          ;; 0f:5998 $e1
     mCOUNTER_2 $02                                     ;; 0f:5999 $fa $02
@@ -4930,8 +4900,7 @@ song10_channel4:
     mJUMP .data_0f_59c3                                ;; 0f:59c9 $f1 $c3 $59
 
 song07_channel2:
-    mINIT2 $96, frequencyDeltaData, data_0f_661f, $c0  ;; 0f:59cc $fe $96 $63 $66 $1f $66 $c0
-    mC_3                                               ;; 0f:59d3 $03
+    mINIT2 $96, frequencyDeltaData, data_0f_661f, $c0, $03 ;; 0f:59cc $fe $96 $63 $66 $1f $66 $c0 $03
     mOCTAVE_0                                          ;; 0f:59d4 $e0
     mA_9                                               ;; 0f:59d5 $99
     mA_12                                              ;; 0f:59d6 $9c
@@ -5023,8 +4992,7 @@ song07_channel2:
     mJUMP .data_0f_59e9                                ;; 0f:5a3d $f1 $e9 $59
 
 song07_channel1:
-    mINIT1 frequencyDeltaData, data_0f_6613, $40       ;; 0f:5a40 $fe $63 $66 $13 $66 $40
-    mC_3                                               ;; 0f:5a46 $03
+    mINIT1 frequencyDeltaData, data_0f_6613, $40, $03  ;; 0f:5a40 $fe $63 $66 $13 $66 $40 $03
     mOCTAVE_3                                          ;; 0f:5a47 $e3
     mE_12                                              ;; 0f:5a48 $4c
     mD_12                                              ;; 0f:5a49 $2c
@@ -5153,8 +5121,7 @@ song07_channel1:
     mJUMP .data_0f_5a61                                ;; 0f:5ae6 $f1 $61 $5a
 
 song07_channel3:
-    mINIT3 data_0f_66a9, $20, data_0f_66d2             ;; 0f:5ae9 $fe $a9 $66 $20 $d2 $66
-    mC_3                                               ;; 0f:5aef $03
+    mINIT3 data_0f_66a9, $20, data_0f_66d2, $03        ;; 0f:5ae9 $fe $a9 $66 $20 $d2 $66 $03
     mOCTAVE_4                                          ;; 0f:5af0 $e4
     mC_12                                              ;; 0f:5af1 $0c
     mOCTAVE_MINUS_1                                    ;; 0f:5af2 $ec
@@ -5272,8 +5239,7 @@ song07_channel4:
     mJUMP .data_0f_5b3d                                ;; 0f:5b6f $f1 $3d $5b
 
 song0b_channel2:
-    mINIT2 $5a, data_0f_6668, data_0f_65f3, $80        ;; 0f:5b72 $fe $5a $68 $66 $f3 $65 $80
-    mC_3                                               ;; 0f:5b79 $03
+    mINIT2 $5a, data_0f_6668, data_0f_65f3, $80, $03   ;; 0f:5b72 $fe $5a $68 $66 $f3 $65 $80 $03
 .data_0f_5b7a:
     mOCTAVE_3                                          ;; 0f:5b7a $e3
     mFis_7                                             ;; 0f:5b7b $67
@@ -5320,8 +5286,7 @@ song0b_channel2:
     mJUMP .data_0f_5b8d                                ;; 0f:5bab $f1 $8d $5b
 
 song0b_channel1:
-    mINIT1 frequencyDeltaData, data_0f_6603, $c0       ;; 0f:5bae $fe $63 $66 $03 $66 $c0
-    mC_3                                               ;; 0f:5bb4 $03
+    mINIT1 frequencyDeltaData, data_0f_6603, $c0, $03  ;; 0f:5bae $fe $63 $66 $03 $66 $c0 $03
 .data_0f_5bb5:
     mVOLUME_ENVELOPE data_0f_6603                      ;; 0f:5bb5 $f0 $03 $66
     mOCTAVE_3                                          ;; 0f:5bb8 $e3
@@ -5362,8 +5327,7 @@ song0b_channel1:
     mJUMP .data_0f_5bb5                                ;; 0f:5be7 $f1 $b5 $5b
 
 song0b_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:5bea $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:5bf0 $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:5bea $fe $63 $66 $20 $e2 $66 $03
 .data_0f_5bf1:
     mOCTAVE_2                                          ;; 0f:5bf1 $e2
     mC_7                                               ;; 0f:5bf2 $07
@@ -5416,8 +5380,7 @@ song0b_channel4:
     mJUMP .data_0f_5c14                                ;; 0f:5c29 $f1 $14 $5c
 
 song12_channel2:
-    mINIT2 $78, data_0f_6668, data_0f_6641, $80        ;; 0f:5c2c $fe $78 $68 $66 $41 $66 $80
-    mC_3                                               ;; 0f:5c33 $03
+    mINIT2 $78, data_0f_6668, data_0f_6641, $80, $03   ;; 0f:5c2c $fe $78 $68 $66 $41 $66 $80 $03
 .data_0f_5c34:
     mOCTAVE_3                                          ;; 0f:5c34 $e3
     mG_9                                               ;; 0f:5c35 $79
@@ -5526,8 +5489,7 @@ song12_channel2:
     mJUMP .data_0f_5c34                                ;; 0f:5ca0 $f1 $34 $5c
 
 song12_channel1:
-    mINIT1 data_0f_6668, data_0f_6631, $80             ;; 0f:5ca3 $fe $68 $66 $31 $66 $80
-    mC_2                                               ;; 0f:5ca9 $02
+    mINIT1 data_0f_6668, data_0f_6631, $80, $02        ;; 0f:5ca3 $fe $68 $66 $31 $66 $80 $02
     mOCTAVE_2                                          ;; 0f:5caa $e2
     mCOUNTER_2 $04                                     ;; 0f:5cab $fa $04
 .data_0f_5cad:
@@ -5569,8 +5531,7 @@ song12_channel1:
     mJUMP song12_channel1                              ;; 0f:5cd4 $f1 $a3 $5c
 
 song12_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:5cd7 $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:5cdd $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:5cd7 $fe $63 $66 $20 $e2 $66 $03
 .data_0f_5cde:
     mCOUNTER_2 $04                                     ;; 0f:5cde $fa $04
 .data_0f_5ce0:
@@ -5682,8 +5643,7 @@ song12_channel4:
     mJUMP .data_0f_5d4b                                ;; 0f:5d63 $f1 $4b $5d
 
 song00_channel2:
-    mINIT2 $7e, frequencyDeltaData, data_0f_6621, $40  ;; 0f:5d66 $fe $7e $63 $66 $21 $66 $40
-    mC_3                                               ;; 0f:5d6d $03
+    mINIT2 $7e, frequencyDeltaData, data_0f_6621, $40, $03 ;; 0f:5d66 $fe $7e $63 $66 $21 $66 $40 $03
     mOCTAVE_2                                          ;; 0f:5d6e $e2
     mA_12                                              ;; 0f:5d6f $9c
     mB_12                                              ;; 0f:5d70 $bc
@@ -5796,8 +5756,7 @@ song00_channel2:
     mJUMP .data_0f_5d75                                ;; 0f:5de2 $f1 $75 $5d
 
 song00_channel1:
-    mINIT1 frequencyDeltaData, data_0f_65e3, $40       ;; 0f:5de5 $fe $63 $66 $e3 $65 $40
-    mC_3                                               ;; 0f:5deb $03
+    mINIT1 frequencyDeltaData, data_0f_65e3, $40, $03  ;; 0f:5de5 $fe $63 $66 $e3 $65 $40 $03
     mOCTAVE_2                                          ;; 0f:5dec $e2
     mD_12                                              ;; 0f:5ded $2c
     mE_12                                              ;; 0f:5dee $4c
@@ -5925,8 +5884,7 @@ song00_channel1:
     mJUMP .data_0f_5df1                                ;; 0f:5e7e $f1 $f1 $5d
 
 song00_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:5e81 $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:5e87 $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:5e81 $fe $63 $66 $20 $e2 $66 $03
     mRest_9                                            ;; 0f:5e88 $d9
     mOCTAVE_1                                          ;; 0f:5e89 $e1
     mF_12                                              ;; 0f:5e8a $5c
@@ -6041,8 +5999,7 @@ song00_channel4:
     mJUMP .data_0f_5f00                                ;; 0f:5f0a $f1 $00 $5f
 
 song01_channel2:
-    mINIT2 $7e, frequencyDeltaData, data_0f_6621, $40  ;; 0f:5f0d $fe $7e $63 $66 $21 $66 $40
-    mC_2                                               ;; 0f:5f14 $02
+    mINIT2 $7e, frequencyDeltaData, data_0f_6621, $40, $02 ;; 0f:5f0d $fe $7e $63 $66 $21 $66 $40 $02
     mOCTAVE_3                                          ;; 0f:5f15 $e3
     mCOUNTER $01                                       ;; 0f:5f16 $f3 $01
     mCOUNTER_2 $03                                     ;; 0f:5f18 $fa $03
@@ -6204,8 +6161,7 @@ song01_channel2:
     mJUMP .data_0f_5f1d                                ;; 0f:5fd5 $f1 $1d $5f
 
 song01_channel1:
-    mINIT1 frequencyDeltaData, data_0f_6617, $00       ;; 0f:5fd8 $fe $63 $66 $17 $66 $00
-    mC_3                                               ;; 0f:5fde $03
+    mINIT1 frequencyDeltaData, data_0f_6617, $00, $03  ;; 0f:5fd8 $fe $63 $66 $17 $66 $00 $03
     mOCTAVE_3                                          ;; 0f:5fdf $e3
     mCOUNTER $01                                       ;; 0f:5fe0 $f3 $01
     mCOUNTER_2 $03                                     ;; 0f:5fe2 $fa $03
@@ -6376,8 +6332,7 @@ song01_channel1:
     mJUMP .data_0f_5fe7                                ;; 0f:6096 $f1 $e7 $5f
 
 song01_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:6099 $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:609f $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:6099 $fe $63 $66 $20 $e2 $66 $03
     mOCTAVE_1                                          ;; 0f:60a0 $e1
     mE_6                                               ;; 0f:60a1 $46
     mDis_6                                             ;; 0f:60a2 $36
@@ -6479,8 +6434,7 @@ song01_channel4:
     mJUMP .data_0f_60ed                                ;; 0f:610d $f1 $ed $60
 
 song0d_channel2:
-    mINIT2 $82, frequencyDeltaData, volumeEnvelopeData, $00 ;; 0f:6110 $fe $82 $63 $66 $d7 $65 $00
-    mC_3                                               ;; 0f:6117 $03
+    mINIT2 $82, frequencyDeltaData, volumeEnvelopeData, $00, $03 ;; 0f:6110 $fe $82 $63 $66 $d7 $65 $00 $03
     mOCTAVE_3                                          ;; 0f:6118 $e3
     mB_14                                              ;; 0f:6119 $be
     mAis_14                                            ;; 0f:611a $ae
@@ -6596,8 +6550,7 @@ song0d_channel2:
     mJUMP .data_0f_6125                                ;; 0f:6191 $f1 $25 $61
 
 song0d_channel1:
-    mINIT1 frequencyDeltaData, data_0f_65e3, $40       ;; 0f:6194 $fe $63 $66 $e3 $65 $40
-    mC_3                                               ;; 0f:619a $03
+    mINIT1 frequencyDeltaData, data_0f_65e3, $40, $03  ;; 0f:6194 $fe $63 $66 $e3 $65 $40 $03
     mOCTAVE_3                                          ;; 0f:619b $e3
     mE_14                                              ;; 0f:619c $4e
     mDis_14                                            ;; 0f:619d $3e
@@ -6785,8 +6738,7 @@ song0d_channel1:
     mJUMP .data_0f_61a9                                ;; 0f:626e $f1 $a9 $61
 
 song0d_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:6271 $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:6277 $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:6271 $fe $63 $66 $20 $e2 $66 $03
     mRest_4                                            ;; 0f:6278 $d4
 .data_0f_6279:
     mOCTAVE_1                                          ;; 0f:6279 $e1
@@ -6878,8 +6830,7 @@ song0d_channel4:
     mJUMP .data_0f_62da                                ;; 0f:62e2 $f1 $da $62
 
 song03_channel2:
-    mINIT2 $41, frequencyDeltaData, data_0f_65e3, $00  ;; 0f:62e5 $fe $41 $63 $66 $e3 $65 $00
-    mC_3                                               ;; 0f:62ec $03
+    mINIT2 $41, frequencyDeltaData, data_0f_65e3, $00, $03 ;; 0f:62e5 $fe $41 $63 $66 $e3 $65 $00 $03
     mOCTAVE_2                                          ;; 0f:62ed $e2
     mA_15                                              ;; 0f:62ee $9f
     mAis_15                                            ;; 0f:62ef $af
@@ -6940,8 +6891,7 @@ song03_channel2:
     mJUMP .data_0f_6306                                ;; 0f:632c $f1 $06 $63
 
 song03_channel1:
-    mINIT1 frequencyDeltaData, data_0f_65eb, $00       ;; 0f:632f $fe $63 $66 $eb $65 $00
-    mC_3                                               ;; 0f:6335 $03
+    mINIT1 frequencyDeltaData, data_0f_65eb, $00, $03  ;; 0f:632f $fe $63 $66 $eb $65 $00 $03
     mOCTAVE_3                                          ;; 0f:6336 $e3
     mC_15                                              ;; 0f:6337 $0f
     mD_15                                              ;; 0f:6338 $2f
@@ -7006,8 +6956,7 @@ song03_channel1:
     mJUMP .data_0f_634c                                ;; 0f:6378 $f1 $4c $63
 
 song03_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:637b $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:6381 $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:637b $fe $63 $66 $20 $e2 $66 $03
     mOCTAVE_2                                          ;; 0f:6382 $e2
     mRest_9                                            ;; 0f:6383 $d9
     mDis_9                                             ;; 0f:6384 $39
@@ -7077,8 +7026,7 @@ song03_channel4:
     mJUMP .data_0f_63cc                                ;; 0f:63d2 $f1 $cc $63
 
 song0c_channel2:
-    mINIT2 $96, frequencyDeltaData, data_0f_660f, $00  ;; 0f:63d5 $fe $96 $63 $66 $0f $66 $00
-    mC_3                                               ;; 0f:63dc $03
+    mINIT2 $96, frequencyDeltaData, data_0f_660f, $00, $03 ;; 0f:63d5 $fe $96 $63 $66 $0f $66 $00 $03
 .data_0f_63dd:
     mCOUNTER_2 $02                                     ;; 0f:63dd $fa $02
 .data_0f_63df:
@@ -7179,8 +7127,7 @@ song0c_channel2:
     mJUMP .data_0f_63dd                                ;; 0f:644b $f1 $dd $63
 
 song0c_channel1:
-    mINIT1 frequencyDeltaData, data_0f_6613, $00       ;; 0f:644e $fe $63 $66 $13 $66 $00
-    mC_3                                               ;; 0f:6454 $03
+    mINIT1 frequencyDeltaData, data_0f_6613, $00, $03  ;; 0f:644e $fe $63 $66 $13 $66 $00 $03
 .data_0f_6455:
     mOCTAVE_2                                          ;; 0f:6455 $e2
     mSTEREOPAN $02                                     ;; 0f:6456 $f6 $02
@@ -7302,8 +7249,7 @@ song0c_channel1:
     mJUMP .data_0f_6455                                ;; 0f:64e7 $f1 $55 $64
 
 song0c_channel3:
-    mINIT3 frequencyDeltaData, $20, data_0f_66e2       ;; 0f:64ea $fe $63 $66 $20 $e2 $66
-    mC_3                                               ;; 0f:64f0 $03
+    mINIT3 frequencyDeltaData, $20, data_0f_66e2, $03  ;; 0f:64ea $fe $63 $66 $20 $e2 $66 $03
     mOCTAVE_1                                          ;; 0f:64f1 $e1
 .data_0f_64f2:
     mCOUNTER_2 $10                                     ;; 0f:64f2 $fa $10
@@ -7339,8 +7285,7 @@ song0c_channel4:
     mJUMP .data_0f_650d                                ;; 0f:6517 $f1 $0d $65
 
 song04_channel2:
-    mINIT2 $78, frequencyDeltaData, data_0f_65df, $c0  ;; 0f:651a $fe $78 $63 $66 $df $65 $c0
-    mC_3                                               ;; 0f:6521 $03
+    mINIT2 $78, frequencyDeltaData, data_0f_65df, $c0, $03 ;; 0f:651a $fe $78 $63 $66 $df $65 $c0 $03
     mRest_4                                            ;; 0f:6522 $d4
     mOCTAVE_1                                          ;; 0f:6523 $e1
 .data_0f_6524:
@@ -7408,8 +7353,7 @@ song04_channel2:
     mJUMP .data_0f_6524                                ;; 0f:6565 $f1 $24 $65
 
 song04_channel1:
-    mINIT1 data_0f_667a, data_0f_65fb, $40             ;; 0f:6568 $fe $7a $66 $fb $65 $40
-    mC_3                                               ;; 0f:656e $03
+    mINIT1 data_0f_667a, data_0f_65fb, $40, $03        ;; 0f:6568 $fe $7a $66 $fb $65 $40 $03
     mOCTAVE_2                                          ;; 0f:656f $e2
 .data_0f_6570:
     mCOUNTER $02                                       ;; 0f:6570 $f3 $02
@@ -7456,8 +7400,7 @@ song04_channel1:
     mJUMP .data_0f_6570                                ;; 0f:659d $f1 $70 $65
 
 song04_channel3:
-    mINIT3 data_0f_667a, $20, data_0f_66c2             ;; 0f:65a0 $fe $7a $66 $20 $c2 $66
-    mC_3                                               ;; 0f:65a6 $03
+    mINIT3 data_0f_667a, $20, data_0f_66c2, $03        ;; 0f:65a0 $fe $7a $66 $20 $c2 $66 $03
     mOCTAVE_3                                          ;; 0f:65a7 $e3
     mCOUNTER $03                                       ;; 0f:65a8 $f3 $03
 .data_0f_65aa:

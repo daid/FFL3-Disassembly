@@ -78,9 +78,9 @@ OPCODES = {
     0xFA: ("mCOUNTER_2", "byte"),
     0xFB: ("mJUMPIF", "byte", "mptr"),
     0xFD: ("mUNK_ED", "byte"),
-    0x1FE: ("mINIT1", "ptr", "ptr", "byte"),
-    0x2FE: ("mINIT2", "byte", "ptr", "ptr", "byte"),
-    0x3FE: ("mINIT3", "ptr", "byte", "ptr"),
+    0x1FE: ("mINIT1", "ptr", "ptr", "byte", "byte"),
+    0x2FE: ("mINIT2", "byte", "ptr", "ptr", "byte", "byte"),
+    0x3FE: ("mINIT3", "ptr", "byte", "ptr", "byte"),
     0xFF: ("mEND", )
 }
 PARAM_SIZE = {"byte": 1, "ptr": 2, "mptr": 2}
